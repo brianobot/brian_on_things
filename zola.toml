@@ -1,7 +1,7 @@
 # The URL the site will be built for
 title = "Brian on Things"
 
-base_url = "https://brianobot.com"
+base_url = "https://brianobot.github.io/brian_on_things"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
