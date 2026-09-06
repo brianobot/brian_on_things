@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://brianobot.github.io/brian_on_things/</loc>
+    </url>
+    <url>
+        <loc>https://brianobot.github.io/brian_on_things/about/</loc>
+    </url>
+    <url>
+        <loc>https://brianobot.github.io/brian_on_things/blog/</loc>
+    </url>
+    <url>
+        <loc>https://brianobot.github.io/brian_on_things/blog/understanding-zola-for-static-site-generation/</loc>
+        <lastmod>2026-09-05</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.github.io/brian_on_things/projects/</loc>
+    </url>
+    <url>
+        <loc>https://brianobot.github.io/brian_on_things/search/</loc>
+    </url>
+</urlset>

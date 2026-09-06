@@ -1,75 +1,56 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="icon" href="{{ get_url(path='favicon.webp') }}" type="image/webp">
+	<link rel="icon" href="https://brianobot.github.io/brian_on_things/favicon.webp" type="image/webp">
 
-	<title>{% block title %}{{ config.title }}{% endblock title %}</title>
+	<title>Search • Brian on Things</title>
 
-	{# ------------------------------------------------------------------
-	   SEO + social metadata.
+	
+	
+	
+	
 
-	   `page` is undefined on section templates and `section` is undefined
-	   on pages, but referencing either is safe here — an undefined value
-	   is falsy rather than an error. set_global is required because plain
-	   `set` inside an {% if %} would not escape the block.
-	   ------------------------------------------------------------------ #}
-	{% set_global meta_title = config.title %}
-	{% set_global meta_desc = config.description %}
-	{% set_global meta_type = "website" %}
+	
+		
+		
+		
+		
+	
 
-	{% if page %}
-		{% set_global meta_title = page.title %}
-		{% if page.description %}{% set_global meta_desc = page.description %}{% endif %}
-		{# only dated posts are articles; About and Projects are not #}
-		{% if page.date %}{% set_global meta_type = "article" %}{% endif %}
-	{% elif section and section.title %}
-		{% set_global meta_title = section.title %}
-		{% if section.description %}{% set_global meta_desc = section.description %}{% endif %}
-	{% endif %}
-
-	<meta name="description" content="{{ meta_desc }}">
-	<meta name="author" content="{{ config.author }}">
-	{% if current_url %}<link rel="canonical" href="{{ current_url }}">{% endif %}
+	<meta name="description" content="Search the blog">
+	<meta name="author" content="Brian Obot">
+	<link rel="canonical" href="https://brianobot.github.io/brian_on_things/search/">
 	<meta name="theme-color" content="#fbfcfd" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#0b0b12" media="(prefers-color-scheme: dark)">
 
-	{# ---- Open Graph ---- #}
-	<meta property="og:type" content="{{ meta_type }}">
-	<meta property="og:site_name" content="{{ config.title }}">
-	<meta property="og:title" content="{{ meta_title }}">
-	<meta property="og:description" content="{{ meta_desc }}">
-	{% if current_url %}<meta property="og:url" content="{{ current_url }}">{% endif %}
-	<meta property="og:locale" content="{{ config.extra.og_locale }}">
+	
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Brian on Things">
+	<meta property="og:title" content="Search">
+	<meta property="og:description" content="Search the blog">
+	<meta property="og:url" content="https://brianobot.github.io/brian_on_things/search/">
+	<meta property="og:locale" content="en_US">
 
-	{% if meta_type == "article" %}
-		<meta property="article:published_time" content="{{ page.date | date(format='%Y-%m-%dT%H:%M:%S%:z') }}">
-		{% if page.updated %}<meta property="article:modified_time" content="{{ page.updated | date(format='%Y-%m-%dT%H:%M:%S%:z') }}">{% endif %}
-		<meta property="article:author" content="{{ config.author }}">
-		{% if page.taxonomies and page.taxonomies.tags %}
-			{% for tag in page.taxonomies.tags %}
-				<meta property="article:tag" content="{{ tag }}">
-			{% endfor %}
-		{% endif %}
-	{% endif %}
+	
 
-	{# ---- Twitter / X ---- #}
+	
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:title" content="{{ meta_title }}">
-	<meta name="twitter:description" content="{{ meta_desc }}">
+	<meta name="twitter:title" content="Search">
+	<meta name="twitter:description" content="Search the blog">
 
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-	<link rel="stylesheet" href="{{ get_url(path='style.css') }}">
-	{# both syntax themes ship; the theme toggle enables exactly one #}
-	<link rel="stylesheet" href="{{ get_url(path='giallo-light.css') }}" id="syntax-light">
-	<link rel="stylesheet" href="{{ get_url(path='giallo-dark.css') }}" id="syntax-dark" disabled>
+	<link rel="stylesheet" href="https://brianobot.github.io/brian_on_things/style.css">
+	
+	<link rel="stylesheet" href="https://brianobot.github.io/brian_on_things/giallo-light.css" id="syntax-light">
+	<link rel="stylesheet" href="https://brianobot.github.io/brian_on_things/giallo-dark.css" id="syntax-dark" disabled>
 
-	{# Set the theme before first paint so there is no light-mode flash #}
+	
 	<script>
 		(function () {
 			var t = localStorage.getItem('theme') || 'system'
@@ -82,29 +63,29 @@
 		})()
 	</script>
 
-	{% block head %}{% endblock head %}
+	
 </head>
 
 <body>
 	<div class="container">
 
 		<header id="siteHeader" class="header">
-			<a class="brand" href="{{ config.base_url }}" aria-label="Brand">{{ config.title }}</a>
+			<a class="brand" href="https://brianobot.github.io/brian_on_things" aria-label="Brand">Brian on Things</a>
 
 			<div class="header-end">
 				<div id="headerExpandContent" class="nav-wrap">
 					<nav class="nav">
-						{% set nav = [
-							["Archive",  "/blog"],
-							["Projects", "/projects"],
-							["About",    "/about"]
-						] %}
-						{% for item in nav %}
-							<a class="nav-link" href="{{ get_url(path=item[1]) }}" aria-label="Nav menu item">{{ item[0] }}</a>
-						{% endfor %}
+						
+						
+							<a class="nav-link" href="https://brianobot.github.io/brian_on_things/blog" aria-label="Nav menu item">Archive</a>
+						
+							<a class="nav-link" href="https://brianobot.github.io/brian_on_things/projects" aria-label="Nav menu item">Projects</a>
+						
+							<a class="nav-link" href="https://brianobot.github.io/brian_on_things/about" aria-label="Nav menu item">About</a>
+						
 
 						<div class="nav-icons">
-							<a class="icon-link" href="{{ get_url(path='/search') }}" title="Search">
+							<a class="icon-link" href="https://brianobot.github.io/brian_on_things/search" title="Search">
 								<span class="sr-only">Search</span>
 								<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
 									<path d="M5 10a5 5 0 1 1 10 0a5 5 0 0 1-10 0m5-7a7 7 0 1 0 4.192 12.606l5.1 5.101a1 1 0 0 0 1.415-1.414l-5.1-5.1A7 7 0 0 0 10 3"/>
@@ -139,14 +120,34 @@
 		</header>
 
 		<main>
-			{% block title_header %}{% endblock title_header %}
-			{% block main %}{% endblock main %}
+			
+			
+<div class="search-page">
+	<div id="content-header">
+		<h1>Search</h1>
+	</div>
+
+	<p class="muted">Enter a search term or phrase to search the blog.</p>
+
+	<form class="search-form" role="search" onsubmit="return false">
+		<label class="sr-only" for="search-input">Search</label>
+		<svg class="search-icon" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+			<path d="M5 10a5 5 0 1 1 10 0a5 5 0 0 1-10 0m5-7a7 7 0 1 0 4.192 12.606l5.1 5.101a1 1 0 0 0 1.415-1.414l-5.1-5.1A7 7 0 0 0 10 3"/>
+		</svg>
+		<input id="search-input" type="search" autocomplete="off" autofocus
+		       placeholder="Search posts&hellip;" aria-describedby="search-status">
+	</form>
+
+	<p id="search-status" class="muted search-status" role="status" aria-live="polite"></p>
+	<ul id="search-results" class="post-list"></ul>
+</div>
+
 		</main>
 
 		<footer class="footer">
 			<div class="footer-inner">
 				<div class="footer-meta">
-					<span>&copy; {{ now() | date(format='%Y') }} {{ config.extra.author | default(value='Brian Obot') }}</span>
+					<span>&copy; 2026 Brian Obot</span>
 					<span>
 						Powered by
 						<a href="https://www.getzola.org" target="_blank" rel="noopener">Zola</a>
@@ -196,6 +197,95 @@
 			if (darkBtn.dataset.theme === 'system') apply('system')
 		})
 	</script>
-	{% block scripts %}{% endblock scripts %}
+	
+<script src="https://brianobot.github.io/brian_on_things/elasticlunr.min.js"></script>
+<script src="https://brianobot.github.io/brian_on_things/search_index.en.js"></script>
+<script>
+	const input = document.getElementById('search-input')
+	const status = document.getElementById('search-status')
+	const results = document.getElementById('search-results')
+
+	const index = elasticlunr.Index.load(window.searchIndex)
+	const docs = window.searchIndex.documentStore.docs
+
+	// section listings and the search page itself carry no prose — never show them
+	// index refs carry a trailing slash; compare without one
+	const trim = (u) => u.replace(/\/$/, '')
+	const SKIP = new Set([trim('https://brianobot.github.io/brian_on_things/search')])
+	const searchable = (ref) => !SKIP.has(trim(ref)) && (docs[ref] || {}).body
+
+	const escape = (s) =>
+		s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+
+	// a window of body text around the first hit, with the term marked
+	const snippet = (body, terms) => {
+		const text = body.replace(/\s+/g, ' ').trim()
+		let at = -1
+		for (const t of terms) {
+			const i = text.toLowerCase().indexOf(t.toLowerCase())
+			if (i !== -1 && (at === -1 || i < at)) at = i
+		}
+		const start = at === -1 ? 0 : Math.max(0, at - 60)
+		let out = escape(text.slice(start, start + 200))
+		if (start > 0) out = '&hellip;' + out
+		if (start + 200 < text.length) out += '&hellip;'
+		for (const t of terms) {
+			if (!t) continue
+			out = out.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>')
+		}
+		return out
+	}
+
+	const render = (query) => {
+		results.innerHTML = ''
+
+		if (!query.trim()) {
+			status.textContent = ''
+			return
+		}
+
+		const hits = index
+			.search(query, { bool: 'AND', expand: true, fields: { title: { boost: 2 }, body: { boost: 1 } } })
+			.filter((h) => searchable(h.ref))
+
+		status.textContent = hits.length
+			? `${hits.length} result${hits.length === 1 ? '' : 's'} for “${query}”`
+			: `No results for “${query}”`
+
+		const terms = query.trim().split(/\s+/)
+		for (const hit of hits) {
+			const doc = docs[hit.ref]
+			const li = document.createElement('li')
+			li.className = 'post-preview search-result'
+			li.innerHTML =
+				'<a href="' + escape(hit.ref) + '">' +
+				'<span class="search-result-title">' + escape(doc.title || hit.ref) + '</span>' +
+				'<span class="search-result-snippet">' + snippet(doc.body, terms) + '</span>' +
+				'</a>'
+			results.appendChild(li)
+		}
+	}
+
+	// debounce so we are not re-rendering on every keystroke
+	let timer
+	input.addEventListener('input', () => {
+		clearTimeout(timer)
+		timer = setTimeout(() => {
+			const q = input.value
+			render(q)
+			const url = new URL(window.location)
+			q.trim() ? url.searchParams.set('q', q) : url.searchParams.delete('q')
+			history.replaceState(null, '', url)
+		}, 150)
+	})
+
+	// deep link support: /search?q=zola
+	const initial = new URLSearchParams(window.location.search).get('q')
+	if (initial) {
+		input.value = initial
+		render(initial)
+	}
+</script>
+
 </body>
 </html>
