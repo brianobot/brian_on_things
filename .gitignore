@@ -14,7 +14,7 @@
 !*.jpeg
 !*.webp
 !*.html
-w
+!*.yml
 
 
 CLAUDE.md
