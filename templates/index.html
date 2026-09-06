@@ -1,0 +1,120 @@
+{% extends "_base.html" %}
+
+{% block main %}
+{% set author = config.extra.author %}
+
+<section class="home-header">
+	{% if config.extra.avatar %}
+		<img class="avatar" src="{{ get_url(path=config.extra.avatar) }}" alt="{{ author }}"
+		     width="672" height="672" loading="lazy" decoding="async">
+	{% else %}
+		{# no avatar configured — fall back to initials so nothing renders broken #}
+		{% set_global initials = "" %}
+		{% for word in author | split(pat=" ") %}
+			{% set_global initials = initials ~ word | truncate(length=1, end="") %}
+		{% endfor %}
+		<div class="avatar avatar-initials" aria-hidden="true">{{ initials }}</div>
+	{% endif %}
+
+	<div class="identity">
+		<h1>{{ author }}</h1>
+		<div class="socials">
+			{% for s in config.extra.socials %}
+				<a href="{{ s.url }}"{% if s.icon != "email" %} target="_blank" rel="noopener"{% endif %}>
+					<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+						{% if s.icon == "github" %}
+							<path d="M6.315 6.176c-.25-.638-.24-1.367-.129-2.034a6.8 6.8 0 0 1 2.12 1.07c.28.214.647.283.989.18A9.3 9.3 0 0 1 12 5c.961 0 1.874.14 2.703.391c.342.104.709.034.988-.18a6.8 6.8 0 0 1 2.119-1.07c.111.667.12 1.396-.128 2.033c-.15.384-.075.826.208 1.14C18.614 8.117 19 9.04 19 10c0 2.114-1.97 4.187-5.134 4.818c-.792.158-1.101 1.155-.495 1.726c.389.366.629.882.629 1.456v3a1 1 0 0 0 2 0v-3c0-.57-.12-1.112-.334-1.603C18.683 15.35 21 12.993 21 10c0-1.347-.484-2.585-1.287-3.622c.21-.82.191-1.646.111-2.28c-.071-.568-.17-1.312-.57-1.756c-.595-.659-1.58-.271-2.28-.032a9 9 0 0 0-2.125 1.045A11.4 11.4 0 0 0 12 3c-.994 0-1.953.125-2.851.356a9 9 0 0 0-2.125-1.045c-.7-.24-1.686-.628-2.281.031c-.408.452-.493 1.137-.566 1.719l-.005.038c-.08.635-.098 1.462.112 2.283C3.484 7.418 3 8.654 3 10c0 2.992 2.317 5.35 5.334 6.397A4 4 0 0 0 8 17.98l-.168.034c-.717.099-1.176.01-1.488-.122c-.76-.322-1.152-1.133-1.63-1.753c-.298-.385-.732-.866-1.398-1.088a1 1 0 0 0-.632 1.898c.558.186.944 1.142 1.298 1.566c.373.448.869.916 1.58 1.218c.682.29 1.483.393 2.438.276V21a1 1 0 0 0 2 0v-3c0-.574.24-1.09.629-1.456c.607-.572.297-1.568-.495-1.726C6.969 14.187 5 12.114 5 10c0-.958.385-1.881 1.108-2.684c.283-.314.357-.756.207-1.14"/>
+						{% elif s.icon == "linkedin" %}
+							<path d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1M8 10a1 1 0 0 1 .993.883L9 11v5a1 1 0 0 1-1.993.117L7 16v-5a1 1 0 0 1 1-1m3-1a1 1 0 0 1 .984.821 5.82 5.82 0 0 1 .623-.313c.667-.285 1.666-.442 2.568-.159.473.15.948.43 1.3.907.315.425.485.942.519 1.523L17 12v4a1 1 0 0 1-1.993.117L15 16v-4c0-.33-.08-.484-.132-.555a.548.548 0 0 0-.293-.188c-.348-.11-.849-.052-1.182.09-.5.214-.958.55-1.27.861L12 12.34V16a1 1 0 0 1-1.993.117L10 16v-6a1 1 0 0 1 1-1M8 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+						{% elif s.icon == "twitter" %}
+							<path d="M18.244 2.25h3.308l-7.227 8.26l8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+						{% elif s.icon == "email" %}
+							<path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v.511l8 5.333l8-5.333V6H4m0 12h16V8.915l-7.445 4.963a1 1 0 0 1-1.11 0L4 8.915V18"/>
+						{% endif %}
+					</svg>
+					<span>{{ s.name }}</span>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+<div class="home-content">
+
+	<section class="home-section">
+		<div class="section-label"><h2>About</h2></div>
+		<div class="section-body">
+			<p class="muted">{{ config.extra.tagline }}</p>
+			<p class="muted">{{ config.extra.bio | trim }}</p>
+			<a class="pill-link" href="{{ get_url(path='/about') }}">
+				<span>More about me</span>{% include "_arrow.html" %}
+			</a>
+		</div>
+	</section>
+
+	<section class="home-section">
+		<div class="section-label"><h2>Posts</h2></div>
+		<div class="section-body">
+			{% set blog = get_section(path="blog/_index.md") %}
+			{% if blog.pages %}
+				<ul class="post-list">
+					{# no `slice` filter in Zola 0.23, so cap with loop.index #}
+					{% for post in blog.pages %}
+					{% if loop.index <= config.extra.recent_posts %}
+						<li class="post-preview">
+							<a href="{{ post.permalink | safe }}">
+								<time class="post-date" datetime="{{ post.date }}">
+									{{ post.date | date(format="%b %-d, %Y") }}
+								</time>
+								<span class="post-title">
+									<span>{{ post.title }}</span>{% include "_arrow.html" %}
+								</span>
+							</a>
+						</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+				<a class="pill-link" href="{{ get_url(path='/blog') }}">
+					<span>See all posts</span>{% include "_arrow.html" %}
+				</a>
+			{% else %}
+				<p class="muted">No posts yet.</p>
+			{% endif %}
+		</div>
+	</section>
+
+	{% if config.extra.education %}
+	<section class="home-section">
+		<div class="section-label"><h2>Education</h2></div>
+		<div class="section-body">
+			{% for e in config.extra.education %}
+				<div class="card">
+					<h3>{{ e.school }}</h3>
+					<p class="muted">{{ e.degree }}</p>
+					{% if e.note %}<p class="muted">{{ e.note }}</p>{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	{% endif %}
+
+	{% if config.extra.skills %}
+	<section class="home-section">
+		<div class="section-label"><h2>Skills</h2></div>
+		<div class="section-body">
+			{% for group in config.extra.skills %}
+				<div class="skill-row">
+					<h3>{{ group.category }}</h3>
+					<div class="skill-tags">
+						{% for item in group.items %}
+							<span class="tag">{{ item }}</span>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	{% endif %}
+
+</div>
+{% endblock main %}

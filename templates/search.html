@@ -1,0 +1,116 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ page.title }} • {{ config.title }}{% endblock title %}
+
+{% block main %}
+<div class="search-page">
+	<div id="content-header">
+		<h1>{{ page.title }}</h1>
+	</div>
+
+	<p class="muted">Enter a search term or phrase to search the blog.</p>
+
+	<form class="search-form" role="search" onsubmit="return false">
+		<label class="sr-only" for="search-input">Search</label>
+		<svg class="search-icon" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+			<path d="M5 10a5 5 0 1 1 10 0a5 5 0 0 1-10 0m5-7a7 7 0 1 0 4.192 12.606l5.1 5.101a1 1 0 0 0 1.415-1.414l-5.1-5.1A7 7 0 0 0 10 3"/>
+		</svg>
+		<input id="search-input" type="search" autocomplete="off" autofocus
+		       placeholder="Search posts&hellip;" aria-describedby="search-status">
+	</form>
+
+	<p id="search-status" class="muted search-status" role="status" aria-live="polite"></p>
+	<ul id="search-results" class="post-list"></ul>
+</div>
+{% endblock main %}
+
+{% block scripts %}
+<script src="{{ get_url(path='elasticlunr.min.js') }}"></script>
+<script src="{{ get_url(path='search_index.en.js') }}"></script>
+<script>
+	const input = document.getElementById('search-input')
+	const status = document.getElementById('search-status')
+	const results = document.getElementById('search-results')
+
+	const index = elasticlunr.Index.load(window.searchIndex)
+	const docs = window.searchIndex.documentStore.docs
+
+	// section listings and the search page itself carry no prose — never show them
+	// index refs carry a trailing slash; compare without one
+	const trim = (u) => u.replace(/\/$/, '')
+	const SKIP = new Set([trim('{{ get_url(path='/search') }}')])
+	const searchable = (ref) => !SKIP.has(trim(ref)) && (docs[ref] || {}).body
+
+	const escape = (s) =>
+		s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+
+	// a window of body text around the first hit, with the term marked
+	const snippet = (body, terms) => {
+		const text = body.replace(/\s+/g, ' ').trim()
+		let at = -1
+		for (const t of terms) {
+			const i = text.toLowerCase().indexOf(t.toLowerCase())
+			if (i !== -1 && (at === -1 || i < at)) at = i
+		}
+		const start = at === -1 ? 0 : Math.max(0, at - 60)
+		let out = escape(text.slice(start, start + 200))
+		if (start > 0) out = '&hellip;' + out
+		if (start + 200 < text.length) out += '&hellip;'
+		for (const t of terms) {
+			if (!t) continue
+			out = out.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark>$1</mark>')
+		}
+		return out
+	}
+
+	const render = (query) => {
+		results.innerHTML = ''
+
+		if (!query.trim()) {
+			status.textContent = ''
+			return
+		}
+
+		const hits = index
+			.search(query, { bool: 'AND', expand: true, fields: { title: { boost: 2 }, body: { boost: 1 } } })
+			.filter((h) => searchable(h.ref))
+
+		status.textContent = hits.length
+			? `${hits.length} result${hits.length === 1 ? '' : 's'} for “${query}”`
+			: `No results for “${query}”`
+
+		const terms = query.trim().split(/\s+/)
+		for (const hit of hits) {
+			const doc = docs[hit.ref]
+			const li = document.createElement('li')
+			li.className = 'post-preview search-result'
+			li.innerHTML =
+				'<a href="' + escape(hit.ref) + '">' +
+				'<span class="search-result-title">' + escape(doc.title || hit.ref) + '</span>' +
+				'<span class="search-result-snippet">' + snippet(doc.body, terms) + '</span>' +
+				'</a>'
+			results.appendChild(li)
+		}
+	}
+
+	// debounce so we are not re-rendering on every keystroke
+	let timer
+	input.addEventListener('input', () => {
+		clearTimeout(timer)
+		timer = setTimeout(() => {
+			const q = input.value
+			render(q)
+			const url = new URL(window.location)
+			q.trim() ? url.searchParams.set('q', q) : url.searchParams.delete('q')
+			history.replaceState(null, '', url)
+		}, 150)
+	})
+
+	// deep link support: /search?q=zola
+	const initial = new URLSearchParams(window.location.search).get('q')
+	if (initial) {
+		input.value = initial
+		render(initial)
+	}
+</script>
+{% endblock scripts %}

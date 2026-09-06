@@ -1,0 +1,95 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ page.title }} • {{ config.title }}{% endblock title %}
+
+{% block main %}
+<div class="page-layout">
+
+	{% if page.extra.toc and page.toc %}{% include "_toc.html" %}{% endif %}
+
+	<article>
+		<div id="content-header">
+			<div class="article-info">
+				<div class="post-meta">
+					<span class="meta-item">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M8 2a1 1 0 0 1 1 1v1h6V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9zm2-3a1 1 0 0 0-1 1h12a1 1 0 0 0-1-1z"/></svg>
+						<time datetime="{{ page.date }}">{{ page.date | date(format="%b %-d, %Y") }}</time>
+					</span>
+
+					<span class="meta-item">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 1 0 20a10 10 0 0 1 0-20m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 2a1 1 0 0 1 1 1v4.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 12V7a1 1 0 0 1 1-1"/></svg>
+						{{ page.reading_time }} min read
+					</span>
+
+					{% if page.taxonomies and page.taxonomies.tags %}
+						<span class="meta-item meta-tags">
+							<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5a2 2 0 0 1 2-2h5.172a2 2 0 0 1 1.414.586l8.828 8.828a2 2 0 0 1 0 2.828l-5.172 5.172a2 2 0 0 1-2.828 0L3.586 11.586A2 2 0 0 1 3 10.172zm2 0v5.172L13.828 19L19 13.828L10.172 5zm2.5 1.5a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3"/></svg>
+							<span>
+								{% for tag in page.taxonomies.tags %}
+									<a href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
+									   aria-label="View more posts tagged {{ tag }}">{{ tag }}</a>{% if not loop.last %} / {% endif %}
+								{% endfor %}
+							</span>
+						</span>
+					{% endif %}
+				</div>
+
+				<h1>{{ page.title }}</h1>
+
+				{% if page.description %}
+					<blockquote class="post-description"><q>{{ page.description }}</q></blockquote>
+				{% endif %}
+			</div>
+
+			<div class="header-rule"></div>
+		</div>
+
+		<div id="content" class="prose">
+			{{ page.content | safe }}
+		</div>
+
+		<div class="post-citation">
+			<div class="citation-head">
+				<div class="citation-title">{{ page.title }}</div>
+				<div class="citation-url">{{ page.permalink }}</div>
+			</div>
+
+			<div class="citation-fields">
+				<div class="citation-field">
+					<span>Author</span>
+					<span class="citation-value">{{ config.extra.author }}</span>
+				</div>
+				<div class="citation-field">
+					<span>Published</span>
+					<span class="citation-value">{{ page.date | date(format="%B %-d, %Y") }}</span>
+				</div>
+			</div>
+
+			<div class="citation-actions">
+				<button id="copy-link" class="icon-btn" type="button"
+				        data-url="{{ page.permalink }}" aria-label="Copy link to this post">
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M10.586 13.414a1 1 0 0 1 0-1.414l4.243-4.243a3 3 0 0 0-4.243-4.243L6.343 7.757a1 1 0 0 1-1.414-1.414l4.243-4.243a5 5 0 0 1 7.071 7.071l-4.243 4.243a1 1 0 0 1-1.414 0m2.828-2.828a1 1 0 0 1 0 1.414l-4.243 4.243a3 3 0 0 0 4.243 4.243l4.243-4.243a1 1 0 0 1 1.414 1.414l-4.243 4.243a5 5 0 0 1-7.071-7.071l4.243-4.243a1 1 0 0 1 1.414 0"/></svg>
+					<span id="copy-link-label">Copy link</span>
+				</button>
+			</div>
+		</div>
+	</article>
+</div>
+{% endblock main %}
+
+{% block scripts %}
+{% if page.extra.toc and page.toc %}{% include "_toc_script.html" %}{% endif %}
+<script>
+	const copyBtn = document.getElementById('copy-link')
+	const copyLabel = document.getElementById('copy-link-label')
+	copyBtn.addEventListener('click', async () => {
+		try {
+			await navigator.clipboard.writeText(copyBtn.dataset.url)
+			copyLabel.textContent = 'Copied'
+		} catch {
+			copyLabel.textContent = 'Press Ctrl+C'
+		}
+		setTimeout(() => { copyLabel.textContent = 'Copy link' }, 2000)
+	})
+</script>
+{% endblock scripts %}

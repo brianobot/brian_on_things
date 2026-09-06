@@ -1,0 +1,54 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ section.title }} • {{ config.title }}{% endblock title %}
+
+{% block main %}
+<div class="archive">
+	<div id="content-header">
+		<h1>{{ section.title }}</h1>
+	</div>
+
+	<section id="content" aria-label="Blog post list">
+		{#- group_by only supplies the per-year counts: its iteration order is
+		    unsorted, so the year sequence comes from section.pages instead,
+		    which is already sorted newest-first by the section's sort_by -#}
+		{% set groups = section.pages | group_by(attribute="year") %}
+		{% set_global current_year = 0 %}
+		{% set_global group_open = false %}
+
+		{% for post in section.pages %}
+			{% if post.year != current_year %}
+				{% if group_open %}
+					</ul>
+				</div>
+				{% endif %}
+				<div class="year-group">
+					<h2 class="year-mark" aria-hidden="true"><samp>{{ post.year }}</samp></h2>
+					{% set count = groups[post.year] | length %}
+					<p class="year-count">{{ count }} post{% if count != 1 %}s{% endif %}</p>
+					<ul class="post-list archive-list">
+				{% set_global current_year = post.year %}
+				{% set_global group_open = true %}
+			{% endif %}
+
+			<li class="post-preview archive-row">
+				<a href="{{ post.permalink | safe }}">
+					<time class="post-date" datetime="{{ post.date }}">
+						{{ post.date | date(format="%b %-d, %Y") }}
+					</time>
+					<span class="post-title">
+						<span>{{ post.title }}</span>{% include "_arrow.html" %}
+					</span>
+				</a>
+			</li>
+		{% endfor %}
+
+		{% if group_open %}
+			</ul>
+		</div>
+		{% else %}
+			<p class="muted">No posts yet.</p>
+		{% endif %}
+	</section>
+</div>
+{% endblock main %}

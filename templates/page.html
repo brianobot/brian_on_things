@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ page.title }} • {{ config.title }}{% endblock title %}
+
+{% block main %}
+<div class="page-layout">
+
+	{% if page.extra.toc and page.toc %}{% include "_toc.html" %}{% endif %}
+
+	<article>
+		<div id="content-header">
+			<h1>{{ page.title }}</h1>
+			{% if page.description %}<p class="muted page-description">{{ page.description }}</p>{% endif %}
+		</div>
+
+		<div id="content" class="prose">
+			{{ page.content | safe }}
+		</div>
+	</article>
+
+</div>
+{% endblock main %}
+
+{% block scripts %}
+{% if page.extra.toc and page.toc %}{% include "_toc_script.html" %}{% endif %}
+{% endblock scripts %}

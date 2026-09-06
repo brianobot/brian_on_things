@@ -1,0 +1,20 @@
+# Ignore all files by default
+*
+
+# Do not ignore directories so Git can traverse them
+!*/
+
+# Whitelist explicit text configurations and source code extensions
+!.gitignore
+!Makefile
+!zola.toml
+!*.md
+!*.png
+!*.scss
+!*.jpeg
+!*.webp
+!*.html
+w
+
+
+CLAUDE.md

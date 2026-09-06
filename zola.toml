@@ -1,0 +1,69 @@
+# The URL the site will be built for
+title = "Brian on Things"
+
+base_url = "https://brianobot.com"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+[markdown.highlighting]
+# style = "class" emits giallo-light.css / giallo-dark.css instead of inline
+# colors, so code blocks can follow the site theme
+style = "class"
+light_theme = "catppuccin-latte"
+dark_theme = "catppuccin-mocha"
+
+[extra]
+# ---- Homepage identity -------------------------------------------------
+# These drive the homepage identity block.
+author = "Brian Obot"
+tagline = "Electrical & Electronic /Software Engineer"
+bio = """
+I build things for the web and write about what I learn along the way - mostly
+backends, low level stuffs, I am becoming quite fond of bytes and the internals of softwares.
+"""
+# Drop a file in static/ and set it here (e.g. "avatar.webp").
+# Left empty, the homepage renders your initials in a circle instead.
+avatar = "baby_zoe.jpeg"
+
+# How many posts the homepage lists
+recent_posts = 10
+
+# ---- Social links ------------------------------------------------------
+# icon must be one of: github, linkedin, twitter, email
+[[extra.socials]]
+name = "GitHub"
+url = "https://github.com/brianobot"
+icon = "github"
+
+[[extra.socials]]
+name = "LinkedIn"
+url = "https://www.linkedin.com/in/brian-obot-924b49216/"
+icon = "linkedin"
+
+[[extra.socials]]
+name = "Email"
+url = "mailto:brianobot9@gmail.com"
+icon = "email"
+
+# ---- Education ---------------------------------------------------------
+[[extra.education]]
+school = "Madonna University"
+degree = "B.Eng, Electrical & Electronic Engineering"
+note = "2017 - 2022"
+
+# ---- Skills ------------------------------------------------------------
+[[extra.skills]]
+category = "Languages"
+items = ["Python", "Rust", "Pylox", "SQL"]
+
+[[extra.skills]]
+category = "Frameworks"
+items = ["Django", "FastAPI", "Axum", "DRF", "Celery", "Pydantic"]
+
+[[extra.skills]]
+category = "Infrastructure"
+items = ["PostgreSQL", "Redis", "Docker", "AWS"]

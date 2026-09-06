@@ -1,0 +1,26 @@
+{# table-of-contents sidebar, built from page.toc #}
+<aside id="sidebar">
+	<h2 class="toc-title">Table of contents</h2>
+	<ul class="toc">
+		{% for h in page.toc %}
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#{{ h.id }}" aria-label="Scroll to section: {{ h.title }}">{{ h.title }}</a>
+				</div>
+				{% if h.children %}
+					<ul class="toc-sub">
+						{% for c in h.children %}
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#{{ c.id }}" aria-label="Scroll to section: {{ c.title }}">{{ c.title }}</a>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>
+				{% endif %}
+			</li>
+		{% endfor %}
+	</ul>
+</aside>

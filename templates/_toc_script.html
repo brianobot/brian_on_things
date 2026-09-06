@@ -1,0 +1,27 @@
+<script>
+	// highlight the table-of-contents entry for whatever heading is on screen
+	const links = Array.from(document.querySelectorAll('.toc-item'))
+	const headings = links
+		.map((el) => document.getElementById(decodeURIComponent(el.hash.slice(1))))
+		.filter(Boolean)
+
+	if (headings.length) {
+		const sync = () => {
+			const cutoff = window.scrollY + window.innerHeight * 0.25
+			let active = 0
+			headings.forEach((h, i) => { if (h.offsetTop <= cutoff) active = i })
+			links.forEach((el, i) => el.classList.toggle('active', i === active))
+		}
+		sync()
+		window.addEventListener('scroll', sync, { passive: true })
+		window.addEventListener('resize', sync)
+
+		links.forEach((el, i) => {
+			el.addEventListener('click', (e) => {
+				e.preventDefault()
+				history.pushState(null, '', el.hash)
+				headings[i].scrollIntoView({ behavior: 'smooth' })
+			})
+		})
+	}
+</script>

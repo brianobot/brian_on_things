@@ -1,0 +1,92 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ page.title }} • {{ config.title }}{% endblock title %}
+
+{% block main %}
+<div class="page-layout">
+
+	{% if page.extra.toc %}
+	<aside id="sidebar">
+		<h2 class="toc-title">Table of contents</h2>
+		<ul class="toc">
+			<li><div class="toc-row"><span class="toc-bar"></span>
+				<a class="toc-item" href="#projects">Projects</a></div></li>
+			{% for group in page.extra.learning %}
+				<li><div class="toc-row"><span class="toc-bar"></span>
+					<a class="toc-item" href="#{{ group.id }}">{{ group.category }}</a></div></li>
+			{% endfor %}
+		</ul>
+	</aside>
+	{% endif %}
+
+	<article>
+		<div id="content-header">
+			<h1>{{ page.title }}</h1>
+			{% if page.description %}<p class="muted page-description">{{ page.description }}</p>{% endif %}
+		</div>
+
+		<div id="content" class="prose">
+
+			{% if page.extra.github_user %}
+				<p class="gh-chart">
+					<img src="https://ghchart.rshah.org/{{ page.extra.github_user }}"
+					     alt="{{ page.extra.github_user }}'s GitHub contribution chart"
+					     loading="lazy" decoding="async" width="663" height="104">
+				</p>
+			{% endif %}
+
+			<h2 id="projects">Projects</h2>
+			<div class="card-grid">
+				{% for p in page.extra.featured %}
+					{% if p.url %}
+						{% set primary = p.url %}
+					{% else %}
+						{% set primary = "https://github.com/" ~ p.repo %}
+					{% endif %}
+					<div class="project-card">
+						<a class="project-title" href="{{ primary }}" target="_blank" rel="noopener">{{ p.name }}</a>
+						<div class="project-desc">{{ p.description }}</div>
+						<div class="project-links">
+							{% if p.url %}
+								<a href="{{ p.url }}" aria-label="{{ p.name }} website" target="_blank" rel="noopener">
+									{% include "_icon_link.html" %}
+								</a>
+							{% endif %}
+							{% if p.repo %}
+								<a href="https://github.com/{{ p.repo }}" aria-label="{{ p.name }} on GitHub" target="_blank" rel="noopener">
+									{% include "_icon_github.html" %}
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			{% for group in page.extra.learning %}
+				<h2 id="{{ group.id }}">{{ group.category }}</h2>
+				{% if group.blurb %}<p>{{ group.blurb }}</p>{% endif %}
+				<div class="card-grid">
+					{% for r in group.repos %}
+						<div class="project-card">
+							<a class="project-title" href="https://github.com/{{ page.extra.github_user }}/{{ r.name }}"
+							   target="_blank" rel="noopener">{{ r.name }}</a>
+							<div class="project-desc">{{ r.description }}</div>
+							<div class="project-links">
+								<a href="https://github.com/{{ page.extra.github_user }}/{{ r.name }}"
+								   aria-label="{{ r.name }} on GitHub" target="_blank" rel="noopener">
+									{% include "_icon_github.html" %}
+								</a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
+
+		</div>
+	</article>
+</div>
+{% endblock main %}
+
+{% block scripts %}
+{% if page.extra.toc %}{% include "_toc_script.html" %}{% endif %}
+{% endblock scripts %}
