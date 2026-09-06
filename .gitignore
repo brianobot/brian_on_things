@@ -6,6 +6,7 @@
 
 # Whitelist explicit text configurations and source code extensions
 !.gitignore
+!.gitmodules
 !Makefile
 !*.toml
 !*.md
