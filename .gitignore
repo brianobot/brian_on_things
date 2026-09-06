@@ -7,7 +7,7 @@
 # Whitelist explicit text configurations and source code extensions
 !.gitignore
 !Makefile
-!zola.toml
+!*.toml
 !*.md
 !*.png
 !*.scss
@@ -15,6 +15,8 @@
 !*.webp
 !*.html
 !*.yml
+!*.js
+!*.xml
 
 
 CLAUDE.md

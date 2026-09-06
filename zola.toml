@@ -21,6 +21,7 @@ dark_theme = "catppuccin-mocha"
 # These drive the homepage identity block.
 author = "Brian Obot"
 tagline = "Electrical & Electronic /Software Engineer"
+
 bio = """
 I build things for the web and write about what I learn along the way - mostly
 backends, low level stuffs, I am becoming quite fond of bytes and the internals of softwares.
