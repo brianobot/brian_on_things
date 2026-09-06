@@ -157,6 +157,12 @@
 
 	</div>
 
+	<button id="to-top-btn" class="to-top" type="button" data-show="false" aria-label="Back to top">
+		<span class="to-top-percent" aria-hidden="true"><span id="to-top-value">0</span><span class="unit">%</span></span>
+		<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M11.293 8.293a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414L12 10.414l-4.95 4.95a1 1 0 0 1-1.414-1.414z"/></svg>
+	</button>
+
+
 	<script>
 		// Floating header gains its border + background once you leave the top
 		const header = document.getElementById('siteHeader')
@@ -196,6 +202,49 @@
 			if (darkBtn.dataset.theme === 'system') apply('system')
 		})
 	</script>
+	<script>
+		// Reading progress; on hover it becomes a back-to-top button.
+		(function () {
+			const btn = document.getElementById('to-top-btn')
+			const value = document.getElementById('to-top-value')
+			const article = document.getElementById('content')
+			const header = document.getElementById('content-header')
+
+			btn.addEventListener('click', () => {
+				document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+			})
+
+			// reveal once the page heading has scrolled out of view
+			if (header && 'IntersectionObserver' in window) {
+				new IntersectionObserver((entries) => {
+					entries.forEach((e) => { btn.dataset.show = String(!e.isIntersecting) })
+				}).observe(header)
+			} else {
+				const reveal = () => { btn.dataset.show = String(window.scrollY > 240) }
+				reveal()
+				window.addEventListener('scroll', reveal, { passive: true })
+			}
+
+			// percentage read: through the article body where there is one,
+			// otherwise through the whole document
+			const update = () => {
+				const doc = document.documentElement
+				const start = article ? article.offsetTop : 0
+				const height = article ? article.offsetHeight : doc.scrollHeight
+				const end = start + height - window.innerHeight
+				if (end <= start) { btn.classList.add('ended'); return }
+				const pct = Math.round(((window.scrollY - start) / (end - start)) * 100)
+				const clamped = Math.min(100, Math.max(0, pct))
+				value.textContent = String(clamped)
+				btn.classList.toggle('ended', clamped >= 100)
+			}
+
+			update()
+			window.addEventListener('scroll', update, { passive: true })
+			window.addEventListener('resize', update)
+		})()
+	</script>
+
 	{% block scripts %}{% endblock scripts %}
 </body>
 </html>
