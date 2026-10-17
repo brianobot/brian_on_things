@@ -27,4 +27,5 @@ For me, it was always about mastery, I mean that mastery made me work easier, bu
 ## History Repetiting itself
 I am sure a certain sect of skilled person experienced things like this in the part, take for example, a painter or an artist, they could have possibly asked themselves, why bother learning to paint and draw when you can get those works done by computers, but still even in the modern world, some of the most priced work of arts are hand made, this doesn't invalidate the craftmanship and the proliferation of the tools for doing so didn't make everyone an artist.
 
-I think this very same argument can be made for what is happening to software engineering and math at this point in history, ofcourse everyone can spin up a React App and get a well documented API powering it, 
+I think this very same argument can be made for what is happening to software engineering and math at this point in history, ofcourse everyone can spin up a React App and get a well documented API powering it, but I believe it's a matter of time, before the hyped dies
+and people get bored of the AI slop, is there a place of SI in
