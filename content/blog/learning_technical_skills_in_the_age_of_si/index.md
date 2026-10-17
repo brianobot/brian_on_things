@@ -1,7 +1,7 @@
 +++
 title = "Learning Technical Skills in the Age of SI*"
 date = 2026-10-17
-description = "Building scalable foundations: a deep dive into information hierarchy, visibility, and crate management."
+description = "What is the motivation and point of even trying when you're constantly faced with the reality that a computer can do it better."
 draft = false
 
 [extra]
