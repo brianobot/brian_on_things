@@ -25,4 +25,4 @@ the fear of being replaced should be less. This does not invalidate the fear of 
 For me, it was always about mastery, I mean that mastery made me work easier, but I always loved the bits and bytes of it all, the quirks you had to get use to and understand why there were, the rationales, the processes, it made commiting to mastery very rewarding All these contributed to buildings ones problem solving muscles, I personal do this thing where I try to do alot of things in a beautifully scheduled way, mimicing async.
 
 ## History Repetiting itself
-I am sure a certain sect of skilled person experienced 
+I am sure a certain sect of skilled person experienced things like this in the part, take for example, a painter or an artist, they could have possibly asked themselves, why bother learning to paint and draw when you can get 
