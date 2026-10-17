@@ -9,6 +9,8 @@ toc = true
 +++
 
 ## Introduction
-Like many technical or skilled persons in the world at the moment, I at some point in recent times has come face to face with the 
+Like many technical or skilled persons in the world at the moment, I at some point in recent times have come face to face with the 
 reality that what sort of made me special (so to say) in terms of my technical skills and problem solving ability in terms of creativity, 
-design, and overall acquired systematic approach to solving certain categories of issues especially with software and programming
+design, and overall acquired systematic approach to solving certain categories of issues especially with software and programming.
+
+The main issue being a real dismotivation to invest real time like was done in the past to gain 
