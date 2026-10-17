@@ -29,3 +29,6 @@ I am sure a certain sect of skilled person experienced things like this in the p
 
 I think this very same argument can be made for what is happening to software engineering and math at this point in history, ofcourse everyone can spin up a React App and get a well documented API powering it, but I believe it's a matter of time, before the hyped dies
 and people get bored of the AI slop, is there a place of SI in work, ofcourse, but I have accepted that mastery is personal and it does infact reward more even outside of the technical domain of application.
+
+## Conclusion
+Do whatever makes you happy, and if that includes mastery and memorizing factorials 
