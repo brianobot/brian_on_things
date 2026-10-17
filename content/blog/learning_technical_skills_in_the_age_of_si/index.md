@@ -18,3 +18,4 @@ The main issue being a real dismotivation to invest real time like was done in t
 At my most recent workplace, apart from the issues linked with lack of proper management and lack of a concrete vision for the company's moat, I basically clocked out at some point, and just became a feature sprouting organism, attending demos after demos to wow *always almost at the verge of paying clients*. This was sad for me, because outside making a living with the skills i had acquired, I do genuinely love solving problems with the tools in my arsenal.
 
 ## What was it really about ?
+This probably justifies most people's stance on whether to bother commiting to learning certain technical skills,
