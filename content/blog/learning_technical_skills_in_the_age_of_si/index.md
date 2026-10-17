@@ -19,3 +19,4 @@ At my most recent workplace, apart from the issues linked with lack of proper ma
 
 ## What was it really about ?
 This probably justifies most people's stance on whether to bother commiting to learning certain technical skills, if it was solely about
+implementing a feature, i guess you're better off moving fast and 
