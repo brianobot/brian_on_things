@@ -22,4 +22,4 @@ This probably justifies most people's stance on whether to bother commiting to l
 implementing a feature, i guess you're better off moving fast and generating one with a LLM model or some agent of sort, but if it was really about mastering systems, understanding principles and unconciously or conciously transferring those skills to other domains then 
 the fear of being replaced should be less. This does not invalidate the fear of losing out on a race of doing so much more with limited time and capital resources compared to times before now.
 
-For me, it was always about mastery, I mean that mastery made me work easier, but I always loved the bits and bytes of it all, the quirks you had to get use to and understand why there were, the rational, the processes, it made commiting to mastery very rewarding, 
+For me, it was always about mastery, I mean that mastery made me work easier, but I always loved the bits and bytes of it all, the quirks you had to get use to and understand why there were, the rationales, the processes, it made commiting to mastery very rewarding
