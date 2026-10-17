@@ -31,4 +31,4 @@ I think this very same argument can be made for what is happening to software en
 and people get bored of the AI slop, is there a place of SI in work, ofcourse, but I have accepted that mastery is personal and it does infact reward more even outside of the technical domain of application.
 
 ## Conclusion
-Do whatever makes you happy, and if that includes mastery of the internals of Fortran and memorizing factorials of a very large number, by all means go crazy.
+Do whatever makes you happy, and if that includes mastery of the internals of Fortran or memorizing factorials of a very large number, by all means go crazy.
