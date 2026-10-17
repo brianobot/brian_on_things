@@ -9,3 +9,4 @@ toc = true
 +++
 
 ## Introduction
+Like many technical or skilled persons in the world at the moment, I at some point in recent times has come 
