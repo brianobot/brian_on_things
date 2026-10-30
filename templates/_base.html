@@ -40,7 +40,15 @@
 	<meta property="og:type" content="{{ meta_type }}">
 	<meta property="og:site_name" content="{{ config.title }}">
 	<meta property="og:title" content="{{ meta_title }}">
-	<meta property="og:description" content="{{ meta_desc }}">
+	{# No platform reads a dedicated reading-time tag except Slack (via the
+	   twitter:label/data pair below), so articles also carry it in the
+	   social description, which every link preview shows. The plain
+	   <meta name="description"> above stays untouched for search engines. #}
+	{% set_global social_desc = meta_desc %}
+	{% if meta_type == "article" %}
+		{% set_global social_desc = page.reading_time ~ " min read · " ~ meta_desc %}
+	{% endif %}
+	<meta property="og:description" content="{{ social_desc }}">
 	{% if current_url %}<meta property="og:url" content="{{ current_url }}">{% endif %}
 	<meta property="og:locale" content="{{ config.extra.og_locale }}">
 
@@ -78,7 +86,11 @@
 		<meta name="twitter:card" content="summary">
 	{% endif %}
 	<meta name="twitter:title" content="{{ meta_title }}">
-	<meta name="twitter:description" content="{{ meta_desc }}">
+	<meta name="twitter:description" content="{{ social_desc }}">
+	{% if meta_type == "article" %}
+		<meta name="twitter:label1" content="Reading time">
+		<meta name="twitter:data1" content="{{ page.reading_time }} min read">
+	{% endif %}
 
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">

@@ -1,5 +1,5 @@
 +++
-title = "Learning Technical Skills in the Age of SI"
+title = "Learning Technological Skills in the Age of SI"
 date = 2026-10-17
 description = "What is the motivation and point of even trying when you're constantly faced with the reality that a computer can do it better and faster, why should I bother learning the basics? - Brian (Some cool guy)" 
 draft = false
