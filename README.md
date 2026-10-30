@@ -194,6 +194,20 @@ Put images in the post's folder and reference them by filename:
 Only `.png`, `.jpeg` and `.webp` are committed by default; see [Troubleshooting](#troubleshooting) before
 using `.jpg`, `.gif` or `.svg`.
 
+### Footnotes
+
+For a definition or an aside that would interrupt the sentence, use a footnote:
+
+```markdown
+FastAPI routes should be idempotent[^idem] where possible.
+
+[^idem]: An operation is idempotent if doing it twice has the same effect as doing it once.
+```
+
+The marker renders as a superscript `[1]`. With `bottom_footnotes = true` in `zola.toml`, every definition is
+collected into a numbered list at the end of the post with a ↩ link back. Numbering is automatic, so use
+descriptive names (`[^idem]`, not `[^1]`) and the definitions can live next to the paragraph that uses them.
+
 ### Social preview images
 
 To give a post its own preview image on X, LinkedIn, Facebook, Slack and similar, put the image in the post's

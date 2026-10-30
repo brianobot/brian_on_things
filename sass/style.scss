@@ -639,6 +639,33 @@ main { width: 100%; }
 
 .prose pre code { background: none; border: 0; padding: 0; font-size: 0.875rem; }
 
+/* footnotes: [^name] in Markdown; bottom_footnotes in zola.toml collects them */
+.prose .footnote-reference {
+	font-size: 0.75em;
+	line-height: 0;
+	scroll-margin-top: 5rem;
+}
+
+.prose .footnote-reference a { text-decoration: none; color: hsl(var(--primary)); }
+
+.prose .footnotes {
+	margin-top: 3rem;
+	padding-top: 1rem;
+	border-top: 1px solid hsl(var(--border));
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.prose .footnotes li {
+	scroll-margin-top: 5rem;
+	border-radius: var(--radius-md);
+	transition: background-color 0.4s;
+}
+
+.prose .footnotes p { margin: 0; }
+.prose .footnotes li:target { background-color: hsl(var(--muted)); }
+.prose .footnotes a { text-decoration: none; }
+
 @media (min-width: 640px) {
 	#content-header h1 { font-size: 1.875rem; margin-bottom: 0.5rem; }
 }
