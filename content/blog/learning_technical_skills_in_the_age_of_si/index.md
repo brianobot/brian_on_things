@@ -6,11 +6,12 @@ draft = false
 
 [extra]
 toc = true
+og_image = "cover.webp"
 +++
 
 ## Introduction
-Like many technical or skilled persons in the world at the moment, it's becoming increasingly hard to feel special about the technical skill you possess, especially a skill like a software mastery or software engineering. In recent times, I have face to face with the reality that what made me special (with the hands in the air defensively) in terms of my technical skills and 
-experience in software programming is largely not special anymore.
+Like many technical or skilled persons in the world at the moment, it's becoming increasingly hard to feel special about the technical skill you possess, especially a skill like a software mastery or software engineering. In recent times, I have had to come face to face with the reality that what made me special (with the hands in the air, defensively), in terms of my technical skills and 
+experience in software programming, is largely not special anymore.
 
 Now I have a real issue, Why should I invest real time like was done in the past, to gain supreme mastery of topics that now feels very euphmeral, Why should I commit my weekend to understanding how Python's dictionary actually works under the hood, and care about the details linked to open addressing, when I can generate more features far beyond my controls in a product others could just as well vibe code?
 

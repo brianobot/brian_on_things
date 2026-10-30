@@ -961,6 +961,29 @@ main { width: 100%; }
 
 #copy-link svg { width: 0.875rem; height: 0.875rem; }
 
+/* --- reader feedback card ----------------------------------------------- */
+.post-feedback {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-top: 1rem;
+	padding: 0.75rem 1rem;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	font-size: 0.875rem;
+}
+
+.feedback-title { margin: 0; font-size: 1rem; font-weight: 500; }
+.feedback-text { margin: 0; color: hsl(var(--muted-foreground)); }
+
+.post-feedback .socials {
+	justify-content: flex-start;
+	gap: 0.5rem 1.25rem;
+	margin-top: 0.25rem;
+}
+
+.post-feedback .socials svg { width: 1.125rem; height: 1.125rem; }
+
 @media (min-width: 640px) {
 	.article-info h1 { margin-top: 1.5rem; }
 	.header-rule { width: 33.333%; margin-top: 1.5rem; }

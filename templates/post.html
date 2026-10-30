@@ -73,6 +73,27 @@
 				</button>
 			</div>
 		</div>
+
+		{# on by default; `feedback = false` under [extra] hides it for one post #}
+		{% if config.extra.socials and (page.extra.feedback is not defined or page.extra.feedback) %}
+			<aside class="post-feedback" aria-labelledby="feedback-title">
+				<h2 id="feedback-title" class="feedback-title">Thoughts on this post?</h2>
+				<p class="feedback-text">Found a mistake, have a question, or just want to say hi? I'd like to hear it.</p>
+				<div class="socials">
+					{% for s in config.extra.socials %}
+						{% if s.icon == "email" %}
+							{# prefill the subject so every email says which post it is about #}
+							<a href="{{ s.url }}?subject=Feedback%3A%20{{ page.title | urlencode_strict }}">
+						{% else %}
+							<a href="{{ s.url }}" target="_blank" rel="noopener">
+						{% endif %}
+							{% include "_social_icon.html" %}
+							<span>{{ s.name }}</span>
+						</a>
+					{% endfor %}
+				</div>
+			</aside>
+		{% endif %}
 	</article>
 </div>
 {% endblock main %}

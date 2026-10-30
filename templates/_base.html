@@ -56,7 +56,27 @@
 	{% endif %}
 
 	{# ---- Twitter / X ---- #}
-	<meta name="twitter:card" content="summary">
+	{# ---- Social image: the page's own og_image, else the site default.
+	   Must be an absolute URL; page.permalink ends in "/" so a colocated
+	   filename appends cleanly. ---- #}
+	{% set_global meta_image = "" %}
+	{% if config.extra.og_image %}
+		{% set_global meta_image = get_url(path=config.extra.og_image) %}
+	{% endif %}
+	{% if page %}
+		{% if page.extra.og_image %}
+			{% set_global meta_image = page.permalink ~ page.extra.og_image %}
+		{% endif %}
+	{% endif %}
+
+	{% if meta_image %}
+		<meta property="og:image" content="{{ meta_image }}">
+		<meta property="og:image:alt" content="{{ meta_title }}">
+		<meta name="twitter:image" content="{{ meta_image }}">
+		<meta name="twitter:card" content="summary_large_image">
+	{% else %}
+		<meta name="twitter:card" content="summary">
+	{% endif %}
 	<meta name="twitter:title" content="{{ meta_title }}">
 	<meta name="twitter:description" content="{{ meta_desc }}">
 

@@ -33,7 +33,8 @@ If you want a blog like this for yourself, skip to [Make it your own](#make-it-y
   skills, all driven from `zola.toml`.
 - **Archive** of every post, grouped by year with a per-year count.
 - **Post pages** with publish date, reading time, an optional table of contents, a description pull-quote, and
-  a citation card with a "Copy link" button.
+  a citation card with a "Copy link" button, and a feedback box inviting readers to reach you by email or on
+  your socials.
 - **Projects page** with featured work, "learning in public" repo groups and a GitHub contribution chart, all
   driven from that page's front matter.
 - **Client-side search** over every post, using the index Zola builds (`elasticlunr`).
@@ -179,6 +180,8 @@ print("hello")
 | `draft`       | no       | `true` hides the post from `zola build` (it still shows under `zola serve`).                |
 | `updated`     | no       | A later date; emitted as `article:modified_time`.                                          |
 | `[extra] toc` | no       | `true` renders the sidebar table of contents.                                               |
+| `[extra] feedback` | no  | Every post ends with a "Thoughts on this post?" box linking to your `[[extra.socials]]`; its email link pre-fills the subject with the post title. Set `false` to hide it on this post. |
+| `[extra] og_image` | no  | Filename of an image in the post's folder, used as the link-preview image on social media. Falls back to `[extra].og_image` in `zola.toml`. See [Social preview images](#social-preview-images). |
 
 ### Images
 
@@ -190,6 +193,31 @@ Put images in the post's folder and reference them by filename:
 
 Only `.png`, `.jpeg` and `.webp` are committed by default; see [Troubleshooting](#troubleshooting) before
 using `.jpg`, `.gif` or `.svg`.
+
+### Social preview images
+
+To give a post its own preview image on X, LinkedIn, Facebook, Slack and similar, put the image in the post's
+folder and name it in the front matter:
+
+```
+content/blog/my-first-post/
+├── index.md
+└── cover.png
+```
+
+```toml
+[extra]
+og_image = "cover.png"
+```
+
+`templates/_base.html` turns this into absolute `og:image` and `twitter:image` tags and switches the X card to
+`summary_large_image`. Posts without their own image fall back to `[extra].og_image` in `zola.toml` (a file in
+`static/`). With neither set, no image tag is emitted.
+
+- Use **1200 × 630 px**, as **PNG or JPEG**. Some platforms, LinkedIn in particular, do not reliably show WebP.
+- Platforms cache previews. After deploying, refresh them with LinkedIn's
+  [Post Inspector](https://www.linkedin.com/post-inspector/) or the
+  [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/).
 
 ### Publishing
 
@@ -248,6 +276,7 @@ Everything lives in `zola.toml`.
 | `avatar`                | home        | Filename of an image in `static/`. Leave empty (`""`) to show your initials instead. |
 | `recent_posts`          | home        | How many posts the home page lists.                                     |
 | `og_locale`             | everywhere  | Open Graph locale, e.g. `en_US`.                                        |
+| `og_image`              | everywhere  | Default social preview image, a filename in `static/`. Optional; a post's own `og_image` overrides it. |
 | `[[extra.socials]]`     | home        | `name`, `url`, `icon`. `icon` must be `github`, `linkedin`, `twitter` or `email`. |
 | `[[extra.education]]`   | home        | `school`, `degree`, `note`. Remove all entries to hide the section.     |
 | `[[extra.skills]]`      | home        | `category` and an `items` list. Remove all entries to hide the section. |
