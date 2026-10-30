@@ -19,6 +19,7 @@
 !*.js
 !*.xml
 
+!*Brian_Obot_Resume.pdf
 
 CLAUDE.md
 current_feature.md
