@@ -83,6 +83,18 @@
 	</script>
 
 	{% block head %}{% endblock head %}
+
+	<!-- Google tag (gtag.js) -->
+	{# Google Analytics: only in production builds #}
+	{% if config.mode == "build" %}
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-CMP23HBBL0"></script>
+	<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CMP23HBBL0');
+  	</script>
+   {% endif %}
 </head>
 
 <body>
