@@ -28,11 +28,11 @@ og_locale = "en_US"
 # ---- Homepage identity -------------------------------------------------
 # These drive the homepage identity block.
 author = "Brian Obot"
-tagline = "Electrical & Electronic /Software Engineer"
+tagline = "Electrical & Electronic Engineer | Software Engineer | Budding Nuclear Engineer"
 
 bio = """
-I build things for the web and write about what I learn along the way - mostly
-backends, low level stuffs, I am becoming quite fond of bytes and the internals of softwares.
+I build tools for the web and write about what I learn along the way - mostly Maths, Physics,
+backend and low level software engineering stuffs. I am becoming quite fond of bytes and the internals of softwares.
 """
 # Drop a file in static/ and set it here (e.g. "avatar.webp").
 # Left empty, the homepage renders your initials in a circle instead.
@@ -54,20 +54,26 @@ url = "https://www.linkedin.com/in/brian-obot-924b49216/"
 icon = "linkedin"
 
 [[extra.socials]]
+name = "Twitter"
+url = "https://x.com/i_am_brian_obot"
+icon = "twitter"
+
+[[extra.socials]]
 name = "Email"
 url = "mailto:brianobot9@gmail.com"
 icon = "email"
 
 # ---- Education ---------------------------------------------------------
 [[extra.education]]
-school = "Madonna University"
-degree = "B.Eng, Electrical & Electronic Engineering"
+school = "Madonna University, Nigeria"
+degree = "B.Eng, Electrical Electronic Engineering"
 note = "2017 - 2022"
+
 
 # ---- Skills ------------------------------------------------------------
 [[extra.skills]]
 category = "Languages"
-items = ["Python", "Rust", "Pylox", "SQL"]
+items = ["Python", "Rust", "Pylox'", "SQL", "Javascript", "C"]
 
 [[extra.skills]]
 category = "Frameworks"

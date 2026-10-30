@@ -95,9 +95,9 @@
 				<div id="headerExpandContent" class="nav-wrap">
 					<nav class="nav">
 						{% set nav = [
-							["Archive",  "/blog"],
-							["Projects", "/projects"],
-							["About",    "/about"]
+							["Archive",  "/blog/"],
+							["Projects", "/projects/"],
+							["About",    "/about/"]
 						] %}
 						{% for item in nav %}
 							<a class="nav-link" href="{{ get_url(path=item[1]) }}" aria-label="Nav menu item">{{ item[0] }}</a>
