@@ -9,8 +9,8 @@ github_user = "brianobot"
 
 # ---- Featured work ------------------------------------------------------
 [[extra.featured]]
-name = "Pulse"
-description = "A web service monitor — watches your endpoints and tells you the moment one stops answering."
+name = "ReadPulse"
+description = "A web service monitor — watches your endpoints and tells you the moment one stops answering, includes security checks too"
 url = "https://readpulse.app"
 repo = ""
 

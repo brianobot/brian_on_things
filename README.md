@@ -212,7 +212,7 @@ Commit and push to `master`. The site rebuilds and goes live in a minute or two.
 
   ```jinja
   {% set nav = [
-      ["Archive",  "/blog"],
+      ["Archives",  "/blog"],
       ["Projects", "/projects"],
       ["About",    "/about"]
   ] %}

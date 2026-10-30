@@ -1,7 +1,7 @@
 # The URL the site will be built for
 title = "Brian on Things"
 
-base_url = "https://brianobot.github.io/brian_on_things"
+base_url = "https://brianobot.tech"
 
 # Used for <meta name="description">, Open Graph and feeds when a page
 # does not supply its own description
