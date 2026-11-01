@@ -18,6 +18,8 @@ build_search_index = true
 # Collect [^name] footnotes into one numbered list at the end of the post,
 # each with a ↩ link back to where it was referenced
 bottom_footnotes = true
+# Links to other sites open in a new tab (Zola also adds rel="noopener")
+external_links_target_blank = true
 
 [markdown.highlighting]
 # style = "class" emits giallo-light.css / giallo-dark.css instead of inline

@@ -13,6 +13,7 @@
 !*.png
 !*.scss
 !*.jpeg
+!*.jpg
 !*.webp
 !*.html
 !*.yml

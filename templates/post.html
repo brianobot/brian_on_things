@@ -71,14 +71,19 @@
 					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M10.586 13.414a1 1 0 0 1 0-1.414l4.243-4.243a3 3 0 0 0-4.243-4.243L6.343 7.757a1 1 0 0 1-1.414-1.414l4.243-4.243a5 5 0 0 1 7.071 7.071l-4.243 4.243a1 1 0 0 1-1.414 0m2.828-2.828a1 1 0 0 1 0 1.414l-4.243 4.243a3 3 0 0 0 4.243 4.243l4.243-4.243a1 1 0 0 1 1.414 1.414l-4.243 4.243a5 5 0 0 1-7.071-7.071l4.243-4.243a1 1 0 0 1 1.414 0"/></svg>
 					<span id="copy-link-label">Copy link</span>
 				</button>
-				{# plain share-intent links: no third-party scripts, and the OG image renders the preview #}
+				{# plain share-intent links: no third-party scripts, and the OG image renders the preview.
+				   The shared URL carries UTM tags so Google Analytics attributes visits to the button;
+				   the canonical tag keeps the ?utm_ variants out of Google's index. #}
+				{% set utm = "?utm_medium=social&utm_campaign=share_button&utm_source=" %}
+				{% set x_url = page.permalink ~ utm ~ "x" %}
+				{% set li_url = page.permalink ~ utm ~ "linkedin" %}
 				<a class="icon-btn share-btn" target="_blank" rel="noopener"
-				   href="https://x.com/intent/post?url={{ page.permalink | urlencode_strict }}&text={{ page.title | urlencode_strict }}">
+				   href="https://x.com/intent/post?url={{ x_url | urlencode_strict }}&text={{ page.title | urlencode_strict }}">
 					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26l8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
 					<span>Share on X</span>
 				</a>
 				<a class="icon-btn share-btn" target="_blank" rel="noopener"
-				   href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.permalink | urlencode_strict }}">
+				   href="https://www.linkedin.com/sharing/share-offsite/?url={{ li_url | urlencode_strict }}">
 					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1M8 10a1 1 0 0 1 .993.883L9 11v5a1 1 0 0 1-1.993.117L7 16v-5a1 1 0 0 1 1-1m3-1a1 1 0 0 1 .984.821 5.82 5.82 0 0 1 .623-.313c.667-.285 1.666-.442 2.568-.159.473.15.948.43 1.3.907.315.425.485.942.519 1.523L17 12v4a1 1 0 0 1-1.993.117L15 16v-4c0-.33-.08-.484-.132-.555a.548.548 0 0 0-.293-.188c-.348-.11-.849-.052-1.182.09-.5.214-.958.55-1.27.861L12 12.34V16a1 1 0 0 1-1.993.117L10 16v-6a1 1 0 0 1 1-1M8 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg>
 					<span>Share on LinkedIn</span>
 				</a>
