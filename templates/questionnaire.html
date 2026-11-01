@@ -1,0 +1,119 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ section.title }} • {{ config.title }}{% endblock title %}
+
+{% block main %}
+<div class="page-layout">
+	<article>
+		<div id="content-header">
+			<h1>{{ section.title }}</h1>
+			{% if section.description %}<p class="muted page-description">{{ section.description }}</p>{% endif %}
+		</div>
+
+		{# No server behind a static site: submitting opens the reader's email app
+		   with the answers filled in, addressed to `send_to`. #}
+		<form id="questionnaire" class="quiz" data-send-to="{{ section.extra.send_to }}" novalidate>
+
+			<fieldset class="quiz-q">
+				<legend><span class="quiz-num">1.</span> How often do you watch the news?</legend>
+				<div class="quiz-options">
+					{% for opt in ["Not at all", "Rarely", "Monthly", "Weekly", "Daily"] %}
+					<label class="quiz-choice">
+						<input type="radio" name="news" value="{{ opt }}" required>
+						<span>{{ opt }}</span>
+					</label>
+					{% endfor %}
+				</div>
+			</fieldset>
+
+			<div class="quiz-q">
+				<label for="q-global"><span class="quiz-num">2.</span> Are you worried about the state of global affairs?</label>
+				<textarea id="q-global" name="global" rows="3"></textarea>
+			</div>
+
+			<div class="quiz-q">
+				<label for="q-feel"><span class="quiz-num">3.</span> How do you feel? Real, like how do you feel right now, in this very instant?</label>
+				<textarea id="q-feel" name="feel" rows="3"></textarea>
+			</div>
+
+			<div class="quiz-q">
+				<label for="q-laundry"><span class="quiz-num">4.</span> How was your laundry session?</label>
+				<textarea id="q-laundry" name="laundry" rows="3"></textarea>
+			</div>
+
+			<fieldset class="quiz-q">
+				<legend><span class="quiz-num">5.</span> Can I call you for the actual question? You must have figured this was a decoy.</legend>
+				<div class="quiz-options">
+					<label class="quiz-choice">
+						<input type="checkbox" name="call" value="Yes">
+						<span>Yes</span>
+					</label>
+					<label class="quiz-choice">
+						<input type="checkbox" name="call" value="Yes">
+						<span>Yes</span>
+					</label>
+				</div>
+			</fieldset>
+
+			<p id="quiz-error" class="quiz-error" role="alert" hidden></p>
+
+			<button type="submit" class="icon-btn quiz-submit">Submit answers</button>
+
+			<p id="quiz-done" class="quiz-done" role="status" hidden>
+				Your email app should have opened with your answers. Just hit send. 🙂
+			</p>
+		</form>
+	</article>
+</div>
+{% endblock main %}
+
+{% block scripts %}
+<script>
+	const form = document.getElementById('questionnaire')
+	const error = document.getElementById('quiz-error')
+	const done = document.getElementById('quiz-done')
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault()
+		const data = new FormData(form)
+
+		const news = data.get('news')
+		const calls = data.getAll('call')
+		if (!news) {
+			error.textContent = 'Question 1 needs an answer. The news matters.'
+			error.hidden = false
+			return
+		}
+		if (calls.length === 0) {
+			error.textContent = 'Question 5 needs a Yes. Either one is fine.'
+			error.hidden = false
+			return
+		}
+		error.hidden = true
+
+		const blank = (v) => (v || '').trim() || '(left blank)'
+		const body = [
+			'1. How often do you watch the news?',
+			news,
+			'',
+			'2. Are you worried about the state of global affairs?',
+			blank(data.get('global')),
+			'',
+			'3. How do you feel right now, in this very instant?',
+			blank(data.get('feel')),
+			'',
+			'4. How was your laundry session?',
+			blank(data.get('laundry')),
+			'',
+			'5. Can I call you for the actual question?',
+			calls.length === 2 ? 'Yes. Yes.' : 'Yes',
+		].join('\n')
+
+		const subject = 'My answers to your very serious questionnaire'
+		window.location.href = 'mailto:' + form.dataset.sendTo +
+			'?subject=' + encodeURIComponent(subject) +
+			'&body=' + encodeURIComponent(body)
+		done.hidden = false
+	})
+</script>
+{% endblock scripts %}
