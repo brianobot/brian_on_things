@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
+
+	<title>What I Learned (and Wish I&#39;d Done Differently) at TechCabal&#39;s Moonshot • Brian on Things</title>
+
+	
+	
+	
+	
+
+	
+		
+		
+		
+		
+	
+
+	<meta name="description" content="My first Moonshot taught me a lot, including a few things I&#39;d do differently next time.">
+	<meta name="author" content="Brian Obot">
+	<link rel="canonical" href="https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/">
+	
+	
+	<meta name="theme-color" content="#fbfcfd" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#0b0b12" media="(prefers-color-scheme: dark)">
+
+	
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="Brian on Things">
+	<meta property="og:title" content="What I Learned (and Wish I&#39;d Done Differently) at TechCabal&#39;s Moonshot">
+	
+	
+	
+		
+	
+	<meta property="og:description" content="5 min read · My first Moonshot taught me a lot, including a few things I&#39;d do differently next time.">
+	<meta property="og:url" content="https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/">
+	<meta property="og:locale" content="en_US">
+
+	
+		<meta property="article:published_time" content="2026-11-01T00:00:00+00:00">
+		
+		<meta property="article:author" content="Brian Obot">
+		
+	
+
+	
+	
+	
+	
+		
+	
+	
+		
+			
+		
+	
+
+	
+		<meta property="og:image" content="https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/cover.jpg">
+		<meta property="og:image:alt" content="What I Learned (and Wish I&#39;d Done Differently) at TechCabal&#39;s Moonshot">
+		<meta name="twitter:image" content="https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/cover.jpg">
+		<meta name="twitter:card" content="summary_large_image">
+	
+	<meta name="twitter:title" content="What I Learned (and Wish I&#39;d Done Differently) at TechCabal&#39;s Moonshot">
+	<meta name="twitter:description" content="5 min read · My first Moonshot taught me a lot, including a few things I&#39;d do differently next time.">
+	
+		<meta name="twitter:label1" content="Reading time">
+		<meta name="twitter:data1" content="5 min read">
+	
+
+
+	
+	
+	
+	
+	
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": "What I Learned (and Wish I'd Done Differently) at TechCabal's Moonshot",
+		"description": "My first Moonshot taught me a lot, including a few things I'd do differently next time.",
+		"url": "https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/",
+		"mainEntityOfPage": "https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/",
+		"datePublished": "2026-11-01T00:00:00+00:00",
+		"dateModified": "2026-11-01T00:00:00+00:00",
+		"image": "https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/cover.jpg",
+		"author": {
+			"@type": "Person",
+			"name": "Brian Obot",
+			"url": "https://brianobot.tech"
+		},
+		"publisher": {
+			"@type": "Person",
+			"name": "Brian Obot",
+			"url": "https://brianobot.tech"
+		}
+	}
+	</script>
+	
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+	<link rel="stylesheet" href="https://brianobot.tech/style.css">
+	
+	<link rel="stylesheet" href="https://brianobot.tech/giallo-light.css" id="syntax-light">
+	<link rel="stylesheet" href="https://brianobot.tech/giallo-dark.css" id="syntax-dark" disabled>
+
+	
+	<script>
+		(function () {
+			var t = localStorage.getItem('theme') || 'system'
+			var dark = t === 'dark' || (t === 'system' &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches)
+			document.documentElement.classList.toggle('dark', dark)
+			var l = document.getElementById('syntax-light')
+			var d = document.getElementById('syntax-dark')
+			if (l && d) { l.disabled = dark; d.disabled = !dark }
+		})()
+	</script>
+
+	
+
+	<!-- Google tag (gtag.js) -->
+	
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-CMP23HBBL0"></script>
+	<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CMP23HBBL0');
+  	</script>
+   
+</head>
+
+<body>
+	<div class="container">
+
+		<header id="siteHeader" class="header">
+			<a class="brand" href="https://brianobot.tech" aria-label="Brand">Brian on Things</a>
+
+			<div class="header-end">
+				<div id="headerExpandContent" class="nav-wrap">
+					<nav class="nav">
+						
+						
+							<a class="nav-link" href="https://brianobot.tech/blog" aria-label="Nav menu item">Archive</a>
+						
+							<a class="nav-link" href="https://brianobot.tech/projects" aria-label="Nav menu item">Projects</a>
+						
+							<a class="nav-link" href="https://brianobot.tech/about" aria-label="Nav menu item">About</a>
+						
+
+						<div class="nav-icons">
+							<a class="icon-link" href="https://brianobot.tech/search" title="Search">
+								<span class="sr-only">Search</span>
+								<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M5 10a5 5 0 1 1 10 0a5 5 0 0 1-10 0m5-7a7 7 0 1 0 4.192 12.606l5.1 5.101a1 1 0 0 0 1.415-1.414l-5.1-5.1A7 7 0 0 0 10 3"/>
+								</svg>
+							</a>
+						</div>
+					</nav>
+				</div>
+
+				<div class="header-buttons">
+					<button id="toggleDarkMode" class="icon-btn" data-theme="system">
+						<span class="sr-only">Dark Theme</span>
+						<svg class="icon-system" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M19 3a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-4v1h1a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h1v-1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm-6 15h-2v1h2zm6-13H5v11h14z"/>
+						</svg>
+						<svg class="icon-light" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 19a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1m6.364-2.05l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414m-12.728 0a1 1 0 0 1 1.497 1.32l-.083.094l-.707.707a1 1 0 0 1-1.497-1.32l.083-.094zM12 6a6 6 0 1 1 0 12a6 6 0 0 1 0-12m0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8m-8 3a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2zM4.929 4.929a1 1 0 0 1 1.32-.083l.094.083l.707.707a1 1 0 0 1-1.32 1.497l-.094-.083l-.707-.707a1 1 0 0 1 0-1.414m14.142 0a1 1 0 0 1 0 1.414l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1"/>
+						</svg>
+						<svg class="icon-dark" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12.477 4.546a1.01 1.01 0 0 1 1.097-1.409A9 9 0 0 1 12 21c-4.434 0-8.118-3.206-8.863-7.426a1.01 1.01 0 0 1 1.409-1.097a6 6 0 0 0 7.931-7.931m2.404 1.072a8 8 0 0 1-9.263 9.263A7.002 7.002 0 0 0 19 12.001a7 7 0 0 0-4.12-6.383ZM5.565 7.716l.064.14a3.26 3.26 0 0 0 1.237 1.363l.1.059a.068.068 0 0 1 0 .118l-.1.058a3.26 3.26 0 0 0-1.237 1.364l-.064.14a.071.071 0 0 1-.13 0l-.064-.14a3.26 3.26 0 0 0-1.237-1.364l-.1-.058a.068.068 0 0 1 0-.118l.1-.059A3.26 3.26 0 0 0 5.37 7.855l.064-.14a.071.071 0 0 1 .13 0Zm2.832-4.859c.04-.09.166-.09.206 0l.102.222a5.2 5.2 0 0 0 1.97 2.172l.157.092a.108.108 0 0 1 0 .189l-.158.092a5.2 5.2 0 0 0-2.07 2.394a.113.113 0 0 1-.207 0l-.102-.222a5.2 5.2 0 0 0-1.97-2.172l-.158-.092a.108.108 0 0 1 0-.189l.158-.092a5.2 5.2 0 0 0 1.97-2.172z"/>
+						</svg>
+					</button>
+
+					<button id="toggleMenu" class="icon-btn menu-btn">
+						<span class="sr-only">Menu</span>
+						<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M20 18a1 1 0 0 1 .117 1.993L20 20H4a1 1 0 0 1-.117-1.993L4 18zm0-7a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm0-7a1 1 0 1 1 0 2H4a1 1 0 0 1 0-2z"/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			
+			
+<div class="page-layout">
+
+	
+<aside id="sidebar">
+	<h2 class="toc-title">Table of contents</h2>
+	<ul class="toc">
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#why-i-was-there" aria-label="Scroll to section: Why I Was There">Why I Was There</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#arrival" aria-label="Scroll to section: Arrival">Arrival</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#the-sessions" aria-label="Scroll to section: The Sessions">The Sessions</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#walking-the-exhibition-floor" aria-label="Scroll to section: Walking the Exhibition Floor">Walking the Exhibition Floor</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#the-people" aria-label="Scroll to section: The People">The People</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#what-i-wish-i-had-done-differently" aria-label="Scroll to section: What I Wish I Had Done Differently">What I Wish I Had Done Differently</a>
+				</div>
+				
+					<ul class="toc-sub">
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#1-carry-a-personal-card" aria-label="Scroll to section: 1. Carry a personal card">1. Carry a personal card</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#2-wear-something-that-starts-conversations" aria-label="Scroll to section: 2. Wear something that starts conversations">2. Wear something that starts conversations</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#3-plan-my-route-through-the-day" aria-label="Scroll to section: 3. Plan my route through the day">3. Plan my route through the day</a>
+								</div>
+							</li>
+						
+					</ul>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#final-thoughts" aria-label="Scroll to section: Final Thoughts">Final Thoughts</a>
+				</div>
+				
+			</li>
+		
+	</ul>
+</aside>
+
+
+	<article>
+		<div id="content-header">
+			<div class="article-info">
+				<div class="post-meta">
+					<span class="meta-item">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M8 2a1 1 0 0 1 1 1v1h6V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9zm2-3a1 1 0 0 0-1 1h12a1 1 0 0 0-1-1z"/></svg>
+						<time datetime="2026-11-01">Nov 1, 2026</time>
+					</span>
+
+					<span class="meta-item">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 1 0 20a10 10 0 0 1 0-20m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 2a1 1 0 0 1 1 1v4.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 12V7a1 1 0 0 1 1-1"/></svg>
+						5 min read
+					</span>
+
+					
+				</div>
+
+				<h1>What I Learned (and Wish I&#39;d Done Differently) at TechCabal&#39;s Moonshot</h1>
+
+				
+					<blockquote class="post-description"><q>My first Moonshot taught me a lot, including a few things I&#39;d do differently next time.</q></blockquote>
+				
+			</div>
+
+			<div class="header-rule"></div>
+		</div>
+
+		<div id="content" class="prose">
+			<h2 id="why-i-was-there">Why I Was There</h2>
+<p>A few months ago, I moved from Port Harcourt to Lagos with one mission: to tap into the city's tech ecosystem by attending events, meeting top talent, and getting the kind of exposure that could change my life.</p>
+<p>Then, honestly, not much happened. My first months in Lagos were quiet. No events, no big introductions, just me, a laptop, and a plan that hadn't started yet.</p>
+<p>That changed with TechCabal's Moonshot, my first tech event since the move. I loved it, but I also left with a list of things I wish I had done differently. This post covers both.</p>
+<h2 id="arrival">Arrival</h2>
+<p>I was so excited that I got to the <a rel="noopener external" target="_blank" href="https://en.wikipedia.org/wiki/National_Theatre,_Nigeria">National Theatre</a> at about 8:30am, an hour and a half before the 10am start. It didn't matter. The place was already swarming with people, and from the energy around me, they were just as excited as I was.</p>
+<p>Getting in was painless. I scanned my ticket, collected my tag, and walked in. No queues!</p>
+<p>The hard part came after. From the start, I found the central hall confusing to navigate, and I spent my first stretch of the day just trying to work out where everything was.</p>
+<h2 id="the-sessions">The Sessions</h2>
+<p>The sessions are where Moonshot's tech focus really showed. Three themes ran through the day for me: AI, the future of money, and building companies that last.</p>
+<p>With talks running on several stages at once, I couldn't be everywhere, so I followed the topics closest to what I care about.</p>
+<ul>
+<li><strong>The State of AI in Nigeria:</strong> [one line on what stood out to you]</li>
+<li><strong>Stablecoins &amp; Monetary Sovereignty:</strong> [one line on what stood out to you]</li>
+<li><strong>Forty Years A Tech Bro: What It Takes To Build Something That Lasts:</strong> [one line on what stood out to you]</li>
+<li><strong>Building Africa's Workforce for the Global Economy:</strong> [one line on what stood out to you, ideally tied to why you moved to Lagos]</li>
+</ul>
+<p>Hearing these ideas in one place made the ecosystem feel far more real than reading about it online ever had.</p>
+<h2 id="walking-the-exhibition-floor">Walking the Exhibition Floor</h2>
+<p>If the sessions gave me ideas, the exhibition tour gave me exposure. Every company had a booth with banners, merchandise, and someone ready to explain what made their product different.</p>
+<p>My favorite stop was <a rel="noopener external" target="_blank" href="https://www.cloudflare.com/">Cloudflare</a>. I'd been wondering whether they plan to support VPS-style machine provisioning for people who deploy on their cloud, so I asked. The answer was no. It wasn't what I'd hoped for, but getting a straight answer from the people who would know was worth the walk.</p>
+<p>I also spoke with <a rel="noopener external" target="_blank" href="https://liners.com/">Liners</a>, a software company that offers reviews and SEO boosting for African software products, and with a sales representative from <a rel="noopener external" target="_blank" href="https://www.rexafrica.com/">Rexx</a>, which describes itself as Africa's first AI-native banking solution. Other booths on my route included <a rel="noopener external" target="_blank" href="https://grey.co/">Grey</a>, a fintech platform for cross-border payments, <a rel="noopener external" target="_blank" href="https://www.gopaddi.com/en">GoPaddi</a>, an AI-powered platform for travel, tourism, hospitality, and business management, and <a rel="noopener external" target="_blank" href="https://www.zikoko.com/">Zikoko</a>, a Nigerian digital and entertainment platform.</p>
+<h2 id="the-people">The People</h2>
+<p>Networking was the reason I moved, so I made a point of talking to people from different corners of tech. These are some of the new friends I made:</p>
+<ul>
+<li><a rel="noopener external" target="_blank" href="https://x.com/id_inyang_">ID Inyang</a> is a software engineer who builds practical applications for real-world problems. He specializes in backend development and system design, with a focus on software that is scalable, reliable, and efficient. [what you talked about]</li>
+<li><a rel="noopener external" target="_blank" href="https://www.linkedin.com/in/brian-ibekwe">Brian Ibekwe</a> is a product manager at <a rel="noopener external" target="_blank" href="https://readpulse.app">ReadPulse</a>, where he works on building, improving, and growing the platform. [what you talked about]</li>
+<li><a rel="noopener external" target="_blank" href="https://x.com/obiabo_immanuel">Emmanuel Obiabo</a> works mostly with TypeScript and Rust, contributes to open source, and writes about whatever catches his interest. Much of his open-source work has been on blockchain projects in the Stellar ecosystem, and he is a long-time Linux user. You can read more about him <a rel="noopener external" target="_blank" href="https://www.obiabo.dev/about">here</a>. [what you talked about]</li>
+<li><a rel="noopener external" target="_blank" href="https://marilynedem.framer.website/">Marilyn</a> is a UI/UX designer. Her portfolio includes TideReader, an AI-powered adaptive reading platform, Delve, a gamified language-learning platform, and Bubblr, a safe social media app for kids. [what you talked about]</li>
+<li><a rel="noopener external" target="_blank" href="https://x.com/The_mauteen">Mauteen</a> is a product design engineer who works where design meets engineering. [what you talked about]</li>
+<li><a rel="noopener external" target="_blank" href="https://github.com/Ealfred1">Eric</a> is a creative software developer who builds mobile apps, backend systems, and web platforms end to end. [what you talked about]</li>
+</ul>
+<h2 id="what-i-wish-i-had-done-differently">What I Wish I Had Done Differently</h2>
+<p>I'd call these small preparations, not big mistakes. But each one would have made the day easier.</p>
+<h3 id="1-carry-a-personal-card">1. Carry a personal card</h3>
+<p>Over and over, I did the same thing: pulled out my phone, found someone's LinkedIn or X handle, and typed mine in return. It was slow, it interrupted the conversation, and it only worked if both of us had the patience for it.</p>
+<p>A personal card would have turned that into a two-second exchange. It doesn't have to be fancy: my name, what I do, and a QR code to my LinkedIn or GitHub. It would also give people something to remember me by when they leave a crowded venue with a bag of merchandise and a head full of names.</p>
+<h3 id="2-wear-something-that-starts-conversations">2. Wear something that starts conversations</h3>
+<p>Moonshot was a sea of similar tags and similar outfits, and it was hard to stand out. Branded wear, like a shirt or hoodie with my name, my role, or something I'm building, would have done some of the introducing for me. People would have had a reason to ask about it, and I wouldn't have had to open every conversation cold. It would also have made me easier to find again after a first meeting.</p>
+<h3 id="3-plan-my-route-through-the-day">3. Plan my route through the day</h3>
+<p>I arrived early and still got lost in the halls. With sessions running on several stages at once, it's easy to drift toward whatever is closest instead of what matters. Next time, I'll bookmark my sessions the night before, note which stage each one is on, and leave gaps for the exhibition floor, so I'm choosing my time instead of just reacting to the crowd.</p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>I moved to Lagos for moments like this one. Moonshot gave me sessions that sharpened my thinking, a floor full of companies to talk to, and a handful of people I'm glad to know. Next time, I'll show up with a card, an outfit that speaks for me, and a plan for the day.</p>
+
+		</div>
+
+		<div class="post-citation">
+			<div class="citation-head">
+				<div class="citation-title">What I Learned (and Wish I&#39;d Done Differently) at TechCabal&#39;s Moonshot</div>
+				<div class="citation-url">https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/</div>
+			</div>
+
+			<div class="citation-fields">
+				<div class="citation-field">
+					<span>Author</span>
+					<span class="citation-value">Brian Obot</span>
+				</div>
+				<div class="citation-field">
+					<span>Published</span>
+					<span class="citation-value">November 1, 2026</span>
+				</div>
+			</div>
+
+			<div class="citation-actions">
+				<button id="copy-link" class="icon-btn share-btn" type="button"
+				        data-url="https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/" aria-label="Copy link to this post">
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M10.586 13.414a1 1 0 0 1 0-1.414l4.243-4.243a3 3 0 0 0-4.243-4.243L6.343 7.757a1 1 0 0 1-1.414-1.414l4.243-4.243a5 5 0 0 1 7.071 7.071l-4.243 4.243a1 1 0 0 1-1.414 0m2.828-2.828a1 1 0 0 1 0 1.414l-4.243 4.243a3 3 0 0 0 4.243 4.243l4.243-4.243a1 1 0 0 1 1.414 1.414l-4.243 4.243a5 5 0 0 1-7.071-7.071l4.243-4.243a1 1 0 0 1 1.414 0"/></svg>
+					<span id="copy-link-label">Copy link</span>
+				</button>
+				
+				
+				
+				
+				<a class="icon-btn share-btn" target="_blank" rel="noopener"
+				   href="https://x.com/intent/post?url=https%3A%2F%2Fbrianobot%2Etech%2Fblog%2Fwhat%2Di%2Dlearned%2Dat%2Dtechcabals%2Dmoonshot%2D2026%2F%3Futm%5Fmedium%3Dsocial%26utm%5Fcampaign%3Dshare%5Fbutton%26utm%5Fsource%3Dx&text=What%20I%20Learned%20%28and%20Wish%20I%27d%20Done%20Differently%29%20at%20TechCabal%27s%20Moonshot">
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26l8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+					<span>Share on X</span>
+				</a>
+				<a class="icon-btn share-btn" target="_blank" rel="noopener"
+				   href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrianobot%2Etech%2Fblog%2Fwhat%2Di%2Dlearned%2Dat%2Dtechcabals%2Dmoonshot%2D2026%2F%3Futm%5Fmedium%3Dsocial%26utm%5Fcampaign%3Dshare%5Fbutton%26utm%5Fsource%3Dlinkedin">
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1M8 10a1 1 0 0 1 .993.883L9 11v5a1 1 0 0 1-1.993.117L7 16v-5a1 1 0 0 1 1-1m3-1a1 1 0 0 1 .984.821 5.82 5.82 0 0 1 .623-.313c.667-.285 1.666-.442 2.568-.159.473.15.948.43 1.3.907.315.425.485.942.519 1.523L17 12v4a1 1 0 0 1-1.993.117L15 16v-4c0-.33-.08-.484-.132-.555a.548.548 0 0 0-.293-.188c-.348-.11-.849-.052-1.182.09-.5.214-.958.55-1.27.861L12 12.34V16a1 1 0 0 1-1.993.117L10 16v-6a1 1 0 0 1 1-1M8 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg>
+					<span>Share on LinkedIn</span>
+				</a>
+			</div>
+		</div>
+
+		
+		
+			<aside class="post-feedback" aria-labelledby="feedback-title">
+				<h2 id="feedback-title" class="feedback-title">Thoughts on this post?</h2>
+				<p class="feedback-text">Found a mistake, have a question, or just want to say hi? I'd like to hear it.</p>
+				<div class="socials">
+					
+						
+							<a href="https://github.com/brianobot" target="_blank" rel="noopener">
+						
+							
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+	
+		<path d="M6.315 6.176c-.25-.638-.24-1.367-.129-2.034a6.8 6.8 0 0 1 2.12 1.07c.28.214.647.283.989.18A9.3 9.3 0 0 1 12 5c.961 0 1.874.14 2.703.391c.342.104.709.034.988-.18a6.8 6.8 0 0 1 2.119-1.07c.111.667.12 1.396-.128 2.033c-.15.384-.075.826.208 1.14C18.614 8.117 19 9.04 19 10c0 2.114-1.97 4.187-5.134 4.818c-.792.158-1.101 1.155-.495 1.726c.389.366.629.882.629 1.456v3a1 1 0 0 0 2 0v-3c0-.57-.12-1.112-.334-1.603C18.683 15.35 21 12.993 21 10c0-1.347-.484-2.585-1.287-3.622c.21-.82.191-1.646.111-2.28c-.071-.568-.17-1.312-.57-1.756c-.595-.659-1.58-.271-2.28-.032a9 9 0 0 0-2.125 1.045A11.4 11.4 0 0 0 12 3c-.994 0-1.953.125-2.851.356a9 9 0 0 0-2.125-1.045c-.7-.24-1.686-.628-2.281.031c-.408.452-.493 1.137-.566 1.719l-.005.038c-.08.635-.098 1.462.112 2.283C3.484 7.418 3 8.654 3 10c0 2.992 2.317 5.35 5.334 6.397A4 4 0 0 0 8 17.98l-.168.034c-.717.099-1.176.01-1.488-.122c-.76-.322-1.152-1.133-1.63-1.753c-.298-.385-.732-.866-1.398-1.088a1 1 0 0 0-.632 1.898c.558.186.944 1.142 1.298 1.566c.373.448.869.916 1.58 1.218c.682.29 1.483.393 2.438.276V21a1 1 0 0 0 2 0v-3c0-.574.24-1.09.629-1.456c.607-.572.297-1.568-.495-1.726C6.969 14.187 5 12.114 5 10c0-.958.385-1.881 1.108-2.684c.283-.314.357-.756.207-1.14"/>
+	
+</svg>
+
+							<span>GitHub</span>
+						</a>
+					
+						
+							<a href="https://www.linkedin.com/in/brian-obot/" target="_blank" rel="noopener">
+						
+							
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+	
+		<path d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1M8 10a1 1 0 0 1 .993.883L9 11v5a1 1 0 0 1-1.993.117L7 16v-5a1 1 0 0 1 1-1m3-1a1 1 0 0 1 .984.821 5.82 5.82 0 0 1 .623-.313c.667-.285 1.666-.442 2.568-.159.473.15.948.43 1.3.907.315.425.485.942.519 1.523L17 12v4a1 1 0 0 1-1.993.117L15 16v-4c0-.33-.08-.484-.132-.555a.548.548 0 0 0-.293-.188c-.348-.11-.849-.052-1.182.09-.5.214-.958.55-1.27.861L12 12.34V16a1 1 0 0 1-1.993.117L10 16v-6a1 1 0 0 1 1-1M8 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+	
+</svg>
+
+							<span>LinkedIn</span>
+						</a>
+					
+						
+							<a href="https://x.com/i_am_brian_obot" target="_blank" rel="noopener">
+						
+							
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+	
+		<path d="M18.244 2.25h3.308l-7.227 8.26l8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+	
+</svg>
+
+							<span>Twitter</span>
+						</a>
+					
+						
+							
+							<a href="mailto:brianobot9@gmail.com?subject=Feedback%3A%20What%20I%20Learned%20%28and%20Wish%20I%27d%20Done%20Differently%29%20at%20TechCabal%27s%20Moonshot">
+						
+							
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+	
+		<path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v.511l8 5.333l8-5.333V6H4m0 12h16V8.915l-7.445 4.963a1 1 0 0 1-1.11 0L4 8.915V18"/>
+	
+</svg>
+
+							<span>Email</span>
+						</a>
+					
+				</div>
+			</aside>
+		
+	</article>
+</div>
+
+		</main>
+
+		<footer class="footer">
+			<div class="footer-inner">
+				<div class="footer-meta">
+					<span>&copy; 2026 Brian Obot</span>
+					<span>
+						Powered by
+						<a href="https://www.getzola.org" target="_blank" rel="noopener">Zola</a>
+					</span>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+	<button id="to-top-btn" class="to-top" type="button" data-show="false" aria-label="Back to top">
+		<span class="to-top-percent" aria-hidden="true"><span id="to-top-value">0</span><span class="unit">%</span></span>
+		<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M11.293 8.293a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414L12 10.414l-4.95 4.95a1 1 0 0 1-1.414-1.414z"/></svg>
+	</button>
+
+
+	<script>
+		// Floating header gains its border + background once you leave the top
+		const header = document.getElementById('siteHeader')
+		const onScroll = () => header.classList.toggle('not-top', window.scrollY > 0)
+		onScroll()
+		window.addEventListener('scroll', onScroll, { passive: true })
+
+		// Mobile nav
+		document.getElementById('toggleMenu').addEventListener('click', () => {
+			header.classList.toggle('expanded')
+		})
+
+		// Theme cycles system -> light -> dark
+		const darkBtn = document.getElementById('toggleDarkMode')
+		const syntaxLight = document.getElementById('syntax-light')
+		const syntaxDark = document.getElementById('syntax-dark')
+		const order = ['system', 'light', 'dark']
+		const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+		const apply = (theme) => {
+			const dark = theme === 'dark' || (theme === 'system' && media.matches)
+			document.documentElement.classList.toggle('dark', dark)
+			syntaxLight.disabled = dark
+			syntaxDark.disabled = !dark
+			darkBtn.dataset.theme = theme
+		}
+
+		apply(localStorage.getItem('theme') || 'system')
+
+		darkBtn.addEventListener('click', () => {
+			const next = order[(order.indexOf(darkBtn.dataset.theme) + 1) % order.length]
+			localStorage.setItem('theme', next)
+			apply(next)
+		})
+
+		media.addEventListener('change', () => {
+			if (darkBtn.dataset.theme === 'system') apply('system')
+		})
+	</script>
+	<script>
+		// Reading progress; on hover it becomes a back-to-top button.
+		(function () {
+			const btn = document.getElementById('to-top-btn')
+			const value = document.getElementById('to-top-value')
+			const article = document.getElementById('content')
+			const header = document.getElementById('content-header')
+
+			btn.addEventListener('click', () => {
+				document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+			})
+
+			// reveal once the page heading has scrolled out of view
+			if (header && 'IntersectionObserver' in window) {
+				new IntersectionObserver((entries) => {
+					entries.forEach((e) => { btn.dataset.show = String(!e.isIntersecting) })
+				}).observe(header)
+			} else {
+				const reveal = () => { btn.dataset.show = String(window.scrollY > 240) }
+				reveal()
+				window.addEventListener('scroll', reveal, { passive: true })
+			}
+
+			// percentage read: through the article body where there is one,
+			// otherwise through the whole document
+			const update = () => {
+				const doc = document.documentElement
+				const start = article ? article.offsetTop : 0
+				const height = article ? article.offsetHeight : doc.scrollHeight
+				const end = start + height - window.innerHeight
+				if (end <= start) { btn.classList.add('ended'); return }
+				const pct = Math.round(((window.scrollY - start) / (end - start)) * 100)
+				const clamped = Math.min(100, Math.max(0, pct))
+				value.textContent = String(clamped)
+				btn.classList.toggle('ended', clamped >= 100)
+			}
+
+			update()
+			window.addEventListener('scroll', update, { passive: true })
+			window.addEventListener('resize', update)
+		})()
+	</script>
+
+	
+<script>
+	// highlight the table-of-contents entry for whatever heading is on screen
+	const links = Array.from(document.querySelectorAll('.toc-item'))
+	const headings = links
+		.map((el) => document.getElementById(decodeURIComponent(el.hash.slice(1))))
+		.filter(Boolean)
+
+	if (headings.length) {
+		const sync = () => {
+			const cutoff = window.scrollY + window.innerHeight * 0.25
+			let active = 0
+			headings.forEach((h, i) => { if (h.offsetTop <= cutoff) active = i })
+			links.forEach((el, i) => el.classList.toggle('active', i === active))
+		}
+		sync()
+		window.addEventListener('scroll', sync, { passive: true })
+		window.addEventListener('resize', sync)
+
+		links.forEach((el, i) => {
+			el.addEventListener('click', (e) => {
+				e.preventDefault()
+				history.pushState(null, '', el.hash)
+				headings[i].scrollIntoView({ behavior: 'smooth' })
+			})
+		})
+	}
+</script>
+
+<script>
+	const copyBtn = document.getElementById('copy-link')
+	const copyLabel = document.getElementById('copy-link-label')
+	copyBtn.addEventListener('click', async () => {
+		try {
+			await navigator.clipboard.writeText(copyBtn.dataset.url)
+			copyLabel.textContent = 'Copied'
+		} catch {
+			copyLabel.textContent = 'Press Ctrl+C'
+		}
+		setTimeout(() => { copyLabel.textContent = 'Copy link' }, 2000)
+	})
+</script>
+
+</body>
+</html>
