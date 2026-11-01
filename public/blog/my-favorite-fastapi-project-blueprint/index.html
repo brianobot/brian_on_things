@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
+
+	<title>The Ultimate FastAPI Project Blueprint: Build Scalable, Secure, and Maintainable Systems with Ease • Brian on Things</title>
+
+	
+	
+	
+	
+
+	
+		
+		
+		
+		
+	
+
+	<meta name="description" content="The FastAPI project structure I reach for on every new project — lessons learnt from working on large codebases.">
+	<meta name="author" content="Brian Obot">
+	<link rel="canonical" href="https://brianobot.tech/blog/my-favorite-fastapi-project-blueprint/">
+	<meta name="theme-color" content="#fbfcfd" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="#0b0b12" media="(prefers-color-scheme: dark)">
+
+	
+	<meta property="og:type" content="article">
+	<meta property="og:site_name" content="Brian on Things">
+	<meta property="og:title" content="The Ultimate FastAPI Project Blueprint: Build Scalable, Secure, and Maintainable Systems with Ease">
+	
+	
+	
+		
+	
+	<meta property="og:description" content="5 min read · The FastAPI project structure I reach for on every new project — lessons learnt from working on large codebases.">
+	<meta property="og:url" content="https://brianobot.tech/blog/my-favorite-fastapi-project-blueprint/">
+	<meta property="og:locale" content="en_US">
+
+	
+		<meta property="article:published_time" content="2025-10-14T00:00:00+00:00">
+		
+		<meta property="article:author" content="Brian Obot">
+		
+	
+
+	
+	
+	
+	
+	
+		
+	
+
+	
+		<meta name="twitter:card" content="summary">
+	
+	<meta name="twitter:title" content="The Ultimate FastAPI Project Blueprint: Build Scalable, Secure, and Maintainable Systems with Ease">
+	<meta name="twitter:description" content="5 min read · The FastAPI project structure I reach for on every new project — lessons learnt from working on large codebases.">
+	
+		<meta name="twitter:label1" content="Reading time">
+		<meta name="twitter:data1" content="5 min read">
+	
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+	<link rel="stylesheet" href="https://brianobot.tech/style.css">
+	
+	<link rel="stylesheet" href="https://brianobot.tech/giallo-light.css" id="syntax-light">
+	<link rel="stylesheet" href="https://brianobot.tech/giallo-dark.css" id="syntax-dark" disabled>
+
+	
+	<script>
+		(function () {
+			var t = localStorage.getItem('theme') || 'system'
+			var dark = t === 'dark' || (t === 'system' &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches)
+			document.documentElement.classList.toggle('dark', dark)
+			var l = document.getElementById('syntax-light')
+			var d = document.getElementById('syntax-dark')
+			if (l && d) { l.disabled = dark; d.disabled = !dark }
+		})()
+	</script>
+
+	
+
+	<!-- Google tag (gtag.js) -->
+	
+	
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-CMP23HBBL0"></script>
+	<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CMP23HBBL0');
+  	</script>
+   
+</head>
+
+<body>
+	<div class="container">
+
+		<header id="siteHeader" class="header">
+			<a class="brand" href="https://brianobot.tech" aria-label="Brand">Brian on Things</a>
+
+			<div class="header-end">
+				<div id="headerExpandContent" class="nav-wrap">
+					<nav class="nav">
+						
+						
+							<a class="nav-link" href="https://brianobot.tech/blog" aria-label="Nav menu item">Archive</a>
+						
+							<a class="nav-link" href="https://brianobot.tech/projects" aria-label="Nav menu item">Projects</a>
+						
+							<a class="nav-link" href="https://brianobot.tech/about" aria-label="Nav menu item">About</a>
+						
+
+						<div class="nav-icons">
+							<a class="icon-link" href="https://brianobot.tech/search" title="Search">
+								<span class="sr-only">Search</span>
+								<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M5 10a5 5 0 1 1 10 0a5 5 0 0 1-10 0m5-7a7 7 0 1 0 4.192 12.606l5.1 5.101a1 1 0 0 0 1.415-1.414l-5.1-5.1A7 7 0 0 0 10 3"/>
+								</svg>
+							</a>
+						</div>
+					</nav>
+				</div>
+
+				<div class="header-buttons">
+					<button id="toggleDarkMode" class="icon-btn" data-theme="system">
+						<span class="sr-only">Dark Theme</span>
+						<svg class="icon-system" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M19 3a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-4v1h1a1 1 0 1 1 0 2H8a1 1 0 1 1 0-2h1v-1H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm-6 15h-2v1h2zm6-13H5v11h14z"/>
+						</svg>
+						<svg class="icon-light" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12 19a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1m6.364-2.05l.707.707a1 1 0 0 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414m-12.728 0a1 1 0 0 1 1.497 1.32l-.083.094l-.707.707a1 1 0 0 1-1.497-1.32l.083-.094zM12 6a6 6 0 1 1 0 12a6 6 0 0 1 0-12m0 2a4 4 0 1 0 0 8a4 4 0 0 0 0-8m-8 3a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2zM4.929 4.929a1 1 0 0 1 1.32-.083l.094.083l.707.707a1 1 0 0 1-1.32 1.497l-.094-.083l-.707-.707a1 1 0 0 1 0-1.414m14.142 0a1 1 0 0 1 0 1.414l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1"/>
+						</svg>
+						<svg class="icon-dark" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M12.477 4.546a1.01 1.01 0 0 1 1.097-1.409A9 9 0 0 1 12 21c-4.434 0-8.118-3.206-8.863-7.426a1.01 1.01 0 0 1 1.409-1.097a6 6 0 0 0 7.931-7.931m2.404 1.072a8 8 0 0 1-9.263 9.263A7.002 7.002 0 0 0 19 12.001a7 7 0 0 0-4.12-6.383ZM5.565 7.716l.064.14a3.26 3.26 0 0 0 1.237 1.363l.1.059a.068.068 0 0 1 0 .118l-.1.058a3.26 3.26 0 0 0-1.237 1.364l-.064.14a.071.071 0 0 1-.13 0l-.064-.14a3.26 3.26 0 0 0-1.237-1.364l-.1-.058a.068.068 0 0 1 0-.118l.1-.059A3.26 3.26 0 0 0 5.37 7.855l.064-.14a.071.071 0 0 1 .13 0Zm2.832-4.859c.04-.09.166-.09.206 0l.102.222a5.2 5.2 0 0 0 1.97 2.172l.157.092a.108.108 0 0 1 0 .189l-.158.092a5.2 5.2 0 0 0-2.07 2.394a.113.113 0 0 1-.207 0l-.102-.222a5.2 5.2 0 0 0-1.97-2.172l-.158-.092a.108.108 0 0 1 0-.189l.158-.092a5.2 5.2 0 0 0 1.97-2.172z"/>
+						</svg>
+					</button>
+
+					<button id="toggleMenu" class="icon-btn menu-btn">
+						<span class="sr-only">Menu</span>
+						<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M20 18a1 1 0 0 1 .117 1.993L20 20H4a1 1 0 0 1-.117-1.993L4 18zm0-7a1 1 0 1 1 0 2H4a1 1 0 1 1 0-2zm0-7a1 1 0 1 1 0 2H4a1 1 0 0 1 0-2z"/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			
+			
+<div class="page-layout">
+
+	
+<aside id="sidebar">
+	<h2 class="toc-title">Table of contents</h2>
+	<ul class="toc">
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#tl-dr" aria-label="Scroll to section: TL;DR">TL;DR</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#introduction" aria-label="Scroll to section: Introduction">Introduction</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#project-structure" aria-label="Scroll to section: Project Structure">Project Structure</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#the-app-directory" aria-label="Scroll to section: The App Directory">The App Directory</a>
+				</div>
+				
+					<ul class="toc-sub">
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#init-py" aria-label="Scroll to section: __init__.py">__init__.py</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#api-router-py" aria-label="Scroll to section: api_router.py">api_router.py</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#logger-py" aria-label="Scroll to section: logger.py">logger.py</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#main-py" aria-label="Scroll to section: main.py">main.py</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#settings-py" aria-label="Scroll to section: settings.py">settings.py</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#dependencies-py" aria-label="Scroll to section: dependencies.py">dependencies.py</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#middlewares-py" aria-label="Scroll to section: middlewares.py">middlewares.py</a>
+								</div>
+							</li>
+						
+					</ul>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#directories" aria-label="Scroll to section: Directories">Directories</a>
+				</div>
+				
+					<ul class="toc-sub">
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#routers" aria-label="Scroll to section: Routers">Routers</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#schemas" aria-label="Scroll to section: Schemas">Schemas</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#services" aria-label="Scroll to section: Services">Services</a>
+								</div>
+							</li>
+						
+					</ul>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#the-makefile" aria-label="Scroll to section: The Makefile">The Makefile</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#conclusion" aria-label="Scroll to section: Conclusion">Conclusion</a>
+				</div>
+				
+			</li>
+		
+	</ul>
+</aside>
+
+
+	<article>
+		<div id="content-header">
+			<div class="article-info">
+				<div class="post-meta">
+					<span class="meta-item">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M8 2a1 1 0 0 1 1 1v1h6V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9zm2-3a1 1 0 0 0-1 1h12a1 1 0 0 0-1-1z"/></svg>
+						<time datetime="2025-10-14">Oct 14, 2025</time>
+					</span>
+
+					<span class="meta-item">
+						<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 1 0 20a10 10 0 0 1 0-20m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 2a1 1 0 0 1 1 1v4.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 12V7a1 1 0 0 1 1-1"/></svg>
+						5 min read
+					</span>
+
+					
+				</div>
+
+				<h1>The Ultimate FastAPI Project Blueprint: Build Scalable, Secure, and Maintainable Systems with Ease</h1>
+
+				
+					<blockquote class="post-description"><q>The FastAPI project structure I reach for on every new project — lessons learnt from working on large codebases.</q></blockquote>
+				
+			</div>
+
+			<div class="header-rule"></div>
+		</div>
+
+		<div id="content" class="prose">
+			<blockquote>
+<p>I've refined this structure in production environments serving over 500+ concurrent users; it scales effortlessly, stays sane to maintain, and keeps productivity at full throttle.</p>
+</blockquote>
+<h2 id="tl-dr">TL;DR</h2>
+<p>If you just want to use the template FastAPI structure directly in your project, check out
+<a href="#">this GitHub repo</a> for the complete project structure.</p>
+<h2 id="introduction">Introduction</h2>
+<p>I have worked with FastAPI almost daily in the last year. During that period, I developed a
+standard project structure that works exceptionally well to keep me motivated to make changes
+and add features easily, and it also scales incredibly.</p>
+<p>In this post, I will break down every part of my FastAPI go-to architecture — the one I optimize
+whenever I'm starting a new project or refactoring an old one. Whether you're trying to ship
+ideas faster, organize your growing codebase, or harden your app's security, this structure will
+help you build confidently and evolve your project like a pro.</p>
+<h2 id="project-structure">Project Structure</h2>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="plain"><span class="giallo-l"><span>.</span></span>
+<span class="giallo-l"><span>├── Makefile</span></span>
+<span class="giallo-l"><span>├── logs/</span></span>
+<span class="giallo-l"><span>│   └── app.log</span></span>
+<span class="giallo-l"><span>└── app/</span></span>
+<span class="giallo-l"><span>    ├── __init__.py</span></span>
+<span class="giallo-l"><span>    ├── api_router.py</span></span>
+<span class="giallo-l"><span>    ├── dependencies.py</span></span>
+<span class="giallo-l"><span>    ├── logger.py</span></span>
+<span class="giallo-l"><span>    ├── main.py</span></span>
+<span class="giallo-l"><span>    ├── middlewares.py</span></span>
+<span class="giallo-l"><span>    ├── settings.py</span></span>
+<span class="giallo-l"><span>    ├── routers/</span></span>
+<span class="giallo-l"><span>    │   ├── admin.py</span></span>
+<span class="giallo-l"><span>    │   ├── auth.py</span></span>
+<span class="giallo-l"><span>    │   └── products.py</span></span>
+<span class="giallo-l"><span>    ├── schemas/</span></span>
+<span class="giallo-l"><span>    │   ├── admin.py</span></span>
+<span class="giallo-l"><span>    │   ├── auth.py</span></span>
+<span class="giallo-l"><span>    │   └── products.py</span></span>
+<span class="giallo-l"><span>    └── services/</span></span>
+<span class="giallo-l"><span>        ├── admin.py</span></span>
+<span class="giallo-l"><span>        ├── auth.py</span></span>
+<span class="giallo-l"><span>        └── products.py</span></span></code></pre><h2 id="the-app-directory">The App Directory</h2>
+<p>The <code>app</code> directory is the engine and core of the application. It contains all the modules and
+code needed to power the majority of use cases for a backend infrastructure. I'll explain each
+directory and module in the app directory and justify their use, pointing out common issues and
+highlighting steps taken to improve code quality and developer experience.</p>
+<h3 id="init-py"><code>__init__.py</code></h3>
+<p>It is standard practice to include an <code>__init__.py</code> file in every Python package; this helps to
+declare a folder as a regular Python package.</p>
+<h3 id="api-router-py"><code>api_router.py</code></h3>
+<p>I use this as a central module for managing all my routers in my application. This enables me to
+have features like version controlling with <code>/v1/users</code>, <code>/v2/users</code> while keeping the codebase
+easy to follow and clean.</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="python"><span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> app/api_router.py</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-9 z-d-9"> import</span><span> APIRouter</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>api_v1</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> APIRouter</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">prefix</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">/v1</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span>api_v2</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> APIRouter</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">prefix</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">/v2</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> include routes to a root route</span></span>
+<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> from app.routers import routers as user_routers</span></span>
+<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> api_v1.include_router(users_routers)</span></span></code></pre><h3 id="logger-py"><code>logger.py</code></h3>
+<p>Logging is a crucial part of every software application. It gives visibility into the operation
+of any running software application and can help guide resolution of issues and bugs when they
+do happen — and they <em>will</em> happen.</p>
+<p>Instead of getting overwhelmed with configurations, this template works for me in almost all my
+projects. You can extend it by setting up an external handler to connect your log records to a
+pretty dashboard or analytics tool. This particular configuration allows me to group logs by day,
+achieved with the <code>TimedRotatingFileHandler</code>, making the process of debugging much easier.</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="python"><span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> app/logger.py</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">import</span><span> logging</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">import</span><span> json</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> logging</span><span class="z-l-8 z-d-4">.</span><span>handlers</span><span class="z-l-9 z-d-9"> import</span><span> TimedRotatingFileHandler</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>logger</span><span class="z-l-2 z-d-5"> =</span><span> logging</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">getLogger</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">class</span><span class="z-l-13 z-l-i z-d-15 z-d-i"> JsonFormatter</span><span class="z-l-8 z-d-4">(</span><span class="z-l-13 z-l-i z-d-15 z-d-i">logging</span><span class="z-l-8 z-d-4">.</span><span class="z-l-13 z-l-i z-d-15 z-d-i">Formatter</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    def</span><span class="z-l-16 z-l-i z-d-16 z-d-i"> format</span><span class="z-l-8 z-d-4">(</span><span class="z-l-10 z-l-i z-d-12 z-d-i">self</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> record</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span>        log_record</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-8 z-d-4"> {</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">timestamp</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span class="z-l-10 z-l-i z-d-12 z-d-i"> self</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">formatTime</span><span class="z-l-8 z-d-4">(</span><span>record</span><span class="z-l-8 z-d-4">,</span><span class="z-l-10 z-l-i z-d-12 z-d-i"> self</span><span class="z-l-8 z-d-4">.</span><span>datefmt</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">level</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> record</span><span class="z-l-8 z-d-4">.</span><span>levelname</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">module</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> record</span><span class="z-l-8 z-d-4">.</span><span>module</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">funcName</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> record</span><span class="z-l-8 z-d-4">.</span><span>funcName</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">lineno</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> record</span><span class="z-l-8 z-d-4">.</span><span>lineno</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">message</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> record</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">getMessage</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">        }</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">        return</span><span> json</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">dumps</span><span class="z-l-8 z-d-4">(</span><span>log_record</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>file_handler</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> TimedRotatingFileHandler</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">    &quot;</span><span class="z-l-5 z-d-7">logs/app.log</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> when</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">midnight</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> interval</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">1</span><span class="z-l-2 z-d-5"> /</span><span class="z-l-16 z-d-16"> 86400</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> backupCount</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">7</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>file_handler</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">setFormatter</span><span class="z-l-8 z-d-4">(</span><span class="z-l-3 z-d-2">JsonFormatter</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>logger</span><span class="z-l-8 z-d-4">.</span><span>handlers</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-8 z-d-4"> [</span><span>file_handler</span><span class="z-l-8 z-d-4">]</span></span>
+<span class="giallo-l"><span>logger</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">setLevel</span><span class="z-l-8 z-d-4">(</span><span>logging</span><span class="z-l-8 z-d-4">.</span><span>INFO</span><span class="z-l-8 z-d-4">)</span></span></code></pre><h3 id="main-py"><code>main.py</code></h3>
+<p>The main module is the entry point into the application. Most of the security policies and rules
+for the application are set up here.</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="python"><span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> app/main.py</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> contextlib</span><span class="z-l-9 z-d-9"> import</span><span> asynccontextmanager</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> datetime</span><span class="z-l-9 z-d-9"> import</span><span> datetime</span><span class="z-l-8 z-d-4">,</span><span> UTC</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-9 z-d-9"> import</span><span> FastAPI</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> starlette</span><span class="z-l-8 z-d-4">.</span><span>middleware</span><span class="z-l-8 z-d-4">.</span><span>trustedhost</span><span class="z-l-9 z-d-9"> import</span><span> TrustedHostMiddleware</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> starlette</span><span class="z-l-8 z-d-4">.</span><span>middleware</span><span class="z-l-8 z-d-4">.</span><span>base</span><span class="z-l-9 z-d-9"> import</span><span> BaseHTTPMiddleware</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-8 z-d-4">.</span><span>middleware</span><span class="z-l-8 z-d-4">.</span><span>gzip</span><span class="z-l-9 z-d-9"> import</span><span> GZipMiddleware</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-8 z-d-4">.</span><span>middleware</span><span class="z-l-8 z-d-4">.</span><span>cors</span><span class="z-l-9 z-d-9"> import</span><span> CORSMiddleware</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-8 z-d-4">.</span><span>responses</span><span class="z-l-9 z-d-9"> import</span><span> RedirectResponse</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-8 z-d-4">.</span><span>responses</span><span class="z-l-9 z-d-9"> import</span><span> JSONResponse</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-8 z-d-4">.</span><span>requests</span><span class="z-l-9 z-d-9"> import</span><span> Request</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-9 z-d-9"> import</span><span> HTTPException</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-9 z-d-9"> import</span><span> FastAPI</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> slowapi</span><span class="z-l-9 z-d-9"> import</span><span> Limiter</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> slowapi</span><span class="z-l-8 z-d-4">.</span><span>util</span><span class="z-l-9 z-d-9"> import</span><span> get_remote_address</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> redis</span><span class="z-l-9 z-d-9"> import</span><span> asyncio</span><span class="z-l-9 z-d-9"> as</span><span> aioredis</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>logger</span><span class="z-l-9 z-d-9"> import</span><span> logger</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>api_router</span><span class="z-l-9 z-d-9"> import</span><span> api</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>settings</span><span class="z-l-9 z-d-9"> import</span><span> Settings</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>middlewares</span><span class="z-l-9 z-d-9"> import</span><span> log_request_middleware</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>settings</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> Settings</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">@</span><span class="z-l-16 z-l-i z-d-16 z-d-i">asynccontextmanager</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">async</span><span class="z-l-9 z-d-9"> def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> lifespan</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">app</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> FastAPI</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    yield</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> initiate_app</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span>    app</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> FastAPI</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        title</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">FastAPI Sample Project</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        summary</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">API for FastAPI Sample Project</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        lifespan</span><span class="z-l-2 z-d-5">=</span><span>lifespan</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    )</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    origins</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-8 z-d-4"> [</span></span>
+<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">        #</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> Add allowed origins here</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    ]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    app</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">add_middleware</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span>        CORSMiddleware</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        allow_origins</span><span class="z-l-2 z-d-5">=</span><span>origins</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        allow_credentials</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">True</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        allow_methods</span><span class="z-l-2 z-d-5">=</span><span class="z-l-8 z-d-4">[</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">*</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">]</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        allow_headers</span><span class="z-l-2 z-d-5">=</span><span class="z-l-8 z-d-4">[</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">*</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">]</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    )</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">    #</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> tweak this to see the most efficient size</span></span>
+<span class="giallo-l"><span>    app</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">add_middleware</span><span class="z-l-8 z-d-4">(</span><span>GZipMiddleware</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> minimum_size</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">100</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span>    app</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">add_middleware</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span>        TrustedHostMiddleware</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        allowed_hosts</span><span class="z-l-2 z-d-5">=</span><span class="z-l-8 z-d-4">[</span></span>
+<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">            #</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> Add allowed hosts here, this controls host that the application can be hosted on</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">        ]</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    )</span></span>
+<span class="giallo-l"><span>    app</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">add_middleware</span><span class="z-l-8 z-d-4">(</span><span>BaseHTTPMiddleware</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> dispatch</span><span class="z-l-2 z-d-5">=</span><span>log_request_middleware</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">    #</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> this handles rate limiting protecting the API from abuse or Denial of Service Attacks</span></span>
+<span class="giallo-l"><span>    limiter</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> Limiter</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">key_func</span><span class="z-l-2 z-d-5">=</span><span>get_remote_address</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span>    app</span><span class="z-l-8 z-d-4">.</span><span>state</span><span class="z-l-8 z-d-4">.</span><span>limiter</span><span class="z-l-2 z-d-5"> =</span><span> limiter</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    app</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">include_router</span><span class="z-l-8 z-d-4">(</span><span>api</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span> app</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>app</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> initiate_app</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">@</span><span class="z-l-16 z-l-i z-d-16 z-d-i">app</span><span class="z-l-8 z-d-4">.</span><span class="z-l-16 z-l-i z-d-16 z-d-i">exception_handler</span><span class="z-l-8 z-d-4">(</span><span>HTTPException</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">async</span><span class="z-l-9 z-d-9"> def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> http_exception_handler</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">request</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> Request</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> exc</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> HTTPException</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span class="z-l-3 z-d-2"> JSONResponse</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        status_code</span><span class="z-l-2 z-d-5">=</span><span>exc</span><span class="z-l-8 z-d-4">.</span><span>status_code</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        content</span><span class="z-l-2 z-d-5">=</span><span class="z-l-8 z-d-4">{</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">detail</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> exc</span><span class="z-l-8 z-d-4">.</span><span>detail</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">path</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> request</span><span class="z-l-8 z-d-4">.</span><span>url</span><span class="z-l-8 z-d-4">.</span><span>path</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">timestamp</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> datetime</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">now</span><span class="z-l-8 z-d-4">(</span><span>UTC</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">isoformat</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">        }</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    )</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">@</span><span class="z-l-16 z-l-i z-d-16 z-d-i">app</span><span class="z-l-8 z-d-4">.</span><span class="z-l-16 z-l-i z-d-16 z-d-i">exception_handler</span><span class="z-l-8 z-d-4">(</span><span class="z-l-16 z-l-i z-d-16 z-d-i">Exception</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">async</span><span class="z-l-9 z-d-9"> def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> global_exception_handler</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">request</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> Request</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> exc</span><span class="z-l-8 z-d-4">:</span><span class="z-l-16 z-l-i z-d-16 z-d-i"> Exception</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span>    logger</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">error</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-l-i z-d-7 z-d-i">f</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">Unexpected error: </span><span class="z-l-15 z-d-13">{</span><span class="z-l-9 z-l-i z-d-9 z-d-i">str</span><span class="z-l-8 z-d-4">(</span><span>exc</span><span class="z-l-8 z-d-4">)</span><span class="z-l-15 z-d-13">}</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span class="z-l-3 z-d-2"> JSONResponse</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        status_code</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">500</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        content</span><span class="z-l-2 z-d-5">=</span><span class="z-l-8 z-d-4">{</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">detail</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span class="z-l-5 z-d-7"> &quot;</span><span class="z-l-5 z-d-7">An unexpected error occurred</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-5 z-d-7">            &quot;</span><span class="z-l-5 z-d-7">path</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">:</span><span> request</span><span class="z-l-8 z-d-4">.</span><span>url</span><span class="z-l-8 z-d-4">.</span><span>path</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">        }</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    )</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">@</span><span class="z-l-16 z-l-i z-d-16 z-d-i">app</span><span class="z-l-8 z-d-4">.</span><span class="z-l-16 z-l-i z-d-16 z-d-i">get</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">/</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> tags</span><span class="z-l-2 z-d-5">=</span><span class="z-l-8 z-d-4">[</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">Root</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">]</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">async</span><span class="z-l-9 z-d-9"> def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> root</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">    #</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> this redirects root requests to the docs page</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span class="z-l-3 z-d-2"> RedirectResponse</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">/docs</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span></code></pre><h3 id="settings-py"><code>settings.py</code></h3>
+<p>I have discovered that using Pydantic's <code>BaseSettings</code> model makes handling of environment
+variables easy and clean. Types can be defined for the environment variables and they are
+validated at app startup time, and default values can be provided for optional environment
+variables.</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="python"><span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> app/settings.py</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> pydantic_settings</span><span class="z-l-9 z-d-9"> import</span><span> BaseSettings</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> pydantic</span><span class="z-l-9 z-d-9"> import</span><span> ConfigDict</span><span class="z-l-8 z-d-4">,</span><span> AnyUrl</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">class</span><span class="z-l-13 z-l-i z-d-15 z-d-i"> Settings</span><span class="z-l-8 z-d-4">(</span><span class="z-l-13 z-l-i z-d-15 z-d-i">BaseSettings</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span>    model_config</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> ConfigDict</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">env_file</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">.env</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    example_secret</span><span class="z-l-8 z-d-4">:</span><span class="z-l-9 z-l-i z-d-9 z-d-i"> str</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-5 z-d-7"> &quot;</span><span class="z-l-5 z-d-7">example secret value</span><span class="z-l-5 z-d-7">&quot;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    JWT_SECRET</span><span class="z-l-8 z-d-4">:</span><span class="z-l-9 z-l-i z-d-9 z-d-i"> str</span><span class="z-l-8 z-l-i z-d-4 z-d-i">  #</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> required environment variable</span></span>
+<span class="giallo-l"><span>    JWT_ALGORITHM</span><span class="z-l-8 z-d-4">:</span><span class="z-l-9 z-l-i z-d-9 z-d-i"> str</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-5 z-d-7"> &quot;</span><span class="z-l-5 z-d-7">HS256</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-l-i z-d-4 z-d-i">  #</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> optional environment variable with default value</span></span></code></pre><h3 id="dependencies-py"><code>dependencies.py</code></h3>
+<p>I use this module to group my custom route dependencies. Common dependencies like <code>get_db</code>,
+which is commonly used to get a session to interact with the database, can be declared here.
+Using a dedicated module for dependencies makes code organization better and more modular, since
+usually different routes depend on these dependencies. Testing is also easier since logic can be
+tested in isolation.</p>
+<h3 id="middlewares-py"><code>middlewares.py</code></h3>
+<p>I use this module to group all the custom middlewares I define for my application. The modular
+benefits outlined for a dedicated dependencies module also apply here.</p>
+<h2 id="directories">Directories</h2>
+<h3 id="routers">Routers</h3>
+<p>I find that creating a module for each logical grouping of routes makes development lovely and
+easier — for example, an <code>auth.py</code> module for all routes relating to user authentication and
+profile management, a <code>products.py</code> module for all routes relating to product management, and
+<code>admin.py</code> for all routes related to the admin API.</p>
+<p>I try to keep my route functions to at most 2 lines of code. The route function simply lays out
+the route and defines the dependencies and query parameters needed, while the logic for each
+route function is defined in a service function.</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="python"><span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> app/routers/auth.py</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> typing</span><span class="z-l-9 z-d-9"> import</span><span> Annotated</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> pydantic</span><span class="z-l-9 z-d-9"> import</span><span> EmailStr</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-8 z-d-4">.</span><span>routing</span><span class="z-l-9 z-d-9"> import</span><span> APIRouter</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> sqlalchemy</span><span class="z-l-8 z-d-4">.</span><span>ext</span><span class="z-l-8 z-d-4">.</span><span>asyncio</span><span class="z-l-9 z-d-9"> import</span><span> AsyncSession</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-9 z-d-9"> import</span><span> Depends</span><span class="z-l-8 z-d-4">,</span><span> Body</span><span class="z-l-8 z-d-4">,</span><span> BackgroundTasks</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>dependencies</span><span class="z-l-9 z-d-9"> import</span><span> get_db</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>schemas</span><span class="z-l-9 z-d-9"> import</span><span> auth</span><span class="z-l-9 z-d-9"> as</span><span> auth_schemas</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>services</span><span class="z-l-9 z-d-9"> import</span><span> auth</span><span class="z-l-9 z-d-9"> as</span><span> auth_services</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>router</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> APIRouter</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">prefix</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">/auth</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> tags</span><span class="z-l-2 z-d-5">=</span><span class="z-l-8 z-d-4">[</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">Authentication</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">]</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>EmailBody</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> Annotated</span><span class="z-l-8 z-d-4">[</span><span class="z-l-14 z-l-i z-d-10 z-d-i">EmailStr</span><span class="z-l-8 z-d-4">,</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> Body</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">embed</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-l-i z-d-16 z-d-i">True</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">]</span></span>
+<span class="giallo-l"><span>DBDep</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> Annotated</span><span class="z-l-8 z-d-4">[</span><span class="z-l-14 z-l-i z-d-10 z-d-i">AsyncSession</span><span class="z-l-8 z-d-4">,</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> Depends</span><span class="z-l-8 z-d-4">(</span><span class=" z-l-i z-d-i">get_db</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">@</span><span class="z-l-16 z-l-i z-d-16 z-d-i">router</span><span class="z-l-8 z-d-4">.</span><span class="z-l-16 z-l-i z-d-16 z-d-i">post</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">/signup</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> response_model</span><span class="z-l-2 z-d-5">=</span><span>auth_schemas</span><span class="z-l-8 z-d-4">.</span><span>UserModel</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">async</span><span class="z-l-9 z-d-9"> def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> signup</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">    db</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> DBDep</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">    bg_task</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> BackgroundTasks</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">    request_data</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> auth_schemas</span><span class="z-l-8 z-d-4">.</span><span class="z-l-14 z-d-10">UserSignUpData</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span class="z-l-9 z-d-9"> await</span><span> auth_services</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">signup_user</span><span class="z-l-8 z-d-4">(</span><span>request_data</span><span class="z-l-8 z-d-4">,</span><span> db</span><span class="z-l-8 z-d-4">,</span><span> bg_task</span><span class="z-l-8 z-d-4">)</span></span></code></pre>
+<p>The route function is easy on the eyes: the business logic is handled in the service function,
+while the route focuses on defining the dependencies and requirements in the form of a JSON body
+or query parameters.</p>
+<h3 id="schemas">Schemas</h3>
+<p>All my Pydantic models go into the schema module. Just like the routers directory, the schemas
+directory houses all the schema modules. Usually I match each route module with a corresponding
+schema module and a service module — this way each component of my application is grouped in a
+very logical and predictable way. An example of a schema module is <code>auth.py</code>, shown below.</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="python"><span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> app/schemas/auth.py</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> uuid</span><span class="z-l-9 z-d-9"> import</span><span> UUID</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> datetime</span><span class="z-l-9 z-d-9"> import</span><span> datetime</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> typing</span><span class="z-l-9 z-d-9"> import</span><span> Annotated</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> pydantic</span><span class="z-l-9 z-d-9"> import</span><span> BaseModel</span><span class="z-l-8 z-d-4">,</span><span> EmailStr</span><span class="z-l-8 z-d-4">,</span><span> Field</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">class</span><span class="z-l-13 z-l-i z-d-15 z-d-i"> UserSignUpData</span><span class="z-l-8 z-d-4">(</span><span class="z-l-13 z-l-i z-d-15 z-d-i">BaseModel</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span>    password</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> Annotated</span><span class="z-l-8 z-d-4">[</span><span class="z-l-9 z-l-i z-d-9 z-d-i">str</span><span class="z-l-8 z-d-4">,</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> Field</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">min_length</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-l-i z-d-16 z-d-i">8</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">]</span></span>
+<span class="giallo-l"><span>    email</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> Annotated</span><span class="z-l-8 z-d-4">[</span><span class="z-l-14 z-l-i z-d-10 z-d-i">EmailStr</span><span class="z-l-8 z-d-4">,</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> Field</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">max_length</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-l-i z-d-16 z-d-i">254</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">class</span><span class="z-l-13 z-l-i z-d-15 z-d-i"> UserModel</span><span class="z-l-8 z-d-4">(</span><span class="z-l-13 z-l-i z-d-15 z-d-i">BaseModel</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">    id</span><span class="z-l-8 z-d-4">:</span><span> UUID</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    email</span><span class="z-l-8 z-d-4">:</span><span> EmailStr</span></span>
+<span class="giallo-l"><span>    date_created</span><span class="z-l-8 z-d-4">:</span><span> datetime</span></span>
+<span class="giallo-l"><span>    date_updated</span><span class="z-l-8 z-d-4">:</span><span> datetime</span></span></code></pre><h3 id="services">Services</h3>
+<p>The services directory houses modules with the actual business logic to process the backend
+functionality. This can include API calls to third-party services, functions to make query calls
+to the database, and so on. Separating them this way allows a major separation of concerns
+between the route's API requirements and the actual implementation.</p>
+<p>And just like I do for the routers and schemas directories, I match each module in those
+directories with a corresponding module for the component covered in the services directory.
+Working with the running example for the auth component:</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="python"><span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> app/services/auth.py</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> datetime</span><span class="z-l-9 z-d-9"> import</span><span> timedelta</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-9 z-d-9"> import</span><span> HTTPException</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> passlib</span><span class="z-l-8 z-d-4">.</span><span>context</span><span class="z-l-9 z-d-9"> import</span><span> CryptContext</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> fastapi</span><span class="z-l-8 z-d-4">.</span><span>security</span><span class="z-l-9 z-d-9"> import</span><span> OAuth2PasswordBearer</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> sqlalchemy</span><span class="z-l-9 z-d-9"> import</span><span> select</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> sqlalchemy</span><span class="z-l-8 z-d-4">.</span><span>ext</span><span class="z-l-8 z-d-4">.</span><span>asyncio</span><span class="z-l-9 z-d-9"> import</span><span> AsyncSession</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>settings</span><span class="z-l-9 z-d-9"> import</span><span> Settings</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>models</span><span class="z-l-9 z-d-9"> import</span><span> User</span><span class="z-l-9 z-d-9"> as</span><span> UserDB</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">from</span><span> app</span><span class="z-l-8 z-d-4">.</span><span>schemas</span><span class="z-l-9 z-d-9"> import</span><span> auth</span><span class="z-l-9 z-d-9"> as</span><span> auth_schema</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>settings</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> Settings</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>JWT_SECRET</span><span class="z-l-2 z-d-5"> =</span><span> settings</span><span class="z-l-8 z-d-4">.</span><span>JWT_SECRET</span></span>
+<span class="giallo-l"><span>JWT_ALGORITHM</span><span class="z-l-2 z-d-5"> =</span><span> settings</span><span class="z-l-8 z-d-4">.</span><span>JWT_ALGORITHM</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>ACCESS_TOKEN_LIFESPAN</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> timedelta</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">days</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">2</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span>REFRESH_TOKEN_LIFESPAN</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> timedelta</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">days</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">5</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>pwd_context</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> CryptContext</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">schemes</span><span class="z-l-2 z-d-5">=</span><span class="z-l-8 z-d-4">[</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">bcrypt</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">]</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> deprecated</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">auto</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span>oauth2_scheme</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> OAuth2PasswordBearer</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">tokenUrl</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">v1/auth/token</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> verify_password</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">plain_password</span><span class="z-l-8 z-d-4">:</span><span class="z-l-9 z-l-i z-d-9 z-d-i"> str</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> hashed_password</span><span class="z-l-8 z-d-4">:</span><span class="z-l-9 z-l-i z-d-9 z-d-i"> str</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span> pwd_context</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">verify</span><span class="z-l-8 z-d-4">(</span><span>plain_password</span><span class="z-l-8 z-d-4">,</span><span> hashed_password</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> get_password_hash</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">password</span><span class="z-l-8 z-d-4">:</span><span class="z-l-9 z-l-i z-d-9 z-d-i"> str</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span> pwd_context</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">hash</span><span class="z-l-8 z-d-4">(</span><span>password</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">async</span><span class="z-l-9 z-d-9"> def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> get_user</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">email</span><span class="z-l-8 z-d-4">:</span><span class="z-l-9 z-l-i z-d-9 z-d-i"> str</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> session</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> AsyncSession</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4"> -&gt;</span><span> UserDB</span><span class="z-l-2 z-d-5"> |</span><span class="z-l-16 z-d-16"> None</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span>    stmt</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> select</span><span class="z-l-8 z-d-4">(</span><span>UserDB</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">where</span><span class="z-l-8 z-d-4">(</span><span>UserDB</span><span class="z-l-8 z-d-4">.</span><span>email</span><span class="z-l-2 z-d-5"> ==</span><span> email</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span>    result</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-9 z-d-9"> await</span><span> session</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">execute</span><span class="z-l-8 z-d-4">(</span><span>stmt</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span> result</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">scalar_one_or_none</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">async</span><span class="z-l-9 z-d-9"> def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> create_user</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">    user_data</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> auth_schema</span><span class="z-l-8 z-d-4">.</span><span class="z-l-14 z-d-10">UserSignUpData</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">    session</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> AsyncSession</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span>    result</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-9 z-d-9"> await</span><span> session</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">execute</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-3 z-d-2">        select</span><span class="z-l-8 z-d-4">(</span><span>UserDB</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">where</span><span class="z-l-8 z-d-4">(</span><span>UserDB</span><span class="z-l-8 z-d-4">.</span><span>email</span><span class="z-l-2 z-d-5"> ==</span><span> user_data</span><span class="z-l-8 z-d-4">.</span><span>email</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    )</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    if</span><span> result</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">scalar_one_or_none</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">        raise</span><span class="z-l-3 z-d-2"> HTTPException</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">status_code</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">400</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> detail</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">Email already registered</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    result</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-9 z-d-9"> await</span><span> session</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">execute</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-3 z-d-2">        select</span><span class="z-l-8 z-d-4">(</span><span>UserDB</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">where</span><span class="z-l-8 z-d-4">(</span><span>UserDB</span><span class="z-l-8 z-d-4">.</span><span>email</span><span class="z-l-2 z-d-5"> ==</span><span> user_data</span><span class="z-l-8 z-d-4">.</span><span>email</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    )</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    if</span><span> result</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">scalar_one_or_none</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">        raise</span><span class="z-l-3 z-d-2"> HTTPException</span><span class="z-l-8 z-d-4">(</span><span class="z-l-14 z-l-i z-d-10 z-d-i">status_code</span><span class="z-l-2 z-d-5">=</span><span class="z-l-16 z-d-16">400</span><span class="z-l-8 z-d-4">,</span><span class="z-l-14 z-l-i z-d-10 z-d-i"> detail</span><span class="z-l-2 z-d-5">=</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">Username already used</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    hashed_password</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> get_password_hash</span><span class="z-l-8 z-d-4">(</span><span>user_data</span><span class="z-l-8 z-d-4">.</span><span>password</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span>    new_user</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-3 z-d-2"> UserDB</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        email</span><span class="z-l-2 z-d-5">=</span><span>user_data</span><span class="z-l-8 z-d-4">.</span><span>email</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        password</span><span class="z-l-2 z-d-5">=</span><span>hashed_password</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">        username</span><span class="z-l-2 z-d-5">=</span><span>user_data</span><span class="z-l-8 z-d-4">.</span><span>email</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">    )</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span>    session</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">add</span><span class="z-l-8 z-d-4">(</span><span>new_user</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    await</span><span> session</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">commit</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    await</span><span> session</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">refresh</span><span class="z-l-8 z-d-4">(</span><span>new_user</span><span class="z-l-8 z-d-4">)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span> new_user</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">async</span><span class="z-l-9 z-d-9"> def</span><span class="z-l-3 z-l-i z-d-2 z-d-i"> signup_user</span><span class="z-l-8 z-d-4">(</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">    data</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> auth_schema</span><span class="z-l-8 z-d-4">.</span><span class="z-l-14 z-d-10">UserSignUpData</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-14 z-l-i z-d-10 z-d-i">    session</span><span class="z-l-8 z-d-4">:</span><span class="z-l-14 z-d-10"> AsyncSession</span><span class="z-l-8 z-d-4">,</span></span>
+<span class="giallo-l"><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">:</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">    return</span><span class="z-l-9 z-d-9"> await</span><span class="z-l-3 z-d-2"> create_user</span><span class="z-l-8 z-d-4">(</span><span>data</span><span class="z-l-8 z-d-4">,</span><span> session</span><span class="z-l-8 z-d-4">)</span></span></code></pre><h2 id="the-makefile">The Makefile</h2>
+<p>Outside the core backend Python concerns, I have come to appreciate making use of tools like
+<code>make</code> to simplify invocation of common command line tools — like starting a FastAPI server,
+starting a pytest session, and so on.</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="make"><span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">#</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> Makefile</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">run-local</span><span class="z-l-2 z-d-5">:</span></span>
+<span class="giallo-l"><span>	fastapi dev app/main.p</span><span>y</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">test-local</span><span class="z-l-2 z-d-5">:</span></span>
+<span class="giallo-l"><span>	pytest -s --co</span><span>v</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">coverage-report</span><span class="z-l-2 z-d-5">:</span></span>
+<span class="giallo-l"><span>	coverage repor</span><span>t</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">coverage-html</span><span class="z-l-2 z-d-5">:</span></span>
+<span class="giallo-l"><span>	coverage report &amp;&amp; coverage htm</span><span>l</span></span></code></pre>
+<p>In order to use the <code>make</code> tool you have to have <code>make</code> installed on your computer.</p>
+<p>With this file in place at the root of my project, whenever I want to start my FastAPI server, I
+can do so with the following command:</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="shellscript"><span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">make</span><span class="z-l-5 z-d-7"> run-local</span></span></code></pre>
+<p>Instead of typing out the full command. This contributes to increased productivity when running
+certain command line tools over and over again.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I ignored setup for database connections in this template.</p>
+<p>Maintaining a modular project structure and codebase does more for you down the line than you
+might think. A predictable and reasonable organization of functionality and tools gives beauty to
+a codebase beyond the functionality itself.</p>
+<p>Inasmuch as this pattern has improved my productivity in the past year, I actively seek to learn
+and adopt better and better approaches to constructing and crafting my backend infrastructure.</p>
+
+		</div>
+
+		<div class="post-citation">
+			<div class="citation-head">
+				<div class="citation-title">The Ultimate FastAPI Project Blueprint: Build Scalable, Secure, and Maintainable Systems with Ease</div>
+				<div class="citation-url">https://brianobot.tech/blog/my-favorite-fastapi-project-blueprint/</div>
+			</div>
+
+			<div class="citation-fields">
+				<div class="citation-field">
+					<span>Author</span>
+					<span class="citation-value">Brian Obot</span>
+				</div>
+				<div class="citation-field">
+					<span>Published</span>
+					<span class="citation-value">October 14, 2025</span>
+				</div>
+			</div>
+
+			<div class="citation-actions">
+				<button id="copy-link" class="icon-btn share-btn" type="button"
+				        data-url="https://brianobot.tech/blog/my-favorite-fastapi-project-blueprint/" aria-label="Copy link to this post">
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M10.586 13.414a1 1 0 0 1 0-1.414l4.243-4.243a3 3 0 0 0-4.243-4.243L6.343 7.757a1 1 0 0 1-1.414-1.414l4.243-4.243a5 5 0 0 1 7.071 7.071l-4.243 4.243a1 1 0 0 1-1.414 0m2.828-2.828a1 1 0 0 1 0 1.414l-4.243 4.243a3 3 0 0 0 4.243 4.243l4.243-4.243a1 1 0 0 1 1.414 1.414l-4.243 4.243a5 5 0 0 1-7.071-7.071l4.243-4.243a1 1 0 0 1 1.414 0"/></svg>
+					<span id="copy-link-label">Copy link</span>
+				</button>
+				
+				<a class="icon-btn share-btn" target="_blank" rel="noopener"
+				   href="https://x.com/intent/post?url=https%3A%2F%2Fbrianobot%2Etech%2Fblog%2Fmy%2Dfavorite%2Dfastapi%2Dproject%2Dblueprint%2F&text=The%20Ultimate%20FastAPI%20Project%20Blueprint%3A%20Build%20Scalable%2C%20Secure%2C%20and%20Maintainable%20Systems%20with%20Ease">
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26l8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+					<span>Share on X</span>
+				</a>
+				<a class="icon-btn share-btn" target="_blank" rel="noopener"
+				   href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fbrianobot%2Etech%2Fblog%2Fmy%2Dfavorite%2Dfastapi%2Dproject%2Dblueprint%2F">
+					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1M8 10a1 1 0 0 1 .993.883L9 11v5a1 1 0 0 1-1.993.117L7 16v-5a1 1 0 0 1 1-1m3-1a1 1 0 0 1 .984.821 5.82 5.82 0 0 1 .623-.313c.667-.285 1.666-.442 2.568-.159.473.15.948.43 1.3.907.315.425.485.942.519 1.523L17 12v4a1 1 0 0 1-1.993.117L15 16v-4c0-.33-.08-.484-.132-.555a.548.548 0 0 0-.293-.188c-.348-.11-.849-.052-1.182.09-.5.214-.958.55-1.27.861L12 12.34V16a1 1 0 0 1-1.993.117L10 16v-6a1 1 0 0 1 1-1M8 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg>
+					<span>Share on LinkedIn</span>
+				</a>
+			</div>
+		</div>
+
+		
+		
+			<aside class="post-feedback" aria-labelledby="feedback-title">
+				<h2 id="feedback-title" class="feedback-title">Thoughts on this post?</h2>
+				<p class="feedback-text">Found a mistake, have a question, or just want to say hi? I'd like to hear it.</p>
+				<div class="socials">
+					
+						
+							<a href="https://github.com/brianobot" target="_blank" rel="noopener">
+						
+							
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+	
+		<path d="M6.315 6.176c-.25-.638-.24-1.367-.129-2.034a6.8 6.8 0 0 1 2.12 1.07c.28.214.647.283.989.18A9.3 9.3 0 0 1 12 5c.961 0 1.874.14 2.703.391c.342.104.709.034.988-.18a6.8 6.8 0 0 1 2.119-1.07c.111.667.12 1.396-.128 2.033c-.15.384-.075.826.208 1.14C18.614 8.117 19 9.04 19 10c0 2.114-1.97 4.187-5.134 4.818c-.792.158-1.101 1.155-.495 1.726c.389.366.629.882.629 1.456v3a1 1 0 0 0 2 0v-3c0-.57-.12-1.112-.334-1.603C18.683 15.35 21 12.993 21 10c0-1.347-.484-2.585-1.287-3.622c.21-.82.191-1.646.111-2.28c-.071-.568-.17-1.312-.57-1.756c-.595-.659-1.58-.271-2.28-.032a9 9 0 0 0-2.125 1.045A11.4 11.4 0 0 0 12 3c-.994 0-1.953.125-2.851.356a9 9 0 0 0-2.125-1.045c-.7-.24-1.686-.628-2.281.031c-.408.452-.493 1.137-.566 1.719l-.005.038c-.08.635-.098 1.462.112 2.283C3.484 7.418 3 8.654 3 10c0 2.992 2.317 5.35 5.334 6.397A4 4 0 0 0 8 17.98l-.168.034c-.717.099-1.176.01-1.488-.122c-.76-.322-1.152-1.133-1.63-1.753c-.298-.385-.732-.866-1.398-1.088a1 1 0 0 0-.632 1.898c.558.186.944 1.142 1.298 1.566c.373.448.869.916 1.58 1.218c.682.29 1.483.393 2.438.276V21a1 1 0 0 0 2 0v-3c0-.574.24-1.09.629-1.456c.607-.572.297-1.568-.495-1.726C6.969 14.187 5 12.114 5 10c0-.958.385-1.881 1.108-2.684c.283-.314.357-.756.207-1.14"/>
+	
+</svg>
+
+							<span>GitHub</span>
+						</a>
+					
+						
+							<a href="https://www.linkedin.com/in/brian-obot/" target="_blank" rel="noopener">
+						
+							
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+	
+		<path d="M18 3a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3zm0 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1M8 10a1 1 0 0 1 .993.883L9 11v5a1 1 0 0 1-1.993.117L7 16v-5a1 1 0 0 1 1-1m3-1a1 1 0 0 1 .984.821 5.82 5.82 0 0 1 .623-.313c.667-.285 1.666-.442 2.568-.159.473.15.948.43 1.3.907.315.425.485.942.519 1.523L17 12v4a1 1 0 0 1-1.993.117L15 16v-4c0-.33-.08-.484-.132-.555a.548.548 0 0 0-.293-.188c-.348-.11-.849-.052-1.182.09-.5.214-.958.55-1.27.861L12 12.34V16a1 1 0 0 1-1.993.117L10 16v-6a1 1 0 0 1 1-1M8 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+	
+</svg>
+
+							<span>LinkedIn</span>
+						</a>
+					
+						
+							<a href="https://x.com/i_am_brian_obot" target="_blank" rel="noopener">
+						
+							
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+	
+		<path d="M18.244 2.25h3.308l-7.227 8.26l8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+	
+</svg>
+
+							<span>Twitter</span>
+						</a>
+					
+						
+							
+							<a href="mailto:brianobot9@gmail.com?subject=Feedback%3A%20The%20Ultimate%20FastAPI%20Project%20Blueprint%3A%20Build%20Scalable%2C%20Secure%2C%20and%20Maintainable%20Systems%20with%20Ease">
+						
+							
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+	
+		<path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v.511l8 5.333l8-5.333V6H4m0 12h16V8.915l-7.445 4.963a1 1 0 0 1-1.11 0L4 8.915V18"/>
+	
+</svg>
+
+							<span>Email</span>
+						</a>
+					
+				</div>
+			</aside>
+		
+	</article>
+</div>
+
+		</main>
+
+		<footer class="footer">
+			<div class="footer-inner">
+				<div class="footer-meta">
+					<span>&copy; 2026 Brian Obot</span>
+					<span>
+						Powered by
+						<a href="https://www.getzola.org" target="_blank" rel="noopener">Zola</a>
+					</span>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+	<button id="to-top-btn" class="to-top" type="button" data-show="false" aria-label="Back to top">
+		<span class="to-top-percent" aria-hidden="true"><span id="to-top-value">0</span><span class="unit">%</span></span>
+		<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M11.293 8.293a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414L12 10.414l-4.95 4.95a1 1 0 0 1-1.414-1.414z"/></svg>
+	</button>
+
+
+	<script>
+		// Floating header gains its border + background once you leave the top
+		const header = document.getElementById('siteHeader')
+		const onScroll = () => header.classList.toggle('not-top', window.scrollY > 0)
+		onScroll()
+		window.addEventListener('scroll', onScroll, { passive: true })
+
+		// Mobile nav
+		document.getElementById('toggleMenu').addEventListener('click', () => {
+			header.classList.toggle('expanded')
+		})
+
+		// Theme cycles system -> light -> dark
+		const darkBtn = document.getElementById('toggleDarkMode')
+		const syntaxLight = document.getElementById('syntax-light')
+		const syntaxDark = document.getElementById('syntax-dark')
+		const order = ['system', 'light', 'dark']
+		const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+		const apply = (theme) => {
+			const dark = theme === 'dark' || (theme === 'system' && media.matches)
+			document.documentElement.classList.toggle('dark', dark)
+			syntaxLight.disabled = dark
+			syntaxDark.disabled = !dark
+			darkBtn.dataset.theme = theme
+		}
+
+		apply(localStorage.getItem('theme') || 'system')
+
+		darkBtn.addEventListener('click', () => {
+			const next = order[(order.indexOf(darkBtn.dataset.theme) + 1) % order.length]
+			localStorage.setItem('theme', next)
+			apply(next)
+		})
+
+		media.addEventListener('change', () => {
+			if (darkBtn.dataset.theme === 'system') apply('system')
+		})
+	</script>
+	<script>
+		// Reading progress; on hover it becomes a back-to-top button.
+		(function () {
+			const btn = document.getElementById('to-top-btn')
+			const value = document.getElementById('to-top-value')
+			const article = document.getElementById('content')
+			const header = document.getElementById('content-header')
+
+			btn.addEventListener('click', () => {
+				document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+			})
+
+			// reveal once the page heading has scrolled out of view
+			if (header && 'IntersectionObserver' in window) {
+				new IntersectionObserver((entries) => {
+					entries.forEach((e) => { btn.dataset.show = String(!e.isIntersecting) })
+				}).observe(header)
+			} else {
+				const reveal = () => { btn.dataset.show = String(window.scrollY > 240) }
+				reveal()
+				window.addEventListener('scroll', reveal, { passive: true })
+			}
+
+			// percentage read: through the article body where there is one,
+			// otherwise through the whole document
+			const update = () => {
+				const doc = document.documentElement
+				const start = article ? article.offsetTop : 0
+				const height = article ? article.offsetHeight : doc.scrollHeight
+				const end = start + height - window.innerHeight
+				if (end <= start) { btn.classList.add('ended'); return }
+				const pct = Math.round(((window.scrollY - start) / (end - start)) * 100)
+				const clamped = Math.min(100, Math.max(0, pct))
+				value.textContent = String(clamped)
+				btn.classList.toggle('ended', clamped >= 100)
+			}
+
+			update()
+			window.addEventListener('scroll', update, { passive: true })
+			window.addEventListener('resize', update)
+		})()
+	</script>
+
+	
+<script>
+	// highlight the table-of-contents entry for whatever heading is on screen
+	const links = Array.from(document.querySelectorAll('.toc-item'))
+	const headings = links
+		.map((el) => document.getElementById(decodeURIComponent(el.hash.slice(1))))
+		.filter(Boolean)
+
+	if (headings.length) {
+		const sync = () => {
+			const cutoff = window.scrollY + window.innerHeight * 0.25
+			let active = 0
+			headings.forEach((h, i) => { if (h.offsetTop <= cutoff) active = i })
+			links.forEach((el, i) => el.classList.toggle('active', i === active))
+		}
+		sync()
+		window.addEventListener('scroll', sync, { passive: true })
+		window.addEventListener('resize', sync)
+
+		links.forEach((el, i) => {
+			el.addEventListener('click', (e) => {
+				e.preventDefault()
+				history.pushState(null, '', el.hash)
+				headings[i].scrollIntoView({ behavior: 'smooth' })
+			})
+		})
+	}
+</script>
+
+<script>
+	const copyBtn = document.getElementById('copy-link')
+	const copyLabel = document.getElementById('copy-link-label')
+	copyBtn.addEventListener('click', async () => {
+		try {
+			await navigator.clipboard.writeText(copyBtn.dataset.url)
+			copyLabel.textContent = 'Copied'
+		} catch {
+			copyLabel.textContent = 'Press Ctrl+C'
+		}
+		setTimeout(() => { copyLabel.textContent = 'Copy link' }, 2000)
+	})
+</script>
+
+</body>
+</html>
