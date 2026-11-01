@@ -1,5 +1,5 @@
 +++
-title = "The Ultimate FastAPI Project Blueprint: Build Scalable, Secure, and Maintainable Systems with Ease"
+title = "My FastAPI Project Blueprint"
 date = 2025-10-14
 description = "The FastAPI project structure I reach for on every new project — lessons learnt from working on large codebases."
 draft = false
