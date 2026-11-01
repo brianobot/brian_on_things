@@ -27,14 +27,14 @@ The hard part came after. From the start, I found the central hall confusing to 
 
 ## The Sessions
 
-The sessions are where Moonshot's tech focus really showed. Three themes ran through the day for me: AI, the future of money, and building companies that last.
+The sessions are where Moonshot's tech focus really showed. This year's theme was "Courage & Conviction: Building for a New World," and three threads ran through the day for me: AI, the future of money, and building companies that last.
 
 With talks running on several stages at once, I couldn't be everywhere, so I followed the topics closest to what I care about.
 
-- **The State of AI in Nigeria:** [one line on what stood out to you]
-- **Stablecoins & Monetary Sovereignty:** [one line on what stood out to you]
-- **Forty Years A Tech Bro: What It Takes To Build Something That Lasts:** [one line on what stood out to you]
-- **Building Africa's Workforce for the Global Economy:** [one line on what stood out to you, ideally tied to why you moved to Lagos]
+- **The State of AI in Nigeria:** A panel on where Nigeria actually stands with AI, moderated by Dr. Olubayo Adekanmbi on the Big Tech and Enterprise Stage. It made me see AI as a data and infrastructure problem as much as a model problem. Without good local data, reliable compute, and trained people, the technology stays a demo. As someone with a data engineering background, that was the part of the stack I felt closest to.
+- **Stablecoins & Monetary Sovereignty:** Seun Lanlege's talk on the Future of Money Stage asked how stablecoins fit into a country's control over its own money. It changed how I think about payment rails. The technology can move value in seconds, but the harder questions are trust, regulation, and who gets to set the rules.
+- **Forty Years A Tech Bro: What It Takes To Build Something That Lasts:** Sir Demola Aladekomo, in conversation with Fu'ad Lawal, spoke about building across decades instead of funding cycles. It was a useful counterweight to the speed-obsessed side of tech: lasting companies are built on patience and fundamentals more than hype.
+- **Building Africa's Workforce for the Global Economy:** Joel Ogunsola's talk on the Workshop Stage was about preparing African talent to compete globally. It spoke directly to why I moved to Lagos. Opportunity tends to find people who put themselves in the room, and skills count for more when the right people can see them.
 
 Hearing these ideas in one place made the ecosystem feel far more real than reading about it online ever had.
 
@@ -50,12 +50,13 @@ I also spoke with [Liners](https://liners.com/), a software company that offers 
 
 Networking was the reason I moved, so I made a point of talking to people from different corners of tech. These are some of the new friends I made:
 
-- [ID Inyang](https://x.com/id_inyang_) is a software engineer who builds practical applications for real-world problems. He specializes in backend development and system design, with a focus on software that is scalable, reliable, and efficient. [what you talked about]
-- [Brian Ibekwe](https://www.linkedin.com/in/brian-ibekwe) is a product manager at [ReadPulse](https://readpulse.app), where he works on building, improving, and growing the platform. [what you talked about]
-- [Emmanuel Obiabo](https://x.com/obiabo_immanuel) works mostly with TypeScript and Rust, contributes to open source, and writes about whatever catches his interest. Much of his open-source work has been on blockchain projects in the Stellar ecosystem, and he is a long-time Linux user. You can read more about him [here](https://www.obiabo.dev/about). [what you talked about]
-- [Marilyn](https://marilynedem.framer.website/) is a UI/UX designer. Her portfolio includes TideReader, an AI-powered adaptive reading platform, Delve, a gamified language-learning platform, and Bubblr, a safe social media app for kids. [what you talked about]
-- [Mauteen](https://x.com/The_mauteen) is a product design engineer who works where design meets engineering. [what you talked about]
-- [Eric](https://github.com/Ealfred1) is a creative software developer who builds mobile apps, backend systems, and web platforms end to end. [what you talked about]
+- [ID Inyang](https://x.com/id_inyang_) is a software engineer who builds practical applications for real-world problems. He specializes in backend development and system design, with a focus on software that is scalable, reliable, and efficient. Backend and system design is where I want to go deeper, so he's someone I plan to keep learning from.
+- [Brian Ibekwe](https://www.linkedin.com/in/brian-ibekwe) is a product manager at [ReadPulse](https://readpulse.app), where he works on building, improving, and growing the platform. Talking to someone who thinks in terms of users and growth gave me a useful contrast to my own more technical view of products.
+- [Emmanuel Obiabo](https://x.com/obiabo_immanuel) works mostly with TypeScript and Rust, contributes to open source, and writes about whatever catches his interest. Much of his open-source work has been on blockchain projects in the Stellar ecosystem, and he is a long-time Linux user. You can read more about him [here](https://www.obiabo.dev/about). His path through open source is one I'm curious to follow.
+- [Marilyn](https://marilynedem.framer.website/) is a UI/UX designer. Her portfolio includes TideReader, an AI-powered adaptive reading platform, Delve, a gamified language-learning platform, and Bubblr, a safe social media app for kids. Her case studies are a reminder that products live or die on design, and I'd love to work on something where engineering and design are in the same room.
+- [Mauteen](https://x.com/The_mauteen) is a product design engineer who works where design meets engineering. That overlap is exactly what I want to understand better, so I'm glad we connected.
+- [Eric](https://github.com/Ealfred1) is a creative software developer who builds mobile apps, backend systems, and web platforms end to end. He's a fellow builder, and the kind of person I'd happily build with.
+- [Mary Adejumo](https://maryadejumo.tiiny.site/): A product manager at Rex Microfinance Bank, where she owns the mobile app and website of the digital bank. She also built FindRyd, an AI-powered navigation app that gives delivery riders directions in landmarks instead of metres, taking it from 85 rider interviews to a tested prototype. A member of the Best Product Discovery Team in the 2026 PLA APM Fellowship, she writes things down until a team can build from them and tests the riskiest assumption first, which is a habit I want to pick up.
 
 ## What I Wish I Had Done Differently
 
@@ -78,4 +79,3 @@ I arrived early and still got lost in the halls. With sessions running on severa
 ## Final Thoughts
 
 I moved to Lagos for moments like this one. Moonshot gave me sessions that sharpened my thinking, a floor full of companies to talk to, and a handful of people I'm glad to know. Next time, I'll show up with a card, an outfit that speaks for me, and a plan for the day.
-
