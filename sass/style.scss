@@ -1115,3 +1115,63 @@ main { width: 100%; }
 
 .pill-link:hover .arrow-back .arrow-line { transform: translateX(0) scaleX(1); }
 .pill-link:hover .arrow-back .arrow-head { transform: translateX(0); }
+
+/* --- 404 page ------------------------------------------------------------ */
+.not-found {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	max-width: 40rem;
+	margin: 3rem auto 0;
+}
+
+.nf-code {
+	margin: 0;
+	font-size: clamp(5rem, 22vw, 9rem);
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: -0.04em;
+	/* fades from the accent colour into the page, so it reads as decoration not a heading */
+	background: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.15) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	user-select: none;
+}
+
+.nf-text h1 { margin: 0 0 0.5rem; font-size: 1.5rem; }
+.nf-text p { margin: 0; }
+
+#nf-path {
+	padding: 0.125rem 0.375rem;
+	border-radius: var(--radius-md);
+	background-color: hsl(var(--muted));
+	color: hsl(var(--foreground));
+	font-size: 0.875em;
+	overflow-wrap: anywhere;
+}
+
+.nf-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+/* .pill-link defaults to align-self: flex-end for the home page; sit in a row here */
+.nf-actions .pill-link { align-self: auto; }
+
+.nf-recent {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-top: 1rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid hsl(var(--border));
+}
+
+.nf-recent-title {
+	margin: 0;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: hsl(var(--muted-foreground));
+}

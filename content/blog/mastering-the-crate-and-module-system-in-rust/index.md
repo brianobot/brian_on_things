@@ -1,5 +1,5 @@
 +++
-title = "Mastering the Crate and Module System in the Rust"
+title = "Mastering the Crate and Module System in Rust"
 date = 2026-01-30
 description = "Building scalable foundations: a deep dive into information hierarchy, visibility, and crate management."
 draft = false

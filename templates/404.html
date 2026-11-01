@@ -1,0 +1,62 @@
+{% extends "_base.html" %}
+
+{% block title %}Page not found • {{ config.title }}{% endblock title %}
+
+{# a 404 should never be indexed, whatever URL it was served under #}
+{% block head %}<meta name="robots" content="noindex">{% endblock head %}
+
+{% block main %}
+<div class="not-found">
+	<p class="nf-code" aria-hidden="true">404</p>
+
+	<div class="nf-text">
+		<h1>This page went out of scope.</h1>
+		<p class="muted">
+			Nothing lives at <code id="nf-path">this address</code>. It may have been moved or renamed,
+			or the link has a typo.
+		</p>
+	</div>
+
+	<div class="nf-actions">
+		<a class="pill-link" href="{{ get_url(path='/') }}">{% include "_arrow_back.html" %}<span>Home</span></a>
+		<a id="nf-search" class="pill-link" href="{{ get_url(path='/search') }}"><span>Search the blog</span>{% include "_arrow.html" %}</a>
+		<a class="pill-link" href="{{ get_url(path='/blog') }}"><span>All posts</span>{% include "_arrow.html" %}</a>
+	</div>
+
+	{% set blog = get_section(path="blog/_index.md") %}
+	{% if blog.pages %}
+	<section class="nf-recent" aria-labelledby="nf-recent-title">
+		<h2 id="nf-recent-title" class="nf-recent-title">Maybe you were looking for one of these</h2>
+		<ul class="post-list">
+			{% for post in blog.pages %}
+			{% if loop.index <= 3 %}
+				<li class="post-preview">
+					<a href="{{ post.permalink | safe }}">
+						<time class="post-date" datetime="{{ post.date }}">{{ post.date | date(format="%b %-d, %Y") }}</time>
+						<span class="post-title"><span>{{ post.title }}</span>{% include "_arrow.html" %}</span>
+					</a>
+				</li>
+			{% endif %}
+			{% endfor %}
+		</ul>
+	</section>
+	{% endif %}
+</div>
+{% endblock main %}
+
+{% block scripts %}
+<script>
+	// Show the missing path, and turn its last segment into a search:
+	// /blog/rust-module-system/ -> "Search for “rust module system”"
+	const path = decodeURIComponent(window.location.pathname)
+	document.getElementById('nf-path').textContent = path
+
+	const slug = path.split('/').filter(Boolean).pop() || ''
+	const words = slug.replace(/\.html?$/, '').replace(/[-_]+/g, ' ').trim()
+	if (words && words !== '404') {
+		const link = document.getElementById('nf-search')
+		link.href += '?q=' + encodeURIComponent(words)
+		link.querySelector('span').textContent = 'Search for “' + words + '”'
+	}
+</script>
+{% endblock scripts %}
