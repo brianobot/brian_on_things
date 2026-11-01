@@ -8,6 +8,11 @@ base_url = "https://brianobot.tech"
 description = "Notes on backends, low-level software and the internals of the tools I use, by Brian Obot."
 author = "Brian Obot"
 
+# Site-wide feed at /atom.xml with the full text of every post (drafts excluded).
+# Atom over RSS 2.0: every feed reader supports it and it carries full HTML cleanly.
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 

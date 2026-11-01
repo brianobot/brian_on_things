@@ -125,6 +125,9 @@
 	</script>
 	{% endif %}
 
+	{# lets feed readers find the feed from any page's URL #}
+	<link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
@@ -223,6 +226,7 @@
 			<div class="footer-inner">
 				<div class="footer-meta">
 					<span>&copy; {{ now() | date(format='%Y') }} {{ config.extra.author | default(value='Brian Obot') }}</span>
+					<a href="{{ get_url(path='atom.xml', trailing_slash=false) }}">RSS feed</a>
 					<span>
 						Powered by
 						<a href="https://www.getzola.org" target="_blank" rel="noopener">Zola</a>

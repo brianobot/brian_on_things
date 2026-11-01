@@ -78,4 +78,4 @@ I arrived early and still got lost in the halls. With sessions running on severa
 
 ## Final Thoughts
 
-I moved to Lagos for moments like this one. Moonshot gave me sessions that sharpened my thinking, a floor full of companies to talk to, and a handful of people I'm glad to know. Next time, I'll show up with a card, an outfit that speaks for me, and a plan for the day.
+I moved to Lagos for moments like this one. Moonshot gave me sessions that sharpened my thinking, a floor full of companies to talk to, and a handful of people I'm glad to know. Next time, I'll show up with a card, an outfit that speaks for me, and a plan for the day. If you were at Moonshot, I'd love to hear what you'd do differently. And if this post was useful, share it with someone heading to their first tech event.
