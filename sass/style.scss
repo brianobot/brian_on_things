@@ -977,16 +977,24 @@ main { width: 100%; }
 .citation-field { display: flex; gap: 0.5rem; }
 .citation-value { color: hsl(var(--foreground)); }
 
-#copy-link {
+.citation-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+/* copy link + share-on-X/LinkedIn pills */
+.share-btn {
 	gap: 0.375rem;
 	padding: 0.25rem 0.625rem;
 	font: inherit;
 	font-size: 0.8125rem;
 	color: hsl(var(--muted-foreground));
+	text-decoration: none;
 	border-radius: var(--radius-xl);
 }
 
-#copy-link svg { width: 0.875rem; height: 0.875rem; }
+.share-btn svg { width: 0.875rem; height: 0.875rem; }
 
 /* --- reader feedback card ----------------------------------------------- */
 .post-feedback {
