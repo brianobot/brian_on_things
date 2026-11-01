@@ -29,6 +29,8 @@ dark_theme = "catppuccin-mocha"
 [extra]
 # ---- Social preview ----------------------------------------------------
 og_locale = "en_US"
+# Social/Google image for any page without its own [extra].og_image (lives in static/)
+og_image = "og-default.jpg"
 
 # ---- Homepage identity -------------------------------------------------
 # These drive the homepage identity block.

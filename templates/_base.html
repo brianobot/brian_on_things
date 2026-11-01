@@ -33,6 +33,8 @@
 	<meta name="description" content="{{ meta_desc }}">
 	<meta name="author" content="{{ config.author }}">
 	{% if current_url %}<link rel="canonical" href="{{ current_url }}">{% endif %}
+	{# `noindex = true` under a page's [extra] keeps it out of Google (and out of sitemap.xml) #}
+	{% if page and page.extra.noindex %}<meta name="robots" content="noindex">{% endif %}
 	<meta name="theme-color" content="#fbfcfd" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#0b0b12" media="(prefers-color-scheme: dark)">
 
@@ -92,6 +94,36 @@
 		<meta name="twitter:data1" content="{{ page.reading_time }} min read">
 	{% endif %}
 
+
+	{# ---- Structured data: tells Google the headline, author, dates and image of a post ---- #}
+	{% if meta_type == "article" %}
+	{% set_global ld_published = page.date | date(format='%Y-%m-%dT%H:%M:%S%:z') %}
+	{% set_global ld_modified = ld_published %}
+	{% if page.updated %}{% set_global ld_modified = page.updated | date(format='%Y-%m-%dT%H:%M:%S%:z') %}{% endif %}
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": {{ page.title | json_encode | safe }},
+		"description": {{ meta_desc | json_encode | safe }},
+		"url": {{ page.permalink | json_encode | safe }},
+		"mainEntityOfPage": {{ page.permalink | json_encode | safe }},
+		"datePublished": {{ ld_published | json_encode | safe }},
+		"dateModified": {{ ld_modified | json_encode | safe }},
+		{% if meta_image %}"image": {{ meta_image | json_encode | safe }},{% endif %}
+		"author": {
+			"@type": "Person",
+			"name": {{ config.author | json_encode | safe }},
+			"url": {{ config.base_url | json_encode | safe }}
+		},
+		"publisher": {
+			"@type": "Person",
+			"name": {{ config.author | json_encode | safe }},
+			"url": {{ config.base_url | json_encode | safe }}
+		}
+	}
+	</script>
+	{% endif %}
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

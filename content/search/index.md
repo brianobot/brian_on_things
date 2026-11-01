@@ -5,4 +5,5 @@ template = "search.html"
 
 [extra]
 toc = false
+noindex = true
 +++
