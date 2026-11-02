@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
 
-	<title>Introduction to Bytes in Rust • Brian on Things</title>
+	<title>Introduction to Bytes in Rust. Part 1 • Brian on Things</title>
 
 	
 	
@@ -20,7 +20,7 @@
 		
 	
 
-	<meta name="description" content="Getting a good understanding of how bytes work in Rust">
+	<meta name="description" content="A beginner-friendly tour of bits, bytes and hexadecimal, and how Rust represents them.">
 	<meta name="author" content="Brian Obot">
 	<link rel="canonical" href="https://brianobot.tech/blog/working-with-bytes-in-rust/">
 	
@@ -31,13 +31,13 @@
 	
 	<meta property="og:type" content="article">
 	<meta property="og:site_name" content="Brian on Things">
-	<meta property="og:title" content="Introduction to Bytes in Rust">
+	<meta property="og:title" content="Introduction to Bytes in Rust. Part 1">
 	
 	
 	
 		
 	
-	<meta property="og:description" content="2 min read · Getting a good understanding of how bytes work in Rust">
+	<meta property="og:description" content="5 min read · A beginner-friendly tour of bits, bytes and hexadecimal, and how Rust represents them.">
 	<meta property="og:url" content="https://brianobot.tech/blog/working-with-bytes-in-rust/">
 	<meta property="og:locale" content="en_US">
 
@@ -62,15 +62,15 @@
 
 	
 		<meta property="og:image" content="https://brianobot.tech/blog/working-with-bytes-in-rust/cover.jpg">
-		<meta property="og:image:alt" content="Introduction to Bytes in Rust">
+		<meta property="og:image:alt" content="Introduction to Bytes in Rust. Part 1">
 		<meta name="twitter:image" content="https://brianobot.tech/blog/working-with-bytes-in-rust/cover.jpg">
 		<meta name="twitter:card" content="summary_large_image">
 	
-	<meta name="twitter:title" content="Introduction to Bytes in Rust">
-	<meta name="twitter:description" content="2 min read · Getting a good understanding of how bytes work in Rust">
+	<meta name="twitter:title" content="Introduction to Bytes in Rust. Part 1">
+	<meta name="twitter:description" content="5 min read · A beginner-friendly tour of bits, bytes and hexadecimal, and how Rust represents them.">
 	
 		<meta name="twitter:label1" content="Reading time">
-		<meta name="twitter:data1" content="2 min read">
+		<meta name="twitter:data1" content="5 min read">
 	
 
 
@@ -83,8 +83,8 @@
 	{
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
-		"headline": "Introduction to Bytes in Rust",
-		"description": "Getting a good understanding of how bytes work in Rust",
+		"headline": "Introduction to Bytes in Rust. Part 1",
+		"description": "A beginner-friendly tour of bits, bytes and hexadecimal, and how Rust represents them.",
 		"url": "https://brianobot.tech/blog/working-with-bytes-in-rust/",
 		"mainEntityOfPage": "https://brianobot.tech/blog/working-with-bytes-in-rust/",
 		"datePublished": "2026-11-02T00:00:00+00:00",
@@ -209,7 +209,7 @@
 			<li>
 				<div class="toc-row">
 					<span class="toc-bar"></span>
-					<a class="toc-item" href="#why-you-have-probably-not-had-to-worry-about-bytes" aria-label="Scroll to section: Why you have probably not had to worry about bytes">Why you have probably not had to worry about bytes</a>
+					<a class="toc-item" href="#why-you-have-probably-never-had-to-think-about-bytes" aria-label="Scroll to section: Why you have probably never had to think about bytes">Why you have probably never had to think about bytes</a>
 				</div>
 				
 			</li>
@@ -217,8 +217,67 @@
 			<li>
 				<div class="toc-row">
 					<span class="toc-bar"></span>
-					<a class="toc-item" href="#introducing-bits-bytes-and-other-shenanigans-in-that-gang" aria-label="Scroll to section: Introducing Bits, bytes and other shenanigans in that gang">Introducing Bits, bytes and other shenanigans in that gang</a>
+					<a class="toc-item" href="#bits-bytes-and-the-rest-of-the-gang" aria-label="Scroll to section: Bits, bytes and the rest of the gang">Bits, bytes and the rest of the gang</a>
 				</div>
+				
+					<ul class="toc-sub">
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#bytes" aria-label="Scroll to section: Bytes">Bytes</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#hexadecimal" aria-label="Scroll to section: Hexadecimal">Hexadecimal</a>
+								</div>
+							</li>
+						
+					</ul>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#why-would-anyone-leave-decimal-for-binary" aria-label="Scroll to section: Why would anyone leave decimal for binary?">Why would anyone leave decimal for binary?</a>
+				</div>
+				
+			</li>
+		
+			<li>
+				<div class="toc-row">
+					<span class="toc-bar"></span>
+					<a class="toc-item" href="#bringing-it-down-to-rust" aria-label="Scroll to section: Bringing it down to Rust">Bringing it down to Rust</a>
+				</div>
+				
+					<ul class="toc-sub">
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#collections-of-bytes" aria-label="Scroll to section: Collections of bytes">Collections of bytes</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#strings-are-bytes-too" aria-label="Scroll to section: Strings are bytes too">Strings are bytes too</a>
+								</div>
+							</li>
+						
+							<li>
+								<div class="toc-row">
+									<span class="toc-bar"></span>
+									<a class="toc-item" href="#what-s-next" aria-label="Scroll to section: What&#39;s next">What&#39;s next</a>
+								</div>
+							</li>
+						
+					</ul>
 				
 			</li>
 		
@@ -237,16 +296,16 @@
 
 					<span class="meta-item">
 						<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 1 0 20a10 10 0 0 1 0-20m0 2a8 8 0 1 0 0 16a8 8 0 0 0 0-16m0 2a1 1 0 0 1 1 1v4.586l2.707 2.707a1 1 0 0 1-1.414 1.414l-3-3A1 1 0 0 1 11 12V7a1 1 0 0 1 1-1"/></svg>
-						2 min read
+						5 min read
 					</span>
 
 					
 				</div>
 
-				<h1>Introduction to Bytes in Rust</h1>
+				<h1>Introduction to Bytes in Rust. Part 1</h1>
 
 				
-					<blockquote class="post-description"><q>Getting a good understanding of how bytes work in Rust</q></blockquote>
+					<blockquote class="post-description"><q>A beginner-friendly tour of bits, bytes and hexadecimal, and how Rust represents them.</q></blockquote>
 				
 			</div>
 
@@ -254,10 +313,9 @@
 		</div>
 
 		<div id="content" class="prose">
-			<h2 id="why-you-have-probably-not-had-to-worry-about-bytes">Why you have probably not had to worry about bytes</h2>
-<p>As a backend developer, most of my work sits at a high level of abstraction, I implement handlers that take in Structs of Strings,
-Vectors and some Custom Enums and return Struct or other data types that implement a particular trait</p>
-<p>below is a sample of a handler code from an axum project</p>
+			<h2 id="why-you-have-probably-never-had-to-think-about-bytes">Why you have probably never had to think about bytes</h2>
+<p>As a backend developer, most of my work sits at a high level of abstraction. I write handlers that take in structs, strings, vectors and the occasional custom enum, and return types that implement a particular trait.</p>
+<p>Here is a handler from an Axum project:</p>
 <pre class="giallo z-l-code z-d-code" ><code data-lang="rust"><span class="giallo-l"><span class="z-l-13 z-l-i z-d-15 z-d-i">#</span><span class="z-l-8 z-d-4">[</span><span class="z-l-13 z-l-i z-d-15 z-d-i">derive</span><span class="z-l-8 z-d-4">(</span><span class="z-l-13 z-l-i z-d-15 z-d-i">Serialize</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">]</span></span>
 <span class="giallo-l"><span class="z-l-9 z-d-9">struct</span><span class="z-l-13 z-l-i z-d-15 z-d-i"> Message</span><span class="z-l-8 z-d-4"> {</span></span>
 <span class="giallo-l"><span>    message</span><span class="z-l-2 z-d-5">:</span><span class="z-l-13 z-l-i z-d-15 z-d-i"> String</span><span class="z-l-8 z-d-4">,</span></span>
@@ -267,32 +325,83 @@ Vectors and some Custom Enums and return Struct or other data types that impleme
 <span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">    Json</span><span class="z-l-8 z-d-4">(</span><span class="z-l-13 z-l-i z-d-15 z-d-i">Message</span><span class="z-l-8 z-d-4"> {</span></span>
 <span class="giallo-l"><span>        message</span><span class="z-l-2 z-d-5">:</span><span class="z-l-13 z-d-15"> String</span><span class="z-l-2 z-d-5">::</span><span class="z-l-3 z-l-i z-d-2 z-d-i">from</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">Hello World!</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">,</span></span>
 <span class="giallo-l"><span class="z-l-8 z-d-4">    }</span><span class="z-l-8 z-d-4">)</span></span>
-<span class="giallo-l"><span class="z-l-8 z-d-4">}</span></span>
-<span class="giallo-l"></span>
-<span class="giallo-l"><span class="z-l-8 z-l-i z-d-4 z-d-i">//</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> No bytes in Sight, you just Struct this Struct that, declare a trait on a type and you good to go</span></span></code></pre>
-<p>The point here being for most backend level projects, you're already working from a level of abstraction that has alot of things built already for you, and most of the work becomes understanding how to bring these building blocks together to solve business problems.</p>
-<p>Once you try to go below; build your own building blocks, an understanding of low level bytes interations and operations becomes paramount for success. I have been learning the fundamentals of bytes and it's usage in Rust, and this blog post is an attempt to explain my understanding to someone else.</p>
-<h2 id="introducing-bits-bytes-and-other-shenanigans-in-that-gang">Introducing Bits, bytes and other shenanigans in that gang</h2>
-<p>At the fundamentation level of computers, data are stored and treated as bits, when you send an AI generated Meme to your friend
-the very atomics of that picture for all intents and purpose at the computer level are streams of bits, sent across some channel like
-wire, or radio or fibre optics.</p>
-<p>A Bit directly translates to Binary Digit, so a bit is a binary digit and binary is a system of counting that represent numbers with
-0s ans 1s. Binary meaning they are only 2 digits in the system of counting. So when we counting in Decimal which is the common every system of numbers we use as humans, we go 0, 1, 2, ... 9 and and increment the digit count to represent higher and higher numbers.
-But in the Binary system we on move from 0 to 1 and then increment the digit count to represent higher numbers and we repeat as we go</p>
-<table><thead><tr><th>Number</th><th>Decimal Notation</th><th>Binary Notation</th></tr></thead><tbody>
-<tr><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>1</td><td>1</td><td>1</td></tr>
-<tr><td>2</td><td>2</td><td>10</td></tr>
-<tr><td>3</td><td>3</td><td>11</td></tr>
-<tr><td>4</td><td>4</td><td>100</td></tr>
-<tr><td>5</td><td>5</td><td>101</td></tr>
+<span class="giallo-l"><span class="z-l-8 z-d-4">}</span></span></code></pre>
+<p>No bytes in sight. You define a struct, derive a trait, return it, and you're done. Somewhere further down, that <code>Json&lt;Message&gt;</code> becomes a sequence of bytes on a network socket, but someone else already did that work for you.</p>
+<p>That is true for most backend projects: the framework has built the plumbing, and your job is to combine those building blocks to solve business problems.</p>
+<p>Things change when you go below that line and start building the blocks yourself: parsing a binary protocol, writing a file format, computing a checksum. There, understanding bytes stops being optional. I've been learning the fundamentals of bytes in Rust, and this post is my attempt to explain what I've understood to someone else. Explaining it is also the best test of whether I understand it.</p>
+<h2 id="bits-bytes-and-the-rest-of-the-gang">Bits, bytes and the rest of the gang</h2>
+<p>When you send a friend an AI-generated meme, then at the lowest level that picture is nothing but a stream of <strong>bits</strong> travelling over a wire, a radio wave or a fibre-optic cable.</p>
+<p>"Bit" is short for <strong>binary digit</strong>, and binary is a way of counting that uses only two digits: <code>0</code> and <code>1</code>. In decimal, we count <code>0, 1, 2, ... 9</code> and then add a new digit to go higher (<code>10</code>). Binary works the same way, except it runs out of digits after <code>1</code>, so it adds a new digit much sooner:</p>
+<table><thead><tr><th>Decimal</th><th>Binary</th></tr></thead><tbody>
+<tr><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td></tr>
+<tr><td>2</td><td>10</td></tr>
+<tr><td>3</td><td>11</td></tr>
+<tr><td>4</td><td>100</td></tr>
+<tr><td>5</td><td>101</td></tr>
+<tr><td>6</td><td>110</td></tr>
+<tr><td>7</td><td>111</td></tr>
+<tr><td>8</td><td>1000</td></tr>
 </tbody></table>
+<p>Each position in a binary number is worth double the one to its right (1, 2, 4, 8, ...), just as decimal positions are worth 1, 10, 100, and so on. So <code>101</code> is <code>1×4 + 0×2 + 1×1 = 5</code>.</p>
+<h3 id="bytes">Bytes</h3>
+<p>Think about how written language works. Letters are the basic symbols, but a single letter rarely means much on its own. Arrange them into words, then sentences, then paragraphs, and meaning appears.</p>
+<p>Bits work similarly. A single bit carries very little, so we group them. A group of <strong>8 bits</strong> is called a <strong>byte</strong>, and the byte is the basic unit that computers read, write and address in memory.</p>
+<p>Eight bits can form 2⁸ = 256 different patterns, so a byte can represent any number from <code>0</code> to <code>255</code>. (Not every piece of information is exactly 8 bits wide: a flag might use a single bit, and some formats pack fields across byte boundaries. But the byte is the unit everything is built on.)</p>
+<h3 id="hexadecimal">Hexadecimal</h3>
+<p>Writing <code>11111111</code> every time you mean 255 is tedious and easy to get wrong, which is why we use <strong>hexadecimal</strong>, or "hex".</p>
+<p>Hex is a base-16 counting system. It needs 16 digits, so after <code>0-9</code> it borrows the letters <code>A-F</code> (where <code>A</code> is 10 and <code>F</code> is 15). The useful part is that <strong>one hex digit corresponds to exactly 4 bits</strong>, so a byte is always exactly <strong>two hex digits</strong>:</p>
+<table><thead><tr><th>Binary</th><th>Hex</th><th>Decimal</th></tr></thead><tbody>
+<tr><td>0000 0001</td><td><code>0x01</code></td><td>1</td></tr>
+<tr><td>0100 0001</td><td><code>0x41</code></td><td>65</td></tr>
+<tr><td>1111 1111</td><td><code>0xFF</code></td><td>255</td></tr>
+</tbody></table>
+<p>The <code>0x</code> prefix is just a marker meaning "this number is in hex". You'll see these constantly in low-level code. For example, <code>0x41</code> is 65, which happens to be the code for the letter <code>A</code>.</p>
+<h2 id="why-would-anyone-leave-decimal-for-binary">Why would anyone leave decimal for binary?</h2>
+<p>It does feel like unnecessary work. We already count comfortably in base 10, so why make computers use something harder to read?</p>
+<p>The answer is that computers aren't built to be read by humans. They are built from electronic circuits, which work with physical signals. Telling apart <strong>two</strong> states, a high voltage and a low voltage, is easy and reliable. Telling apart ten distinct voltage levels is hard, because electrical noise is always present, and a small disturbance could turn a 7 into an 8.</p>
+<p>Two states leave a wide margin for error, so circuits can be simple, fast and dependable. Switch between those two states billions of times a second, and you can express any information at all, as long as you agree on what the patterns mean. (Quantum computers work differently, but that's a story for another day.)</p>
+<h2 id="bringing-it-down-to-rust">Bringing it down to Rust</h2>
+<p>Rust is a strongly typed language: every value has a type, and the compiler knows it at compile time. Often you write the type yourself as an annotation, but the compiler is smart enough to infer it in many cases.</p>
+<p>The type for a single byte is <strong><code>u8</code></strong>: an <strong>u</strong>nsigned <strong>8</strong>-bit integer, holding values from 0 to 255.</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="rust"><span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> a</span><span class="z-l-2 z-d-5">:</span><span class="z-l-9 z-d-9"> u8</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-16 z-d-16"> 65</span><span class="z-l-8 z-d-4">;</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> b</span><span class="z-l-2 z-d-5">:</span><span class="z-l-9 z-d-9"> u8</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-16 z-d-16"> 0x41</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i">         //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> hex literal</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> c</span><span class="z-l-2 z-d-5">:</span><span class="z-l-9 z-d-9"> u8</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-16 z-d-16"> 0b0100_0001</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i">  //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> binary literal (underscores are just for readability)</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> d</span><span class="z-l-2 z-d-5">:</span><span class="z-l-9 z-d-9"> u8</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-5 z-d-7"> b</span><span class="z-l-8 z-d-4">&#39;</span><span class="z-l-5 z-d-7">A</span><span class="z-l-8 z-d-4">&#39;</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i">         //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> byte literal: the ASCII code of &#39;A&#39;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">assert_eq!</span><span class="z-l-8 z-d-4">(</span><span>a</span><span class="z-l-8 z-d-4">,</span><span> b</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">assert_eq!</span><span class="z-l-8 z-d-4">(</span><span>b</span><span class="z-l-8 z-d-4">,</span><span> c</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">assert_eq!</span><span class="z-l-8 z-d-4">(</span><span>c</span><span class="z-l-8 z-d-4">,</span><span> d</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span></span></code></pre>
+<p>All four are the same value, written four different ways. A <code>u8</code> can't hold 256 or more: <code>let x: u8 = 256;</code> fails to compile, and arithmetic that overflows (like <code>255u8 + 1</code>) panics in debug builds.</p>
+<h3 id="collections-of-bytes">Collections of bytes</h3>
+<p>You'll mostly work with bytes in groups, and Rust has three common shapes for that:</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="rust"><span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> fixed</span><span class="z-l-2 z-d-5">:</span><span class="z-l-8 z-d-4"> [</span><span class="z-l-9 z-d-9">u8</span><span class="z-l-8 z-d-4">;</span><span class="z-l-16 z-d-16"> 4</span><span class="z-l-8 z-d-4">]</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-8 z-d-4"> [</span><span class="z-l-16 z-d-16">0x89</span><span class="z-l-8 z-d-4">,</span><span class="z-l-16 z-d-16"> 0x50</span><span class="z-l-8 z-d-4">,</span><span class="z-l-16 z-d-16"> 0x4E</span><span class="z-l-8 z-d-4">,</span><span class="z-l-16 z-d-16"> 0x47</span><span class="z-l-8 z-d-4">]</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> array: size fixed at compile time</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span class="z-l-9 z-d-9"> mut</span><span> growable</span><span class="z-l-2 z-d-5">:</span><span class="z-l-13 z-l-i z-d-15 z-d-i"> Vec</span><span class="z-l-1 z-d-3">&lt;</span><span class="z-l-9 z-d-9">u8</span><span class="z-l-1 z-d-3">&gt;</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-13 z-l-i z-d-15 z-d-i"> Vec</span><span class="z-l-2 z-d-5">::</span><span class="z-l-3 z-l-i z-d-2 z-d-i">new</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i">         //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> Vec: grows as needed</span></span>
+<span class="giallo-l"><span>growable</span><span class="z-l-2 z-d-5">.</span><span class="z-l-3 z-l-i z-d-2 z-d-i">extend_from_slice</span><span class="z-l-8 z-d-4">(</span><span class="z-l-2 z-d-5">&amp;</span><span>fixed</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> view</span><span class="z-l-2 z-d-5">:</span><span class="z-l-2 z-d-5"> &amp;</span><span class="z-l-8 z-d-4">[</span><span class="z-l-9 z-d-9">u8</span><span class="z-l-8 z-d-4">]</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-2 z-d-5"> &amp;</span><span>growable</span><span class="z-l-8 z-d-4">[</span><span class="z-l-16 z-d-16">1</span><span class="z-l-2 z-d-5">..</span><span class="z-l-16 z-d-16">3</span><span class="z-l-8 z-d-4">]</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i">              //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> slice: a borrowed view into bytes</span></span></code></pre>
+<p>That array is the start of every PNG file, the format your meme was probably sent in. The <code>0x50 0x4E 0x47</code> part spells <code>PNG</code> in ASCII.</p>
+<h3 id="strings-are-bytes-too">Strings are bytes too</h3>
+<p>A Rust <code>String</code> or <code>&amp;str</code> is really a sequence of bytes holding UTF-8 text, and you can look at them directly:</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="rust"><span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> s</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-5 z-d-7"> &quot;</span><span class="z-l-5 z-d-7">Hi!</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">;</span></span>
+<span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> bytes</span><span class="z-l-2 z-d-5">:</span><span class="z-l-2 z-d-5"> &amp;</span><span class="z-l-8 z-d-4">[</span><span class="z-l-9 z-d-9">u8</span><span class="z-l-8 z-d-4">]</span><span class="z-l-2 z-d-5"> =</span><span> s</span><span class="z-l-2 z-d-5">.</span><span class="z-l-3 z-l-i z-d-2 z-d-i">as_bytes</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">println!</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">{</span><span class="z-l-5 z-d-7">:?</span><span class="z-l-8 z-d-4">}</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span> bytes</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i">   //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> [72, 105, 33]</span></span>
+<span class="giallo-l"></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">println!</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">{</span><span class="z-l-8 z-d-4">}</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span class="z-l-5 z-d-7"> &quot;</span><span class="z-l-5 z-d-7">é</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-2 z-d-5">.</span><span class="z-l-3 z-l-i z-d-2 z-d-i">len</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> 2</span></span></code></pre>
+<p>Note the last line: <code>"é"</code> is one character but <strong>two</strong> bytes, because UTF-8 uses more than one byte for characters outside basic ASCII. That's why <code>len()</code> on a string counts bytes, not characters.</p>
+<p>To print numbers in hex or binary, use format specifiers:</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="rust"><span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">println!</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">{</span><span class="z-l-5 z-d-7">:#04x</span><span class="z-l-8 z-d-4">}</span><span class="z-l-8 z-d-4"> {</span><span class="z-l-5 z-d-7">:08b</span><span class="z-l-8 z-d-4">}</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span class="z-l-16 z-d-16"> 65</span><span class="z-l-9 z-d-9">u8</span><span class="z-l-8 z-d-4">,</span><span class="z-l-16 z-d-16"> 65</span><span class="z-l-9 z-d-9">u8</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> 0x41 01000001</span></span></code></pre><h3 id="what-s-next">What's next</h3>
+<p>A <code>u8</code> is easy, but most real data is bigger than one byte. A <code>u32</code> takes four bytes, and then you face a question: which byte goes first?</p>
+<pre class="giallo z-l-code z-d-code" ><code data-lang="rust"><span class="giallo-l"><span class="z-l-9 z-d-9">let</span><span> n</span><span class="z-l-2 z-d-5">:</span><span class="z-l-9 z-d-9"> u32</span><span class="z-l-2 z-d-5"> =</span><span class="z-l-16 z-d-16"> 0x1234_5678</span><span class="z-l-8 z-d-4">;</span></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">println!</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">{</span><span class="z-l-5 z-d-7">:02x?</span><span class="z-l-8 z-d-4">}</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span> n</span><span class="z-l-2 z-d-5">.</span><span class="z-l-3 z-l-i z-d-2 z-d-i">to_be_bytes</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> [12, 34, 56, 78]  big-endian</span></span>
+<span class="giallo-l"><span class="z-l-3 z-l-i z-d-2 z-d-i">println!</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">{</span><span class="z-l-5 z-d-7">:02x?</span><span class="z-l-8 z-d-4">}</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">,</span><span> n</span><span class="z-l-2 z-d-5">.</span><span class="z-l-3 z-l-i z-d-2 z-d-i">to_le_bytes</span><span class="z-l-8 z-d-4">(</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">;</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> //</span><span class="z-l-8 z-l-i z-d-4 z-d-i"> [78, 56, 34, 12]  little-endian</span></span></code></pre>
+<p>That's called <strong>endianness</strong>, and it's where I'll pick up in the next post.</p>
 
 		</div>
 
 		<div class="post-citation">
 			<div class="citation-head">
-				<div class="citation-title">Introduction to Bytes in Rust</div>
+				<div class="citation-title">Introduction to Bytes in Rust. Part 1</div>
 				<div class="citation-url">https://brianobot.tech/blog/working-with-bytes-in-rust/</div>
 			</div>
 
@@ -318,7 +427,7 @@ But in the Binary system we on move from 0 to 1 and then increment the digit cou
 				
 				
 				<a class="icon-btn share-btn" target="_blank" rel="noopener"
-				   href="https://x.com/intent/post?url=https%3A%2F%2Fbrianobot%2Etech%2Fblog%2Fworking%2Dwith%2Dbytes%2Din%2Drust%2F%3Futm%5Fmedium%3Dsocial%26utm%5Fcampaign%3Dshare%5Fbutton%26utm%5Fsource%3Dx&text=Introduction%20to%20Bytes%20in%20Rust">
+				   href="https://x.com/intent/post?url=https%3A%2F%2Fbrianobot%2Etech%2Fblog%2Fworking%2Dwith%2Dbytes%2Din%2Drust%2F%3Futm%5Fmedium%3Dsocial%26utm%5Fcampaign%3Dshare%5Fbutton%26utm%5Fsource%3Dx&text=Introduction%20to%20Bytes%20in%20Rust%2E%20Part%201">
 					<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26l8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
 					<span>Share on X</span>
 				</a>
@@ -378,7 +487,7 @@ But in the Binary system we on move from 0 to 1 and then increment the digit cou
 					
 						
 							
-							<a href="mailto:brianobot9@gmail.com?subject=Feedback%3A%20Introduction%20to%20Bytes%20in%20Rust">
+							<a href="mailto:brianobot9@gmail.com?subject=Feedback%3A%20Introduction%20to%20Bytes%20in%20Rust%2E%20Part%201">
 						
 							
 <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">

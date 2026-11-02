@@ -6,7 +6,7 @@ draft = false
 
 [extra]
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
 ## Why you have probably never had to think about bytes
