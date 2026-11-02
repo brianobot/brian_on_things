@@ -639,6 +639,27 @@ main { width: 100%; }
 
 .prose pre code { background: none; border: 0; padding: 0; font-size: 0.875rem; }
 
+.prose table {
+	width: 100%;
+	margin: 0 0 1.25rem;
+	border-collapse: collapse;
+	font-size: 0.9375rem;
+	display: block;
+	overflow-x: auto;
+}
+
+.prose th, .prose td {
+	border: 1px solid hsl(var(--border));
+	padding: 0.5rem 0.75rem;
+	text-align: left;
+}
+
+.prose th {
+	background-color: hsl(var(--muted));
+	color: hsl(var(--foreground));
+	font-weight: 600;
+}
+
 /* footnotes: [^name] in Markdown; bottom_footnotes in zola.toml collects them */
 .prose .footnote-reference {
 	font-size: 0.75em;

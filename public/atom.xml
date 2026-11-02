@@ -5,8 +5,56 @@
     <link rel="self" type="application/atom+xml" href="https://brianobot.tech/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://brianobot.tech"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2026-11-01T00:00:00+00:00</updated>
+    <updated>2026-11-02T00:00:00+00:00</updated>
     <id>https://brianobot.tech/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Introduction to Bytes in Rust</title>
+        <published>2026-11-02T00:00:00+00:00</published>
+        <updated>2026-11-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Brian Obot</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/working-with-bytes-in-rust/"/>
+        <id>https://brianobot.tech/blog/working-with-bytes-in-rust/</id>
+        
+        <content type="html" xml:base="https://brianobot.tech/blog/working-with-bytes-in-rust/">&lt;h2 id=&quot;why-you-have-probably-not-had-to-worry-about-bytes&quot;&gt;Why you have probably not had to worry about bytes&lt;/h2&gt;
+&lt;p&gt;As a backend developer, most of my work sits at a high level of abstraction, I implement handlers that take in Structs of Strings,
+Vectors and some Custom Enums and return Struct or other data types that implement a particular trait&lt;/p&gt;
+&lt;p&gt;below is a sample of a handler code from an axum project&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-13 z-l-i z-d-15 z-d-i&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;z-l-13 z-l-i z-d-15 z-d-i&quot;&gt;derive&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-13 z-l-i z-d-15 z-d-i&quot;&gt;Serialize&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;struct&lt;/span&gt;&lt;span class=&quot;z-l-13 z-l-i z-d-15 z-d-i&quot;&gt; Message&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    message&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-13 z-l-i z-d-15 z-d-i&quot;&gt; String&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;async&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; fn&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; handler&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-13 z-l-i z-d-15 z-d-i&quot;&gt; Json&lt;/span&gt;&lt;span class=&quot;z-l-1 z-d-3&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;z-l-13 z-l-i z-d-15 z-d-i&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;z-l-1 z-d-3&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt;    Json&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-13 z-l-i z-d-15 z-d-i&quot;&gt;Message&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        message&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-13 z-d-15&quot;&gt; String&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Hello World!&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;    }&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; No bytes in Sight, you just Struct this Struct that, declare a trait on a type and you good to go&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The point here being for most backend level projects, you&#39;re already working from a level of abstraction that has alot of things built already for you, and most of the work becomes understanding how to bring these building blocks together to solve business problems.&lt;/p&gt;
+&lt;p&gt;Once you try to go below; build your own building blocks, an understanding of low level bytes interations and operations becomes paramount for success. I have been learning the fundamentals of bytes and it&#39;s usage in Rust, and this blog post is an attempt to explain my understanding to someone else.&lt;/p&gt;
+&lt;h2 id=&quot;introducing-bits-bytes-and-other-shenanigans-in-that-gang&quot;&gt;Introducing Bits, bytes and other shenanigans in that gang&lt;/h2&gt;
+&lt;p&gt;At the fundamentation level of computers, data are stored and treated as bits, when you send an AI generated Meme to your friend
+the very atomics of that picture for all intents and purpose at the computer level are streams of bits, sent across some channel like
+wire, or radio or fibre optics.&lt;/p&gt;
+&lt;p&gt;A Bit directly translates to Binary Digit, so a bit is a binary digit and binary is a system of counting that represent numbers with
+0s ans 1s. Binary meaning they are only 2 digits in the system of counting. So when we counting in Decimal which is the common every system of numbers we use as humans, we go 0, 1, 2, ... 9 and and increment the digit count to represent higher and higher numbers.
+But in the Binary system we on move from 0 to 1 and then increment the digit count to represent higher numbers and we repeat as we go&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Number&lt;/th&gt;&lt;th&gt;Decimal Notation&lt;/th&gt;&lt;th&gt;Binary Notation&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;11&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;101&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>What I Learned (and Wish I&#39;d Done Differently) at TechCabal&#39;s Moonshot</title>
         <published>2026-11-01T00:00:00+00:00</published>
