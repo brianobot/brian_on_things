@@ -1,0 +1,44 @@
+name: Open PR from dev to master
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: auto-pr-dev-master
+  cancel-in-progress: false
+
+jobs:
+  open-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create PR if dev is ahead of master and none is open
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          ahead=$(gh api "repos/$REPO/compare/master...dev" --jq '.ahead_by')
+          if [ "$ahead" -eq 0 ]; then
+            echo "dev has no commits that master lacks; nothing to do."
+            exit 0
+          fi
+
+          existing=$(gh pr list --repo "$REPO" --base master --head dev --state open --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            echo "PR #$existing is already open; new commits on dev are included automatically."
+            exit 0
+          fi
+
+          gh pr create --repo "$REPO" \
+            --base master \
+            --head dev \
+            --title "Merge dev into master" \
+            --body "Automated PR: \`dev\` is $ahead commit(s) ahead of \`master\`."
