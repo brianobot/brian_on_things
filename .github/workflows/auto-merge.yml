@@ -1,0 +1,87 @@
+name: Merge open dev to master PR
+
+on:
+  # PRs opened by GITHUB_TOKEN (i.e. by auto-pr.yml) do not fire `pull_request`
+  # events, so chain off that workflow's completion instead.
+  workflow_run:
+    workflows: ["Open PR from dev to master"]
+    types: [completed]
+  # Covers PRs opened by hand.
+  pull_request:
+    branches: [master]
+    types: [opened, reopened, synchronize, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+concurrency:
+  group: auto-merge-dev-master
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+    env:
+      ZOLA_VERSION: v0.23.4
+    steps:
+      - name: Find open dev -> master PR
+        id: pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          read -r pr sha < <(gh pr list --repo "$REPO" --base master --head dev --state open \
+            --json number,isDraft,headRefOid \
+            --jq '[.[] | select(.isDraft | not)][0] | "\(.number // "") \(.headRefOid // "")"') || true
+          if [ -z "${pr:-}" ]; then
+            echo "No open, non-draft dev -> master PR."
+            exit 0
+          fi
+
+          # GitHub computes mergeability lazily; poll until it settles.
+          state=UNKNOWN
+          for _ in $(seq 1 10); do
+            state=$(gh pr view "$pr" --repo "$REPO" --json mergeable --jq '.mergeable')
+            [ "$state" != "UNKNOWN" ] && break
+            sleep 3
+          done
+
+          if [ "$state" != "MERGEABLE" ]; then
+            echo "::warning::PR #$pr is not mergeable (state: $state). Resolve conflicts manually."
+            exit 0
+          fi
+
+          echo "number=$pr" >> "$GITHUB_OUTPUT"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      # ---- Merge only the exact commit that passed the checks ----
+
+      - name: Merge PR
+        id: merge
+        if: steps.pr.outputs.number
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          # --match-head-commit refuses the merge if dev moved after the checks ran;
+          # the new push will trigger a fresh run that checks the new commit.
+          gh pr merge "${{ steps.pr.outputs.number }}" --repo "$REPO" --merge \
+            --match-head-commit "${{ steps.pr.outputs.sha }}"
+          echo "merged=true" >> "$GITHUB_OUTPUT"
+
+      # A push made with GITHUB_TOKEN does not trigger `on: push` workflows,
+      # so kick off the Pages deploy explicitly.
+      - name: Trigger deploy
+        if: steps.merge.outputs.merged == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --repo "${{ github.repository }}" --ref master
