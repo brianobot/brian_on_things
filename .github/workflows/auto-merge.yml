@@ -62,6 +62,32 @@ jobs:
           echo "number=$pr" >> "$GITHUB_OUTPUT"
           echo "sha=$sha" >> "$GITHUB_OUTPUT"
 
+      # ---- Safety checks: the site must build cleanly before it can go live ----
+
+      - name: Check out PR head
+        if: steps.pr.outputs.number
+        uses: actions/checkout@v6.0.1
+        with:
+          ref: ${{ steps.pr.outputs.sha }}
+          submodules: recursive
+
+      - name: Install Zola
+        if: steps.pr.outputs.number
+        run: |
+          set -euo pipefail
+          curl -sSfL "https://github.com/getzola/zola/releases/download/${ZOLA_VERSION}/zola-${ZOLA_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C /usr/local/bin zola
+          zola --version
+
+      - name: zola check (content + internal links)
+        if: steps.pr.outputs.number
+        # External links are skipped: a flaky third-party site shouldn't block a publish.
+        run: zola check --skip-external-links
+
+      - name: zola build
+        if: steps.pr.outputs.number
+        run: zola build --output-dir "$RUNNER_TEMP/site"
+
       # ---- Merge only the exact commit that passed the checks ----
 
       - name: Merge PR
