@@ -95,4 +95,4 @@ items = ["Django", "FastAPI", "Axum", "DRF", "Laravel", "Flask", "Pydantic"]
 
 [[extra.skills]]
 category = "Infrastructure"
-items = ["PostgreSQL", "Redis", "Docker", "AWS"]
+items = ["PostgreSQL", "Redis", "Docker", "AWS", "Kafka", ""]
