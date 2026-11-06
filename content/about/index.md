@@ -38,7 +38,7 @@ part of why this blog exists at all.
 I have procastinated on owning and managing a personal blog for more than 3 forevers,
 the major hestiation I think was largely that I found it stressful and unfun to 
 write articles and worry about building the [HTML](https://en.wikipedia.org/wiki/HTML) code to structure said article.
-[Link](https://brianobot.github) to my former portfolio website.
+[Link](https://brianobot.github.io/) to my former portfolio website.
 
 Secondly, I have tried using a blogging platform like Medium, it was fun for a very short while
 but it was not too long before i found that it became an unfun chore too, I found myself trying 
