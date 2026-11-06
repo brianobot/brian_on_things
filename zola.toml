@@ -87,11 +87,11 @@ note = "2017 - 2022"
 # ---- Skills ------------------------------------------------------------
 [[extra.skills]]
 category = "Languages"
-items = ["Python", "Rust", "Pylox'", "SQL", "Javascript", "C", "Java", "C#"]
+items = ["Python", "Rust", "Pylox'", "PHP", "SQL", "Javascript", "C", "Java", "C#"]
 
 [[extra.skills]]
 category = "Frameworks"
-items = ["Django", "FastAPI", "Axum", "DRF", "Celery", "Pydantic"]
+items = ["Django", "FastAPI", "Axum", "DRF", "Laravel", "Flask", "Celery", "Pydantic"]
 
 [[extra.skills]]
 category = "Infrastructure"
