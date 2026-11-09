@@ -1,0 +1,12 @@
+# robots.txt for {{ config.base_url }}
+# Every crawler is welcome to index the whole site.
+#
+# CSS, JS and fonts are deliberately NOT blocked: Google renders pages like a
+# browser, and blocking those assets makes pages look broken to it.
+# To keep a single page out of search results, use a `noindex` meta tag on that
+# page rather than a Disallow line here (a Disallowed URL can still be indexed).
+
+User-agent: *
+Allow: /
+
+Sitemap: {{ get_url(path="sitemap.xml", trailing_slash=false) }}

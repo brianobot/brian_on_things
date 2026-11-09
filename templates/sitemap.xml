@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 {#- Zola's default sitemap, minus pages marked `noindex = true` under [extra] -#}
+{#- Sections (home, /blog/) have no date of their own, so they take the date of
+    the most recently published/updated post: that is when their listing last changed. -#}
+{%- set blog = get_section(path="blog/_index.md") -%}
+{#- blog/_index.md sorts by date, newest first, so the first post is the latest -#}
+{%- set latest = "" -%}
+{%- if blog.pages | length > 0 -%}
+    {%- set newest = blog.pages | first -%}
+    {%- if newest.updated %}{% set latest = newest.updated %}{% else %}{% set latest = newest.date %}{% endif -%}
+{%- endif %}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {%- for sitemap_entry in entries %}
     {%- if not sitemap_entry.extra.noindex %}
@@ -7,6 +16,8 @@
         <loc>{{ sitemap_entry.permalink | escape_xml | safe }}</loc>
         {%- if sitemap_entry.updated %}
         <lastmod>{{ sitemap_entry.updated }}</lastmod>
+        {%- elif latest and (sitemap_entry.permalink == config.base_url ~ "/" or sitemap_entry.permalink == blog.permalink) %}
+        <lastmod>{{ latest }}</lastmod>
         {%- endif %}
     </url>
     {%- endif %}

@@ -50,7 +50,6 @@ I also spoke with [Liners](https://liners.com/), a software company that offers 
 
 Networking was the reason I moved, so I made a point of talking to people from different corners of tech. These are some of the new friends I made:
 
-- [Blessing Akpan](https://www.linkedin.com/in/blessing-akpan/) is a data engineer who spends her free time writing about true crime on Medium, turning cold cases and court records into stories worth reading. [Her Medium profile](https://medium.com/@theretrobliss)
 - [ID Inyang](https://x.com/id_inyang_) is a software engineer who builds practical applications for real-world problems. He specializes in backend development and system design, with a focus on software that is scalable, reliable, and efficient. Backend and system design is where I want to go deeper, so he's someone I plan to keep learning from.
 - [Brian Ibekwe](https://www.linkedin.com/in/brian-ibekwe) is a product manager at [ReadPulse](https://readpulse.app), where he works on building, improving, and growing the platform. Talking to someone who thinks in terms of users and growth gave me a useful contrast to my own more technical view of products.
 - [Ninie](https://ayobamiraheemportfolio.my.canva.site/): is a mobile videographer/content creator that is passionate about working with brands and individuals to bring their stories to life through engaging visual content

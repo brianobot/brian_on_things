@@ -2,6 +2,7 @@
 title = "Projects"
 description = "Things I've built, and things I've built in order to learn"
 template = "projects.html"
+updated = 2026-10-30
 
 [extra]
 toc = true
