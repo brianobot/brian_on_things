@@ -6,14 +6,14 @@ draft = false
 
 [extra]
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
 Why Zed might just change the way you write software.
 
 ## Guide to Setup and Configure Zed Editor
 
-![Zed AI logo over a blurred code editor](cover.jpg)
+![Zed AI logo over a blurred code editor](cover.webp)
 
 Why switching to Zed might improve your workflow as a developer.
 
@@ -61,11 +61,11 @@ I would focus on macOS for this guide, since I am using a Mac.
 
 You can access Zed’s Command Palette, which is very similar to the command palette found in VSCode. You can open the command palette with the following key binding: `cmd + shift + p`
 
-![The Zed command palette listing commands such as zed: extensions, theme selector: toggle and cli: install cli binary](image-3.png)
+![The Zed command palette listing commands such as zed: extensions, theme selector: toggle and cli: install cli binary](image-3.webp)
 
 Searching the command palette for cli: install would show the command for installing the CLI.
 
-![Running cli: install cli binary from the Zed command palette, with a notice that zed was installed to /usr/local/bin/zed](image-4.png)
+![Running cli: install cli binary from the Zed command palette, with a notice that zed was installed to /usr/local/bin/zed](image-4.webp)
 
 ### Choosing a Theme Extension
 

@@ -65,9 +65,9 @@
 	
 
 	
-		<meta property="og:image" content="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.jpg">
+		<meta property="og:image" content="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.webp">
 		<meta property="og:image:alt" content="I Finally Understand References and Lifetimes in Rust">
-		<meta name="twitter:image" content="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.jpg">
+		<meta name="twitter:image" content="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.webp">
 		<meta name="twitter:card" content="summary_large_image">
 	
 	<meta name="twitter:title" content="I Finally Understand References and Lifetimes in Rust">
@@ -93,7 +93,7 @@
 		"mainEntityOfPage": "https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/",
 		"datePublished": "2026-01-31T00:00:00+00:00",
 		"dateModified": "2026-01-31T00:00:00+00:00",
-		"image": "https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.jpg",
+		"image": "https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.webp",
 		"author": {
 			"@type": "Person",
 			"name": "Brian Obot",
@@ -1847,12 +1847,12 @@ html.dark .z-d-us { text-decoration: underline line-through; }
 		</div>
 
 		<div id="content" class="prose">
-			<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.jpg" alt="Snowy mountain ridge under a deep blue sky" /></p>
+			<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.webp" alt="Snowy mountain ridge under a deep blue sky" /></p>
 <h2 id="introduction">Introduction</h2>
 <p>I have been learning and working with Rust for over a year now, and for most of that time, I felt as if I understood references and how to use them. However, for lifetimes, I made a conscious effort not to get my life entangled with that concept. It wasn’t until recently that I gained a new perspective on them that they finally made sense. Understanding these concepts has been pivotal not just in writing correct code, but also in grasping why Rust’s memory guarantees provide safety and performance.</p>
 <h2 id="understanding-references-in-rust">Understanding References in Rust</h2>
 <p>References are pointers to a value or part of data; they don’t store the data themselves, just the pointer to where the data is stored in memory (they store the address of another item in memory). This distinction is crucial for understanding how to manage memory safely in Rust.</p>
-<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-2.png" alt="Diagram: a Rust reference created with let reference_val = &amp;val points to the memory address holding val in a table of addresses and values" /></p>
+<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-2.webp" alt="Diagram: a Rust reference created with let reference_val = &amp;val points to the memory address holding val in a table of addresses and values" /></p>
 <p>From the image above, val is a variable that holds the value 1. Taking a reference to that variable stores the address of val in another variable.</p>
 <h2 id="validity-of-references">Validity of References</h2>
 <p>When you create a reference to a value, that reference should only be valid until that value is freed or changed. When the freeing of the value occurs, it is dropped from memory, and that memory address is no longer valid for that value. Consequently, that reference is also invalidated.</p>

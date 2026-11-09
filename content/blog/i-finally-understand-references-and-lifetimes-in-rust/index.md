@@ -6,10 +6,10 @@ draft = false
 
 [extra]
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
-![Snowy mountain ridge under a deep blue sky](cover.jpg)
+![Snowy mountain ridge under a deep blue sky](cover.webp)
 
 ## Introduction
 
@@ -19,7 +19,7 @@ I have been learning and working with Rust for over a year now, and for most of 
 
 References are pointers to a value or part of data; they don’t store the data themselves, just the pointer to where the data is stored in memory (they store the address of another item in memory). This distinction is crucial for understanding how to manage memory safely in Rust.
 
-![Diagram: a Rust reference created with let reference_val = &val points to the memory address holding val in a table of addresses and values](image-2.png)
+![Diagram: a Rust reference created with let reference_val = &val points to the memory address holding val in a table of addresses and values](image-2.webp)
 
 From the image above, val is a variable that holds the value 1. Taking a reference to that variable stores the address of val in another variable.
 

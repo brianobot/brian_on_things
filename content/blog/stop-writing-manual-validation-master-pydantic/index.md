@@ -6,10 +6,10 @@ draft = false
 
 [extra]
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
-![Snow-covered mountain face and glacier under a dark blue sky](cover.jpg)
+![Snow-covered mountain face and glacier under a dark blue sky](cover.webp)
 
 ## Introduction
 

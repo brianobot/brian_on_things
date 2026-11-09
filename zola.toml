@@ -77,7 +77,7 @@ knows_about = [
 
 # Drop a file in static/ and set it here (e.g. "avatar.webp").
 # Left empty, the homepage renders your initials in a circle instead.
-avatar = "batman.jpg"
+avatar = "batman.webp"
 
 # "Buy me a coffee" box at the end of every post. Remove to hide it everywhere;
 # `coffee = false` under a post's [extra] hides it for that post.
