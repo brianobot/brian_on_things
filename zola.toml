@@ -57,6 +57,7 @@ job_title = "Software Engineer"
 bio = """
 I build tools for the web and write about what I learn along the way - mostly Maths, Physics,
 backend and low level software engineering stuffs. I am becoming quite fond of bytes and the internals of softwares.
+I also occasionally write about movies, books and arts.
 """
 # Topics you write about / know: becomes Person.knowsAbout in the home page's
 # structured data, which helps Google tie you and this site to these subjects.
@@ -64,6 +65,7 @@ knows_about = [
   "Computer Science", "Low-level systems engineering", "Software internals",
   "Rust", "Python", "Backend engineering",
   "Physics", "Mathematics", "Electrical engineering", "Nuclear engineering",
+  "Astronomy", "Marvel Movies"
 ]
 
 # Drop a file in static/ and set it here (e.g. "avatar.webp").
@@ -74,7 +76,7 @@ avatar = "batman.jpg"
 recent_posts = 10
 
 # ---- Social links ------------------------------------------------------
-# icon must be one of: github, linkedin, twitter, email
+# icon must be one of: github, linkedin, twitter, email, cv
 [[extra.socials]]
 name = "GitHub"
 url = "https://github.com/brianobot"
@@ -94,6 +96,11 @@ icon = "twitter"
 name = "Email"
 url = "mailto:brianobot9@gmail.com"
 icon = "email"
+
+[[extra.socials]]
+name = "CV"
+url = "https://docs.google.com/document/d/1B2H2nrA5RGMMaW0mi85NiByMme8RLFNpHrgdT3FHNjA/edit?tab=t.0"
+icon = "cv"
 
 # ---- Education ---------------------------------------------------------
 [[extra.education]]

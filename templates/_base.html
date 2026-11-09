@@ -135,8 +135,8 @@
 	{% endif %}
 
 	{# ---- Structured data for the home page: the site, its author, and the blog.
-	   Person.sameAs links the social profiles to this site (email is excluded:
-	   sameAs must be web pages). Topics come from [extra].knows_about. ---- #}
+	   Person.sameAs links the social profiles to this site (email and the CV are
+	   excluded: sameAs must be profile pages about you). Topics come from [extra].knows_about. ---- #}
 	{% if current_path == "/" %}
 	{% set ld_blog = get_section(path="blog/_index.md") %}
 	{% set ld_person = config.base_url ~ "/#person" %}
@@ -171,7 +171,7 @@
 				],{% endif %}
 				"sameAs": [
 					{% set_global ld_first = true %}
-					{% for s in config.extra.socials | default(value=[]) %}{% if "mailto:" not in s.url %}{% if not ld_first %},{% endif %}{{ s.url | json_encode | safe }}{% set_global ld_first = false %}{% endif %}
+					{% for s in config.extra.socials | default(value=[]) %}{% if "mailto:" not in s.url and s.icon != "cv" %}{% if not ld_first %},{% endif %}{{ s.url | json_encode | safe }}{% set_global ld_first = false %}{% endif %}
 					{% endfor %}
 				]
 			},
