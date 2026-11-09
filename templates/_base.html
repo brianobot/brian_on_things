@@ -198,10 +198,20 @@
 
 	{# self-hosted font (see @font-face in style.scss); preload so it starts downloading alongside the CSS #}
 	<link rel="preload" href="{{ get_url(path='fonts/inter-latin.woff2', trailing_slash=false) }}" as="font" type="font/woff2" crossorigin>
+	{# Production builds inline all CSS, so no stylesheet request blocks the first render.
+	   `zola serve` links the compiled style.css instead: it doesn't re-render pages when only
+	   sass/ changes, so inlined CSS would go stale while editing. Code highlighting for both
+	   themes is in _syntax.scss, scoped by the html.dark class the script below sets. #}
+	{% if config.mode == "build" %}
+	<style>
+{{ load_data(path="sass/style.scss", format="plain") | safe }}
+	</style>
+	{% else %}
 	<link rel="stylesheet" href="{{ get_url(path='style.css') }}">
-	{# both syntax themes ship; the theme toggle enables exactly one #}
-	<link rel="stylesheet" href="{{ get_url(path='giallo-light.css') }}" id="syntax-light">
-	<link rel="stylesheet" href="{{ get_url(path='giallo-dark.css') }}" id="syntax-dark" disabled>
+	{% endif %}
+	<style>
+{{ load_data(path="sass/_syntax.scss", format="plain") | safe }}
+	</style>
 
 	{# Set the theme before first paint so there is no light-mode flash #}
 	<script>
@@ -210,9 +220,6 @@
 			var dark = t === 'dark' || (t === 'system' &&
 				window.matchMedia('(prefers-color-scheme: dark)').matches)
 			document.documentElement.classList.toggle('dark', dark)
-			var l = document.getElementById('syntax-light')
-			var d = document.getElementById('syntax-dark')
-			if (l && d) { l.disabled = dark; d.disabled = !dark }
 		})()
 	</script>
 
@@ -325,16 +332,12 @@
 
 		// Theme cycles system -> light -> dark
 		const darkBtn = document.getElementById('toggleDarkMode')
-		const syntaxLight = document.getElementById('syntax-light')
-		const syntaxDark = document.getElementById('syntax-dark')
 		const order = ['system', 'light', 'dark']
 		const media = window.matchMedia('(prefers-color-scheme: dark)')
 
 		const apply = (theme) => {
 			const dark = theme === 'dark' || (theme === 'system' && media.matches)
 			document.documentElement.classList.toggle('dark', dark)
-			syntaxLight.disabled = dark
-			syntaxDark.disabled = !dark
 			darkBtn.dataset.theme = theme
 		}
 

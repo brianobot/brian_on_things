@@ -121,10 +121,1366 @@
 
 	
 	<link rel="preload" href="https://brianobot.tech/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="stylesheet" href="https://brianobot.tech/style.css">
 	
-	<link rel="stylesheet" href="https://brianobot.tech/giallo-light.css" id="syntax-light">
-	<link rel="stylesheet" href="https://brianobot.tech/giallo-dark.css" id="syntax-dark" disabled>
+	
+	<style>
+/* Self-hosted Inter (variable, latin subset, weights 400–600). Served from our
+   own origin so the font no longer blocks first render via fonts.googleapis.com */
+@font-face {
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 400 600;
+	font-display: swap;
+	src: url('/fonts/inter-latin.woff2') format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------------------------------------------------------------------------
+   Theme tokens (hsl channels, shadcn-style) — lifted from thedataquarry.com
+   --------------------------------------------------------------------------- */
+:root {
+	--background: 210 33% 99%;
+	--foreground: 240 10% 3.9%;
+	--card: 0 0% 100%;
+	--card-foreground: 240 10% 3.9%;
+	--primary: 200 29% 45%;
+	--primary-foreground: 0 0% 92.5%;
+	--secondary: 240 4.8% 95.9%;
+	--secondary-foreground: 240 5.9% 10%;
+	--muted: 240 4.8% 95%;
+	--muted-foreground: 240 3.8% 28.1%;
+	--accent: 240 4.8% 95.9%;
+	--accent-foreground: 240 5.9% 10%;
+	--border: 240 5.9% 88%;
+
+	--highlight-color: #659eb9;
+	--radius-xl: 0.75rem;
+	--radius-2xl: 1rem;
+	--radius-md: 0.375rem;
+}
+
+html.dark {
+	--background: 240 20.54% 5.2%;
+	--foreground: 0 0% 98%;
+	--card: 240 10% 3.9%;
+	--card-foreground: 0 0% 98%;
+	--primary: 195 95% 85%;
+	--primary-foreground: 240 3.7% 15.9%;
+	--secondary: 240 3.7% 15.9%;
+	--secondary-foreground: 0 0% 98%;
+	--muted: 240 5.9% 12%;
+	--muted-foreground: 240 5% 74.9%;
+	--accent: 240 3.7% 15.9%;
+	--accent-foreground: 0 0% 98%;
+	--border: 240 3.7% 19.9%;
+}
+
+/* ---------------------------------------------------------------------------
+   Shell
+   --------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+	margin: 0;
+	display: flex;
+	justify-content: center;
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+	line-height: 1.6;
+	background-color: hsl(var(--background));
+	color: hsl(var(--foreground));
+
+	/* the fixed tint that fades out over the first viewport */
+	background-image: linear-gradient(rgba(101, 158, 185, 0.12), transparent);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100vh;
+}
+
+.container {
+	width: 100%;
+	max-width: 70rem;
+	padding-inline: 1rem;
+}
+
+a { color: inherit; }
+
+.sr-only {
+	position: absolute;
+	width: 1px; height: 1px;
+	padding: 0; margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Header — a floating pill that grows a border/background once you scroll
+   --------------------------------------------------------------------------- */
+.header {
+	position: sticky;
+	top: 1rem;
+	z-index: 30;
+	margin-bottom: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid transparent;
+	border-radius: var(--radius-xl);
+	padding-block: 0.25rem;
+	transition: background-color 0.3s, border-color 0.3s, padding 0.3s;
+}
+
+.header.not-top {
+	border-color: hsl(var(--border));
+	background-color: hsl(var(--background));
+	padding-inline: 0.375rem;
+}
+
+html.dark .header.not-top { background-color: hsl(var(--muted)); }
+
+.brand {
+	z-index: 30;
+	font-size: 1.25rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: margin-inline 0.3s;
+}
+
+.header.not-top .brand { margin-inline-start: 0.5rem; }
+
+.header-end {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.nav { display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+
+.nav-link {
+	width: 100%;
+	flex: 1 0 auto;
+	padding-block: 0.5rem;
+	text-align: right;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.nav-link:hover, .icon-link:hover { color: hsl(var(--primary)); }
+
+.nav-icons {
+	display: flex;
+	width: 100%;
+	flex-grow: 1;
+	justify-content: flex-end;
+	gap: 0.75rem;
+}
+
+.icon-link {
+	display: inline-flex;
+	padding: 0.5rem 0.25rem;
+	text-decoration: none;
+}
+
+.header-buttons {
+	z-index: 30;
+	display: flex;
+	gap: 1rem;
+	transition: gap 0.3s;
+}
+
+.header.not-top .header-buttons { gap: 0.5rem; }
+
+.icon-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.375rem;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-md);
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+.icon-btn:hover { background-color: hsl(var(--border)); }
+.icon-btn:hover svg { color: hsl(var(--primary)); }
+
+svg { width: 1.25rem; height: 1.25rem; display: block; }
+
+/* only the icon matching the current theme setting is shown */
+.icon-system, .icon-light, .icon-dark { display: none; }
+#toggleDarkMode[data-theme="system"] .icon-system,
+#toggleDarkMode[data-theme="light"] .icon-light,
+#toggleDarkMode[data-theme="dark"] .icon-dark { display: block; }
+
+/* --- mobile: nav collapses into a panel under the header ------------------ */
+@media (max-width: 639px) {
+	.nav-wrap {
+		position: absolute;
+		inset-inline: 0;
+		top: 3rem;
+		border: 1px solid transparent;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s;
+	}
+
+	/* the open panel needs its own solid backdrop at any scroll position,
+	   otherwise the links sit transparently on top of the page content */
+	.header.expanded .nav-wrap {
+		opacity: 1;
+		pointer-events: auto;
+		border-radius: var(--radius-xl);
+		border-color: hsl(var(--border));
+		padding: 0.5rem 1rem;
+		background-color: hsl(var(--background));
+	}
+
+	html.dark .header.expanded .nav-wrap { background-color: hsl(var(--muted)); }
+}
+
+@media (min-width: 640px) {
+	.container { padding-inline: 1.75rem; }
+	.header { border-radius: var(--radius-2xl); padding-block: 0; }
+	.header.not-top .brand { margin-inline-start: 0.75rem; }
+	.header.not-top .icon-btn { border-radius: var(--radius-xl); }
+	.nav { flex-direction: row; }
+	.nav-link { width: fit-content; padding-inline: 0.75rem; }
+	.nav-icons { width: fit-content; gap: 1.25rem; }
+	.icon-link { padding-inline: 0.5rem; }
+	.menu-btn { display: none; }
+}
+
+@media (min-width: 1024px) {
+	.container { padding-inline: 2.5rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------------------- */
+.footer {
+	margin-inline: auto;
+	margin-top: 4rem;
+	margin-bottom: 1.25rem;
+}
+
+.footer-inner {
+	border-top: 1px solid hsl(var(--border));
+	padding-top: 1.25rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer-meta {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem 1rem;
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.footer-meta a { color: hsl(var(--foreground)); }
+.footer-meta a:hover { color: hsl(var(--primary)); }
+
+@media (min-width: 640px) {
+	.footer-meta { flex-direction: row; gap: 1rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   Homepage
+   --------------------------------------------------------------------------- */
+main { width: 100%; }
+
+.home-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.75rem;
+	margin-bottom: 2.5rem;
+}
+
+.avatar {
+	height: 12rem;
+	width: 12rem;
+	border-radius: 9999px;
+	border: 1px solid hsl(var(--border));
+	padding: 0.25rem;
+	object-fit: cover;
+}
+
+.avatar-initials {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 3rem;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: hsl(var(--muted-foreground));
+	background-color: hsl(var(--muted));
+}
+
+.identity {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.identity h1 {
+	margin: 0;
+	font-size: 1.875rem;
+	font-weight: 700;
+}
+
+.identity .headline {
+	margin: -0.5rem 0 0;
+	text-align: center;
+	font-size: 1rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.pill-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 0.5rem;
+}
+
+.socials {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.75rem 1.75rem;
+}
+
+.socials a {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
+	transition: opacity 0.2s;
+}
+
+.socials a:hover { opacity: 0.75; }
+
+.home-content {
+	display: flex;
+	flex-direction: column;
+	gap: 2.5rem;
+	width: 100%;
+	margin-inline: auto;
+}
+
+.home-section {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.section-label {
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.section-label h2 { margin: 0; font-size: inherit; font-weight: inherit; }
+
+.section-body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.section-body p { margin: 0; }
+.muted { color: hsl(var(--muted-foreground)); }
+
+/* --- the small pill CTA ("More about me", "See all posts") ---------------- */
+.pill-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	align-self: flex-end;
+	width: fit-content;
+	border: 1px solid hsl(var(--border));
+	border-radius: 0.5rem;
+	background-color: hsl(var(--muted));
+	padding: 0.25rem 0.5rem;
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+	text-decoration: none;
+	transition: background-color 0.2s;
+}
+
+.pill-link:hover { background-color: hsl(var(--primary-foreground)); }
+
+/* --- the arrow that slides out on hover ---------------------------------- */
+.arrow { stroke: hsl(var(--muted-foreground)); width: 1rem; height: 1rem; }
+
+.arrow-line {
+	transform: translateX(1rem) scaleX(0);
+	transition: transform 0.3s ease-in-out;
+}
+
+.arrow-head {
+	transform: translateX(0);
+	transition: transform 0.3s ease-in-out;
+}
+
+.pill-link:hover .arrow-line,
+.post-preview a:hover .arrow-line { transform: translateX(0.25rem) scaleX(1); }
+
+.pill-link:hover .arrow-head,
+.post-preview a:hover .arrow-head { transform: translateX(0.25rem); }
+
+.post-preview a:hover .arrow { stroke: hsl(var(--primary)); }
+
+/* --- recent posts -------------------------------------------------------- */
+.post-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+}
+
+.post-preview {
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-2xl);
+	background-color: hsl(var(--background));
+	padding: 0.625rem 1.25rem;
+	transition: background-color 0.15s ease-in-out;
+}
+
+.post-preview:hover { background-color: hsl(var(--muted)); }
+
+.post-preview a {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	text-decoration: none;
+	transition: color 0.2s;
+}
+
+.post-preview a:hover { color: hsl(var(--primary)); }
+
+.post-date {
+	min-width: 95px;
+	padding-block: 0.25rem;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.75rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.post-title {
+	display: flex;
+	flex-grow: 1;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+/* --- education ----------------------------------------------------------- */
+.card {
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-2xl);
+	background-color: hsl(var(--muted));
+	padding: 0.75rem 1.25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+}
+
+.card h3 { margin: 0; font-size: 1.125rem; font-weight: 500; }
+
+/* --- skills -------------------------------------------------------------- */
+.skill-row {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.skill-row h3 { margin: 0; font-weight: 500; font-size: 1rem; }
+
+.skill-tags {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.5rem 1rem;
+}
+
+.tag {
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	background-color: hsl(var(--muted));
+	padding: 0.25rem 0.5rem;
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+}
+
+@media (min-width: 640px) {
+	.post-list { gap: 0.5rem; }
+	.post-preview a { flex-direction: row; }
+}
+
+@media (min-width: 768px) {
+	.home-content { width: 80%; }
+	.home-section { flex-direction: row; gap: 0; }
+	.section-label { min-width: 9rem; }
+	.skill-row { flex-direction: row; gap: 1.25rem; }
+	.skill-row h3 { width: 20%; }
+	.skill-tags { width: 80%; }
+}
+
+@media (min-width: 1024px) {
+	.home-content { width: 83.333%; }
+}
+
+/* ---------------------------------------------------------------------------
+   Prose pages (about, projects) — article with a sticky table of contents
+   --------------------------------------------------------------------------- */
+.page-layout {
+	margin-top: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 2.5rem;
+}
+
+.page-layout article {
+	min-width: 0;
+	flex-grow: 1;
+	width: 100%;
+}
+
+#content-header h1 {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.page-description { margin-top: 0.5rem; }
+
+/* --- table of contents --------------------------------------------------- */
+#sidebar { display: none; }
+
+.toc-title {
+	margin: 0;
+	font-size: 0.875rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.toc, .toc-sub {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.toc { margin-top: 1rem; }
+.toc-sub { padding-inline-start: 0.75rem; }
+
+.toc-row {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+}
+
+/* the 2px rail that lights up on the active entry */
+.toc-bar {
+	position: absolute;
+	inset-block: 0;
+	inset-inline-start: 0;
+	width: 2px;
+	border-radius: 2px;
+	background-color: transparent;
+	transition: background-color 0.3s;
+}
+
+.toc-item {
+	display: block;
+	width: 100%;
+	margin-inline-start: 0.5rem;
+	padding: 0.25rem 0.75rem;
+	font-size: 0.875rem;
+	line-height: 1.4;
+	color: hsl(var(--foreground) / 0.75);
+	text-decoration: none;
+	border-radius: 0.5rem;
+	transition: color 0.2s, background-color 0.2s;
+}
+
+.toc-item:hover { color: hsl(var(--foreground)); }
+
+.toc-item.active {
+	font-weight: 500;
+	color: hsl(var(--primary));
+	background-color: hsl(var(--muted));
+}
+
+.toc-row:has(.toc-item.active) .toc-bar { background-color: hsl(var(--primary)); }
+
+/* --- article body -------------------------------------------------------- */
+.prose {
+	margin-top: 2rem;
+	font-size: 1rem;
+	color: hsl(var(--muted-foreground));
+	line-height: 1.75;
+}
+
+.prose > *:first-child { margin-top: 0; }
+
+.prose h2, .prose h3, .prose h4 {
+	color: hsl(var(--foreground));
+	line-height: 1.3;
+	scroll-margin-top: 5rem;
+}
+
+.prose h2 { margin: 2.5rem 0 1rem; font-size: 1.375rem; font-weight: 600; }
+.prose h3 { margin: 2rem 0 0.75rem; font-size: 1.125rem; font-weight: 600; }
+
+.prose p, .prose ul, .prose ol { margin: 0 0 1.25rem; }
+.prose li { margin-bottom: 0.375rem; }
+.prose ul, .prose ol { padding-inline-start: 1.25rem; }
+.prose strong { color: hsl(var(--foreground)); font-weight: 600; }
+
+.prose a {
+	color: hsl(var(--foreground));
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	text-decoration-thickness: 1px;
+	transition: color 0.2s;
+}
+
+.prose a:hover { color: hsl(var(--primary)); }
+.prose .pill-link { text-decoration: none; color: hsl(var(--muted-foreground)); }
+.prose .pill-link:hover { color: hsl(var(--muted-foreground)); }
+
+/* Images never exceed the article column; height follows to keep the aspect ratio */
+.prose img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-radius: var(--radius-xl);
+}
+
+.prose blockquote {
+	margin: 0 0 1.25rem;
+	padding-inline-start: 1rem;
+	border-inline-start: 2px solid hsl(var(--border));
+	font-style: italic;
+}
+
+.prose code {
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.875em;
+	background-color: hsl(var(--muted));
+	border: 1px solid hsl(var(--border));
+	border-radius: 0.375rem;
+	padding: 0.1rem 0.3rem;
+}
+
+.prose pre {
+	overflow-x: auto;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	padding: 1rem 1.25rem;
+	margin: 0 0 1.25rem;
+}
+
+.prose pre code { background: none; border: 0; padding: 0; font-size: 0.875rem; }
+
+.prose table {
+	width: 100%;
+	margin: 0 0 1.25rem;
+	border-collapse: collapse;
+	font-size: 0.9375rem;
+	display: block;
+	overflow-x: auto;
+}
+
+.prose th, .prose td {
+	border: 1px solid hsl(var(--border));
+	padding: 0.5rem 0.75rem;
+	text-align: left;
+}
+
+.prose th {
+	background-color: hsl(var(--muted));
+	color: hsl(var(--foreground));
+	font-weight: 600;
+}
+
+/* footnotes: [^name] in Markdown; bottom_footnotes in zola.toml collects them */
+.prose .footnote-reference {
+	font-size: 0.75em;
+	line-height: 0;
+	scroll-margin-top: 5rem;
+}
+
+.prose .footnote-reference a { text-decoration: none; color: hsl(var(--primary)); }
+
+.prose .footnotes {
+	margin-top: 3rem;
+	padding-top: 1rem;
+	border-top: 1px solid hsl(var(--border));
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.prose .footnotes li {
+	scroll-margin-top: 5rem;
+	border-radius: var(--radius-md);
+	transition: background-color 0.4s;
+}
+
+.prose .footnotes p { margin: 0; }
+.prose .footnotes li:target { background-color: hsl(var(--muted)); }
+.prose .footnotes a { text-decoration: none; }
+
+@media (min-width: 640px) {
+	#content-header h1 { font-size: 1.875rem; margin-bottom: 0.5rem; }
+}
+
+@media (min-width: 768px) {
+	.page-layout { flex-direction: row; }
+
+	#sidebar {
+		display: block;
+		order: 2;
+		position: sticky;
+		top: 5rem;
+		min-width: 12rem;
+		flex-basis: 15rem;
+		max-height: calc(100vh - 7rem);
+		overflow-y: auto;
+	}
+
+	.page-layout article { min-width: 45ch; }
+}
+
+@media (min-width: 1024px) {
+	#sidebar { flex-shrink: 0; }
+}
+
+/* ---------------------------------------------------------------------------
+   Projects page
+   --------------------------------------------------------------------------- */
+.gh-chart img {
+	width: 100%;
+	height: auto;
+	border-radius: 0;
+}
+
+.card-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.75rem 1rem;
+	margin: 0 0 1.25rem;
+}
+
+.project-card {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	padding: 0.375rem 0.75rem;
+	transition: background-color 0.15s ease-in-out;
+}
+
+.project-card:hover { background-color: hsl(var(--muted)); }
+
+.project-title {
+	display: block;
+	font-weight: 500;
+	color: hsl(var(--foreground));
+	text-decoration: none;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	transition: color 0.2s;
+}
+
+.prose .project-title { text-decoration: none; color: hsl(var(--foreground)); }
+.project-title:hover,
+.prose .project-title:hover { color: hsl(var(--primary)); }
+
+.prose .project-links a { text-decoration: none; }
+
+.project-desc {
+	flex-grow: 1;
+	font-size: 0.9375rem;
+	line-height: 1.4;
+	color: hsl(var(--muted-foreground));
+	/* two lines, then ellipsis — keeps every card the same height */
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.project-links {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.project-links a {
+	display: inline-flex;
+	border-radius: 9999px;
+	background-color: hsl(var(--muted));
+	padding: 0.25rem;
+	color: hsl(var(--muted-foreground));
+	text-decoration: none;
+	transition: color 0.2s, background-color 0.2s;
+}
+
+.project-links a:hover {
+	color: hsl(var(--primary));
+	background-color: hsl(var(--border));
+}
+
+.project-links svg { width: 1rem; height: 1rem; }
+
+@media (min-width: 640px) {
+	.card-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+	.project-card { padding: 0.75rem 1rem; }
+	.project-desc { height: 2.625rem; }
+	.project-links { gap: 0.75rem; }
+	.project-links a { padding: 0.375rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   Search page
+   --------------------------------------------------------------------------- */
+.search-page #content-header h1 { margin-bottom: 1.5rem; }
+.search-page > p { margin: 0 0 1rem; }
+
+.search-form {
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin: 1rem 0;
+}
+
+.search-form .search-icon {
+	position: absolute;
+	inset-inline-start: 0.875rem;
+	width: 1.125rem;
+	height: 1.125rem;
+	color: hsl(var(--muted-foreground));
+	pointer-events: none;
+}
+
+.search-form input {
+	width: 100%;
+	padding: 0.625rem 1rem 0.625rem 2.75rem;
+	font: inherit;
+	font-size: 1rem;
+	color: hsl(var(--foreground));
+	background-color: hsl(var(--muted));
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-form input::placeholder { color: hsl(var(--muted-foreground)); }
+
+.search-form input:focus {
+	outline: none;
+	border-color: hsl(var(--primary));
+	box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
+}
+
+/* the clear "x" Safari/Chrome add to type=search */
+.search-form input::-webkit-search-cancel-button { cursor: pointer; }
+
+.search-status {
+	margin: 0 0 0.75rem;
+	font-size: 0.875rem;
+	min-height: 1.25rem;
+}
+
+.search-result a {
+	flex-direction: column;
+	gap: 0.25rem;
+	padding-block: 0.25rem;
+}
+
+.search-result-title {
+	font-weight: 500;
+	color: hsl(var(--foreground));
+}
+
+.search-result:hover .search-result-title { color: hsl(var(--primary)); }
+
+.search-result-snippet {
+	font-size: 0.875rem;
+	line-height: 1.5;
+	color: hsl(var(--muted-foreground));
+}
+
+.search-result-snippet mark {
+	background-color: hsl(var(--primary) / 0.22);
+	color: hsl(var(--foreground));
+	border-radius: 0.2rem;
+	padding: 0 0.15rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Archive — posts grouped by year, with the year as a ghosted watermark
+   --------------------------------------------------------------------------- */
+.archive #content-header h1 { margin-bottom: 1.5rem; }
+.archive #content-header h1:has(+ .archive-summary) { margin-bottom: 0.5rem; }
+
+.archive-summary { margin-bottom: 2rem; }
+.archive-summary p { margin: 0; }
+.archive-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem 0.5rem;
+	margin-top: 0.5rem !important;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.8125rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.year-group {
+	position: relative;
+	margin-top: 5rem;
+}
+
+.year-mark {
+	position: absolute;
+	inset-inline-start: -1.5rem;
+	top: -4rem;
+	z-index: 0;
+	margin: 0;
+	font-size: 8rem;
+	font-weight: 700;
+	line-height: 1;
+	color: transparent;
+	opacity: 0.1;
+	-webkit-text-stroke: 2px hsl(var(--foreground));
+	user-select: none;
+}
+
+.year-count {
+	position: relative;
+	z-index: 1;
+	margin: 0 0 0.25rem;
+	padding-inline: 1.25rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.archive-list { gap: 0; }
+
+/* borderless rows so the watermark reads through behind them */
+.archive-row {
+	position: relative;
+	z-index: 1;
+	border: 0;
+	background-color: transparent;
+	padding-block: 0.5rem;
+}
+
+@media (max-width: 639px) {
+	.year-mark { font-size: 5.5rem; top: -2.75rem; inset-inline-start: -0.5rem; }
+	.year-group { margin-top: 3.5rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   Blog post
+   --------------------------------------------------------------------------- */
+.post-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1rem;
+	font-size: 0.75rem;
+	line-height: 1.5;
+	color: hsl(var(--muted-foreground));
+}
+
+.meta-item {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.meta-item svg { width: 0.875rem; height: 0.875rem; flex-shrink: 0; }
+.post-meta time { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.meta-tags a { color: inherit; text-decoration: none; }
+.meta-tags a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.article-info h1 { margin-top: 1rem; }
+
+.post-description {
+	margin: 0.75rem 0 0;
+	padding: 0;
+	border: 0;
+	font-size: 0.875rem;
+	font-style: italic;
+	color: hsl(var(--muted-foreground));
+}
+
+/* the short rule under the title, as on the reference */
+.header-rule {
+	width: 50%;
+	margin-top: 1rem;
+	border-top: 1px solid hsl(var(--border));
+}
+
+/* --- citation / share card ---------------------------------------------- */
+.post-citation {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-top: 3rem;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	color: hsl(var(--muted-foreground));
+	font-size: 0.875rem;
+}
+
+.citation-title { font-weight: 500; color: hsl(var(--foreground)); }
+.citation-url { font-size: 0.8125rem; overflow-wrap: anywhere; }
+
+.citation-fields {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0.25rem 1.25rem;
+}
+
+.citation-field { display: flex; gap: 0.5rem; }
+.citation-value { color: hsl(var(--foreground)); }
+
+.citation-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+/* copy link + share-on-X/LinkedIn pills */
+.share-btn {
+	gap: 0.375rem;
+	padding: 0.25rem 0.625rem;
+	font: inherit;
+	font-size: 0.8125rem;
+	color: hsl(var(--muted-foreground));
+	text-decoration: none;
+	border-radius: var(--radius-xl);
+}
+
+.share-btn svg { width: 0.875rem; height: 0.875rem; }
+
+/* --- reader feedback card ----------------------------------------------- */
+/* --- buy me a coffee (end of post) ---------------------------------------- */
+.post-coffee {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	margin-top: 3rem;
+	padding: 0.5rem 0.5rem 0.5rem 0.875rem;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	background: hsl(var(--secondary) / 0.5);
+	font-size: 0.875rem;
+	line-height: 1.4;
+}
+.post-coffee + .post-citation { margin-top: 1rem; }
+.coffee-icon { flex: none; width: 1.125rem; height: 1.125rem; color: hsl(var(--primary)); }
+.coffee-icon { overflow: visible; }
+
+/* steam drifts up and fades, the two wisps out of step; the cup tips when the box is hovered */
+.coffee-steam {
+	transform-box: fill-box;
+	transform-origin: center bottom;
+	animation: coffee-steam 2.4s ease-in-out infinite;
+}
+.coffee-steam-2 { animation-delay: 1.2s; }
+.coffee-cup {
+	transform-box: view-box;
+	transform-origin: 9px 21px;
+	transition: transform 0.3s ease;
+}
+.post-coffee:hover .coffee-cup { transform: rotate(-8deg); }
+
+@keyframes coffee-steam {
+	0%   { opacity: 0;   transform: translateY(3px) scaleY(0.6); }
+	35%  { opacity: 1; }
+	100% { opacity: 0;   transform: translateY(-3px) scaleY(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.coffee-steam { animation: none; }
+	.coffee-cup { transition: none; }
+	.post-coffee:hover .coffee-cup { transform: none; }
+}
+.coffee-text {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	color: hsl(var(--muted-foreground));
+}
+.coffee-text strong { color: hsl(var(--foreground)); font-weight: 500; }
+.coffee-btn { flex: none; align-self: center; margin: 0; }
+
+/* phones: keep it to one line, trimming the text with an ellipsis if needed */
+@media (max-width: 560px) {
+	.coffee-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
+.post-feedback {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-top: 1rem;
+	padding: 0.75rem 1rem;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	font-size: 0.875rem;
+}
+
+.feedback-title { margin: 0; font-size: 1rem; font-weight: 500; }
+.feedback-text { margin: 0; color: hsl(var(--muted-foreground)); }
+
+.post-feedback .socials {
+	justify-content: flex-start;
+	gap: 0.5rem 1.25rem;
+	margin-top: 0.25rem;
+}
+
+.post-feedback .socials svg { width: 1.125rem; height: 1.125rem; }
+
+@media (min-width: 640px) {
+	.article-info h1 { margin-top: 1.5rem; }
+	.header-rule { width: 33.333%; margin-top: 1.5rem; }
+	.post-citation { padding: 0.75rem 1rem; }
+	.citation-fields { gap: 0.25rem 2rem; }
+	.citation-field { flex-direction: column; gap: 0; min-width: 4rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   Reading progress / back-to-top
+   Shows the percentage read; swaps to an up-chevron on hover, and once the
+   article has been read to the end.
+   --------------------------------------------------------------------------- */
+.to-top {
+	position: fixed;
+	bottom: 2rem;
+	inset-inline-end: 1rem;
+	z-index: 50;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0;
+	border: 2px solid transparent;
+	border-radius: 9999px;
+	background-color: hsl(var(--muted));
+	color: hsl(var(--muted-foreground));
+	cursor: pointer;
+	opacity: 0;
+	transform: translateY(7rem);
+	transition: opacity 0.3s, transform 0.3s, border-color 0.3s, color 0.2s;
+}
+
+.to-top[data-show="true"] {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.to-top:hover {
+	border-color: hsl(var(--border) / 0.75);
+	color: hsl(var(--primary));
+}
+
+.to-top-percent {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8125rem;
+	font-variant-numeric: tabular-nums;
+	transition: opacity 0.2s;
+}
+
+.to-top-percent .unit { font-size: 0.6875rem; }
+
+.to-top svg {
+	width: 1.125rem;
+	height: 1.125rem;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+/* hovering — or having finished the article — reveals the arrow */
+.to-top:hover .to-top-percent,
+.to-top.ended .to-top-percent { opacity: 0; }
+
+.to-top:hover svg,
+.to-top.ended svg { opacity: 1; }
+
+@media (min-width: 640px) {
+	.to-top {
+		inset-inline-end: 2rem;
+		width: 3rem;
+		height: 3rem;
+	}
+	.to-top-percent { font-size: 0.875rem; }
+	.to-top svg { width: 1.25rem; height: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.to-top { transition: opacity 0.2s; transform: none; }
+}
+
+/* --- "Back" pill: the CTA pill, left-aligned with the arrow reversed ------ */
+.pill-back {
+	align-self: flex-start;
+	margin-bottom: 1.5rem;
+}
+
+.arrow-back .arrow-line { transform: translateX(0.75rem) scaleX(0); }
+.arrow-back .arrow-head { transform: translateX(0.25rem); }
+
+.pill-link:hover .arrow-back .arrow-line { transform: translateX(0) scaleX(1); }
+.pill-link:hover .arrow-back .arrow-head { transform: translateX(0); }
+
+/* --- 404 page ------------------------------------------------------------ */
+.not-found {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	max-width: 40rem;
+	margin: 3rem auto 0;
+}
+
+.nf-code {
+	margin: 0;
+	font-size: clamp(5rem, 22vw, 9rem);
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: -0.04em;
+	/* fades from the accent colour into the page, so it reads as decoration not a heading */
+	background: linear-gradient(180deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.15) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	user-select: none;
+}
+
+.nf-text h1 { margin: 0 0 0.5rem; font-size: 1.5rem; }
+.nf-text p { margin: 0; }
+
+#nf-path {
+	padding: 0.125rem 0.375rem;
+	border-radius: var(--radius-md);
+	background-color: hsl(var(--muted));
+	color: hsl(var(--foreground));
+	font-size: 0.875em;
+	overflow-wrap: anywhere;
+}
+
+.nf-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+/* .pill-link defaults to align-self: flex-end for the home page; sit in a row here */
+.nf-actions .pill-link { align-self: auto; }
+
+.nf-recent {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	margin-top: 1rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid hsl(var(--border));
+}
+
+.nf-recent-title {
+	margin: 0;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: hsl(var(--muted-foreground));
+}
+
+	</style>
+	
+	<style>
+/* Code highlighting for both themes, inlined into every page's <head> by _base.html
+   (no separate stylesheet request). Generated from Zola's giallo-light.css (catppuccin-latte)
+   and giallo-dark.css (catppuccin-mocha): if [markdown.highlighting] themes change in
+   zola.toml, regenerate this from the new public/giallo-*.css files.
+   The leading underscore stops Zola compiling it into its own stylesheet. */
+html:not(.dark) .z-l-code { color: #4C4F69; background-color: #EFF1F5; }
+html:not(.dark) .z-l-hl { background-color: #4C4F6912; }
+html:not(.dark) .giallo-ln { color: #8C8FA1; }
+html:not(.dark) .z-l-1 { color: #04A5E5; }
+html:not(.dark) .z-l-2 { color: #179299; }
+html:not(.dark) .z-l-3 { color: #1E66F5; }
+html:not(.dark) .z-l-4 { color: #209FB5; }
+html:not(.dark) .z-l-5 { color: #40A02B; }
+html:not(.dark) .z-l-6 { color: #6C6F85; }
+html:not(.dark) .z-l-7 { color: #7287FD; }
+html:not(.dark) .z-l-8 { color: #7C7F93; }
+html:not(.dark) .z-l-9 { color: #8839EF; }
+html:not(.dark) .z-l-10 { color: #D20F39; }
+html:not(.dark) .z-l-11 { color: #DC8A78; }
+html:not(.dark) .z-l-12 { color: #DD7878; }
+html:not(.dark) .z-l-13 { color: #DF8E1D; }
+html:not(.dark) .z-l-14 { color: #E64553; }
+html:not(.dark) .z-l-15 { color: #EA76CB; }
+html:not(.dark) .z-l-16 { color: #FE640B; }
+html:not(.dark) .z-l-b { font-weight: bold; }
+html:not(.dark) .z-l-i { font-style: italic; }
+html:not(.dark) .z-l-u { text-decoration: underline; }
+html:not(.dark) .z-l-s { text-decoration: line-through; }
+html:not(.dark) .z-l-us { text-decoration: underline line-through; }
+html.dark .z-d-code { color: #CDD6F4; background-color: #1E1E2E; }
+html.dark .z-d-hl { background-color: #CDD6F412; }
+html.dark .giallo-ln { color: #7F849C; }
+html.dark .z-d-1 { color: #74C7EC; }
+html.dark .z-d-2 { color: #89B4FA; }
+html.dark .z-d-3 { color: #89DCEB; }
+html.dark .z-d-4 { color: #9399B2; }
+html.dark .z-d-5 { color: #94E2D5; }
+html.dark .z-d-6 { color: #A6ADC8; }
+html.dark .z-d-7 { color: #A6E3A1; }
+html.dark .z-d-8 { color: #B4BEFE; }
+html.dark .z-d-9 { color: #CBA6F7; }
+html.dark .z-d-10 { color: #EBA0AC; }
+html.dark .z-d-11 { color: #F2CDCD; }
+html.dark .z-d-12 { color: #F38BA8; }
+html.dark .z-d-13 { color: #F5C2E7; }
+html.dark .z-d-14 { color: #F5E0DC; }
+html.dark .z-d-15 { color: #F9E2AF; }
+html.dark .z-d-16 { color: #FAB387; }
+html.dark .z-d-b { font-weight: bold; }
+html.dark .z-d-i { font-style: italic; }
+html.dark .z-d-u { text-decoration: underline; }
+html.dark .z-d-s { text-decoration: line-through; }
+html.dark .z-d-us { text-decoration: underline line-through; }
+
+	</style>
 
 	
 	<script>
@@ -133,9 +1489,6 @@
 			var dark = t === 'dark' || (t === 'system' &&
 				window.matchMedia('(prefers-color-scheme: dark)').matches)
 			document.documentElement.classList.toggle('dark', dark)
-			var l = document.getElementById('syntax-light')
-			var d = document.getElementById('syntax-dark')
-			if (l && d) { l.disabled = dark; d.disabled = !dark }
 		})()
 	</script>
 
@@ -558,16 +1911,12 @@
 
 		// Theme cycles system -> light -> dark
 		const darkBtn = document.getElementById('toggleDarkMode')
-		const syntaxLight = document.getElementById('syntax-light')
-		const syntaxDark = document.getElementById('syntax-dark')
 		const order = ['system', 'light', 'dark']
 		const media = window.matchMedia('(prefers-color-scheme: dark)')
 
 		const apply = (theme) => {
 			const dark = theme === 'dark' || (theme === 'system' && media.matches)
 			document.documentElement.classList.toggle('dark', dark)
-			syntaxLight.disabled = dark
-			syntaxDark.disabled = !dark
 			darkBtn.dataset.theme = theme
 		}
 

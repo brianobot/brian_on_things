@@ -1,0 +1,53 @@
+/* Code highlighting for both themes, inlined into every page's <head> by _base.html
+   (no separate stylesheet request). Generated from Zola's giallo-light.css (catppuccin-latte)
+   and giallo-dark.css (catppuccin-mocha): if [markdown.highlighting] themes change in
+   zola.toml, regenerate this from the new public/giallo-*.css files.
+   The leading underscore stops Zola compiling it into its own stylesheet. */
+html:not(.dark) .z-l-code { color: #4C4F69; background-color: #EFF1F5; }
+html:not(.dark) .z-l-hl { background-color: #4C4F6912; }
+html:not(.dark) .giallo-ln { color: #8C8FA1; }
+html:not(.dark) .z-l-1 { color: #04A5E5; }
+html:not(.dark) .z-l-2 { color: #179299; }
+html:not(.dark) .z-l-3 { color: #1E66F5; }
+html:not(.dark) .z-l-4 { color: #209FB5; }
+html:not(.dark) .z-l-5 { color: #40A02B; }
+html:not(.dark) .z-l-6 { color: #6C6F85; }
+html:not(.dark) .z-l-7 { color: #7287FD; }
+html:not(.dark) .z-l-8 { color: #7C7F93; }
+html:not(.dark) .z-l-9 { color: #8839EF; }
+html:not(.dark) .z-l-10 { color: #D20F39; }
+html:not(.dark) .z-l-11 { color: #DC8A78; }
+html:not(.dark) .z-l-12 { color: #DD7878; }
+html:not(.dark) .z-l-13 { color: #DF8E1D; }
+html:not(.dark) .z-l-14 { color: #E64553; }
+html:not(.dark) .z-l-15 { color: #EA76CB; }
+html:not(.dark) .z-l-16 { color: #FE640B; }
+html:not(.dark) .z-l-b { font-weight: bold; }
+html:not(.dark) .z-l-i { font-style: italic; }
+html:not(.dark) .z-l-u { text-decoration: underline; }
+html:not(.dark) .z-l-s { text-decoration: line-through; }
+html:not(.dark) .z-l-us { text-decoration: underline line-through; }
+html.dark .z-d-code { color: #CDD6F4; background-color: #1E1E2E; }
+html.dark .z-d-hl { background-color: #CDD6F412; }
+html.dark .giallo-ln { color: #7F849C; }
+html.dark .z-d-1 { color: #74C7EC; }
+html.dark .z-d-2 { color: #89B4FA; }
+html.dark .z-d-3 { color: #89DCEB; }
+html.dark .z-d-4 { color: #9399B2; }
+html.dark .z-d-5 { color: #94E2D5; }
+html.dark .z-d-6 { color: #A6ADC8; }
+html.dark .z-d-7 { color: #A6E3A1; }
+html.dark .z-d-8 { color: #B4BEFE; }
+html.dark .z-d-9 { color: #CBA6F7; }
+html.dark .z-d-10 { color: #EBA0AC; }
+html.dark .z-d-11 { color: #F2CDCD; }
+html.dark .z-d-12 { color: #F38BA8; }
+html.dark .z-d-13 { color: #F5C2E7; }
+html.dark .z-d-14 { color: #F5E0DC; }
+html.dark .z-d-15 { color: #F9E2AF; }
+html.dark .z-d-16 { color: #FAB387; }
+html.dark .z-d-b { font-weight: bold; }
+html.dark .z-d-i { font-style: italic; }
+html.dark .z-d-u { text-decoration: underline; }
+html.dark .z-d-s { text-decoration: line-through; }
+html.dark .z-d-us { text-decoration: underline line-through; }
