@@ -1,22 +1,28 @@
 +++
 title = "About"
-description = "Who I am and why this blog exists"
+description = "I'm Brian Obot, a software engineer and freelance Python & Rust developer building backend systems, contributing to open source and writing about software."
 template = "page.html"
-updated = 2026-11-06
+updated = 2026-11-09
 
 [extra]
 toc = true
+# full <title> and og:title for search results; the page heading stays "About"
+seo_title = "About Brian Obot: Software Engineer, Python & Rust Developer"
+# marks this page up as a schema.org ProfilePage about the author
+profile_page = true
 +++
 
 ## About me
 
-I'm Brian — an Electrical & Electronic Engineer and a software engineer. I build for the web, mostly the parts users never see: the
+I'm Brian Obot — an Electrical & Electronic Engineer turned software engineer, currently working as a freelance Python and Rust developer. I build for the web, mostly the parts users never see: the
 APIs, the data models, the background jobs, and the quiet infrastructure that keeps everything upright.
 
 Lately I've been drawn further down the stack. I've become quite fond of bytes and the internals of software, how things actually work underneath the abstractions we reach for every day. Most of my work lives in [Python](https://python.org) 🐍 and [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language)) 🦀, usually somewhere near a PostgreSQL database.
 
 I'm a strong believer in open source and in learning in public, which is a large
 part of why this blog exists at all.
+
+Looking for a Python or Rust developer? Here's [how we can work together](@/hire/index.md).
 
 <a class="pill-link" href="mailto:brianobot9@gmail.com"><span>Get in touch</span><svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line class="arrow-line" x1="5" y1="12" x2="19" y2="12"></line><polyline class="arrow-head" points="12 5 19 12 12 19"></polyline></svg></a>
 

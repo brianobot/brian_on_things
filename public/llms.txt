@@ -1,0 +1,35 @@
+# Brian on Things
+
+> Brian Obot is a software engineer and Python & Rust developer writing about backend systems, low-level internals, and the physics and maths beneath them.
+
+This is the personal blog of Brian Obot, a software engineer and Python & Rust developer. It has in-depth, practical articles on Python (FastAPI, Django, Pydantic, performance), Rust (ownership, lifetimes, modules, bytes), low-level systems and developer tooling, written from hands-on experience.
+
+## About
+
+- [About Brian Obot: Software Engineer, Python & Rust Developer](https://brianobot.tech/about/): I'm Brian Obot, a software engineer and freelance Python & Rust developer building backend systems, contributing to open source and writing about software.
+- [Hire a Freelance Python & Rust Developer – Brian Obot](https://brianobot.tech/hire/): Freelance Python and Rust developer for backend APIs, FastAPI and Django services, Rust web services and performance work. Open to contracts and open source.
+- [Projects](https://brianobot.tech/projects/): Things I've built, and things I've built in order to learn
+
+## Posts
+
+- [Introduction to Bytes in Rust. Part 1](https://brianobot.tech/blog/working-with-bytes-in-rust/): A beginner-friendly tour of bits, bytes and hexadecimal, and how Rust represents them.
+- [What I Learned (and Wish I'd Done Differently) at TechCabal's Moonshot](https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/): My first Moonshot taught me a lot, including a few things I'd do differently next time.
+- [Learning Technical Skills in the Age of SI](https://brianobot.tech/blog/learning-technical-skills-in-the-age-of-si/): What is the motivation and point of even trying when you're constantly faced with the reality that a computer can do it better and faster, why should I bother learning the basics? - Brian (Some cool guy)
+- [Common Gotchas When Working with Rust as a Python Developer](https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/): From Dynamic Ease to Memory Safety: 6 Hard Truths Every Pythonista Faces When Compiling Their First Rust App.
+- [Stop Writing Manual Validation: Master Pydantic](https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/): Go beyond basic type hints and build robust, production-ready Python with less code using Pydantic's validation.
+- [I Finally Understand References and Lifetimes in Rust](https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/): Key points to help you adapt to the concept of Lifetimes in Rust
+- [Mastering Python Performance: The Small Tweaks That Make Big Speed](https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/): The Developer’s Guide to Blazing Fast Python.
+- [Mastering the Crate and Module System in Rust](https://brianobot.tech/blog/mastering-the-crate-and-module-system-in-rust/): Building scalable foundations: a deep dive into information hierarchy, visibility, and crate management.
+- [Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects](https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/): Getting autocomplete, type hints, and navigation in single-file Rust programs—without Cargo.
+- [Starting Today, I'm Going Deeper into Game Development with Rust](https://brianobot.tech/blog/starting-today-im-choosing-to-go-deeper/): An academically-minded exploration into game engines, storytelling, and digital universes.
+- [How to Implement Autocomplete Functionality for Your CLI Program in Python](https://brianobot.tech/blog/autocomplete-for-your-cli-program-in-python/): Giving Your Python CLI the Power of Suggestion
+- [How to generate an ERD for your Database with Python in seconds](https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/): Visualizing How Data Connects and Interacts in your database with Python
+- [Zed: The Text Editor Reimagined for the Modern Developer](https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/): Why Zed might just change the way you write software.
+- [6 Python Tips That Quietly Level Up Your Code](https://brianobot.tech/blog/some-python-tips-that-quietly-level-up-your-code/): A few understated tricks that separate working code from elegant code.
+- [My FastAPI Project Blueprint](https://brianobot.tech/blog/my-favorite-fastapi-project-blueprint/): The FastAPI project structure I reach for on every new project — lessons learnt from working on large codebases.
+- [How I Hacked FastAPI BackgroundTasks for Real-Time Progress Updates (Without Celery)](https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/): Building a FastAPI endpoint that runs work in the background and reports real-time progress, without Celery.
+
+## Optional
+
+- [Atom feed](https://brianobot.tech/atom.xml): full text of every post
+- [Sitemap](https://brianobot.tech/sitemap.xml): every page on the site

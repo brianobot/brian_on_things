@@ -18,9 +18,9 @@
 	</div>
 
 	<div class="nf-actions">
-		<a class="pill-link" href="{{ get_url(path='/') }}">{% include "_arrow_back.html" %}<span>Home</span></a>
-		<a id="nf-search" class="pill-link" href="{{ get_url(path='/search') }}"><span>Search the blog</span>{% include "_arrow.html" %}</a>
-		<a class="pill-link" href="{{ get_url(path='/blog') }}"><span>All posts</span>{% include "_arrow.html" %}</a>
+		<a class="pill-link" href="{{ get_url(path='/', trailing_slash=true) }}">{% include "_arrow_back.html" %}<span>Home</span></a>
+		<a id="nf-search" class="pill-link" href="{{ get_url(path='/search', trailing_slash=true) }}"><span>Search the blog</span>{% include "_arrow.html" %}</a>
+		<a class="pill-link" href="{{ get_url(path='/blog', trailing_slash=true) }}"><span>All posts</span>{% include "_arrow.html" %}</a>
 	</div>
 
 	{% set blog = get_section(path="blog/_index.md") %}

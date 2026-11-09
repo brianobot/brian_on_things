@@ -18,6 +18,7 @@
 
 	<div class="identity">
 		<h1>{{ author }}</h1>
+		{% if config.extra.headline %}<p class="headline">{{ config.extra.headline }}</p>{% endif %}
 		<div class="socials">
 			{% for s in config.extra.socials %}
 				<a href="{{ s.url }}"{% if s.icon != "email" %} target="_blank" rel="noopener"{% endif %}>
@@ -36,9 +37,14 @@
 		<div class="section-body">
 			<p class="muted">{{ config.extra.tagline }}</p>
 			<p class="muted">{{ config.extra.bio | trim }}</p>
-			<a class="pill-link" href="{{ get_url(path='/about') }}">
-				<span>More about me</span>{% include "_arrow.html" %}
-			</a>
+			<div class="pill-row">
+				<a class="pill-link" href="{{ get_url(path='/hire', trailing_slash=true) }}">
+					<span>Work with me</span>{% include "_arrow.html" %}
+				</a>
+				<a class="pill-link" href="{{ get_url(path='/about', trailing_slash=true) }}">
+					<span>More about me</span>{% include "_arrow.html" %}
+				</a>
+			</div>
 		</div>
 	</section>
 
@@ -64,7 +70,7 @@
 					{% endif %}
 					{% endfor %}
 				</ul>
-				<a class="pill-link" href="{{ get_url(path='/blog') }}">
+				<a class="pill-link" href="{{ get_url(path='/blog', trailing_slash=true) }}">
 					<span>See all posts</span>{% include "_arrow.html" %}
 				</a>
 			{% else %}

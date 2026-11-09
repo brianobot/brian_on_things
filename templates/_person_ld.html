@@ -1,0 +1,27 @@
+{#- The site author as a schema.org Person (JSON object, no trailing comma).
+    Included by _base.html in the home page @graph and the About page's ProfilePage.
+    sameAs lists profile pages only: email and the CV are excluded. -#}
+{%- set ld_job = config.extra.job_title | default(value=config.extra.tagline | default(value="")) -%}
+{
+	"@type": "Person",
+	"@id": {{ ld_person | json_encode | safe }},
+	"name": {{ config.author | json_encode | safe }},
+	"url": {{ ld_home | json_encode | safe }},
+	{% if config.extra.avatar %}"image": {{ get_url(path=config.extra.avatar) | json_encode | safe }},{% endif %}
+	{% if ld_job %}"jobTitle": {{ ld_job | json_encode | safe }},{% endif %}
+	{% if config.extra.occupations %}"hasOccupation": [
+		{% for o in config.extra.occupations %}{ "@type": "Occupation", "name": {{ o | json_encode | safe }} }{% if not loop.last %},{% endif %}
+		{% endfor %}
+	],{% endif %}
+	{% if config.extra.bio %}"description": {{ config.extra.bio | trim | json_encode | safe }},{% endif %}
+	{% if config.extra.knows_about %}"knowsAbout": {{ config.extra.knows_about | json_encode | safe }},{% endif %}
+	{% if config.extra.education %}"alumniOf": [
+		{% for e in config.extra.education %}{ "@type": "CollegeOrUniversity", "name": {{ e.school | json_encode | safe }} }{% if not loop.last %},{% endif %}
+		{% endfor %}
+	],{% endif %}
+	"sameAs": [
+		{% set_global ld_first = true %}
+		{% for s in config.extra.socials | default(value=[]) %}{% if "mailto:" not in s.url and s.icon != "cv" %}{% if not ld_first %},{% endif %}{{ s.url | json_encode | safe }}{% set_global ld_first = false %}{% endif %}
+		{% endfor %}
+	]
+}

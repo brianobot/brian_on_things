@@ -19,10 +19,12 @@
 !*.yml
 !*.js
 !*.xml
+!*.woff2
 
 !*Brian_Obot_Resume.pdf
 !*og-default.jpg
 !*robots.txt
+!*llms.txt
 
 CLAUDE.md
 current_feature.md

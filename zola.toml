@@ -6,12 +6,14 @@ base_url = "https://brianobot.tech"
 # Used for <meta name="description">, Open Graph and feeds when a page
 # does not supply its own description
 author = "Brian Obot"
-description = "Personal notes on things I'm curious about: low-level systems engineering, the internals of the tools I use, and the physics and maths underneath it all."
+description = "Brian Obot is a software engineer and Python & Rust developer writing about backend systems, low-level internals, and the physics and maths beneath them."
 
 # Site-wide feed at /atom.xml with the full text of every post (drafts excluded).
 # Atom over RSS 2.0: every feed reader supports it and it carries full HTML cleanly.
 generate_feeds = true
-feed_filenames = ["atom.xml"]
+# llms.txt (https://llmstxt.org) is rendered like a feed from templates/llms.txt, so it
+# always lists every published post without being maintained by hand.
+feed_filenames = ["atom.xml", "llms.txt"]
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -36,7 +38,7 @@ dark_theme = "catppuccin-mocha"
 [extra]
 # Full <title> for the home page only (other pages use "Post • <title>").
 # Keep it under ~60 chars so Google doesn't truncate it.
-home_title = "Brian on Things: Computer Science, Physics & Maths"
+home_title = "Brian Obot – Software Engineer, Python & Rust Developer"
 # Short name shown in the nav bar on every page (config.title is the full
 # version used for og:site_name, feeds, structured data and page titles).
 brand = "Brian on Things"
@@ -49,10 +51,15 @@ og_image = "og-default.jpg"
 # ---- Homepage identity -------------------------------------------------
 # These drive the homepage identity block.
 author = "Brian Obot"
-tagline = "Electrical & Electronic Engineer | Software Engineer | Budding Nuclear Engineer"
+tagline = "Electrical & Electronic Engineer | Software Engineer | Product Engineer"
 # Single role for search engines (structured data Person.jobTitle). Falls back to
 # the tagline above if removed. Keep it to one title, not a list.
 job_title = "Software Engineer"
+# Visible line under your name on the home page. Google weighs visible text, so
+# this is where the roles you want to be found for belong.
+headline = "Software Engineer · Python & Rust Developer"
+# Roles for structured data (Person.hasOccupation)
+occupations = ["Software Engineer", "Python Developer", "Rust Developer"]
 
 bio = """
 I build tools for the web and write about what I learn along the way - mostly Maths, Physics,
@@ -64,6 +71,7 @@ I also occasionally write about movies, books and arts.
 knows_about = [
   "Computer Science", "Low-level systems engineering", "Software internals",
   "Rust", "Python", "Backend engineering",
+  "FastAPI", "Django", "Pydantic", "Axum", "PostgreSQL",
   "Physics", "Mathematics", "Electrical engineering", "Nuclear engineering",
   "Astronomy", "Marvel Movies"
 ]
