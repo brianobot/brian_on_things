@@ -1,6 +1,6 @@
 +++
 title = "Projects"
-description = "Things I've built, and things I've built in order to learn"
+description = "Open source work by Brian Obot: FastAPI and Django project templates, Rust CLI tools for load testing and API security, plus learning repos from Rust to C."
 template = "projects.html"
 updated = 2026-10-30
 

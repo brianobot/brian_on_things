@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
 
-	<title>How I Hacked FastAPI BackgroundTasks for Real-Time Progress Updates (Without Celery) • Brian on Things: Low-Level Computing, Physics &amp; Maths</title>
+	<title>Real-Time Progress Updates with FastAPI BackgroundTasks</title>
 
 	
 	
@@ -20,7 +20,7 @@
 		
 	
 
-	<meta name="description" content="Building a FastAPI endpoint that runs work in the background and reports real-time progress, without Celery.">
+	<meta name="description" content="How I used FastAPI BackgroundTasks to run long AI jobs in the background and report real-time progress through a status endpoint, without reaching for Celery.">
 	<meta name="author" content="Brian Obot">
 	<link rel="canonical" href="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/">
 	
@@ -34,14 +34,14 @@
 
 	
 	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="Brian on Things: Low-Level Computing, Physics &amp; Maths">
-	<meta property="og:title" content="How I Hacked FastAPI BackgroundTasks for Real-Time Progress Updates (Without Celery)">
+	<meta property="og:site_name" content="Brian on Things">
+	<meta property="og:title" content="Real-Time Progress Updates with FastAPI BackgroundTasks">
 	
 	
 	
 		
 	
-	<meta property="og:description" content="4 min read · Building a FastAPI endpoint that runs work in the background and reports real-time progress, without Celery.">
+	<meta property="og:description" content="4 min read · How I used FastAPI BackgroundTasks to run long AI jobs in the background and report real-time progress through a status endpoint, without reaching for Celery.">
 	<meta property="og:url" content="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/">
 	<meta property="og:locale" content="en_US">
 
@@ -65,13 +65,13 @@
 	
 
 	
-		<meta property="og:image" content="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.jpg">
-		<meta property="og:image:alt" content="How I Hacked FastAPI BackgroundTasks for Real-Time Progress Updates (Without Celery)">
-		<meta name="twitter:image" content="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.jpg">
+		<meta property="og:image" content="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.webp">
+		<meta property="og:image:alt" content="Real-Time Progress Updates with FastAPI BackgroundTasks">
+		<meta name="twitter:image" content="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.webp">
 		<meta name="twitter:card" content="summary_large_image">
 	
-	<meta name="twitter:title" content="How I Hacked FastAPI BackgroundTasks for Real-Time Progress Updates (Without Celery)">
-	<meta name="twitter:description" content="4 min read · Building a FastAPI endpoint that runs work in the background and reports real-time progress, without Celery.">
+	<meta name="twitter:title" content="Real-Time Progress Updates with FastAPI BackgroundTasks">
+	<meta name="twitter:description" content="4 min read · How I used FastAPI BackgroundTasks to run long AI jobs in the background and report real-time progress through a status endpoint, without reaching for Celery.">
 	
 		<meta name="twitter:label1" content="Reading time">
 		<meta name="twitter:data1" content="4 min read">
@@ -88,12 +88,12 @@
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
 		"headline": "How I Hacked FastAPI BackgroundTasks for Real-Time Progress Updates (Without Celery)",
-		"description": "Building a FastAPI endpoint that runs work in the background and reports real-time progress, without Celery.",
+		"description": "How I used FastAPI BackgroundTasks to run long AI jobs in the background and report real-time progress through a status endpoint, without reaching for Celery.",
 		"url": "https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/",
 		"mainEntityOfPage": "https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/",
 		"datePublished": "2025-10-01T00:00:00+00:00",
 		"dateModified": "2025-10-01T00:00:00+00:00",
-		"image": "https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.jpg",
+		"image": "https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.webp",
 		"author": {
 			"@type": "Person",
 			"name": "Brian Obot",
@@ -117,7 +117,7 @@
 	
 
 	
-	<link rel="alternate" type="application/atom+xml" title="Brian on Things: Low-Level Computing, Physics &amp; Maths" href="https://brianobot.tech/atom.xml">
+	<link rel="alternate" type="application/atom+xml" title="Brian on Things" href="https://brianobot.tech/atom.xml">
 
 	
 	<link rel="preload" href="https://brianobot.tech/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -291,7 +291,7 @@
 				<h1>How I Hacked FastAPI BackgroundTasks for Real-Time Progress Updates (Without Celery)</h1>
 
 				
-					<blockquote class="post-description"><q>Building a FastAPI endpoint that runs work in the background and reports real-time progress, without Celery.</q></blockquote>
+					<blockquote class="post-description"><q>How I used FastAPI BackgroundTasks to run long AI jobs in the background and report real-time progress through a status endpoint, without reaching for Celery.</q></blockquote>
 				
 			</div>
 
@@ -300,7 +300,7 @@
 
 		<div id="content" class="prose">
 			<p>I Built a FastAPI Endpoint That Runs in the Background and Talks Back</p>
-<p><img src="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.jpg" alt="Image was generated with ChatGPT" /></p>
+<p><img src="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.webp" alt="Image was generated with ChatGPT" /></p>
 <p><em>Image was generated with ChatGPT</em></p>
 <h2 id="i-built-a-fastapi-endpoint-that-runs-in-the-background-and-talks-back">I Built a FastAPI Endpoint That Runs in the Background and Talks Back</h2>
 <h2 id="intro">Intro</h2>

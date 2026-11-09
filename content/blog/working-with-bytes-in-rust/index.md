@@ -1,7 +1,7 @@
 +++
 title = "Introduction to Bytes in Rust. Part 1"
 date = 2026-11-02
-description = "A beginner-friendly tour of bits, bytes and hexadecimal, and how Rust represents them."
+description = "A beginner-friendly introduction to bytes in Rust: bits, bytes and hexadecimal, why computers use binary, and how Rust represents byte collections and strings."
 draft = false
 
 [extra]

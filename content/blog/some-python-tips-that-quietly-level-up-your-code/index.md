@@ -1,7 +1,7 @@
 +++
 title = "6 Python Tips That Quietly Level Up Your Code"
 date = 2025-10-25
-description = "A few understated tricks that separate working code from elegant code."
+description = "Six small Python tips for cleaner code: inline blocks, underscores in numbers, dict comprehensions, setdefault, contextlib.suppress and one-line statements."
 draft = false
 
 [extra]

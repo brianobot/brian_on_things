@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
 
-	<title>Common Gotchas When Working with Rust as a Python Developer • Brian on Things: Low-Level Computing, Physics &amp; Maths</title>
+	<title>Common Gotchas When Working with Rust as a Python Developer</title>
 
 	
 	
@@ -20,7 +20,7 @@
 		
 	
 
-	<meta name="description" content="From Dynamic Ease to Memory Safety: 6 Hard Truths Every Pythonista Faces When Compiling Their First Rust App.">
+	<meta name="description" content="Six gotchas Python developers hit when moving to Rust: flushing stdout, ownership and borrowing, Result-based errors, concurrency, unsafe code and performance.">
 	<meta name="author" content="Brian Obot">
 	<link rel="canonical" href="https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/">
 	
@@ -34,14 +34,14 @@
 
 	
 	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="Brian on Things: Low-Level Computing, Physics &amp; Maths">
+	<meta property="og:site_name" content="Brian on Things">
 	<meta property="og:title" content="Common Gotchas When Working with Rust as a Python Developer">
 	
 	
 	
 		
 	
-	<meta property="og:description" content="6 min read · From Dynamic Ease to Memory Safety: 6 Hard Truths Every Pythonista Faces When Compiling Their First Rust App.">
+	<meta property="og:description" content="6 min read · Six gotchas Python developers hit when moving to Rust: flushing stdout, ownership and borrowing, Result-based errors, concurrency, unsafe code and performance.">
 	<meta property="og:url" content="https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/">
 	<meta property="og:locale" content="en_US">
 
@@ -71,7 +71,7 @@
 		<meta name="twitter:card" content="summary_large_image">
 	
 	<meta name="twitter:title" content="Common Gotchas When Working with Rust as a Python Developer">
-	<meta name="twitter:description" content="6 min read · From Dynamic Ease to Memory Safety: 6 Hard Truths Every Pythonista Faces When Compiling Their First Rust App.">
+	<meta name="twitter:description" content="6 min read · Six gotchas Python developers hit when moving to Rust: flushing stdout, ownership and borrowing, Result-based errors, concurrency, unsafe code and performance.">
 	
 		<meta name="twitter:label1" content="Reading time">
 		<meta name="twitter:data1" content="6 min read">
@@ -88,7 +88,7 @@
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
 		"headline": "Common Gotchas When Working with Rust as a Python Developer",
-		"description": "From Dynamic Ease to Memory Safety: 6 Hard Truths Every Pythonista Faces When Compiling Their First Rust App.",
+		"description": "Six gotchas Python developers hit when moving to Rust: flushing stdout, ownership and borrowing, Result-based errors, concurrency, unsafe code and performance.",
 		"url": "https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/",
 		"mainEntityOfPage": "https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/",
 		"datePublished": "2026-02-02T00:00:00+00:00",
@@ -117,7 +117,7 @@
 	
 
 	
-	<link rel="alternate" type="application/atom+xml" title="Brian on Things: Low-Level Computing, Physics &amp; Maths" href="https://brianobot.tech/atom.xml">
+	<link rel="alternate" type="application/atom+xml" title="Brian on Things" href="https://brianobot.tech/atom.xml">
 
 	
 	<link rel="preload" href="https://brianobot.tech/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -497,7 +497,7 @@
 				<h1>Common Gotchas When Working with Rust as a Python Developer</h1>
 
 				
-					<blockquote class="post-description"><q>From Dynamic Ease to Memory Safety: 6 Hard Truths Every Pythonista Faces When Compiling Their First Rust App.</q></blockquote>
+					<blockquote class="post-description"><q>Six gotchas Python developers hit when moving to Rust: flushing stdout, ownership and borrowing, Result-based errors, concurrency, unsafe code and performance.</q></blockquote>
 				
 			</div>
 
@@ -505,7 +505,7 @@
 		</div>
 
 		<div id="content" class="prose">
-			<p><img src="https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/cover.jpg" alt="" /></p>
+			<p><img src="https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/cover.jpg" alt="Snow-capped mountain peak against a clear blue sky above dark forested hills" /></p>
 <p>Transitioning from Python to Rust can present a myriad of unexpected challenges for developers. By identifying these common gotchas and understanding the nuances of Rust’s design philosophy, you can streamline your learning curve and develop more efficient code. In this guide, I’ll detail my experiences with the Rust programming language and provide illustrative examples to help ease your journey.</p>
 <h2 id="tl-dr">TL;DR;</h2>
 <p>Be mindful of specific Rust behaviors, such as explicit flushing of standard output, understanding ownership and borrowing, and mastering error handling.</p>

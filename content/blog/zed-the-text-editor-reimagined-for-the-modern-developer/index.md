@@ -1,7 +1,7 @@
 +++
 title = "Zed: The Text Editor Reimagined for the Modern Developer"
 date = 2025-11-05
-description = "Why Zed might just change the way you write software."
+description = "A guide to setting up the Zed editor: why it's worth trying, how it compares with VS Code, installing the Zed CLI, choosing a theme and learning key bindings."
 draft = false
 
 [extra]
@@ -13,7 +13,7 @@ Why Zed might just change the way you write software.
 
 ## Guide to Setup and Configure Zed Editor
 
-![](cover.jpg)
+![Zed AI logo over a blurred code editor](cover.jpg)
 
 Why switching to Zed might improve your workflow as a developer.
 
@@ -47,7 +47,7 @@ If any of these attributes interest you just a little bit, just wait and see the
 
 If you do not already have Zed installed on your computer, follow this [link](https://zed.dev/download) to the Zed official page to download the version for your operating system. Currently, Zed supports macOS, Windows, and Linux.
 
-![](image-2.jpg)
+![The Zed download page on zed.dev, with download options for macOS, Windows and Linux](image-2.webp)
 
 After download and installation, you can proceed to start a new instance of the Zed Editor on your computer.
 
@@ -61,11 +61,11 @@ I would focus on macOS for this guide, since I am using a Mac.
 
 You can access Zed’s Command Palette, which is very similar to the command palette found in VSCode. You can open the command palette with the following key binding: `cmd + shift + p`
 
-![](image-3.png)
+![The Zed command palette listing commands such as zed: extensions, theme selector: toggle and cli: install cli binary](image-3.png)
 
 Searching the command palette for cli: install would show the command for installing the CLI.
 
-![](image-4.png)
+![Running cli: install cli binary from the Zed command palette, with a notice that zed was installed to /usr/local/bin/zed](image-4.png)
 
 ### Choosing a Theme Extension
 
@@ -82,7 +82,7 @@ Once you’ve installed a theme of your choosing, you can toggle between these t
 
 I use [Colorizer](https://github.com/tamimhasandev/colorizer) for my local development, because it offers a vibrant color contrast look and feel to text.
 
-![Screenshot showing the Colorizer theme](image-5.png)
+![Screenshot showing the Colorizer theme](image-5.webp)
 
 *Screenshot showing the [Colorizer](https://github.com/tamimhasandev/colorizer) theme*
 

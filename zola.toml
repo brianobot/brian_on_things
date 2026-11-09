@@ -1,5 +1,7 @@
 # The URL the site will be built for
-title = "Brian on Things: Low-Level Computing, Physics & Maths"
+# Site name: the nav bar, page-title suffix ("Projects • Brian on Things"), og:site_name,
+# feeds and structured data. Keep it short; the home page's full title is [extra].home_title.
+title = "Brian on Things"
 
 base_url = "https://brianobot.tech"
 
@@ -39,9 +41,6 @@ dark_theme = "catppuccin-mocha"
 # Full <title> for the home page only (other pages use "Post • <title>").
 # Keep it under ~60 chars so Google doesn't truncate it.
 home_title = "Brian Obot – Software Engineer, Python & Rust Developer"
-# Short name shown in the nav bar on every page (config.title is the full
-# version used for og:site_name, feeds, structured data and page titles).
-brand = "Brian on Things"
 
 # ---- Social preview ----------------------------------------------------
 og_locale = "en_US"

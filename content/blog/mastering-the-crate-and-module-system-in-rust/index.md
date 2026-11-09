@@ -1,7 +1,7 @@
 +++
 title = "Mastering the Crate and Module System in Rust"
 date = 2026-01-30
-description = "Building scalable foundations: a deep dive into information hierarchy, visibility, and crate management."
+description = "A guide to Rust's crate and module system: packages vs crates, modules, paths and visibility, dependency management and how to organise large Rust codebases."
 draft = false
 
 [extra]

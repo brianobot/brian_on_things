@@ -1,7 +1,7 @@
 +++
 title = "I Finally Understand References and Lifetimes in Rust"
 date = 2026-01-31
-description = "Key points to help you adapt to the concept of Lifetimes in Rust"
+description = "References and lifetimes in Rust explained: how borrowing and ownership work, what lifetime annotations mean, and how lifetime elision keeps code clean."
 draft = false
 
 [extra]
@@ -9,7 +9,7 @@ toc = true
 og_image = "cover.jpg"
 +++
 
-![](cover.jpg)
+![Snowy mountain ridge under a deep blue sky](cover.jpg)
 
 ## Introduction
 
@@ -19,7 +19,7 @@ I have been learning and working with Rust for over a year now, and for most of 
 
 References are pointers to a value or part of data; they don’t store the data themselves, just the pointer to where the data is stored in memory (they store the address of another item in memory). This distinction is crucial for understanding how to manage memory safely in Rust.
 
-![](image-2.png)
+![Diagram: a Rust reference created with let reference_val = &val points to the memory address holding val in a table of addresses and values](image-2.png)
 
 From the image above, val is a variable that holds the value 1. Taking a reference to that variable stores the address of val in another variable.
 
@@ -32,7 +32,7 @@ When you create a reference to a value, that reference should only be valid unti
 
 This is especially common for values stored on the Heap, where memory management is dynamic and subject to change. Rust’s compiler enforces these rules, ensuring that all references remain valid during their lifetime.
 
-![](image-3.png)
+![Diagram: after drop(val) frees its memory address, the reference points to an empty slot, so using reference_val would be an error](image-3.webp)
 
 ## Lock-on Behavior of References
 

@@ -1,7 +1,7 @@
 +++
 title = "Learning Technical Skills in the Age of SI"
 date = 2026-10-17
-description = "What is the motivation and point of even trying when you're constantly faced with the reality that a computer can do it better and faster, why should I bother learning the basics? - Brian (Some cool guy)" 
+description = "Why learn technical skills when AI writes code faster? My case for mastery in the age of super intelligence, and what chess teaches us about deep understanding."
 draft = false
 
 [extra]
