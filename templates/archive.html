@@ -6,6 +6,24 @@
 <div class="archive">
 	<div id="content-header">
 		<h1>{{ section.title }}</h1>
+
+		{#- summary: the section's description plus stats worked out at build time -#}
+		{% if section.pages %}
+			{% set_global total_minutes = 0 %}
+			{% for p in section.pages %}{% set_global total_minutes = total_minutes + p.reading_time %}{% endfor %}
+			{% set newest = section.pages | first %}
+			{% set oldest = section.pages | last %}
+			<div class="archive-summary">
+				{% set summary = section.extra.summary | default(value=section.description | default(value="")) %}{% if summary %}<p class="muted">{{ summary }}</p>{% endif %}
+				<p class="archive-stats">
+					<span>{{ section.pages | length }} post{% if section.pages | length != 1 %}s{% endif %}</span>
+					<span aria-hidden="true">·</span>
+					<span>{{ oldest.date | date(format="%b %Y") }} – {{ newest.date | date(format="%b %Y") }}</span>
+					<span aria-hidden="true">·</span>
+					<span>{{ total_minutes }} min of reading</span>
+				</p>
+			</div>
+		{% endif %}
 	</div>
 
 	<section id="content" aria-label="Blog post list">
