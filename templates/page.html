@@ -1,6 +1,6 @@
 {% extends "_base.html" %}
 
-{% block title %}{{ page.title }} • {{ config.title }}{% endblock title %}
+{% block title %}{% if page.extra.seo_title %}{{ page.extra.seo_title }}{% else %}{{ page.title }} • {{ config.title }}{% endif %}{% endblock title %}
 
 {% block main %}
 <div class="page-layout">

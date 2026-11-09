@@ -310,6 +310,20 @@ main { width: 100%; }
 	font-weight: 700;
 }
 
+.identity .headline {
+	margin: -0.5rem 0 0;
+	text-align: center;
+	font-size: 1rem;
+	color: hsl(var(--muted-foreground));
+}
+
+.pill-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 0.5rem;
+}
+
 .socials {
 	display: flex;
 	flex-wrap: wrap;

@@ -1,0 +1,27 @@
+{#- llms.txt (https://llmstxt.org): a Markdown index of the site for LLMs and AI search.
+    Rendered as a feed (see feed_filenames in zola.toml), so `pages` holds every
+    published post, newest first. Undated pages (About, Hire, Projects) are fetched by path. -#}
+{%- set about = get_page(path="about/index.md") -%}
+{%- set hire = get_page(path="hire/index.md") -%}
+{%- set projects = get_page(path="projects/index.md") -%}
+# {{ config.extra.brand | default(value=config.title) }}
+
+> {{ config.description }}
+
+This is the personal blog of {{ config.author }}, a software engineer and Python & Rust developer. It has in-depth, practical articles on Python (FastAPI, Django, Pydantic, performance), Rust (ownership, lifetimes, modules, bytes), low-level systems and developer tooling, written from hands-on experience.
+
+## About
+
+- [{{ about.extra.seo_title | default(value=about.title) }}]({{ about.permalink }}): {{ about.description }}
+- [{{ hire.extra.seo_title | default(value=hire.title) }}]({{ hire.permalink }}): {{ hire.description }}
+- [Projects]({{ projects.permalink }}): {{ projects.description }}
+
+## Posts
+{% for p in pages %}
+- [{{ p.title }}]({{ p.permalink }}): {{ p.description | default(value="") }}
+{%- endfor %}
+
+## Optional
+
+- [Atom feed]({{ get_url(path="atom.xml", trailing_slash=false) }}): full text of every post
+- [Sitemap]({{ get_url(path="sitemap.xml", trailing_slash=false) }}): every page on the site

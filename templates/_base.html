@@ -21,7 +21,7 @@
 	{% set_global meta_type = "website" %}
 
 	{% if page %}
-		{% set_global meta_title = page.title %}
+		{% set_global meta_title = page.extra.seo_title | default(value=page.title) %}
 		{% if page.description %}{% set_global meta_desc = page.description %}{% endif %}
 		{# only dated posts are articles; About and Projects are not #}
 		{% if page.date %}{% set_global meta_type = "article" %}{% endif %}
@@ -123,24 +123,23 @@
 		"author": {
 			"@type": "Person",
 			"name": {{ config.author | json_encode | safe }},
-			"url": {{ config.base_url | json_encode | safe }}
+			"url": {{ get_url(path="/", trailing_slash=true) | json_encode | safe }}
 		},
 		"publisher": {
 			"@type": "Person",
 			"name": {{ config.author | json_encode | safe }},
-			"url": {{ config.base_url | json_encode | safe }}
+			"url": {{ get_url(path="/", trailing_slash=true) | json_encode | safe }}
 		}
 	}
 	</script>
 	{% endif %}
 
 	{# ---- Structured data for the home page: the site, its author, and the blog.
-	   Person.sameAs links the social profiles to this site (email and the CV are
-	   excluded: sameAs must be profile pages about you). Topics come from [extra].knows_about. ---- #}
-	{% if current_path == "/" %}
-	{% set ld_blog = get_section(path="blog/_index.md") %}
+	   The Person object lives in _person_ld.html (shared with the About page). ---- #}
 	{% set ld_person = config.base_url ~ "/#person" %}
 	{% set ld_home = config.base_url ~ "/" %}
+	{% if current_path == "/" %}
+	{% set ld_blog = get_section(path="blog/_index.md") %}
 	{% set ld_site = config.base_url ~ "/#website" %}
 	{% set ld_blog_id = ld_blog.permalink ~ "#blog" %}
 	<script type="application/ld+json">
@@ -156,25 +155,7 @@
 				"inLanguage": "en",
 				"author": { "@id": {{ ld_person | json_encode | safe }} }
 			},
-			{
-				"@type": "Person",
-				"@id": {{ ld_person | json_encode | safe }},
-				"name": {{ config.author | json_encode | safe }},
-				"url": {{ ld_home | json_encode | safe }},
-				{% if config.extra.avatar %}"image": {{ get_url(path=config.extra.avatar) | json_encode | safe }},{% endif %}
-				{% set ld_job = config.extra.job_title | default(value=config.extra.tagline | default(value="")) %}{% if ld_job %}"jobTitle": {{ ld_job | json_encode | safe }},{% endif %}
-				{% if config.extra.bio %}"description": {{ config.extra.bio | trim | json_encode | safe }},{% endif %}
-				{% if config.extra.knows_about %}"knowsAbout": {{ config.extra.knows_about | json_encode | safe }},{% endif %}
-				{% if config.extra.education %}"alumniOf": [
-					{% for e in config.extra.education %}{ "@type": "CollegeOrUniversity", "name": {{ e.school | json_encode | safe }} }{% if not loop.last %},{% endif %}
-					{% endfor %}
-				],{% endif %}
-				"sameAs": [
-					{% set_global ld_first = true %}
-					{% for s in config.extra.socials | default(value=[]) %}{% if "mailto:" not in s.url and s.icon != "cv" %}{% if not ld_first %},{% endif %}{{ s.url | json_encode | safe }}{% set_global ld_first = false %}{% endif %}
-					{% endfor %}
-				]
-			},
+			{% include "_person_ld.html" %},
 			{
 				"@type": "Blog",
 				"@id": {{ ld_blog_id | json_encode | safe }},
@@ -194,6 +175,20 @@
 				]
 			}
 		]
+	}
+	</script>
+	{% endif %}
+
+	{# ---- About page: a ProfilePage about the author ---- #}
+	{% if page and page.extra.profile_page %}
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "ProfilePage",
+		"url": {{ page.permalink | json_encode | safe }},
+		"name": {{ meta_title | json_encode | safe }},
+		{% if page.updated %}"dateModified": {{ page.updated | date(format='%Y-%m-%dT%H:%M:%S%:z') | json_encode | safe }},{% endif %}
+		"mainEntity": {% include "_person_ld.html" %}
 	}
 	</script>
 	{% endif %}
@@ -240,7 +235,7 @@
 	<div class="container">
 
 		<header id="siteHeader" class="header">
-			<a class="brand" href="{{ config.base_url }}" aria-label="Home">{{ config.extra.brand | default(value=config.title) }}</a>
+			<a class="brand" href="{{ get_url(path="/", trailing_slash=true) }}" aria-label="Home">{{ config.extra.brand | default(value=config.title) }}</a>
 
 			<div class="header-end">
 				<div id="headerExpandContent" class="nav-wrap">
@@ -248,14 +243,15 @@
 						{% set nav = [
 							["Archive",  "/blog/"],
 							["Projects", "/projects/"],
-							["About",    "/about/"]
+							["About",    "/about/"],
+							["Hire me",  "/hire/"]
 						] %}
 						{% for item in nav %}
-							<a class="nav-link" href="{{ get_url(path=item[1]) }}" aria-label="Nav menu item">{{ item[0] }}</a>
+							<a class="nav-link" href="{{ get_url(path=item[1], trailing_slash=true) }}" aria-label="Nav menu item">{{ item[0] }}</a>
 						{% endfor %}
 
 						<div class="nav-icons">
-							<a class="icon-link" href="{{ get_url(path='/search') }}" title="Search">
+							<a class="icon-link" href="{{ get_url(path='/search', trailing_slash=true) }}" title="Search">
 								<span class="sr-only">Search</span>
 								<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
 									<path d="M5 10a5 5 0 1 1 10 0a5 5 0 0 1-10 0m5-7a7 7 0 1 0 4.192 12.606l5.1 5.101a1 1 0 0 0 1.415-1.414l-5.1-5.1A7 7 0 0 0 10 3"/>
