@@ -6,7 +6,7 @@
 <section class="home-header">
 	{% if config.extra.avatar %}
 		<img class="avatar" src="{{ get_url(path=config.extra.avatar) }}" alt="{{ author }}"
-		     width="672" height="672" loading="lazy" decoding="async">
+		     width="480" height="720" loading="lazy" decoding="async">
 	{% else %}
 		{# no avatar configured — fall back to initials so nothing renders broken #}
 		{% set_global initials = "" %}

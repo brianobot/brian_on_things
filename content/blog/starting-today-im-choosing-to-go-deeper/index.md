@@ -7,10 +7,10 @@ draft = false
 [extra]
 seo_title = "Going Deeper into Game Development with Rust"
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
-![Digital art of a ringed planet and its moon in a purple and blue galaxy](cover.jpg)
+![Digital art of a ringed planet and its moon in a purple and blue galaxy](cover.webp)
 
 **TL;DR**\
 I am documenting my first entry in a series of articles that will come after this one on the topic of game development. I also intend to use this as a Medium to create the sort of learning material I would have appreciated a lot, following through on my game development hobby.

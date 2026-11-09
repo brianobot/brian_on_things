@@ -7,10 +7,10 @@ draft = false
 [extra]
 seo_title = "Mastering Python Performance: Small Tweaks, Big Speed"
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
-![Jagged snow-covered mountain summit against a clear blue sky](cover.jpg)
+![Jagged snow-covered mountain summit against a clear blue sky](cover.webp)
 
 ## Introduction
 
@@ -50,7 +50,7 @@ print("Bytecode for Add Var")
 print(dis.dis(add_var))
 ```
 
-![Python dis output: adding constants compiles to a single RETURN_CONST, while adding variables needs LOAD_FAST twice, BINARY_OP and RETURN_VALUE](image-2.png)
+![Python dis output: adding constants compiles to a single RETURN_CONST, while adding variables needs LOAD_FAST twice, BINARY_OP and RETURN_VALUE](image-2.webp)
 
 In this simplified example, even though the efficiency gains by using constants may seem trivial, understanding these nuances can significantly influence code structure. The key lies in systematically using constants where appropriate while ensuring readability is not compromised. Constants reduce the overhead associated with variable lookups, thereby contributing to more efficient execution times.
 

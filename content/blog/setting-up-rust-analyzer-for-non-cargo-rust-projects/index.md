@@ -7,10 +7,10 @@ draft = false
 [extra]
 seo_title = "Rust Analyzer for Non-Cargo Rust Projects"
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
-![Layered mountain ridges in hazy golden light above a pine forest](cover.jpg)
+![Layered mountain ridges in hazy golden light above a pine forest](cover.webp)
 
 ## Introduction
 

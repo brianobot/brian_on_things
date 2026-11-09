@@ -6,10 +6,10 @@ draft = false
 
 [extra]
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
-![Snow-capped mountain peak against a clear blue sky above dark forested hills](cover.jpg)
+![Snow-capped mountain peak against a clear blue sky above dark forested hills](cover.webp)
 
 Transitioning from Python to Rust can present a myriad of unexpected challenges for developers. By identifying these common gotchas and understanding the nuances of Rust’s design philosophy, you can streamline your learning curve and develop more efficient code. In this guide, I’ll detail my experiences with the Rust programming language and provide illustrative examples to help ease your journey.
 

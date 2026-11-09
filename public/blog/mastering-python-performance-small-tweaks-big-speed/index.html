@@ -65,9 +65,9 @@
 	
 
 	
-		<meta property="og:image" content="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.jpg">
+		<meta property="og:image" content="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.webp">
 		<meta property="og:image:alt" content="Mastering Python Performance: Small Tweaks, Big Speed">
-		<meta name="twitter:image" content="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.jpg">
+		<meta name="twitter:image" content="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.webp">
 		<meta name="twitter:card" content="summary_large_image">
 	
 	<meta name="twitter:title" content="Mastering Python Performance: Small Tweaks, Big Speed">
@@ -93,7 +93,7 @@
 		"mainEntityOfPage": "https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/",
 		"datePublished": "2026-01-30T00:00:00+00:00",
 		"dateModified": "2026-01-30T00:00:00+00:00",
-		"image": "https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.jpg",
+		"image": "https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.webp",
 		"author": {
 			"@type": "Person",
 			"name": "Brian Obot",
@@ -1773,7 +1773,7 @@ html.dark .z-d-us { text-decoration: underline line-through; }
 		</div>
 
 		<div id="content" class="prose">
-			<p><img src="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.jpg" alt="Jagged snow-covered mountain summit against a clear blue sky" /></p>
+			<p><img src="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.webp" alt="Jagged snow-covered mountain summit against a clear blue sky" /></p>
 <h2 id="introduction">Introduction</h2>
 <p>In the realm of software development, writing functional code is often just the beginning. The delicate balance between efficiency, execution duration, and code complexity can make or break your software, particularly in performance-critical applications. For instance, in algorithmic trading, microsecond differences can determine profitable entries. In this guide, you will acquire a comprehensive mental model for optimizing your Python code and learn how to extend this knowledge to enhance your applications’ overall performance.</p>
 <h2 id="tl-dr">TL;DR</h2>
@@ -1803,7 +1803,7 @@ html.dark .z-d-us { text-decoration: underline line-through; }
 <span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">print</span><span class="z-l-8 z-d-4">(</span><span>dis</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">dis</span><span class="z-l-8 z-d-4">(</span><span>add_const</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">)</span></span>
 <span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">print</span><span class="z-l-8 z-d-4">(</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-5 z-d-7">Bytecode for Add Var</span><span class="z-l-5 z-d-7">&quot;</span><span class="z-l-8 z-d-4">)</span></span>
 <span class="giallo-l"><span class="z-l-16 z-l-i z-d-16 z-d-i">print</span><span class="z-l-8 z-d-4">(</span><span>dis</span><span class="z-l-8 z-d-4">.</span><span class="z-l-3 z-d-2">dis</span><span class="z-l-8 z-d-4">(</span><span>add_var</span><span class="z-l-8 z-d-4">)</span><span class="z-l-8 z-d-4">)</span></span></code></pre>
-<p><img src="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/image-2.png" alt="Python dis output: adding constants compiles to a single RETURN_CONST, while adding variables needs LOAD_FAST twice, BINARY_OP and RETURN_VALUE" /></p>
+<p><img src="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/image-2.webp" alt="Python dis output: adding constants compiles to a single RETURN_CONST, while adding variables needs LOAD_FAST twice, BINARY_OP and RETURN_VALUE" /></p>
 <p>In this simplified example, even though the efficiency gains by using constants may seem trivial, understanding these nuances can significantly influence code structure. The key lies in systematically using constants where appropriate while ensuring readability is not compromised. Constants reduce the overhead associated with variable lookups, thereby contributing to more efficient execution times.</p>
 <h3 id="use-sets-for-lookups">Use Sets for Lookups</h3>
 <p>When your code requires frequent membership tests (checking if a value exists in a collection), sets outpace lists and tuples significantly due to their underlying hash table implementation.</p>

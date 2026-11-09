@@ -38,7 +38,7 @@ ERDs are used by software engineers, database administrators, and data analysts 
 
 ### Example of ERD Diagram
 
-![A sample ERD](image-2.png)
+![A sample ERD](image-2.webp)
 
 *A sample ERD*
 

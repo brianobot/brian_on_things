@@ -58,7 +58,7 @@ in the sidebar. Also if a reader really love my work, I am not opposed to gettin
 resharing the articles or tipping me <small style="color:grey">(You should definitely tip me sometime). </small>
 
 So one day, I wrote down the idea I wanted for my blog.
-<img src="/about/initial-blog-idea.png" alt="Orignal Blog ideation" style="max-width: 100%; height: auto;">
+<img src="/about/initial-blog-idea.webp" alt="My original notes for this blog: a text-focused site with date-based article URLs" style="max-width: 100%; height: auto;">
 
 The site itself is built with [Zola](https://www.getzola.org), a
 static site generator that compiles Markdown into plain HTML, with no JavaScript
