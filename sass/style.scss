@@ -622,7 +622,13 @@ main { width: 100%; }
 .prose .pill-link { text-decoration: none; color: hsl(var(--muted-foreground)); }
 .prose .pill-link:hover { color: hsl(var(--muted-foreground)); }
 
-.prose img { border-radius: var(--radius-xl); }
+/* Images never exceed the article column; height follows to keep the aspect ratio */
+.prose img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-radius: var(--radius-xl);
+}
 
 .prose blockquote {
 	margin: 0 0 1.25rem;
