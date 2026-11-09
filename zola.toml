@@ -1,12 +1,12 @@
 # The URL the site will be built for
-title = "Brian on Things"
+title = "Brian on Things: Low-Level Computing, Physics & Maths"
 
 base_url = "https://brianobot.tech"
 
 # Used for <meta name="description">, Open Graph and feeds when a page
 # does not supply its own description
-description = "Notes on backends, low-level software and the internals of the tools I use, by Brian Obot."
 author = "Brian Obot"
+description = "Personal notes on stuff I'm curious about, mostly low-level systems engineering and the internals of the tools I use every day."
 
 # Site-wide feed at /atom.xml with the full text of every post (drafts excluded).
 # Atom over RSS 2.0: every feed reader supports it and it carries full HTML cleanly.
@@ -34,6 +34,13 @@ light_theme = "catppuccin-latte"
 dark_theme = "catppuccin-mocha"
 
 [extra]
+# Full <title> for the home page only (other pages use "Post • <title>").
+# Keep it under ~60 chars so Google doesn't truncate it.
+home_title = "Brian on Things: Computer Science, Physics & Maths"
+# Short name shown in the nav bar on every page (config.title is the full
+# version used for og:site_name, feeds, structured data and page titles).
+brand = "Brian on Things"
+
 # ---- Social preview ----------------------------------------------------
 og_locale = "en_US"
 # Social/Google image for any page without its own [extra].og_image (lives in static/)
@@ -43,14 +50,25 @@ og_image = "og-default.jpg"
 # These drive the homepage identity block.
 author = "Brian Obot"
 tagline = "Electrical & Electronic Engineer | Software Engineer | Budding Nuclear Engineer"
+# Single role for search engines (structured data Person.jobTitle). Falls back to
+# the tagline above if removed. Keep it to one title, not a list.
+job_title = "Software Engineer"
 
 bio = """
 I build tools for the web and write about what I learn along the way - mostly Maths, Physics,
 backend and low level software engineering stuffs. I am becoming quite fond of bytes and the internals of softwares.
 """
+# Topics you write about / know: becomes Person.knowsAbout in the home page's
+# structured data, which helps Google tie you and this site to these subjects.
+knows_about = [
+  "Computer Science", "Low-level systems engineering", "Software internals",
+  "Rust", "Python", "Backend engineering",
+  "Physics", "Mathematics", "Electrical engineering", "Nuclear engineering",
+]
+
 # Drop a file in static/ and set it here (e.g. "avatar.webp").
 # Left empty, the homepage renders your initials in a circle instead.
-avatar = "baby_zoe.jpeg"
+avatar = "batman.jpg"
 
 # How many posts the homepage lists
 recent_posts = 10

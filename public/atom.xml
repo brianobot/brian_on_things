@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-    <title>Brian on Things</title>
-    <subtitle>Notes on backends, low-level software and the internals of the tools I use, by Brian Obot.</subtitle>
+    <title>Brian on Things: Low-Level Computing, Physics &amp; Maths</title>
+    <subtitle>Personal notes on stuff I&#39;m curious about, mostly low-level systems engineering and the internals of the tools I use every day.</subtitle>
     <link rel="self" type="application/atom+xml" href="https://brianobot.tech/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://brianobot.tech"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
@@ -142,7 +142,6 @@
 &lt;h2 id=&quot;the-people&quot;&gt;The People&lt;/h2&gt;
 &lt;p&gt;Networking was the reason I moved, so I made a point of talking to people from different corners of tech. These are some of the new friends I made:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.linkedin.com/in/blessing-akpan/&quot;&gt;Blessing Akpan&lt;/a&gt; is a data engineer who spends her free time writing about true crime on Medium, turning cold cases and court records into stories worth reading. &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://medium.com/@theretrobliss&quot;&gt;Her Medium profile&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://x.com/id_inyang_&quot;&gt;ID Inyang&lt;/a&gt; is a software engineer who builds practical applications for real-world problems. He specializes in backend development and system design, with a focus on software that is scalable, reliable, and efficient. Backend and system design is where I want to go deeper, so he&#39;s someone I plan to keep learning from.&lt;/li&gt;
 &lt;li&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.linkedin.com/in/brian-ibekwe&quot;&gt;Brian Ibekwe&lt;/a&gt; is a product manager at &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://readpulse.app&quot;&gt;ReadPulse&lt;/a&gt;, where he works on building, improving, and growing the platform. Talking to someone who thinks in terms of users and growth gave me a useful contrast to my own more technical view of products.&lt;/li&gt;
 &lt;li&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://ayobamiraheemportfolio.my.canva.site/&quot;&gt;Ninie&lt;/a&gt;: is a mobile videographer/content creator that is passionate about working with brands and individuals to bring their stories to life through engaging visual content&lt;/li&gt;

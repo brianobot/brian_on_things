@@ -2,6 +2,7 @@
 title = "About"
 description = "Who I am and why this blog exists"
 template = "page.html"
+updated = 2026-11-06
 
 [extra]
 toc = true

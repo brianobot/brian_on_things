@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="{{ get_url(path='favicon.webp') }}" type="image/webp">
 
-	<title>{% block title %}{{ config.title }}{% endblock title %}</title>
+	<title>{% block title %}{{ config.extra.home_title | default(value=config.title) }}{% endblock title %}</title>
 
 	{# ------------------------------------------------------------------
 	   SEO + social metadata.
@@ -16,7 +16,7 @@
 	   is falsy rather than an error. set_global is required because plain
 	   `set` inside an {% if %} would not escape the block.
 	   ------------------------------------------------------------------ #}
-	{% set_global meta_title = config.title %}
+	{% set_global meta_title = config.extra.home_title | default(value=config.title) %}
 	{% set_global meta_desc = config.description %}
 	{% set_global meta_type = "website" %}
 
@@ -32,9 +32,18 @@
 
 	<meta name="description" content="{{ meta_desc }}">
 	<meta name="author" content="{{ config.author }}">
-	{% if current_url %}<link rel="canonical" href="{{ current_url }}">{% endif %}
+	{% if current_url %}<link rel="canonical" href="{{ current_url }}">
+	{# One English version serves every region: hreflang points at the page itself,
+	   and x-default marks it as the page for visitors from anywhere. Add more
+	   hreflang lines only if translated versions of the page ever exist. #}
+	<link rel="alternate" hreflang="{{ lang }}" href="{{ current_url }}">
+	<link rel="alternate" hreflang="x-default" href="{{ current_url }}">{% endif %}
 	{# `noindex = true` under a page's [extra] keeps it out of Google (and out of sitemap.xml) #}
-	{% if page and page.extra.noindex %}<meta name="robots" content="noindex">{% endif %}
+	{# Indexable pages state it explicitly. GitHub Pages sends no X-Robots-Tag header,
+	   so this tag is the only robots signal. max-image-preview:large lets Google show
+	   large image previews (Discover, rich results); -1 means no length limit. #}
+	{% if page and page.extra.noindex %}<meta name="robots" content="noindex">
+	{% elif page or section %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{% endif %}
 	<meta name="theme-color" content="#fbfcfd" media="(prefers-color-scheme: light)">
 	<meta name="theme-color" content="#0b0b12" media="(prefers-color-scheme: dark)">
 
@@ -125,12 +134,75 @@
 	</script>
 	{% endif %}
 
+	{# ---- Structured data for the home page: the site, its author, and the blog.
+	   Person.sameAs links the social profiles to this site (email is excluded:
+	   sameAs must be web pages). Topics come from [extra].knows_about. ---- #}
+	{% if current_path == "/" %}
+	{% set ld_blog = get_section(path="blog/_index.md") %}
+	{% set ld_person = config.base_url ~ "/#person" %}
+	{% set ld_home = config.base_url ~ "/" %}
+	{% set ld_site = config.base_url ~ "/#website" %}
+	{% set ld_blog_id = ld_blog.permalink ~ "#blog" %}
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebSite",
+				"@id": {{ ld_site | json_encode | safe }},
+				"url": {{ ld_home | json_encode | safe }},
+				"name": {{ config.title | trim | json_encode | safe }},
+				"description": {{ config.description | json_encode | safe }},
+				"inLanguage": "en",
+				"author": { "@id": {{ ld_person | json_encode | safe }} }
+			},
+			{
+				"@type": "Person",
+				"@id": {{ ld_person | json_encode | safe }},
+				"name": {{ config.author | json_encode | safe }},
+				"url": {{ ld_home | json_encode | safe }},
+				{% if config.extra.avatar %}"image": {{ get_url(path=config.extra.avatar) | json_encode | safe }},{% endif %}
+				{% set ld_job = config.extra.job_title | default(value=config.extra.tagline | default(value="")) %}{% if ld_job %}"jobTitle": {{ ld_job | json_encode | safe }},{% endif %}
+				{% if config.extra.bio %}"description": {{ config.extra.bio | trim | json_encode | safe }},{% endif %}
+				{% if config.extra.knows_about %}"knowsAbout": {{ config.extra.knows_about | json_encode | safe }},{% endif %}
+				{% if config.extra.education %}"alumniOf": [
+					{% for e in config.extra.education %}{ "@type": "CollegeOrUniversity", "name": {{ e.school | json_encode | safe }} }{% if not loop.last %},{% endif %}
+					{% endfor %}
+				],{% endif %}
+				"sameAs": [
+					{% set_global ld_first = true %}
+					{% for s in config.extra.socials | default(value=[]) %}{% if "mailto:" not in s.url %}{% if not ld_first %},{% endif %}{{ s.url | json_encode | safe }}{% set_global ld_first = false %}{% endif %}
+					{% endfor %}
+				]
+			},
+			{
+				"@type": "Blog",
+				"@id": {{ ld_blog_id | json_encode | safe }},
+				"url": {{ ld_blog.permalink | json_encode | safe }},
+				"name": {{ config.title | trim | json_encode | safe }},
+				"publisher": { "@id": {{ ld_person | json_encode | safe }} },
+				"author": { "@id": {{ ld_person | json_encode | safe }} },
+				"blogPost": [
+					{% for p in ld_blog.pages %}{
+						"@type": "BlogPosting",
+						"headline": {{ p.title | json_encode | safe }},
+						"url": {{ p.permalink | json_encode | safe }},
+						{% if p.date %}"datePublished": {{ p.date | date(format='%Y-%m-%dT%H:%M:%S%:z') | json_encode | safe }},{% endif %}
+						"author": { "@id": {{ ld_person | json_encode | safe }} }
+					}{% if not loop.last %},{% endif %}
+					{% endfor %}
+				]
+			}
+		]
+	}
+	</script>
+	{% endif %}
+
 	{# lets feed readers find the feed from any page's URL #}
 	<link rel="alternate" type="application/atom+xml" title="{{ config.title }}" href="{{ get_url(path='atom.xml', trailing_slash=false) }}">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+	{# self-hosted font (see @font-face in style.scss); preload so it starts downloading alongside the CSS #}
+	<link rel="preload" href="{{ get_url(path='fonts/inter-latin.woff2', trailing_slash=false) }}" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="{{ get_url(path='style.css') }}">
 	{# both syntax themes ship; the theme toggle enables exactly one #}
 	<link rel="stylesheet" href="{{ get_url(path='giallo-light.css') }}" id="syntax-light">
@@ -168,7 +240,7 @@
 	<div class="container">
 
 		<header id="siteHeader" class="header">
-			<a class="brand" href="{{ config.base_url }}" aria-label="Brand">{{ config.title }}</a>
+			<a class="brand" href="{{ config.base_url }}" aria-label="Home">{{ config.extra.brand | default(value=config.title) }}</a>
 
 			<div class="header-end">
 				<div id="headerExpandContent" class="nav-wrap">
