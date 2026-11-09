@@ -1,17 +1,18 @@
 +++
 title = "How I Hacked FastAPI BackgroundTasks for Real-Time Progress Updates (Without Celery)"
 date = 2025-10-01
-description = "Building a FastAPI endpoint that runs work in the background and reports real-time progress, without Celery."
+description = "How I used FastAPI BackgroundTasks to run long AI jobs in the background and report real-time progress through a status endpoint, without reaching for Celery."
 draft = false
 
 [extra]
+seo_title = "Real-Time Progress Updates with FastAPI BackgroundTasks"
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
 I Built a FastAPI Endpoint That Runs in the Background and Talks Back
 
-![Image was generated with ChatGPT](cover.jpg)
+![Image was generated with ChatGPT](cover.webp)
 
 *Image was generated with ChatGPT*
 

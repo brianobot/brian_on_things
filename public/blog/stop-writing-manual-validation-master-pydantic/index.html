@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
 
-	<title>Stop Writing Manual Validation: Master Pydantic • Brian on Things: Low-Level Computing, Physics &amp; Maths</title>
+	<title>Stop Writing Manual Validation: Master Pydantic</title>
 
 	
 	
@@ -20,7 +20,7 @@
 		
 	
 
-	<meta name="description" content="Go beyond basic type hints and build robust, production-ready Python with less code using Pydantic&#39;s validation.">
+	<meta name="description" content="Replace manual validation in Python with Pydantic: models, type annotations, data coercion, custom validators, serialization and using Pydantic with FastAPI.">
 	<meta name="author" content="Brian Obot">
 	<link rel="canonical" href="https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/">
 	
@@ -34,14 +34,14 @@
 
 	
 	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="Brian on Things: Low-Level Computing, Physics &amp; Maths">
+	<meta property="og:site_name" content="Brian on Things">
 	<meta property="og:title" content="Stop Writing Manual Validation: Master Pydantic">
 	
 	
 	
 		
 	
-	<meta property="og:description" content="6 min read · Go beyond basic type hints and build robust, production-ready Python with less code using Pydantic&#39;s validation.">
+	<meta property="og:description" content="6 min read · Replace manual validation in Python with Pydantic: models, type annotations, data coercion, custom validators, serialization and using Pydantic with FastAPI.">
 	<meta property="og:url" content="https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/">
 	<meta property="og:locale" content="en_US">
 
@@ -71,7 +71,7 @@
 		<meta name="twitter:card" content="summary_large_image">
 	
 	<meta name="twitter:title" content="Stop Writing Manual Validation: Master Pydantic">
-	<meta name="twitter:description" content="6 min read · Go beyond basic type hints and build robust, production-ready Python with less code using Pydantic&#39;s validation.">
+	<meta name="twitter:description" content="6 min read · Replace manual validation in Python with Pydantic: models, type annotations, data coercion, custom validators, serialization and using Pydantic with FastAPI.">
 	
 		<meta name="twitter:label1" content="Reading time">
 		<meta name="twitter:data1" content="6 min read">
@@ -88,7 +88,7 @@
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
 		"headline": "Stop Writing Manual Validation: Master Pydantic",
-		"description": "Go beyond basic type hints and build robust, production-ready Python with less code using Pydantic's validation.",
+		"description": "Replace manual validation in Python with Pydantic: models, type annotations, data coercion, custom validators, serialization and using Pydantic with FastAPI.",
 		"url": "https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/",
 		"mainEntityOfPage": "https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/",
 		"datePublished": "2026-02-02T00:00:00+00:00",
@@ -117,7 +117,7 @@
 	
 
 	
-	<link rel="alternate" type="application/atom+xml" title="Brian on Things: Low-Level Computing, Physics &amp; Maths" href="https://brianobot.tech/atom.xml">
+	<link rel="alternate" type="application/atom+xml" title="Brian on Things" href="https://brianobot.tech/atom.xml">
 
 	
 	<link rel="preload" href="https://brianobot.tech/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -467,7 +467,7 @@
 				<h1>Stop Writing Manual Validation: Master Pydantic</h1>
 
 				
-					<blockquote class="post-description"><q>Go beyond basic type hints and build robust, production-ready Python with less code using Pydantic&#39;s validation.</q></blockquote>
+					<blockquote class="post-description"><q>Replace manual validation in Python with Pydantic: models, type annotations, data coercion, custom validators, serialization and using Pydantic with FastAPI.</q></blockquote>
 				
 			</div>
 
@@ -475,7 +475,7 @@
 		</div>
 
 		<div id="content" class="prose">
-			<p><img src="https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/cover.jpg" alt="" /></p>
+			<p><img src="https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/cover.jpg" alt="Snow-covered mountain face and glacier under a dark blue sky" /></p>
 <h2 id="introduction">Introduction</h2>
 <p>Validation is a crucial part of any software that collects data from users or other external sources. This ensures that the data used in your program or application remains correct and well-structured. Serialization, which is the process of converting data from one format to another for transmission or storage, is also essential to ensure that we use the best data format for the right scenario (for example, using JSON for transmission and objects for storage in a database).</p>
 <p>Pydantic is a library in the Python ecosystem that elegantly solves both use cases. To benefit greatly from the content of this article, it is assumed that you have familiarity with Python programming and a basic understanding of Object-Oriented Programming in Python.</p>

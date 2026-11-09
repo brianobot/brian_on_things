@@ -1,6 +1,9 @@
 {% extends "_base.html" %}
 
-{% block title %}{{ page.title }} • {{ config.title }}{% endblock title %}
+{#- posts use their own title only: the site name already reaches Google via og:site_name
+    and structured data, and the suffix pushed most titles past ~60 chars.
+    `seo_title` under [extra] overrides it when the post title itself is too long. -#}
+{% block title %}{{ page.extra.seo_title | default(value=page.title) }}{% endblock title %}
 
 {% block main %}
 <div class="page-layout">

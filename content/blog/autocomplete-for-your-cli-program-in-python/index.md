@@ -1,15 +1,16 @@
 +++
 title = "How to Implement Autocomplete Functionality for Your CLI Program in Python"
 date = 2025-11-17
-description = "Giving Your Python CLI the Power of Suggestion"
+description = "Add tab autocompletion to a Python CLI with the built-in readline module: build a vocabulary-based completer, bind the Tab key and use it in a command loop."
 draft = false
 
 [extra]
+seo_title = "How to Add Tab Autocomplete to a Python CLI Program"
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
-![](cover.jpg)
+![Sunlit rocky mountain peak wrapped in cloud above a pine forest](cover.webp)
 
 ## Motivation
 

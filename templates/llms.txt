@@ -4,7 +4,7 @@
 {%- set about = get_page(path="about/index.md") -%}
 {%- set hire = get_page(path="hire/index.md") -%}
 {%- set projects = get_page(path="projects/index.md") -%}
-# {{ config.extra.brand | default(value=config.title) }}
+# {{ config.title }}
 
 > {{ config.description }}
 

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
 
-	<title>I Finally Understand References and Lifetimes in Rust • Brian on Things: Low-Level Computing, Physics &amp; Maths</title>
+	<title>I Finally Understand References and Lifetimes in Rust</title>
 
 	
 	
@@ -20,7 +20,7 @@
 		
 	
 
-	<meta name="description" content="Key points to help you adapt to the concept of Lifetimes in Rust">
+	<meta name="description" content="References and lifetimes in Rust explained: how borrowing and ownership work, what lifetime annotations mean, and how lifetime elision keeps code clean.">
 	<meta name="author" content="Brian Obot">
 	<link rel="canonical" href="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/">
 	
@@ -34,14 +34,14 @@
 
 	
 	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="Brian on Things: Low-Level Computing, Physics &amp; Maths">
+	<meta property="og:site_name" content="Brian on Things">
 	<meta property="og:title" content="I Finally Understand References and Lifetimes in Rust">
 	
 	
 	
 		
 	
-	<meta property="og:description" content="6 min read · Key points to help you adapt to the concept of Lifetimes in Rust">
+	<meta property="og:description" content="6 min read · References and lifetimes in Rust explained: how borrowing and ownership work, what lifetime annotations mean, and how lifetime elision keeps code clean.">
 	<meta property="og:url" content="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/">
 	<meta property="og:locale" content="en_US">
 
@@ -71,7 +71,7 @@
 		<meta name="twitter:card" content="summary_large_image">
 	
 	<meta name="twitter:title" content="I Finally Understand References and Lifetimes in Rust">
-	<meta name="twitter:description" content="6 min read · Key points to help you adapt to the concept of Lifetimes in Rust">
+	<meta name="twitter:description" content="6 min read · References and lifetimes in Rust explained: how borrowing and ownership work, what lifetime annotations mean, and how lifetime elision keeps code clean.">
 	
 		<meta name="twitter:label1" content="Reading time">
 		<meta name="twitter:data1" content="6 min read">
@@ -88,7 +88,7 @@
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
 		"headline": "I Finally Understand References and Lifetimes in Rust",
-		"description": "Key points to help you adapt to the concept of Lifetimes in Rust",
+		"description": "References and lifetimes in Rust explained: how borrowing and ownership work, what lifetime annotations mean, and how lifetime elision keeps code clean.",
 		"url": "https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/",
 		"mainEntityOfPage": "https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/",
 		"datePublished": "2026-01-31T00:00:00+00:00",
@@ -117,7 +117,7 @@
 	
 
 	
-	<link rel="alternate" type="application/atom+xml" title="Brian on Things: Low-Level Computing, Physics &amp; Maths" href="https://brianobot.tech/atom.xml">
+	<link rel="alternate" type="application/atom+xml" title="Brian on Things" href="https://brianobot.tech/atom.xml">
 
 	
 	<link rel="preload" href="https://brianobot.tech/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -486,7 +486,7 @@
 				<h1>I Finally Understand References and Lifetimes in Rust</h1>
 
 				
-					<blockquote class="post-description"><q>Key points to help you adapt to the concept of Lifetimes in Rust</q></blockquote>
+					<blockquote class="post-description"><q>References and lifetimes in Rust explained: how borrowing and ownership work, what lifetime annotations mean, and how lifetime elision keeps code clean.</q></blockquote>
 				
 			</div>
 
@@ -494,12 +494,12 @@
 		</div>
 
 		<div id="content" class="prose">
-			<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.jpg" alt="" /></p>
+			<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.jpg" alt="Snowy mountain ridge under a deep blue sky" /></p>
 <h2 id="introduction">Introduction</h2>
 <p>I have been learning and working with Rust for over a year now, and for most of that time, I felt as if I understood references and how to use them. However, for lifetimes, I made a conscious effort not to get my life entangled with that concept. It wasn’t until recently that I gained a new perspective on them that they finally made sense. Understanding these concepts has been pivotal not just in writing correct code, but also in grasping why Rust’s memory guarantees provide safety and performance.</p>
 <h2 id="understanding-references-in-rust">Understanding References in Rust</h2>
 <p>References are pointers to a value or part of data; they don’t store the data themselves, just the pointer to where the data is stored in memory (they store the address of another item in memory). This distinction is crucial for understanding how to manage memory safely in Rust.</p>
-<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-2.png" alt="" /></p>
+<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-2.png" alt="Diagram: a Rust reference created with let reference_val = &amp;val points to the memory address holding val in a table of addresses and values" /></p>
 <p>From the image above, val is a variable that holds the value 1. Taking a reference to that variable stores the address of val in another variable.</p>
 <h2 id="validity-of-references">Validity of References</h2>
 <p>When you create a reference to a value, that reference should only be valid until that value is freed or changed. When the freeing of the value occurs, it is dropped from memory, and that memory address is no longer valid for that value. Consequently, that reference is also invalidated.</p>
@@ -508,7 +508,7 @@
 <li>Furthermore, if the value is changed, the memory address of that value can also change.</li>
 </ul>
 <p>This is especially common for values stored on the Heap, where memory management is dynamic and subject to change. Rust’s compiler enforces these rules, ensuring that all references remain valid during their lifetime.</p>
-<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-3.png" alt="" /></p>
+<p><img src="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-3.webp" alt="Diagram: after drop(val) frees its memory address, the reference points to an empty slot, so using reference_val would be an error" /></p>
 <h2 id="lock-on-behavior-of-references">Lock-on Behavior of References</h2>
 <p>Valid references can be thought of as lock-on values that, when acquired, ensure that the underlying value is accessed only in read-only mode.</p>
 <ul>

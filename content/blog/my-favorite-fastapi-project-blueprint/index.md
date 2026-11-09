@@ -1,7 +1,7 @@
 +++
 title = "My FastAPI Project Blueprint"
 date = 2025-10-14
-description = "The FastAPI project structure I reach for on every new project — lessons learnt from working on large codebases."
+description = "The FastAPI project structure I use on every new project: how I lay out routers, schemas, settings, dependencies and middleware so large codebases stay sane."
 draft = false
 
 [extra]

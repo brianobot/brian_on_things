@@ -1,15 +1,16 @@
 +++
 title = "Starting Today, I'm Going Deeper into Game Development with Rust"
 date = 2025-11-19
-description = "An academically-minded exploration into game engines, storytelling, and digital universes."
+description = "The start of my game development series in Rust: why I'm exploring game engines and storytelling, why I chose Rust and the Bevy engine, and the road ahead."
 draft = false
 
 [extra]
+seo_title = "Going Deeper into Game Development with Rust"
 toc = true
 og_image = "cover.jpg"
 +++
 
-![](cover.jpg)
+![Digital art of a ringed planet and its moon in a purple and blue galaxy](cover.jpg)
 
 **TL;DR**\
 I am documenting my first entry in a series of articles that will come after this one on the topic of game development. I also intend to use this as a Medium to create the sort of learning material I would have appreciated a lot, following through on my game development hobby.

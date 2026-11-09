@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-    <title>Brian on Things: Low-Level Computing, Physics &amp; Maths</title>
+    <title>Brian on Things</title>
     <subtitle>Brian Obot is a software engineer and Python &amp; Rust developer writing about backend systems, low-level internals, and the physics and maths beneath them.</subtitle>
     <link rel="self" type="application/atom+xml" href="https://brianobot.tech/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://brianobot.tech"/>
@@ -215,7 +215,7 @@ and people get bored of the AI hype. Is there a place of SI in work? of course, 
         <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/"/>
         <id>https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/</id>
         
-        <content type="html" xml:base="https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <content type="html" xml:base="https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/cover.jpg&quot; alt=&quot;Snow-capped mountain peak against a clear blue sky above dark forested hills&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Transitioning from Python to Rust can present a myriad of unexpected challenges for developers. By identifying these common gotchas and understanding the nuances of Rust’s design philosophy, you can streamline your learning curve and develop more efficient code. In this guide, I’ll detail my experiences with the Rust programming language and provide illustrative examples to help ease your journey.&lt;/p&gt;
 &lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR;&lt;/h2&gt;
 &lt;p&gt;Be mindful of specific Rust behaviors, such as explicit flushing of standard output, understanding ownership and borrowing, and mastering error handling.&lt;/p&gt;
@@ -431,7 +431,7 @@ and people get bored of the AI hype. Is there a place of SI in work? of course, 
         <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/"/>
         <id>https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/</id>
         
-        <content type="html" xml:base="https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <content type="html" xml:base="https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/cover.jpg&quot; alt=&quot;Snow-covered mountain face and glacier under a dark blue sky&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;Validation is a crucial part of any software that collects data from users or other external sources. This ensures that the data used in your program or application remains correct and well-structured. Serialization, which is the process of converting data from one format to another for transmission or storage, is also essential to ensure that we use the best data format for the right scenario (for example, using JSON for transmission and objects for storage in a database).&lt;/p&gt;
 &lt;p&gt;Pydantic is a library in the Python ecosystem that elegantly solves both use cases. To benefit greatly from the content of this article, it is assumed that you have familiarity with Python programming and a basic understanding of Object-Oriented Programming in Python.&lt;/p&gt;
@@ -674,12 +674,12 @@ and people get bored of the AI hype. Is there a place of SI in work? of course, 
         <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/"/>
         <id>https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/</id>
         
-        <content type="html" xml:base="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <content type="html" xml:base="https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/cover.jpg&quot; alt=&quot;Snowy mountain ridge under a deep blue sky&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;I have been learning and working with Rust for over a year now, and for most of that time, I felt as if I understood references and how to use them. However, for lifetimes, I made a conscious effort not to get my life entangled with that concept. It wasn’t until recently that I gained a new perspective on them that they finally made sense. Understanding these concepts has been pivotal not just in writing correct code, but also in grasping why Rust’s memory guarantees provide safety and performance.&lt;/p&gt;
 &lt;h2 id=&quot;understanding-references-in-rust&quot;&gt;Understanding References in Rust&lt;/h2&gt;
 &lt;p&gt;References are pointers to a value or part of data; they don’t store the data themselves, just the pointer to where the data is stored in memory (they store the address of another item in memory). This distinction is crucial for understanding how to manage memory safely in Rust.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-2.png&quot; alt=&quot;Diagram: a Rust reference created with let reference_val = &amp;amp;val points to the memory address holding val in a table of addresses and values&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;From the image above, val is a variable that holds the value 1. Taking a reference to that variable stores the address of val in another variable.&lt;/p&gt;
 &lt;h2 id=&quot;validity-of-references&quot;&gt;Validity of References&lt;/h2&gt;
 &lt;p&gt;When you create a reference to a value, that reference should only be valid until that value is freed or changed. When the freeing of the value occurs, it is dropped from memory, and that memory address is no longer valid for that value. Consequently, that reference is also invalidated.&lt;/p&gt;
@@ -688,7 +688,7 @@ and people get bored of the AI hype. Is there a place of SI in work? of course, 
 &lt;li&gt;Furthermore, if the value is changed, the memory address of that value can also change.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;This is especially common for values stored on the Heap, where memory management is dynamic and subject to change. Rust’s compiler enforces these rules, ensuring that all references remain valid during their lifetime.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/image-3.webp&quot; alt=&quot;Diagram: after drop(val) frees its memory address, the reference points to an empty slot, so using reference_val would be an error&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;lock-on-behavior-of-references&quot;&gt;Lock-on Behavior of References&lt;/h2&gt;
 &lt;p&gt;Valid references can be thought of as lock-on values that, when acquired, ensure that the underlying value is accessed only in read-only mode.&lt;/p&gt;
 &lt;ul&gt;
@@ -833,7 +833,7 @@ and people get bored of the AI hype. Is there a place of SI in work? of course, 
         <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/"/>
         <id>https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/</id>
         
-        <content type="html" xml:base="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <content type="html" xml:base="https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/cover.jpg&quot; alt=&quot;Jagged snow-covered mountain summit against a clear blue sky&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;In the realm of software development, writing functional code is often just the beginning. The delicate balance between efficiency, execution duration, and code complexity can make or break your software, particularly in performance-critical applications. For instance, in algorithmic trading, microsecond differences can determine profitable entries. In this guide, you will acquire a comprehensive mental model for optimizing your Python code and learn how to extend this knowledge to enhance your applications’ overall performance.&lt;/p&gt;
 &lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR&lt;/h2&gt;
@@ -863,7 +863,7 @@ and people get bored of the AI hype. Is there a place of SI in work? of course, 
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;dis&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;dis&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;add_const&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Bytecode for Add Var&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;dis&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;dis&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;add_var&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/image-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/image-2.png&quot; alt=&quot;Python dis output: adding constants compiles to a single RETURN_CONST, while adding variables needs LOAD_FAST twice, BINARY_OP and RETURN_VALUE&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;In this simplified example, even though the efficiency gains by using constants may seem trivial, understanding these nuances can significantly influence code structure. The key lies in systematically using constants where appropriate while ensuring readability is not compromised. Constants reduce the overhead associated with variable lookups, thereby contributing to more efficient execution times.&lt;/p&gt;
 &lt;h3 id=&quot;use-sets-for-lookups&quot;&gt;Use Sets for Lookups&lt;/h3&gt;
 &lt;p&gt;When your code requires frequent membership tests (checking if a value exists in a collection), sets outpace lists and tuples significantly due to their underlying hash table implementation.&lt;/p&gt;
@@ -1312,7 +1312,7 @@ efficiently.&lt;/p&gt;
         <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/"/>
         <id>https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/</id>
         
-        <content type="html" xml:base="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <content type="html" xml:base="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/cover.jpg&quot; alt=&quot;Layered mountain ridges in hazy golden light above a pine forest&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;While working on the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://adventofcode.com/&quot;&gt;Advent of Code&lt;/a&gt; Challenge for this year, I planned to solve the challenges in Python and the Rust Programming Language, and after solving the first 2 days in Python, I decided to solve those in Rust too, it didn’t take long before I realized how difficult I found it working with Rust programs without the benefits of a Language server like Rust Analyzer.&lt;/p&gt;
 &lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
@@ -1333,7 +1333,7 @@ efficiently.&lt;/p&gt;
 Of course, with the benefits of the autocompletion and the rest, you can still very well write and compile single file rust programs.&lt;/p&gt;
 &lt;p&gt;After stumbling into a bug while implementing a solution for the challenges in Advent of Code day 2 in Rust, and I realized how much harder it was to walkthrough the types in my program visually and get support for autocompletion, method names and signatures, I decided to do an internet search on how to configure Rust Analyzer to work for single file rust Project without Cargo.&lt;/p&gt;
 &lt;p&gt;While searching, I came across many such advice;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/image-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/image-2.webp&quot; alt=&quot;Reddit replies to a question about using Rust Analyzer without Cargo: most say to just use cargo, one points to the rust-project.json format&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;People kept generally hinting at using cargo, but, like in my case, it was not reasonable to set up a cargo project for every single day’s challenge, and it was a multi-language environment, and not a Rust-specific project.&lt;/p&gt;
 &lt;p&gt;In my case:&lt;/p&gt;
 &lt;ul&gt;
@@ -1461,7 +1461,7 @@ Take note to pass the Absolute path of the &lt;code&gt;root_module&lt;/code&gt; 
         <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/starting-today-im-choosing-to-go-deeper/"/>
         <id>https://brianobot.tech/blog/starting-today-im-choosing-to-go-deeper/</id>
         
-        <content type="html" xml:base="https://brianobot.tech/blog/starting-today-im-choosing-to-go-deeper/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/starting-today-im-choosing-to-go-deeper/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <content type="html" xml:base="https://brianobot.tech/blog/starting-today-im-choosing-to-go-deeper/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/starting-today-im-choosing-to-go-deeper/cover.jpg&quot; alt=&quot;Digital art of a ringed planet and its moon in a purple and blue galaxy&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;TL;DR&lt;/strong&gt;&lt;br /&gt;
 I am documenting my first entry in a series of articles that will come after this one on the topic of game development. I also intend to use this as a Medium to create the sort of learning material I would have appreciated a lot, following through on my game development hobby.&lt;/p&gt;
 &lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
@@ -1513,7 +1513,7 @@ I am documenting my first entry in a series of articles that will come after thi
         <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/autocomplete-for-your-cli-program-in-python/"/>
         <id>https://brianobot.tech/blog/autocomplete-for-your-cli-program-in-python/</id>
         
-        <content type="html" xml:base="https://brianobot.tech/blog/autocomplete-for-your-cli-program-in-python/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/autocomplete-for-your-cli-program-in-python/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+        <content type="html" xml:base="https://brianobot.tech/blog/autocomplete-for-your-cli-program-in-python/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/autocomplete-for-your-cli-program-in-python/cover.webp&quot; alt=&quot;Sunlit rocky mountain peak wrapped in cloud above a pine forest&quot; /&gt;&lt;/p&gt;
 &lt;h2 id=&quot;motivation&quot;&gt;Motivation&lt;/h2&gt;
 &lt;p&gt;While taking on a coding challenge on the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://codecrafters.io/&quot;&gt;codecrafters&lt;/a&gt; platform. I was tasked to implement an autocompletion feature for my shell project. While researching how autocompletion works under the hood for most popular shell programs, I came across the &lt;code&gt;readline&lt;/code&gt; standard Python module which provides an interface round the GNU Readline library.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1612,7 +1612,7 @@ I am documenting my first entry in a series of articles that will come after thi
         <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/"/>
         <id>https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/</id>
         
-        <content type="html" xml:base="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.jpg&quot; alt=&quot;Scenic Mountain picture by TERADAT SANTIVIVUT&quot; /&gt;&lt;/p&gt;
+        <content type="html" xml:base="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.webp&quot; alt=&quot;Scenic Mountain picture by TERADAT SANTIVIVUT&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Scenic Mountain picture by &lt;strong&gt;TERADAT SANTIVIVUT&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR&lt;/h2&gt;
 &lt;ul&gt;
@@ -1680,7 +1680,7 @@ Sometimes when installing, there is an issue with the installation.&lt;/p&gt;
         
         <content type="html" xml:base="https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/">&lt;p&gt;Why Zed might just change the way you write software.&lt;/p&gt;
 &lt;h2 id=&quot;guide-to-setup-and-configure-zed-editor&quot;&gt;Guide to Setup and Configure Zed Editor&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/cover.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/cover.jpg&quot; alt=&quot;Zed AI logo over a blurred code editor&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Why switching to Zed might improve your workflow as a developer.&lt;/p&gt;
 &lt;p&gt;As a developer, the text editor is the one software application you would spend most of your time crafting programs, scripts, and updating text related to software development. It is only reasonable that you get the most out of your primary text editor of choice.&lt;/p&gt;
 &lt;h2 id=&quot;why-zed&quot;&gt;Why Zed!&lt;/h2&gt;
@@ -1706,16 +1706,16 @@ Sometimes when installing, there is an issue with the installation.&lt;/p&gt;
 &lt;/tbody&gt;&lt;/table&gt;
 &lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
 &lt;p&gt;If you do not already have Zed installed on your computer, follow this &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://zed.dev/download&quot;&gt;link&lt;/a&gt; to the Zed official page to download the version for your operating system. Currently, Zed supports macOS, Windows, and Linux.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/image-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/image-2.webp&quot; alt=&quot;The Zed download page on zed.dev, with download options for macOS, Windows and Linux&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;After download and installation, you can proceed to start a new instance of the Zed Editor on your computer.&lt;/p&gt;
 &lt;p&gt;If you’re like me, coming from a VSCode background, you must understand the great ergonomics gotten from interacting with VSCode from the terminal and vice versa. This can be your reality too; in order to gain this ability, you would need to install the Zed CLI. An example of the benefits gained from installing the CLI is opening a directory from the terminal in Zed with a command like &lt;code&gt;zed .&lt;/code&gt;.&lt;/p&gt;
 &lt;h3 id=&quot;install-zed-cli&quot;&gt;Install Zed CLI&lt;/h3&gt;
 &lt;p&gt;On Linux, the Zed CLI should come with the Linux distribution’s Zed package, as seen from the download step above. On macOS, the CLI comes with the binary and can be installed into your system via the command palette.&lt;/p&gt;
 &lt;p&gt;I would focus on macOS for this guide, since I am using a Mac.&lt;/p&gt;
 &lt;p&gt;You can access Zed’s Command Palette, which is very similar to the command palette found in VSCode. You can open the command palette with the following key binding: &lt;code&gt;cmd + shift + p&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/image-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/image-3.png&quot; alt=&quot;The Zed command palette listing commands such as zed: extensions, theme selector: toggle and cli: install cli binary&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;Searching the command palette for cli: install would show the command for installing the CLI.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/image-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/image-4.png&quot; alt=&quot;Running cli: install cli binary from the Zed command palette, with a notice that zed was installed to /usr/local/bin/zed&quot; /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;choosing-a-theme-extension&quot;&gt;Choosing a Theme Extension&lt;/h3&gt;
 &lt;p&gt;The minimalistic interface of the Zed editor can be greatly improved by choosing a theme that best aligns with your personality and self. For me, coming from VSCode and having worked with a certain shade of theme for a while, my go-to theme is this.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Steps to install a theme extension&lt;/strong&gt;&lt;/p&gt;
@@ -1727,7 +1727,7 @@ Sometimes when installing, there is an issue with the installation.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;Once you’ve installed a theme of your choosing, you can toggle between these themes using the &lt;code&gt;theme selector: toggle&lt;/code&gt; command in the command palette.&lt;/p&gt;
 &lt;p&gt;I use &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/tamimhasandev/colorizer&quot;&gt;Colorizer&lt;/a&gt; for my local development, because it offers a vibrant color contrast look and feel to text.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/image-5.png&quot; alt=&quot;Screenshot showing the Colorizer theme&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/image-5.webp&quot; alt=&quot;Screenshot showing the Colorizer theme&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Screenshot showing the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/tamimhasandev/colorizer&quot;&gt;Colorizer&lt;/a&gt; theme&lt;/em&gt;&lt;/p&gt;
 &lt;h3 id=&quot;command-keys-bindings&quot;&gt;Command Keys Bindings&lt;/h3&gt;
 &lt;ul&gt;
@@ -2371,7 +2371,7 @@ and adopt better and better approaches to constructing and crafting my backend i
         <id>https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/</id>
         
         <content type="html" xml:base="https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/">&lt;p&gt;I Built a FastAPI Endpoint That Runs in the Background and Talks Back&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.jpg&quot; alt=&quot;Image was generated with ChatGPT&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/cover.webp&quot; alt=&quot;Image was generated with ChatGPT&quot; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Image was generated with ChatGPT&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&quot;i-built-a-fastapi-endpoint-that-runs-in-the-background-and-talks-back&quot;&gt;I Built a FastAPI Endpoint That Runs in the Background and Talks Back&lt;/h2&gt;
 &lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;

@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
 
-	<title>Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects • Brian on Things: Low-Level Computing, Physics &amp; Maths</title>
+	<title>Rust Analyzer for Non-Cargo Rust Projects</title>
 
 	
 	
@@ -20,7 +20,7 @@
 		
 	
 
-	<meta name="description" content="Getting autocomplete, type hints, and navigation in single-file Rust programs—without Cargo.">
+	<meta name="description" content="Get Rust Analyzer autocomplete, type hints and go-to-definition in single-file Rust programs without Cargo, using rust-project.json. Handy for Advent of Code.">
 	<meta name="author" content="Brian Obot">
 	<link rel="canonical" href="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/">
 	
@@ -34,14 +34,14 @@
 
 	
 	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="Brian on Things: Low-Level Computing, Physics &amp; Maths">
-	<meta property="og:title" content="Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects">
+	<meta property="og:site_name" content="Brian on Things">
+	<meta property="og:title" content="Rust Analyzer for Non-Cargo Rust Projects">
 	
 	
 	
 		
 	
-	<meta property="og:description" content="4 min read · Getting autocomplete, type hints, and navigation in single-file Rust programs—without Cargo.">
+	<meta property="og:description" content="4 min read · Get Rust Analyzer autocomplete, type hints and go-to-definition in single-file Rust programs without Cargo, using rust-project.json. Handy for Advent of Code.">
 	<meta property="og:url" content="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/">
 	<meta property="og:locale" content="en_US">
 
@@ -66,12 +66,12 @@
 
 	
 		<meta property="og:image" content="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/cover.jpg">
-		<meta property="og:image:alt" content="Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects">
+		<meta property="og:image:alt" content="Rust Analyzer for Non-Cargo Rust Projects">
 		<meta name="twitter:image" content="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/cover.jpg">
 		<meta name="twitter:card" content="summary_large_image">
 	
-	<meta name="twitter:title" content="Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects">
-	<meta name="twitter:description" content="4 min read · Getting autocomplete, type hints, and navigation in single-file Rust programs—without Cargo.">
+	<meta name="twitter:title" content="Rust Analyzer for Non-Cargo Rust Projects">
+	<meta name="twitter:description" content="4 min read · Get Rust Analyzer autocomplete, type hints and go-to-definition in single-file Rust programs without Cargo, using rust-project.json. Handy for Advent of Code.">
 	
 		<meta name="twitter:label1" content="Reading time">
 		<meta name="twitter:data1" content="4 min read">
@@ -88,7 +88,7 @@
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
 		"headline": "Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects",
-		"description": "Getting autocomplete, type hints, and navigation in single-file Rust programs—without Cargo.",
+		"description": "Get Rust Analyzer autocomplete, type hints and go-to-definition in single-file Rust programs without Cargo, using rust-project.json. Handy for Advent of Code.",
 		"url": "https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/",
 		"mainEntityOfPage": "https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/",
 		"datePublished": "2025-12-16T00:00:00+00:00",
@@ -117,7 +117,7 @@
 	
 
 	
-	<link rel="alternate" type="application/atom+xml" title="Brian on Things: Low-Level Computing, Physics &amp; Maths" href="https://brianobot.tech/atom.xml">
+	<link rel="alternate" type="application/atom+xml" title="Brian on Things" href="https://brianobot.tech/atom.xml">
 
 	
 	<link rel="preload" href="https://brianobot.tech/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -291,7 +291,7 @@
 				<h1>Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects</h1>
 
 				
-					<blockquote class="post-description"><q>Getting autocomplete, type hints, and navigation in single-file Rust programs—without Cargo.</q></blockquote>
+					<blockquote class="post-description"><q>Get Rust Analyzer autocomplete, type hints and go-to-definition in single-file Rust programs without Cargo, using rust-project.json. Handy for Advent of Code.</q></blockquote>
 				
 			</div>
 
@@ -299,7 +299,7 @@
 		</div>
 
 		<div id="content" class="prose">
-			<p><img src="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/cover.jpg" alt="" /></p>
+			<p><img src="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/cover.jpg" alt="Layered mountain ridges in hazy golden light above a pine forest" /></p>
 <h2 id="introduction">Introduction</h2>
 <p>While working on the <a rel="noopener external" target="_blank" href="https://adventofcode.com/">Advent of Code</a> Challenge for this year, I planned to solve the challenges in Python and the Rust Programming Language, and after solving the first 2 days in Python, I decided to solve those in Rust too, it didn’t take long before I realized how difficult I found it working with Rust programs without the benefits of a Language server like Rust Analyzer.</p>
 <h2 id="the-problem">The Problem</h2>
@@ -320,7 +320,7 @@
 Of course, with the benefits of the autocompletion and the rest, you can still very well write and compile single file rust programs.</p>
 <p>After stumbling into a bug while implementing a solution for the challenges in Advent of Code day 2 in Rust, and I realized how much harder it was to walkthrough the types in my program visually and get support for autocompletion, method names and signatures, I decided to do an internet search on how to configure Rust Analyzer to work for single file rust Project without Cargo.</p>
 <p>While searching, I came across many such advice;</p>
-<p><img src="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/image-2.png" alt="" /></p>
+<p><img src="https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/image-2.webp" alt="Reddit replies to a question about using Rust Analyzer without Cargo: most say to just use cargo, one points to the rust-project.json format" /></p>
 <p>People kept generally hinting at using cargo, but, like in my case, it was not reasonable to set up a cargo project for every single day’s challenge, and it was a multi-language environment, and not a Rust-specific project.</p>
 <p>In my case:</p>
 <ul>

@@ -1,10 +1,11 @@
 +++
 title = "What I Learned (and Wish I'd Done Differently) at TechCabal's Moonshot"
 date = 2026-11-01
-description = "My first Moonshot taught me a lot, including a few things I'd do differently next time."
+description = "Lessons from my first TechCabal Moonshot after moving to Lagos: the sessions, the exhibition floor, the people, and three things I'd do differently next time."
 draft = false
 
 [extra]
+seo_title = "What I Learned at TechCabal's Moonshot 2026"
 toc = true
 og_image = "cover.jpg"
 +++

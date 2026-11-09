@@ -1,15 +1,16 @@
 +++
 title = "Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects"
 date = 2025-12-16
-description = "Getting autocomplete, type hints, and navigation in single-file Rust programs—without Cargo."
+description = "Get Rust Analyzer autocomplete, type hints and go-to-definition in single-file Rust programs without Cargo, using rust-project.json. Handy for Advent of Code."
 draft = false
 
 [extra]
+seo_title = "Rust Analyzer for Non-Cargo Rust Projects"
 toc = true
 og_image = "cover.jpg"
 +++
 
-![](cover.jpg)
+![Layered mountain ridges in hazy golden light above a pine forest](cover.jpg)
 
 ## Introduction
 
@@ -46,7 +47,7 @@ After stumbling into a bug while implementing a solution for the challenges in A
 
 While searching, I came across many such advice;
 
-![](image-2.png)
+![Reddit replies to a question about using Rust Analyzer without Cargo: most say to just use cargo, one points to the rust-project.json format](image-2.webp)
 
 People kept generally hinting at using cargo, but, like in my case, it was not reasonable to set up a cargo project for every single day’s challenge, and it was a multi-language environment, and not a Rust-specific project.
 

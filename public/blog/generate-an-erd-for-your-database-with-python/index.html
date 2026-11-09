@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="https://brianobot.tech/favicon.webp" type="image/webp">
 
-	<title>How to generate an ERD for your Database with Python in seconds • Brian on Things: Low-Level Computing, Physics &amp; Maths</title>
+	<title>Generate an ERD for Your Database with Python</title>
 
 	
 	
@@ -20,7 +20,7 @@
 		
 	
 
-	<meta name="description" content="Visualizing How Data Connects and Interacts in your database with Python">
+	<meta name="description" content="Generate an entity-relationship diagram (ERD) of your database in seconds with Python and eralchemy2, plus fixes for common Graphviz install issues on macOS.">
 	<meta name="author" content="Brian Obot">
 	<link rel="canonical" href="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/">
 	
@@ -34,14 +34,14 @@
 
 	
 	<meta property="og:type" content="article">
-	<meta property="og:site_name" content="Brian on Things: Low-Level Computing, Physics &amp; Maths">
-	<meta property="og:title" content="How to generate an ERD for your Database with Python in seconds">
+	<meta property="og:site_name" content="Brian on Things">
+	<meta property="og:title" content="Generate an ERD for Your Database with Python">
 	
 	
 	
 		
 	
-	<meta property="og:description" content="3 min read · Visualizing How Data Connects and Interacts in your database with Python">
+	<meta property="og:description" content="3 min read · Generate an entity-relationship diagram (ERD) of your database in seconds with Python and eralchemy2, plus fixes for common Graphviz install issues on macOS.">
 	<meta property="og:url" content="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/">
 	<meta property="og:locale" content="en_US">
 
@@ -65,13 +65,13 @@
 	
 
 	
-		<meta property="og:image" content="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.jpg">
-		<meta property="og:image:alt" content="How to generate an ERD for your Database with Python in seconds">
-		<meta name="twitter:image" content="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.jpg">
+		<meta property="og:image" content="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.webp">
+		<meta property="og:image:alt" content="Generate an ERD for Your Database with Python">
+		<meta name="twitter:image" content="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.webp">
 		<meta name="twitter:card" content="summary_large_image">
 	
-	<meta name="twitter:title" content="How to generate an ERD for your Database with Python in seconds">
-	<meta name="twitter:description" content="3 min read · Visualizing How Data Connects and Interacts in your database with Python">
+	<meta name="twitter:title" content="Generate an ERD for Your Database with Python">
+	<meta name="twitter:description" content="3 min read · Generate an entity-relationship diagram (ERD) of your database in seconds with Python and eralchemy2, plus fixes for common Graphviz install issues on macOS.">
 	
 		<meta name="twitter:label1" content="Reading time">
 		<meta name="twitter:data1" content="3 min read">
@@ -88,12 +88,12 @@
 		"@context": "https://schema.org",
 		"@type": "BlogPosting",
 		"headline": "How to generate an ERD for your Database with Python in seconds",
-		"description": "Visualizing How Data Connects and Interacts in your database with Python",
+		"description": "Generate an entity-relationship diagram (ERD) of your database in seconds with Python and eralchemy2, plus fixes for common Graphviz install issues on macOS.",
 		"url": "https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/",
 		"mainEntityOfPage": "https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/",
 		"datePublished": "2025-11-06T00:00:00+00:00",
 		"dateModified": "2025-11-06T00:00:00+00:00",
-		"image": "https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.jpg",
+		"image": "https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.webp",
 		"author": {
 			"@type": "Person",
 			"name": "Brian Obot",
@@ -117,7 +117,7 @@
 	
 
 	
-	<link rel="alternate" type="application/atom+xml" title="Brian on Things: Low-Level Computing, Physics &amp; Maths" href="https://brianobot.tech/atom.xml">
+	<link rel="alternate" type="application/atom+xml" title="Brian on Things" href="https://brianobot.tech/atom.xml">
 
 	
 	<link rel="preload" href="https://brianobot.tech/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -298,7 +298,7 @@
 				<h1>How to generate an ERD for your Database with Python in seconds</h1>
 
 				
-					<blockquote class="post-description"><q>Visualizing How Data Connects and Interacts in your database with Python</q></blockquote>
+					<blockquote class="post-description"><q>Generate an entity-relationship diagram (ERD) of your database in seconds with Python and eralchemy2, plus fixes for common Graphviz install issues on macOS.</q></blockquote>
 				
 			</div>
 
@@ -306,7 +306,7 @@
 		</div>
 
 		<div id="content" class="prose">
-			<p><img src="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.jpg" alt="Scenic Mountain picture by TERADAT SANTIVIVUT" /></p>
+			<p><img src="https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/cover.webp" alt="Scenic Mountain picture by TERADAT SANTIVIVUT" /></p>
 <p><em>Scenic Mountain picture by <strong>TERADAT SANTIVIVUT</strong></em></p>
 <h2 id="tl-dr">TL;DR</h2>
 <ul>

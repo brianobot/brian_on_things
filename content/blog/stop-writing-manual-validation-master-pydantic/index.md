@@ -1,7 +1,7 @@
 +++
 title = "Stop Writing Manual Validation: Master Pydantic"
 date = 2026-02-02
-description = "Go beyond basic type hints and build robust, production-ready Python with less code using Pydantic's validation."
+description = "Replace manual validation in Python with Pydantic: models, type annotations, data coercion, custom validators, serialization and using Pydantic with FastAPI."
 draft = false
 
 [extra]
@@ -9,7 +9,7 @@ toc = true
 og_image = "cover.jpg"
 +++
 
-![](cover.jpg)
+![Snow-covered mountain face and glacier under a dark blue sky](cover.jpg)
 
 ## Introduction
 

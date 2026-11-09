@@ -1,15 +1,16 @@
 +++
 title = "How to generate an ERD for your Database with Python in seconds"
 date = 2025-11-06
-description = "Visualizing How Data Connects and Interacts in your database with Python"
+description = "Generate an entity-relationship diagram (ERD) of your database in seconds with Python and eralchemy2, plus fixes for common Graphviz install issues on macOS."
 draft = false
 
 [extra]
+seo_title = "Generate an ERD for Your Database with Python"
 toc = true
-og_image = "cover.jpg"
+og_image = "cover.webp"
 +++
 
-![Scenic Mountain picture by TERADAT SANTIVIVUT](cover.jpg)
+![Scenic Mountain picture by TERADAT SANTIVIVUT](cover.webp)
 
 *Scenic Mountain picture by **TERADAT SANTIVIVUT***
 
