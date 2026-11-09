@@ -57,6 +57,13 @@ The services I build usually sit on PostgreSQL and Redis, ship in Docker, and ru
 I contribute to open source projects and publish my own work on
 [GitHub](https://github.com/brianobot). You can see some of it on the [Projects](@/projects/index.md) page.
 
+## Recommendations
+
+Colleagues and clients I've worked with have written recommendations about working with me.
+You can read them on LinkedIn.
+
+<a class="pill-link" href="https://www.linkedin.com/in/brian-obot/details/recommendations/" target="_blank" rel="noopener"><span>Read my recommendations on LinkedIn</span><svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line class="arrow-line" x1="5" y1="12" x2="19" y2="12"></line><polyline class="arrow-head" points="12 5 19 12 12 19"></polyline></svg></a>
+
 ## Get in touch
 
 Tell me a little about what you're building and where you'd like help.

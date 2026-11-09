@@ -915,6 +915,19 @@ main { width: 100%; }
    Archive — posts grouped by year, with the year as a ghosted watermark
    --------------------------------------------------------------------------- */
 .archive #content-header h1 { margin-bottom: 1.5rem; }
+.archive #content-header h1:has(+ .archive-summary) { margin-bottom: 0.5rem; }
+
+.archive-summary { margin-bottom: 2rem; }
+.archive-summary p { margin: 0; }
+.archive-stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem 0.5rem;
+	margin-top: 0.5rem !important;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.8125rem;
+	color: hsl(var(--muted-foreground));
+}
 
 .year-group {
 	position: relative;
