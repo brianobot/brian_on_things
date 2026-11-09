@@ -72,6 +72,10 @@ knows_about = [
 # Left empty, the homepage renders your initials in a circle instead.
 avatar = "batman.jpg"
 
+# "Buy me a coffee" box at the end of every post. Remove to hide it everywhere;
+# `coffee = false` under a post's [extra] hides it for that post.
+buymeacoffee = "https://buymeacoffee.com/brianobot"
+
 # How many posts the homepage lists
 recent_posts = 10
 

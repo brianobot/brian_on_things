@@ -1035,6 +1035,62 @@ main { width: 100%; }
 .share-btn svg { width: 0.875rem; height: 0.875rem; }
 
 /* --- reader feedback card ----------------------------------------------- */
+/* --- buy me a coffee (end of post) ---------------------------------------- */
+.post-coffee {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	margin-top: 3rem;
+	padding: 0.5rem 0.5rem 0.5rem 0.875rem;
+	border: 1px solid hsl(var(--border));
+	border-radius: var(--radius-xl);
+	background: hsl(var(--secondary) / 0.5);
+	font-size: 0.875rem;
+	line-height: 1.4;
+}
+.post-coffee + .post-citation { margin-top: 1rem; }
+.coffee-icon { flex: none; width: 1.125rem; height: 1.125rem; color: hsl(var(--primary)); }
+.coffee-icon { overflow: visible; }
+
+/* steam drifts up and fades, the two wisps out of step; the cup tips when the box is hovered */
+.coffee-steam {
+	transform-box: fill-box;
+	transform-origin: center bottom;
+	animation: coffee-steam 2.4s ease-in-out infinite;
+}
+.coffee-steam-2 { animation-delay: 1.2s; }
+.coffee-cup {
+	transform-box: view-box;
+	transform-origin: 9px 21px;
+	transition: transform 0.3s ease;
+}
+.post-coffee:hover .coffee-cup { transform: rotate(-8deg); }
+
+@keyframes coffee-steam {
+	0%   { opacity: 0;   transform: translateY(3px) scaleY(0.6); }
+	35%  { opacity: 1; }
+	100% { opacity: 0;   transform: translateY(-3px) scaleY(1.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.coffee-steam { animation: none; }
+	.coffee-cup { transition: none; }
+	.post-coffee:hover .coffee-cup { transform: none; }
+}
+.coffee-text {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	color: hsl(var(--muted-foreground));
+}
+.coffee-text strong { color: hsl(var(--foreground)); font-weight: 500; }
+.coffee-btn { flex: none; align-self: center; margin: 0; }
+
+/* phones: keep it to one line, trimming the text with an ellipsis if needed */
+@media (max-width: 560px) {
+	.coffee-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+
 .post-feedback {
 	display: flex;
 	flex-direction: column;
