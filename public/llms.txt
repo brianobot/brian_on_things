@@ -1,6 +1,6 @@
 # Brian on Things
 
-> Brian Obot is a software engineer and Python & Rust developer writing about backend systems, low-level internals, and the physics and maths beneath them.
+> Practical guides to Python, Rust and backend systems by software engineer Brian Obot, plus deep dives into low-level internals, physics and maths.
 
 This is the personal blog of Brian Obot, a software engineer and Python & Rust developer. It has in-depth, practical articles on Python (FastAPI, Django, Pydantic, performance), Rust (ownership, lifetimes, modules, bytes), low-level systems and developer tooling, written from hands-on experience.
 

@@ -8,7 +8,7 @@ base_url = "https://brianobot.tech"
 # Used for <meta name="description">, Open Graph and feeds when a page
 # does not supply its own description
 author = "Brian Obot"
-description = "Brian Obot is a software engineer and Python & Rust developer writing about backend systems, low-level internals, and the physics and maths beneath them."
+description = "Practical guides to Python, Rust and backend systems by software engineer Brian Obot, plus deep dives into low-level internals, physics and maths."
 
 # Site-wide feed at /atom.xml with the full text of every post (drafts excluded).
 # Atom over RSS 2.0: every feed reader supports it and it carries full HTML cleanly.
