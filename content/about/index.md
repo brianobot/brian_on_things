@@ -10,14 +10,10 @@ toc = true
 
 ## About me
 
-I'm Brian — an Electrical & Electronic Engineer by degree, and a software
-engineer by divine appointment. I build for the web, mostly the parts users never see: the
-APIs, the data models, the background jobs, and the quiet infrastructure that
-keeps everything upright.
+I'm Brian — an Electrical & Electronic Engineer and a software engineer. I build for the web, mostly the parts users never see: the
+APIs, the data models, the background jobs, and the quiet infrastructure that keeps everything upright.
 
-Lately I've been drawn further down the stack. I've become quite fond of bytes
-and the internals of software, how things actually work underneath the
-abstractions we reach for every day. Most of my work lives in [Python](https://python.org) 🐍 and [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language)) 🦀, usually somewhere near a PostgreSQL database.
+Lately I've been drawn further down the stack. I've become quite fond of bytes and the internals of software, how things actually work underneath the abstractions we reach for every day. Most of my work lives in [Python](https://python.org) 🐍 and [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language)) 🦀, usually somewhere near a PostgreSQL database.
 
 I'm a strong believer in open source and in learning in public, which is a large
 part of why this blog exists at all.
