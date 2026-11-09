@@ -6,7 +6,7 @@ base_url = "https://brianobot.tech"
 # Used for <meta name="description">, Open Graph and feeds when a page
 # does not supply its own description
 author = "Brian Obot"
-description = "Personal notes on stuff I'm curious about, mostly low-level systems engineering and the internals of the tools I use every day."
+description = "Personal notes on things I'm curious about: low-level systems engineering, the internals of the tools I use, and the physics and maths underneath it all."
 
 # Site-wide feed at /atom.xml with the full text of every post (drafts excluded).
 # Atom over RSS 2.0: every feed reader supports it and it carries full HTML cleanly.
