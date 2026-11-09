@@ -68,8 +68,9 @@ You can read them on LinkedIn.
 
 Tell me a little about what you're building and where you'd like help.
 
-- **Email:** [brianobot9@gmail.com](mailto:brianobot9@gmail.com?subject=Project%20enquiry)
 - **LinkedIn:** [linkedin.com/in/brian-obot](https://www.linkedin.com/in/brian-obot/)
+- **Email:** [brianobot9@gmail.com](mailto:brianobot9@gmail.com?subject=Project%20enquiry)
+- **Phone:** [+234 701 897 7031](tel:+2347018977031)
 - **CV:** [view my CV](https://docs.google.com/document/d/1B2H2nrA5RGMMaW0mi85NiByMme8RLFNpHrgdT3FHNjA/edit?tab=t.0)
 
 ## Refer me for a role
