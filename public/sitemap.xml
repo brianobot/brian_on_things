@@ -13,8 +13,32 @@
         <lastmod>2026-11-02</lastmod>
     </url>
     <url>
+        <loc>https://brianobot.tech/blog/autocomplete-for-your-cli-program-in-python/</loc>
+        <lastmod>2025-11-17</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.tech/blog/common-gotchas-when-working-with-rust-as-a-python-developer/</loc>
+        <lastmod>2026-02-02</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.tech/blog/generate-an-erd-for-your-database-with-python/</loc>
+        <lastmod>2025-11-06</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.tech/blog/how-i-hacked-fastapi-backgroundtasks-for-real-time-progress-updates/</loc>
+        <lastmod>2025-10-01</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.tech/blog/i-finally-understand-references-and-lifetimes-in-rust/</loc>
+        <lastmod>2026-01-31</lastmod>
+    </url>
+    <url>
         <loc>https://brianobot.tech/blog/learning-technical-skills-in-the-age-of-si/</loc>
         <lastmod>2026-10-17</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.tech/blog/mastering-python-performance-small-tweaks-big-speed/</loc>
+        <lastmod>2026-01-30</lastmod>
     </url>
     <url>
         <loc>https://brianobot.tech/blog/mastering-the-crate-and-module-system-in-rust/</loc>
@@ -25,8 +49,20 @@
         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
+        <loc>https://brianobot.tech/blog/setting-up-rust-analyzer-for-non-cargo-rust-projects/</loc>
+        <lastmod>2025-12-16</lastmod>
+    </url>
+    <url>
         <loc>https://brianobot.tech/blog/some-python-tips-that-quietly-level-up-your-code/</loc>
         <lastmod>2025-10-25</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.tech/blog/starting-today-im-choosing-to-go-deeper/</loc>
+        <lastmod>2025-11-19</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.tech/blog/stop-writing-manual-validation-master-pydantic/</loc>
+        <lastmod>2026-02-02</lastmod>
     </url>
     <url>
         <loc>https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/</loc>
@@ -35,6 +71,10 @@
     <url>
         <loc>https://brianobot.tech/blog/working-with-bytes-in-rust/</loc>
         <lastmod>2026-11-02</lastmod>
+    </url>
+    <url>
+        <loc>https://brianobot.tech/blog/zed-the-text-editor-reimagined-for-the-modern-developer/</loc>
+        <lastmod>2025-11-05</lastmod>
     </url>
     <url>
         <loc>https://brianobot.tech/projects/</loc>
