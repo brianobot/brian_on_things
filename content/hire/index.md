@@ -71,3 +71,14 @@ Tell me a little about what you're building and where you'd like help.
 - **Email:** [brianobot9@gmail.com](mailto:brianobot9@gmail.com?subject=Project%20enquiry)
 - **LinkedIn:** [linkedin.com/in/brian-obot](https://www.linkedin.com/in/brian-obot/)
 - **CV:** [view my CV](https://docs.google.com/document/d/1B2H2nrA5RGMMaW0mi85NiByMme8RLFNpHrgdT3FHNjA/edit?tab=t.0)
+
+## Refer me for a role
+
+Know a team that's hiring a Python, Rust or backend engineer? Put me forward. If your referral
+leads to me getting the role, I'll say thank you with **up to 10% of my first month's pay**.
+
+1. **Send me the role**: a link to the job post, and how you know the team.
+2. **I'll make it easy**: you'll get my CV and a short introduction you can forward as-is.
+3. **You get your thank-you**: if I'm hired through your referral, I send it once my first month's pay arrives.
+
+<a class="pill-link" href="mailto:brianobot9@gmail.com?subject=Referral%20for%20a%20role"><span>Refer me for a role</span><svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line class="arrow-line" x1="5" y1="12" x2="19" y2="12"></line><polyline class="arrow-head" points="12 5 19 12 12 19"></polyline></svg></a>
