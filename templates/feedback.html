@@ -1,0 +1,175 @@
+{% extends "_base.html" %}
+
+{% block title %}{{ page.title }} • {{ config.title }}{% endblock title %}
+
+{% block main %}
+{% set fb = config.extra.feedback | default(value=false) %}
+{% set_global fb_action = "" %}{% set_global fb_email = "" %}
+{% if fb %}{% set_global fb_action = fb.form_action | default(value="") %}{% set_global fb_email = fb.email | default(value="") %}{% endif %}
+<div class="feedback-page">
+	<div id="content-header">
+		<h1>{{ page.title }}</h1>
+		<p class="muted page-description">
+			I write this blog for people like you, so I'd love to know what you want to read next and
+			what's working for you. Every answer gets read. Answer either question, or both.
+		</p>
+	</div>
+
+	{# With a form service configured this is a plain POST, so it still works with
+	   JavaScript off. The script below upgrades it to an in-page submit. #}
+	<form id="feedback-form" class="feedback-form"
+	      {% if fb_action %}action="{{ fb_action }}" method="POST"{% endif %}
+	      data-email="{{ fb_email }}" novalidate>
+
+		<div class="field">
+			<label for="fb-topics">What would you like me to write about?</label>
+			<p class="field-hint" id="fb-topics-hint">A topic, a question you're stuck on, a tool you want explained, anything.</p>
+			<textarea id="fb-topics" name="topics" rows="5" maxlength="4000"
+			          aria-describedby="fb-topics-hint fb-topics-error"
+			          placeholder="e.g. How async actually works in Rust, a deep dive into Postgres indexes&hellip;"></textarea>
+			<p class="field-error" id="fb-topics-error" role="alert"></p>
+		</div>
+
+		<fieldset class="field">
+			<legend>Which areas interest you most?</legend>
+			<div class="chips">
+				{% for area in ["Python", "Rust", "Backend & APIs", "Low-level internals", "Maths & Physics", "Career & learning", "Books, movies & arts"] %}
+				<label class="chip"><input type="checkbox" name="interests" value="{{ area }}"><span>{{ area }}</span></label>
+				{% endfor %}
+			</div>
+		</fieldset>
+
+		<div class="field">
+			<label for="fb-likes">What do you like about the blog?</label>
+			<p class="field-hint" id="fb-likes-hint">A post you enjoyed, the writing style, the design&hellip; or what you'd change.</p>
+			<textarea id="fb-likes" name="likes" rows="4" maxlength="4000"
+			          aria-describedby="fb-likes-hint"></textarea>
+		</div>
+
+		<div class="field-row">
+			<div class="field">
+				<label for="fb-name">Name</label>
+				<input id="fb-name" type="text" name="name" autocomplete="name" maxlength="200">
+			</div>
+			<div class="field">
+				<label for="fb-email">Email</label>
+				<input id="fb-email" type="email" name="email" autocomplete="email" maxlength="200"
+				       aria-describedby="fb-email-hint fb-email-error">
+				<p class="field-error" id="fb-email-error" role="alert"></p>
+			</div>
+		</div>
+		<p class="field-hint field-hint-after" id="fb-email-hint">Only if you'd like a reply or a heads-up when I write about your topic.</p>
+
+		{# honeypot: hidden from people, bots fill it in and Formspree drops the submission #}
+		<div class="hp" aria-hidden="true">
+			<label for="fb-gotcha">Leave this empty</label>
+			<input id="fb-gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+		</div>
+		<input type="hidden" name="_subject" value="Blog feedback">
+
+		<div class="form-actions">
+			<button type="submit" class="pill-link form-submit">
+				<span>Send feedback</span>{% include "_arrow.html" %}
+			</button>
+			<p id="feedback-status" class="form-status" role="status" aria-live="polite"></p>
+		</div>
+	</form>
+
+	<div id="feedback-thanks" class="feedback-thanks" hidden tabindex="-1">
+		<h2>Thank you!</h2>
+		<p class="muted">Your feedback is on its way to me. In the meantime, there's plenty to read on the
+			<a href="{{ get_url(path='/blog', trailing_slash=true) }}">blog</a>.</p>
+	</div>
+</div>
+{% endblock main %}
+
+{% block scripts %}
+<script>
+(() => {
+	const form = document.getElementById('feedback-form')
+	const status = document.getElementById('feedback-status')
+	const thanks = document.getElementById('feedback-thanks')
+	const button = form.querySelector('button[type=submit]')
+	const { topics, likes, email } = form.elements
+
+	const fail = (msg) => {
+		status.textContent = msg
+		status.classList.add('is-error')
+	}
+
+	// error shown right under the field we jump to, so it is on screen even on a phone
+	const fieldError = (field, msg) => {
+		field.setAttribute('aria-invalid', 'true')
+		document.getElementById(field.id + '-error').textContent = msg
+		field.focus()
+		field.scrollIntoView({ block: 'center', behavior: 'smooth' })
+	}
+
+	const clear = (field) => {
+		field.removeAttribute('aria-invalid')
+		document.getElementById(field.id + '-error').textContent = ''
+	}
+
+	topics.addEventListener('input', () => clear(topics))
+	likes.addEventListener('input', () => clear(topics))
+	email.addEventListener('input', () => clear(email))
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault()
+		status.classList.remove('is-error')
+
+		status.textContent = ''
+
+		if (!topics.value.trim() && !likes.value.trim()) {
+			return fieldError(topics, 'Answer this one or “What do you like about the blog?” before sending.')
+		}
+		if (email.value && !email.checkValidity()) {
+			return fieldError(email, 'That email address doesn’t look right.')
+		}
+		if (form.elements._gotcha.value) return
+
+		const data = new FormData(form)
+		const interests = data.getAll('interests')
+
+		// no form service configured: hand off to the visitor's mail app
+		if (!form.getAttribute('action')) {
+			const likesText = data.get('likes').trim()
+			const name = data.get('name').trim()
+			const topicsText = data.get('topics').trim()
+			const parts = []
+			if (topicsText) parts.push('What I’d like you to write about:\n' + topicsText)
+			if (interests.length) parts.push('Areas I’m interested in: ' + interests.join(', '))
+			if (likesText) parts.push('What I like about the blog:\n' + likesText)
+			if (name) parts.push('— ' + name)
+			location.href = 'mailto:' + form.dataset.email +
+				'?subject=' + encodeURIComponent('Blog feedback') +
+				'&body=' + encodeURIComponent(parts.join('\n\n'))
+			status.textContent = 'Opening your email app…'
+			return
+		}
+
+		// one readable field instead of repeated "interests" keys
+		data.delete('interests')
+		if (interests.length) data.set('interests', interests.join(', '))
+		if (data.get('email')) data.set('_replyto', data.get('email'))
+
+		button.disabled = true
+		status.textContent = 'Sending…'
+		try {
+			const res = await fetch(form.action, {
+				method: 'POST',
+				body: data,
+				headers: { Accept: 'application/json' },
+			})
+			if (!res.ok) throw new Error(res.status)
+			form.hidden = true
+			thanks.hidden = false
+			thanks.focus()
+		} catch {
+			button.disabled = false
+			fail('Something went wrong sending that. Please try again, or email me at ' + form.dataset.email + '.')
+		}
+	})
+})()
+</script>
+{% endblock scripts %}
