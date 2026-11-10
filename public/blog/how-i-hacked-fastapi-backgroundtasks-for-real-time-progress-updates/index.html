@@ -1429,6 +1429,8 @@ main { width: 100%; }
 .feedback-page #content-header { margin-bottom: 1.5rem; }
 
 .feedback-form { display: flex; flex-direction: column; gap: 1.5rem; }
+/* display:flex above would otherwise beat the [hidden] attribute set on success */
+.feedback-form[hidden] { display: none; }
 
 .feedback-form .field {
 	display: flex;
