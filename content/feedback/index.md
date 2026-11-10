@@ -6,4 +6,6 @@ template = "feedback.html"
 [extra]
 toc = false
 noindex = true
+# social preview card (1200x630), colocated with this page
+og_image = "cover.jpg"
 +++
