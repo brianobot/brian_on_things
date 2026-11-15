@@ -23,6 +23,11 @@ compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+[link_checker]
+# LinkedIn answers every automated request with status 999, so `zola check` would
+# always report these links as broken even when the profiles are fine
+skip_prefixes = ["https://www.linkedin.com/"]
+
 [markdown]
 # Collect [^name] footnotes into one numbered list at the end of the post,
 # each with a ↩ link back to where it was referenced

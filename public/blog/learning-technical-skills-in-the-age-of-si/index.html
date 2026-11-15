@@ -770,6 +770,9 @@ main { width: 100%; }
 	border-radius: var(--radius-xl);
 }
 
+/* Cover images always span the full column, even when the source is narrower */
+.prose img[src$="cover.webp"] { width: 100%; }
+
 .prose blockquote {
 	margin: 0 0 1.25rem;
 	padding-inline-start: 1rem;
