@@ -5,8 +5,204 @@
     <link rel="self" type="application/atom+xml" href="https://brianobot.tech/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://brianobot.tech"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2026-11-02T00:00:00+00:00</updated>
+    <updated>2026-11-08T00:00:00+00:00</updated>
     <id>https://brianobot.tech/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Entanglement and Bell&#39;s Theorem: The Experiment That Proved Einstein Wrong</title>
+        <published>2026-11-08T00:00:00+00:00</published>
+        <updated>2026-11-08T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Brian Obot</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/entanglement-and-bells-theorem-the-experiment-that-proved-einstein-wrong/"/>
+        <id>https://brianobot.tech/blog/entanglement-and-bells-theorem-the-experiment-that-proved-einstein-wrong/</id>
+        
+        <content type="html" xml:base="https://brianobot.tech/blog/entanglement-and-bells-theorem-the-experiment-that-proved-einstein-wrong/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Einstein never accepted quantum mechanics as the final word. He was happy with its predictions; what
+he refused was the idea that a particle doesn&#39;t have definite properties until it&#39;s measured, the idea
+at the heart of the &lt;a href=&quot;https://brianobot.tech/blog/the-uncertainty-principle-is-not-about-clumsy-measurements/&quot;&gt;uncertainty principle&lt;/a&gt;. In 1935,
+with Boris Podolsky and Nathan Rosen, he wrote a paper arguing that quantum mechanics must be
+&lt;strong&gt;incomplete&lt;/strong&gt;: there had to be hidden details it was leaving out.&lt;/p&gt;
+&lt;p&gt;For about thirty years this looked like a philosophical argument that could never be settled. Then in
+1964, John Bell found a way to turn it into an &lt;strong&gt;experiment&lt;/strong&gt;. The experiment has since been done,
+over and over, with steadily fewer loopholes. Einstein&#39;s picture lost. The 2022 Nobel Prize in Physics
+went to three of the people who did those experiments.&lt;/p&gt;
+&lt;p&gt;What I love about Bell&#39;s theorem is that the core of it is just counting. You can check it with a
+simulation and a bit of arithmetic, which is exactly what I&#39;ll do in this post.&lt;/p&gt;
+&lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Two &lt;strong&gt;entangled&lt;/strong&gt; particles have perfectly linked measurement results, however far apart they are.&lt;/li&gt;
+&lt;li&gt;Einstein argued the results must be &lt;strong&gt;pre-set&lt;/strong&gt; at the source, like a pair of gloves split into two
+boxes. That&#39;s a &lt;strong&gt;local hidden variable&lt;/strong&gt; theory.&lt;/li&gt;
+&lt;li&gt;Bell showed that &lt;strong&gt;any&lt;/strong&gt; such theory obeys a limit on how strongly the results can be correlated.
+In the CHSH version, a number called &lt;code&gt;S&lt;/code&gt; can be at most &lt;strong&gt;2&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Quantum mechanics predicts &lt;code&gt;S&lt;/code&gt; up to &lt;strong&gt;2√2 ≈ 2.83&lt;/strong&gt;, and experiments agree. So the results can&#39;t
+have been pre-set by anything local.&lt;/li&gt;
+&lt;li&gt;It still &lt;strong&gt;can&#39;t be used to send messages faster than light&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;entanglement-in-one-paragraph&quot;&gt;Entanglement in one paragraph&lt;/h2&gt;
+&lt;p&gt;Two particles can be prepared in a joint quantum state where neither has a definite value on its own,
+but their values are linked. A standard example is a pair of electrons in the &lt;strong&gt;singlet&lt;/strong&gt; state: if you
+measure the spin of both along the same axis, you always get opposite answers. One up, one down. Which
+one is up is completely random, 50/50, but they&#39;re always opposite. This holds whether the electrons
+are a millimetre apart or on different continents.&lt;/p&gt;
+&lt;h2 id=&quot;the-epr-argument-gloves-in-boxes&quot;&gt;The EPR argument: gloves in boxes&lt;/h2&gt;
+&lt;p&gt;At first glance, perfect correlation isn&#39;t spooky at all. Take a pair of gloves, put one in each of two
+boxes without looking, and post one to Lagos and one to Tokyo. Open the box in Lagos, find a left glove,
+and you instantly know Tokyo has the right one. Nothing travelled between the boxes. The answer was
+decided when the gloves were packed.&lt;/p&gt;
+&lt;p&gt;Einstein, Podolsky and Rosen argued that entangled particles must work like this. If you can predict
+the result at Tokyo with certainty, without touching it, then that result must correspond to some
+&lt;strong&gt;element of reality&lt;/strong&gt; that was there all along. Quantum mechanics doesn&#39;t include these pre-set
+values in its description, so it must be incomplete.&lt;/p&gt;
+&lt;p&gt;This view has two ingredients:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Realism&lt;/strong&gt;: the measurement results are determined in advance by properties the particles carry.
+Physicists call these &lt;strong&gt;hidden variables&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Locality&lt;/strong&gt;: what happens to one particle can&#39;t instantly affect the other. Nothing travels faster
+than light.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Together they make a &lt;strong&gt;local hidden variable theory&lt;/strong&gt;. It sounds like common sense. Bell showed it makes
+a testable prediction, and that prediction is wrong.&lt;/p&gt;
+&lt;h2 id=&quot;where-the-gloves-analogy-breaks-choosing-the-angle&quot;&gt;Where the gloves analogy breaks: choosing the angle&lt;/h2&gt;
+&lt;p&gt;The twist is that spin can be measured along &lt;strong&gt;any direction&lt;/strong&gt;, and the measurer chooses.&lt;/p&gt;
+&lt;p&gt;Measure both electrons along the same axis and the results are always opposite. Measure them along
+axes at 90° and the results are completely uncorrelated. In between, quantum mechanics predicts the
+correlation follows a smooth cosine:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;E(a, b) = −cos(a − b)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where &lt;code&gt;E&lt;/code&gt; is the average of the product of the two results (+1 or −1 each), and &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt; are the
+two measurement angles. &lt;code&gt;E = −1&lt;/code&gt; means always opposite, &lt;code&gt;0&lt;/code&gt; means no relation, &lt;code&gt;+1&lt;/code&gt; means always the same.&lt;/p&gt;
+&lt;p&gt;A local hidden variable model can try to reproduce this. Each pair could carry a little instruction
+sheet saying what to answer for every possible angle. The question Bell asked is whether &lt;em&gt;any&lt;/em&gt;
+instruction sheet can match that cosine. The answer is no.&lt;/p&gt;
+&lt;h2 id=&quot;the-chsh-inequality&quot;&gt;The CHSH inequality&lt;/h2&gt;
+&lt;p&gt;The most practical version of Bell&#39;s result came in 1969 from John Clauser, Michael Horne, Abner
+Shimony and Richard Holt, and it&#39;s known by their initials, &lt;strong&gt;CHSH&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Alice and Bob each have two measurement settings: Alice chooses &lt;code&gt;a&lt;/code&gt; or &lt;code&gt;a′&lt;/code&gt;, Bob chooses &lt;code&gt;b&lt;/code&gt; or &lt;code&gt;b′&lt;/code&gt;.
+They measure lots of pairs, choosing settings at random, and compute:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;S = E(a, b) − E(a, b′) + E(a′, b) + E(a′, b′)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&#39;s why local hidden variables can&#39;t push &lt;code&gt;|S|&lt;/code&gt; past 2. Suppose each pair carries pre-set answers
+&lt;code&gt;A, A′&lt;/code&gt; for Alice and &lt;code&gt;B, B′&lt;/code&gt; for Bob, all ±1. For one pair:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;A·B − A·B′ + A′·B + A′·B′  =  A·(B − B′) + A′·(B + B′)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;B&lt;/code&gt; and &lt;code&gt;B′&lt;/code&gt; are each ±1, so either they&#39;re equal, and &lt;code&gt;B − B′ = 0&lt;/code&gt; while &lt;code&gt;B + B′ = ±2&lt;/code&gt;, or they&#39;re
+opposite, and it&#39;s the other way round. Either way, one bracket is 0 and the other is ±2, so the whole
+thing is exactly &lt;strong&gt;±2&lt;/strong&gt;. Average over any mix of pairs and you can&#39;t get beyond 2.&lt;/p&gt;
+&lt;p&gt;That&#39;s the whole proof. No quantum mechanics involved, only the assumption that the answers existed
+before the measurement and that Alice&#39;s choice can&#39;t change Bob&#39;s answer.&lt;/p&gt;
+&lt;p&gt;Quantum mechanics, with angles &lt;code&gt;a = 0°&lt;/code&gt;, &lt;code&gt;a′ = 90°&lt;/code&gt;, &lt;code&gt;b = 45°&lt;/code&gt;, &lt;code&gt;b′ = 135°&lt;/code&gt;, predicts:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;|S| = 4 × cos(45°) = 2√2 ≈ 2.83&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It breaks the limit. And 2√2 is the most any quantum system can reach, a bound found by Boris Tsirelson
+in 1980.&lt;/p&gt;
+&lt;h2 id=&quot;simulating-it-in-python&quot;&gt;Simulating it in Python&lt;/h2&gt;
+&lt;p&gt;Let&#39;s check both claims. The first source is a reasonable local hidden variable model: each pair leaves
+the source carrying a hidden angle, and each detector answers based only on its own setting and that
+angle. The second samples outcomes from quantum mechanics&#39; predicted probabilities.&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;import&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;import&lt;/span&gt;&lt;span&gt; random&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; local_pair&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; b&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; tuple&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; int&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Local hidden variables: each pair leaves the source carrying a hidden angle.&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    hidden&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;uniform&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span&gt;pi&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    alice&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; if&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;a&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt; hidden&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; &amp;gt;=&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; else&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    bob&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; if&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;b&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt; hidden&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; &amp;gt;=&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; else&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span&gt; alice&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; bob&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; quantum_pair&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; b&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; tuple&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; int&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Spin singlet: outcomes sampled from quantum mechanics&amp;#39; predicted probabilities.&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    alice&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;choice&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    opposite&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; &amp;lt;&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;a&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt; b&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    bob&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt;alice&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; if&lt;/span&gt;&lt;span&gt; opposite&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; else&lt;/span&gt;&lt;span&gt; alice&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span&gt; alice&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; bob&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; correlation&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; a&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; b&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; trials&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; int&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 200_000&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    total&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    for&lt;/span&gt;&lt;span&gt; _&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt; range&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;trials&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        alice&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; bob&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; source&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;a&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; b&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        total&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +=&lt;/span&gt;&lt;span&gt; alice&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; bob&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span&gt; total&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; trials&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; chsh&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    a&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; a2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0.0&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    b&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; b2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;45&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;radians&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;135&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;correlation&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;source&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; a&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; b&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; correlation&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;source&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; a&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; b2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt;            +&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; correlation&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;source&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; a2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; b&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; correlation&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;source&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; a2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; b2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;seed&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Local hidden variables: |S| = &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;chsh&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;local_pair&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.3f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Quantum mechanics:      |S| = &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;chsh&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;quantum_pair&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.3f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Bell&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;#39;s limit: 2, quantum maximum: 2√2 = &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.3f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Local hidden variables: |S| = 1.997&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Quantum mechanics:      |S| = 2.826&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Bell&amp;#39;s limit: 2, quantum maximum: 2√2 = 2.828&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The hidden-angle model gets perfect anti-correlation at equal angles, just like the real thing. It
+even sits right &lt;em&gt;at&lt;/em&gt; the limit of 2. But no matter how you tweak it, you can&#39;t get it past 2. You&#39;re
+welcome to try: change &lt;code&gt;local_pair&lt;/code&gt; however you like, as long as Alice&#39;s answer only uses &lt;code&gt;a&lt;/code&gt; and
+&lt;code&gt;hidden&lt;/code&gt;, and Bob&#39;s only uses &lt;code&gt;b&lt;/code&gt; and &lt;code&gt;hidden&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Notice the cheat in &lt;code&gt;quantum_pair&lt;/code&gt;: Bob&#39;s result is computed using &lt;strong&gt;both&lt;/strong&gt; angles, &lt;code&gt;a − b&lt;/code&gt;. That&#39;s
+the only way a classical program can reproduce quantum statistics. To fake entanglement classically,
+one side has to know the other side&#39;s setting.&lt;/p&gt;
+&lt;h2 id=&quot;the-experiments&quot;&gt;The experiments&lt;/h2&gt;
+&lt;p&gt;The prediction is clear. Testing it took decades of increasingly clever experiments, usually with
+pairs of polarisation-entangled photons rather than electrons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;1972&lt;/strong&gt;: John Clauser and Stuart Freedman at Berkeley ran the first test and found a violation of
+Bell&#39;s inequality, in agreement with quantum mechanics.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;1982&lt;/strong&gt;: Alain Aspect&#39;s team in Paris switched the measurement settings &lt;strong&gt;while the photons were in
+flight&lt;/strong&gt;, so no signal at light speed could tell one detector what the other had chosen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;1998 onwards&lt;/strong&gt;: Anton Zeilinger&#39;s group in Innsbruck and Vienna used random number generators and
+longer distances to close more gaps, and later used entanglement for quantum teleportation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sceptics pointed to &lt;strong&gt;loopholes&lt;/strong&gt;. If detectors miss many photons, maybe the ones they catch are a
+biased sample (the detection loophole). If the detectors are close enough, maybe a signal could pass
+between them (the locality loophole). In &lt;strong&gt;2015&lt;/strong&gt;, three groups, at Delft, Vienna and NIST in
+Colorado, closed both loopholes in the same experiments. The Delft team used electrons in diamonds
+1.3 km apart. The violation held.&lt;/p&gt;
+&lt;p&gt;In 2022, Aspect, Clauser and Zeilinger shared the Nobel Prize in Physics &quot;for experiments with
+entangled photons, establishing the violation of Bell inequalities and pioneering quantum information
+science.&quot;&lt;/p&gt;
+&lt;h2 id=&quot;what-it-does-and-doesn-t-mean&quot;&gt;What it does and doesn&#39;t mean&lt;/h2&gt;
+&lt;p&gt;Bell&#39;s theorem rules out &lt;strong&gt;local&lt;/strong&gt; hidden variables. At least one of Einstein&#39;s two ingredients has to
+go:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Give up &lt;strong&gt;realism&lt;/strong&gt;: the results really don&#39;t exist until measured. This is the mainstream reading.&lt;/li&gt;
+&lt;li&gt;Give up &lt;strong&gt;locality&lt;/strong&gt;: there are hidden variables, but they&#39;re nonlocal, as in the pilot-wave
+interpretation, where the guiding wave connects distant particles instantly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What it &lt;strong&gt;doesn&#39;t&lt;/strong&gt; allow is faster-than-light communication. Look at Alice&#39;s results on their own:
+they&#39;re a random 50/50 sequence no matter what Bob does. The correlation only appears when Alice and
+Bob bring their records together and compare, which needs an ordinary, light-speed-limited channel.
+This is called the &lt;strong&gt;no-signalling&lt;/strong&gt; theorem. Entanglement is a correlation, not a telephone.&lt;/p&gt;
+&lt;h2 id=&quot;why-it-matters-now&quot;&gt;Why it matters now&lt;/h2&gt;
+&lt;p&gt;What started as an argument about the nature of reality has become engineering:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Quantum key distribution&lt;/strong&gt;: Artur Ekert&#39;s 1991 protocol uses Bell tests to check that nobody has
+intercepted a key. If an eavesdropper interfered, the correlation would drop below the quantum value.
+China&#39;s Micius satellite has distributed entangled photons between ground stations over 1,000 km
+apart.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quantum computing&lt;/strong&gt;: entanglement between qubits is the resource that lets quantum algorithms
+outperform classical ones on some problems. The 2025 Nobel Prize went to John Clarke, Michel Devoret
+and John Martinis for the 1980s experiments showing quantum behaviour in superconducting circuits, the
+same kind of circuits many of today&#39;s quantum computers are built from.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Device-independent security&lt;/strong&gt;: because a Bell violation can&#39;t be faked by local means, you can
+certify randomness or security without trusting the devices you bought.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Bell&#39;s theorem is one of the rare cases where a philosophical debate got settled by experiment:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Entangled particles show &lt;strong&gt;perfect correlations&lt;/strong&gt;, which on their own could be explained by pre-set
+answers, like gloves in boxes.&lt;/li&gt;
+&lt;li&gt;But with &lt;strong&gt;changeable measurement angles&lt;/strong&gt;, any local pre-set-answer theory obeys &lt;code&gt;|S| ≤ 2&lt;/code&gt;, and the
+proof is a few lines of algebra.&lt;/li&gt;
+&lt;li&gt;Quantum mechanics predicts and &lt;strong&gt;experiments confirm&lt;/strong&gt; &lt;code&gt;|S| ≈ 2√2&lt;/code&gt;, with every major loophole closed
+since 2015.&lt;/li&gt;
+&lt;li&gt;Nature is not locally realistic, and yet still can&#39;t be used to &lt;strong&gt;signal faster than light&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Einstein was right that something about quantum mechanics is strange. He was wrong about which part.
+The strangeness isn&#39;t a gap in the theory; it&#39;s the way the world actually works.&lt;/p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Introduction to Bytes in Rust. Part 1</title>
         <published>2026-11-02T00:00:00+00:00</published>
@@ -200,6 +396,418 @@ and people get bored of the AI hype. Is there a place of SI in work? of course, 
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The Uncertainty Principle Is Not About Clumsy Measurements</title>
+        <published>2026-03-07T00:00:00+00:00</published>
+        <updated>2026-03-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Brian Obot</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/the-uncertainty-principle-is-not-about-clumsy-measurements/"/>
+        <id>https://brianobot.tech/blog/the-uncertainty-principle-is-not-about-clumsy-measurements/</id>
+        
+        <content type="html" xml:base="https://brianobot.tech/blog/the-uncertainty-principle-is-not-about-clumsy-measurements/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Ask most people what Heisenberg&#39;s uncertainty principle says and you&#39;ll hear something like: &quot;you
+can&#39;t measure a particle without disturbing it.&quot; To see an electron you have to bounce light off it,
+the light kicks it, and so you lose track of where it was going.&lt;/p&gt;
+&lt;p&gt;That explanation is intuitive, and Heisenberg himself used a version of it in 1927. It&#39;s also
+misleading. The uncertainty principle isn&#39;t a limit on our instruments. It&#39;s a statement about what
+a particle &lt;strong&gt;is&lt;/strong&gt;. Even with perfect, gentle, impossible measuring tools, a particle simply does not
+have a precise position and a precise momentum at the same time.&lt;/p&gt;
+&lt;p&gt;In this post I want to make that idea feel obvious rather than mysterious. The trick is to think
+about waves. Then I&#39;ll use the principle to do something I find delightful: work out the size of a
+hydrogen atom in about ten lines of Python.&lt;/p&gt;
+&lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Quantum particles are described by waves, and &lt;strong&gt;momentum is the wavelength&lt;/strong&gt; (&lt;code&gt;p = h/λ&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;A wave with a precise wavelength has to be spread out. A wave squeezed into a small region has to
+mix many wavelengths. That&#39;s not physics, it&#39;s a property of all waves.&lt;/li&gt;
+&lt;li&gt;So &lt;strong&gt;Δx · Δp ≥ ħ/2&lt;/strong&gt;: the spread in position times the spread in momentum can&#39;t go below a fixed
+limit. No measurement required.&lt;/li&gt;
+&lt;li&gt;The same idea explains why electrons don&#39;t spiral into the nucleus, why there&#39;s &lt;strong&gt;zero-point
+energy&lt;/strong&gt;, and why atoms are the size they are.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;start-with-waves-not-particles&quot;&gt;Start with waves, not particles&lt;/h2&gt;
+&lt;p&gt;Forget quantum mechanics for a moment and think about sound.&lt;/p&gt;
+&lt;p&gt;A pure musical note, a single perfect frequency, is a sine wave that goes on and on. To be &lt;em&gt;exactly&lt;/em&gt;
+one frequency, it has to last forever. If you cut it short, say a quick tap on a drum, the sound is
+localised in time, but it no longer has one pitch. A short click contains a whole spread of
+frequencies.&lt;/p&gt;
+&lt;p&gt;This is a mathematical fact about waves, usually expressed through the &lt;strong&gt;Fourier transform&lt;/strong&gt;: any
+pulse can be built by adding together sine waves of different frequencies, and the shorter the
+pulse, the wider the range of frequencies you need. Engineers know this as the &lt;strong&gt;time–bandwidth
+product&lt;/strong&gt;. It&#39;s why a radio signal that carries fast-changing data needs a wide frequency band, and
+it&#39;s something I first met in signals and systems classes, long before I connected it to quantum
+physics.&lt;/p&gt;
+&lt;p&gt;The same is true in space instead of time. A wave with a single, precise &lt;strong&gt;wavelength&lt;/strong&gt; has to
+stretch across all of space. A wave packet confined to a small region has to be built from many
+different wavelengths.&lt;/p&gt;
+&lt;h2 id=&quot;now-add-quantum-mechanics&quot;&gt;Now add quantum mechanics&lt;/h2&gt;
+&lt;p&gt;Here&#39;s the quantum ingredient, due to Louis de Broglie: a particle is described by a wave, and its
+&lt;strong&gt;momentum is tied to its wavelength&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;p = h / λ&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Put the two ideas together:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A particle with a &lt;strong&gt;precise momentum&lt;/strong&gt; has a precise wavelength, so its wave is spread across all of
+space. Its position is completely undefined.&lt;/li&gt;
+&lt;li&gt;A particle with a &lt;strong&gt;precise position&lt;/strong&gt; has a wave squeezed into a tiny region, which requires many
+wavelengths mixed together. Its momentum is completely undefined.&lt;/li&gt;
+&lt;li&gt;Anything in between is a trade-off.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That&#39;s the uncertainty principle. It&#39;s not that the particle has a definite position and momentum
+that we can&#39;t quite pin down. It&#39;s that a wave &lt;strong&gt;can&#39;t have&lt;/strong&gt; both a sharp location and a sharp
+wavelength, and a quantum particle is that wave.&lt;/p&gt;
+&lt;h2 id=&quot;the-formula&quot;&gt;The formula&lt;/h2&gt;
+&lt;p&gt;Made precise, the relationship is:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Δx · Δp ≥ ħ / 2&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Δx&lt;/code&gt; is the &lt;strong&gt;spread&lt;/strong&gt; (standard deviation) of position.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Δp&lt;/code&gt; is the spread of momentum.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ħ&lt;/code&gt; (&quot;h-bar&quot;) is the reduced Planck constant, &lt;code&gt;h / 2π ≈ 1.055 × 10⁻³⁴ J·s&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The exact form with &lt;code&gt;ħ/2&lt;/code&gt; was proved in 1927 by Earle Kennard, shortly after Heisenberg&#39;s paper. The
+equality is reached only by one shape of wave packet: a &lt;strong&gt;Gaussian&lt;/strong&gt;, the bell curve. Every other
+shape is more spread out.&lt;/p&gt;
+&lt;p&gt;Two notes worth making.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The spreads are about many repeated experiments.&lt;/strong&gt; Prepare a million electrons in the same state.
+Measure position on half of them, momentum on the other half. The spreads in those two sets of
+results always obey the inequality. Each individual measurement can be as precise as your equipment
+allows. What you can&#39;t do is prepare a state where both sets of results come out sharp.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ħ is tiny.&lt;/strong&gt; For a 1 gram marble whose position is known to within a micrometre, the minimum
+uncertainty in its velocity is about &lt;code&gt;5 × 10⁻²⁶&lt;/code&gt; m/s. Your marble would take longer than the age of
+the universe to drift a millimetre. That&#39;s why you never notice this in everyday life. For an
+electron, with a mass about 10²⁷ times smaller, the effect is everything.&lt;/p&gt;
+&lt;h2 id=&quot;why-measurement-disturbs-it-is-the-wrong-picture&quot;&gt;Why &quot;measurement disturbs it&quot; is the wrong picture&lt;/h2&gt;
+&lt;p&gt;Heisenberg&#39;s original argument was the &lt;strong&gt;gamma-ray microscope&lt;/strong&gt;: to locate an electron precisely,
+you need short-wavelength light, which carries a big momentum kick, which disturbs the electron&#39;s
+momentum.&lt;/p&gt;
+&lt;p&gt;That&#39;s a real effect, but it suggests the electron &lt;em&gt;had&lt;/em&gt; a precise position and momentum before you
+interfered with it. Experiments say otherwise. The famous tests of
+&lt;a href=&quot;https://brianobot.tech/blog/entanglement-and-bells-theorem-the-experiment-that-proved-einstein-wrong/&quot;&gt;Bell&#39;s theorem&lt;/a&gt; rule out any theory in which particles carry definite, pre-existing values for
+all their properties, if those values only depend on local influences. The uncertainty is in the
+particle, not in our clumsiness.&lt;/p&gt;
+&lt;p&gt;There&#39;s also an elegant way to see it from the
+&lt;a href=&quot;https://brianobot.tech/blog/the-double-slit-experiment-how-one-particle-interferes-with-itself/&quot;&gt;double-slit experiment&lt;/a&gt;. Send a particle through a
+single narrow slit. Narrowing the slit pins down its sideways position (small &lt;code&gt;Δx&lt;/code&gt;), and the
+particle&#39;s landing spot on the screen spreads out wider (large &lt;code&gt;Δp&lt;/code&gt;). That&#39;s &lt;strong&gt;diffraction&lt;/strong&gt;. No one
+is measuring anything at the slit. It&#39;s just a wave going through a gap.&lt;/p&gt;
+&lt;h2 id=&quot;why-atoms-don-t-collapse&quot;&gt;Why atoms don&#39;t collapse&lt;/h2&gt;
+&lt;p&gt;This is the part that made the uncertainty principle click for me.&lt;/p&gt;
+&lt;p&gt;Classical physics has an embarrassing problem with atoms. An electron orbiting a proton is an
+accelerating charge, and accelerating charges radiate. It should lose energy and spiral into the
+nucleus in about a hundred-billionth of a second. Every atom in the universe should have collapsed.&lt;/p&gt;
+&lt;p&gt;The uncertainty principle stops it. If the electron gets squeezed into a smaller region of size &lt;code&gt;r&lt;/code&gt;,
+its momentum spread grows to roughly &lt;code&gt;ħ / r&lt;/code&gt;, which means more kinetic energy, roughly &lt;code&gt;ħ²/(2mr²)&lt;/code&gt;.
+Meanwhile its electric potential energy falls as &lt;code&gt;-ke²/r&lt;/code&gt;. The kinetic term grows faster as &lt;code&gt;r&lt;/code&gt;
+shrinks, so there&#39;s a size where the total energy is lowest. That&#39;s the atom.&lt;/p&gt;
+&lt;p&gt;Let&#39;s find it:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;HBAR&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1.054_571_8e-34&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;     #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; reduced Planck constant, J·s&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;M_E&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 9.109_383_7e-31&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;      #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; electron mass, kg&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;KE2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2.307_077_6e-28&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;      #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; e² / (4πε₀), J·m&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;EV&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1.602_176_6e-19&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;       #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; joules per electron-volt&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Total energy of an electron squeezed into a region of size r.&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    kinetic&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; HBAR&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; M_E&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; r&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;   #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; from Δp ≈ ħ / r&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    potential&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt;KE2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; r&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;                       #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; attraction to the proton&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span&gt; kinetic&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +&lt;/span&gt;&lt;span&gt; potential&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; Scan sizes from 0.01 to 5 ångström and keep the one with the lowest energy&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;sizes&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; [&lt;/span&gt;&lt;span&gt;i&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1e-13&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; for&lt;/span&gt;&lt;span&gt; i&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt; range&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 50_000&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;best&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt; min&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;sizes&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; key&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt;=&lt;/span&gt;&lt;span&gt;energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Most stable size: &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;best&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1e10&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.3f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; Å&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Energy there:     &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;best&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; EV&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.2f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; eV&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;for&lt;/span&gt;&lt;span&gt; r&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;0.1e-10&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0.25e-10&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; best&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2e-10&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;    print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;  r = &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;r&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1e10&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:5.2f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; Å -&amp;gt; E = &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;r&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; EV&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:8.2f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; eV&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Most stable size: 0.529 Å&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;Energy there:     -13.61 eV&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  r =  0.10 Å -&amp;gt; E =   237.00 eV&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  r =  0.25 Å -&amp;gt; E =     3.36 eV&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  r =  0.53 Å -&amp;gt; E =   -13.61 eV&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  r =  2.00 Å -&amp;gt; E =    -6.25 eV&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;0.529 ångström is the &lt;strong&gt;Bohr radius&lt;/strong&gt;, the textbook size of a hydrogen atom. And −13.6 eV is
+&lt;strong&gt;exactly&lt;/strong&gt; the measured ground-state energy of hydrogen: the energy it takes to ionise it.&lt;/p&gt;
+&lt;p&gt;I&#39;ll confess that landing on both numbers exactly is partly luck: &lt;code&gt;Δp ≈ ħ/r&lt;/code&gt; is a rough estimate,
+and a different choice of constant would shift the answer by a factor of order one. But the point
+stands. Squeeze the electron and its kinetic energy blows up (look at the 237 eV at 0.1 Å). The
+uncertainty principle is literally what gives matter its size. It&#39;s the reason you don&#39;t fall through
+the floor.&lt;/p&gt;
+&lt;h2 id=&quot;zero-point-energy&quot;&gt;Zero-point energy&lt;/h2&gt;
+&lt;p&gt;The same argument says a quantum system can never be perfectly still. A particle sitting motionless
+at the bottom of a valley would have precise position &lt;em&gt;and&lt;/em&gt; zero momentum, which is forbidden. So
+even at absolute zero, there&#39;s some unavoidable jiggling, called &lt;strong&gt;zero-point energy&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;It has real consequences. It&#39;s why &lt;strong&gt;helium never freezes&lt;/strong&gt; at normal pressure, even at absolute
+zero: helium atoms are so light and so weakly attracted to each other that their zero-point motion
+is enough to stop them locking into a crystal. You have to squeeze it to about 25 atmospheres to
+make solid helium.&lt;/p&gt;
+&lt;h2 id=&quot;other-pairs&quot;&gt;Other pairs&lt;/h2&gt;
+&lt;p&gt;Position and momentum aren&#39;t the only pair with this trade-off. In general, any two quantities whose
+quantum operators don&#39;t commute have one. The best known others:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Spin&lt;/strong&gt; along different axes. An electron can&#39;t have a definite spin both up–down and
+left–right. Measure one and the other becomes completely random.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Energy and time&lt;/strong&gt;, in a slightly different sense: a state that only lasts a short time has a
+spread of energies. That&#39;s why short-lived excited states emit light with a broader range of
+colours, and why unstable particles have a &quot;width&quot; in their mass.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;The uncertainty principle is more natural, and more fundamental, than its popular description
+suggests:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It comes from &lt;strong&gt;waves&lt;/strong&gt;: a sharp position and a sharp wavelength can&#39;t coexist, and in quantum
+mechanics wavelength &lt;em&gt;is&lt;/em&gt; momentum.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Δx · Δp ≥ ħ/2&lt;/code&gt; is about the &lt;strong&gt;state of the particle&lt;/strong&gt;, not the quality of the measuring tools.&lt;/li&gt;
+&lt;li&gt;It&#39;s not a nuisance at the edge of physics. It sets the &lt;strong&gt;size of atoms&lt;/strong&gt;, gives every system a
+&lt;strong&gt;zero-point energy&lt;/strong&gt;, and keeps helium liquid at absolute zero.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The next question is the one that troubled Einstein most: if a particle doesn&#39;t have definite
+properties until they&#39;re measured, what happens when two particles share a state and are measured
+far apart? That&#39;s
+&lt;a href=&quot;https://brianobot.tech/blog/entanglement-and-bells-theorem-the-experiment-that-proved-einstein-wrong/&quot;&gt;entanglement&lt;/a&gt;, and it gets its own post.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Nuclear Fusion: Why Building a Star on Earth Is So Hard</title>
+        <published>2026-02-14T00:00:00+00:00</published>
+        <updated>2026-02-14T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Brian Obot</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/nuclear-fusion-why-building-a-star-on-earth-is-so-hard/"/>
+        <id>https://brianobot.tech/blog/nuclear-fusion-why-building-a-star-on-earth-is-so-hard/</id>
+        
+        <content type="html" xml:base="https://brianobot.tech/blog/nuclear-fusion-why-building-a-star-on-earth-is-so-hard/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;There is an old joke that fusion power is thirty years away, and always will be. It&#39;s been told for
+so long that it&#39;s become part of the subject. And yet the physics is not in doubt: every second,
+the Sun fuses around 600 million tonnes of hydrogen, and has been doing it for 4.6 billion years.
+Fusion obviously works. The question is why it&#39;s so devilishly hard to do it here.&lt;/p&gt;
+&lt;p&gt;This is the third post in a small series. In the first, I explained the
+&lt;a href=&quot;https://brianobot.tech/blog/binding-energy-why-iron-is-the-end-of-the-line/&quot;&gt;binding energy curve&lt;/a&gt;, and in the
+second, how &lt;a href=&quot;https://brianobot.tech/blog/nuclear-fission-how-splitting-an-atom-powers-a-city/&quot;&gt;fission&lt;/a&gt; climbs it
+from the heavy side. Fusion climbs it from the light side, and it&#39;s the bigger prize. You don&#39;t
+need to have read either post to follow this one.&lt;/p&gt;
+&lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fusing light nuclei, like hydrogen isotopes into helium, releases energy because helium is far
+more tightly bound. Per kilogram, it beats fission by about &lt;strong&gt;four times&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;The obstacle is the &lt;strong&gt;Coulomb barrier&lt;/strong&gt;: nuclei are positively charged and repel each other, so
+you need them extremely hot (~150 million °C) to get close enough.&lt;/li&gt;
+&lt;li&gt;Even then, they only fuse thanks to &lt;strong&gt;quantum tunnelling&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;A power plant needs hot enough plasma, dense enough, held for long enough: the &lt;strong&gt;Lawson
+criterion&lt;/strong&gt;. Magnetic confinement (tokamaks, stellarators) and inertial confinement (lasers) are
+two different bets on how to get there.&lt;/li&gt;
+&lt;li&gt;In late 2022, the US National Ignition Facility got more fusion energy out of a target than the
+lasers put in, a first, and it has since improved that. Nobody has yet produced net
+&lt;strong&gt;electricity&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;the-reaction-everyone-is-chasing&quot;&gt;The reaction everyone is chasing&lt;/h2&gt;
+&lt;p&gt;The Sun fuses ordinary hydrogen, but slowly (more on that below). Every serious fusion power design
+on Earth uses a faster reaction between two heavier hydrogen isotopes, &lt;strong&gt;deuterium&lt;/strong&gt; (one proton,
+one neutron) and &lt;strong&gt;tritium&lt;/strong&gt; (one proton, two neutrons):&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;²H + ³H  →  ⁴He (3.5 MeV) + n (14.1 MeV)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Total energy: &lt;strong&gt;17.6 MeV&lt;/strong&gt; per reaction. The helium nucleus is the star of the binding energy curve,
+unusually tightly bound for its size, and dropping into that state releases a lot of energy.&lt;/p&gt;
+&lt;p&gt;Per reaction, 17.6 MeV is less than the ~200 MeV of a uranium fission. But only five nucleons are
+involved instead of 236. Per kilogram of fuel, D-T fusion releases about &lt;strong&gt;340 terajoules&lt;/strong&gt;, roughly
+four times more than fission and around &lt;strong&gt;ten million times&lt;/strong&gt; more than burning coal.&lt;/p&gt;
+&lt;p&gt;Notice that four-fifths of the energy leaves with the &lt;strong&gt;neutron&lt;/strong&gt;. Neutrons have no charge, so no
+magnetic field can hold them. They fly straight out of the plasma and into the walls. That fact
+quietly shapes almost every fusion engineering problem, and I&#39;ll come back to it.&lt;/p&gt;
+&lt;h2 id=&quot;the-real-enemy-the-coulomb-barrier&quot;&gt;The real enemy: the Coulomb barrier&lt;/h2&gt;
+&lt;p&gt;Here is the core difficulty. The strong nuclear force that makes fusion possible only reaches about
+a femtometre or two. To feel it, two nuclei have to almost touch. But both nuclei are positively
+charged, and the electric repulsion between them grows stronger the closer they get.&lt;/p&gt;
+&lt;p&gt;For deuterium and tritium, the repulsion peaks at around &lt;strong&gt;0.4 MeV&lt;/strong&gt; just before the strong force
+takes over. That&#39;s the &lt;strong&gt;Coulomb barrier&lt;/strong&gt;: a hill of electric potential energy the nuclei have to
+climb.&lt;/p&gt;
+&lt;p&gt;The obvious way to give particles energy is to heat them. In a gas, temperature is a measure of
+the particles&#39; average kinetic energy. So how hot would deuterium and tritium need to be to have an
+average energy of 0.4 MeV? About &lt;strong&gt;4.6 billion kelvin&lt;/strong&gt;. The core of the Sun is about 15 million
+kelvin, three hundred times cooler. By classical physics alone, the Sun shouldn&#39;t shine.&lt;/p&gt;
+&lt;h2 id=&quot;quantum-tunnelling-to-the-rescue&quot;&gt;Quantum tunnelling to the rescue&lt;/h2&gt;
+&lt;p&gt;Classical physics says a particle without enough energy to get over a hill simply can&#39;t. Quantum
+mechanics disagrees. A particle is described by a wave, and that wave doesn&#39;t stop dead at a
+barrier. It decays inside it, and if the barrier is thin enough, some of the wave leaks out the
+other side. The particle has a small but real probability of appearing beyond a barrier it couldn&#39;t
+classically climb. This is &lt;strong&gt;quantum tunnelling&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The tunnelling probability rises steeply with energy: faster nuclei face a thinner, lower part of
+the barrier. Meanwhile, in a hot gas, very few particles are fast. Their energies follow a
+Maxwell–Boltzmann distribution, which drops off exponentially at high energy.&lt;/p&gt;
+&lt;p&gt;Multiply these two together, &quot;plenty of particles but bad tunnelling&quot; at low energy and &quot;great
+tunnelling but almost no particles&quot; at high energy, and you get a narrow window where most fusion
+actually happens. This is the &lt;strong&gt;Gamow peak&lt;/strong&gt;, named after George Gamow who first worked out
+tunnelling for nuclear decay in 1928.&lt;/p&gt;
+&lt;p&gt;Here&#39;s a small script that computes where that peak sits:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;import&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;ALPHA&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 137.036&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;          #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; fine-structure constant&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;U_TO_KEV&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 931_494.0&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;         #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; atomic mass unit in keV/c^2&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;K_B&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 8.617e-8&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;               #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; Boltzmann constant in keV per kelvin&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; gamow_peak&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;Z1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; Z2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; m1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; m2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; temperature_k&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Return (Gamow energy, thermal energy kT, most likely fusion energy), all in keV.&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    reduced_mass&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; m1&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; m2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;m1&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +&lt;/span&gt;&lt;span&gt; m2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; U_TO_KEV&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    e_gamow&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; reduced_mass&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span&gt;pi&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; ALPHA&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; Z1&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; Z2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    kT&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; K_B&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; temperature_k&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    peak&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;e_gamow&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; kT&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 4&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 3&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span&gt; e_gamow&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; kT&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; peak&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;cases&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;p + p in the Sun&amp;#39;s core (15.7 million K)&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1.00728&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1.00728&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 15.7e6&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;D + T in a reactor (150 million K)&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2.01355&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 3.01550&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 150e6&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;for&lt;/span&gt;&lt;span&gt; label&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;Z1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; Z2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; m1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; m2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; T&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span&gt; cases&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    e_g&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; kT&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; peak&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; gamow_peak&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;Z1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; Z2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; m1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; m2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; T&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;    print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;label&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;  kT = &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;kT&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.2f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; keV, Gamow peak = &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;peak&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.1f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; keV (&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;peak&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; kT&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.1f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; x kT)&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;p + p in the Sun&amp;#39;s core (15.7 million K)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  kT = 1.35 keV, Gamow peak = 6.1 keV (4.5 x kT)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;D + T in a reactor (150 million K)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  kT = 12.93 keV, Gamow peak = 36.7 keV (2.8 x kT)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Even in a fusion reactor, the nuclei that actually fuse carry around 37 keV: a tenth of the height
+of the barrier. Every single fusion reaction, in the Sun and in our machines, is a tunnelling
+event.&lt;/p&gt;
+&lt;h2 id=&quot;why-the-sun-gets-away-with-it-and-we-can-t&quot;&gt;Why the Sun gets away with it, and we can&#39;t&lt;/h2&gt;
+&lt;p&gt;The Sun has two huge advantages. It has &lt;strong&gt;gravity&lt;/strong&gt; to hold its fuel together for free, and it has
+&lt;strong&gt;time&lt;/strong&gt;. Its core is so vast and dense that even a pitifully slow reaction rate adds up to an
+enormous output.&lt;/p&gt;
+&lt;p&gt;And it really is slow. The first step of the Sun&#39;s proton–proton chain needs one proton to turn into
+a neutron mid-collision, via the weak nuclear force, which almost never happens. A given proton in
+the Sun&#39;s core waits, on average, billions of years before it fuses. The power density in the
+solar core is only around &lt;strong&gt;275 watts per cubic metre&lt;/strong&gt;, comparable to a compost heap. The Sun is
+bright because it is big, not because it is intense.&lt;/p&gt;
+&lt;p&gt;On Earth we have neither the gravity nor the size. So we compensate in two ways:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Use a much easier reaction.&lt;/strong&gt; D-T needs no weak-force miracle. Its cross-section is around
+10²⁴ times larger than proton–proton fusion at similar energies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Run much hotter than the Sun.&lt;/strong&gt; Around &lt;strong&gt;150 million kelvin&lt;/strong&gt;, ten times the temperature of the
+solar core, which is where D-T&#39;s reaction rate is near its best per unit of pressure.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;At those temperatures, electrons are stripped from their nuclei and the fuel becomes a &lt;strong&gt;plasma&lt;/strong&gt;, a
+soup of charged particles. No material can touch it. Hold it in a container and the plasma cools
+instantly while the container vaporises.&lt;/p&gt;
+&lt;h2 id=&quot;the-lawson-criterion&quot;&gt;The Lawson criterion&lt;/h2&gt;
+&lt;p&gt;In 1955, the engineer John Lawson asked the question in its most practical form: when does a fusion
+plasma produce more energy than it loses? The modern version for D-T comes down to the &lt;strong&gt;triple
+product&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;n × T × τ_E  ≳  3 × 10²¹  keV·s/m³&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;n&lt;/code&gt;: the &lt;strong&gt;density&lt;/strong&gt; of fuel ions. More particles, more collisions.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;T&lt;/code&gt;: the &lt;strong&gt;temperature&lt;/strong&gt;. Hot enough to sit near D-T&#39;s sweet spot.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;τ_E&lt;/code&gt;: the &lt;strong&gt;energy confinement time&lt;/strong&gt;. How long the plasma holds its heat before losing it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If the triple product clears that bar, the energy from the helium nuclei (which, being charged,
+stay in the plasma) is enough to keep the plasma hot without any outside heating. That&#39;s
+&lt;strong&gt;ignition&lt;/strong&gt;: a self-sustaining burn, like a fire that no longer needs a match.&lt;/p&gt;
+&lt;p&gt;Every fusion approach is a strategy for maximising that product, and they fall into two camps.&lt;/p&gt;
+&lt;h2 id=&quot;two-ways-to-bottle-a-star&quot;&gt;Two ways to bottle a star&lt;/h2&gt;
+&lt;h3 id=&quot;magnetic-confinement-low-density-long-time&quot;&gt;Magnetic confinement: low density, long time&lt;/h3&gt;
+&lt;p&gt;Charged particles in a magnetic field spiral along the field lines. Bend the field lines into a
+closed loop, and in principle the particles go round forever without touching a wall.&lt;/p&gt;
+&lt;p&gt;A simple ring of field doesn&#39;t quite work. The field is stronger on the inside of the ring than the
+outside, and particles drift out. The fix is to &lt;strong&gt;twist&lt;/strong&gt; the field lines as they go round, so each
+particle samples both sides and the drifts cancel. There are two ways to do the twisting:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;tokamak&lt;/strong&gt;, a Soviet design from the 1950s, drives a large electric current through the
+plasma itself, and the current&#39;s own magnetic field supplies the twist. It&#39;s the most advanced
+design, but that current is a source of instabilities. The worst are &lt;strong&gt;disruptions&lt;/strong&gt;, where the
+plasma loses confinement in milliseconds and dumps its energy into the walls.&lt;/li&gt;
+&lt;li&gt;The &lt;strong&gt;stellarator&lt;/strong&gt; builds the twist into the external magnets, which are wound into bizarre
+three-dimensional shapes. No plasma current is needed, so it&#39;s naturally steady and calmer, but
+the magnets are much harder to design and build. Germany&#39;s Wendelstein 7-X is the flagship.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Magnetic confinement works with thin plasma, around a millionth of the density of air, held for
+seconds or longer. The European JET tokamak in the UK set the record for total fusion energy in a
+single pulse, 69 megajoules over about five seconds, in its final campaign in 2023 before it shut
+down. &lt;strong&gt;ITER&lt;/strong&gt;, the enormous international tokamak under construction in southern France, is meant
+to produce ten times more fusion power than the heating it receives. Its schedule has slipped
+repeatedly; under its 2024 baseline, deuterium–tritium operation isn&#39;t due until the late 2030s.&lt;/p&gt;
+&lt;p&gt;The most interesting recent shift is in &lt;strong&gt;magnets&lt;/strong&gt;. A tokamak&#39;s performance rises steeply with
+magnetic field strength. New &lt;strong&gt;high-temperature superconducting&lt;/strong&gt; tape (REBCO) can produce much
+stronger fields than the superconductors ITER uses, which means a reactor could get the same
+performance in a far smaller machine. Commonwealth Fusion Systems demonstrated a 20-tesla magnet
+built this way in 2021 and is building a compact tokamak called &lt;strong&gt;SPARC&lt;/strong&gt; around it, aiming to show
+net energy gain in the plasma later this decade.&lt;/p&gt;
+&lt;h3 id=&quot;inertial-confinement-high-density-tiny-time&quot;&gt;Inertial confinement: high density, tiny time&lt;/h3&gt;
+&lt;p&gt;The other camp turns the problem inside out. Instead of holding a thin plasma for a long time, crush
+a speck of fuel to enormous density and let it burn in the instant before it flies apart. The fuel&#39;s
+own inertia is the &quot;container&quot;.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;National Ignition Facility (NIF)&lt;/strong&gt; in California does this with 192 lasers. They fire into a
+small gold cylinder called a &lt;strong&gt;hohlraum&lt;/strong&gt;, about the size of a pencil eraser, turning the laser light
+into X-rays. Those X-rays blast the surface off a peppercorn-sized capsule of frozen D-T, and the
+recoil compresses the fuel inward like a rocket in reverse. For a few billionths of a second the
+centre reaches over 100 million kelvin and densities around a hundred times that of lead.&lt;/p&gt;
+&lt;p&gt;On 5 December 2022, NIF delivered 2.05 MJ of laser energy to the target and got &lt;strong&gt;3.15 MJ&lt;/strong&gt; of
+fusion energy back. For the first time, a controlled fusion experiment produced more energy than
+was put into the fuel. NIF has repeated and beaten that since, reaching yields of around 8.6 MJ in
+2025.&lt;/p&gt;
+&lt;h2 id=&quot;gain-the-fine-print&quot;&gt;Gain: the fine print&lt;/h2&gt;
+&lt;p&gt;Headlines about &quot;net energy&quot; need careful reading, and this is where my engineering side wants to
+be pedantic. There are several different ratios people call &lt;strong&gt;Q&lt;/strong&gt;:&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Measure&lt;/th&gt;&lt;th&gt;What it compares&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Scientific gain&lt;/td&gt;&lt;td&gt;Fusion energy out ÷ energy delivered to the fuel&lt;/td&gt;&lt;td&gt;Above 1 at NIF since 2022&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Facility gain&lt;/td&gt;&lt;td&gt;Fusion energy out ÷ energy drawn from the grid to run the machine&lt;/td&gt;&lt;td&gt;Far below 1&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Engineering gain&lt;/td&gt;&lt;td&gt;Electricity sold ÷ electricity used&lt;/td&gt;&lt;td&gt;Not yet attempted&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;NIF&#39;s lasers draw around 300 MJ from the grid to deliver those 2 MJ of laser light, because the
+lasers are about 1% efficient (they were built in the 1990s for weapons research, not efficiency).
+And a power plant would then need to convert fusion heat to electricity at maybe 40%, and fire
+several shots &lt;strong&gt;per second&lt;/strong&gt;, not one a day. The 2022 result was a genuine scientific milestone.
+It&#39;s not yet a power plant, nor close to one.&lt;/p&gt;
+&lt;h2 id=&quot;the-problems-after-ignition&quot;&gt;The problems after ignition&lt;/h2&gt;
+&lt;p&gt;Getting the plasma to burn is the famous problem. Turning that into a power station brings a second
+list, and these are mostly materials and engineering problems, not physics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;The neutrons.&lt;/strong&gt; Those 14.1 MeV neutrons carry 80% of the energy and hammer the walls, knocking
+atoms out of place and making the structure brittle and mildly radioactive over time. We still
+need materials that can survive years of it. A dedicated test facility (IFMIF-DONES in Spain) is
+being built specifically for this.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tritium.&lt;/strong&gt; Tritium is radioactive with a half-life of 12.3 years, so there&#39;s almost none in
+nature, and the world&#39;s civilian stockpile is only a few tens of kilograms. A reactor would have
+to &lt;strong&gt;breed&lt;/strong&gt; its own by surrounding the plasma with a lithium &lt;strong&gt;blanket&lt;/strong&gt;, where neutrons do
+&lt;code&gt;⁶Li + n → ³H + ⁴He&lt;/code&gt;. Breeding more tritium than you burn, reliably, has never been demonstrated.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The exhaust.&lt;/strong&gt; Heat leaving the plasma is funnelled onto a component called the &lt;strong&gt;divertor&lt;/strong&gt;,
+which faces heat fluxes comparable to a spacecraft re-entering the atmosphere, continuously.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Staying on.&lt;/strong&gt; A power plant needs to run steadily for months. Tokamaks have to manage
+instabilities, and laser plants would need to make, place and hit hundreds of thousands of
+precision targets every day, cheaply.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;why-bother&quot;&gt;Why bother?&lt;/h2&gt;
+&lt;p&gt;Because the payoff is extraordinary, and the downsides compared with fission are small:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fuel.&lt;/strong&gt; Deuterium can be extracted from seawater, about one in every 6,400 hydrogen atoms.
+Lithium for breeding tritium is plentiful. There is fuel for millions of years.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No runaway.&lt;/strong&gt; There&#39;s no chain reaction. A fusion plasma is so hard to sustain that any fault
+makes it go out. The total fuel in the chamber at any moment is around a gram.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No long-lived waste.&lt;/strong&gt; The helium product is harmless. The reactor structure becomes
+radioactive from the neutrons, but with the right materials that decays over decades to a century,
+not millennia.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No carbon&lt;/strong&gt;, and a power station that runs regardless of weather, unlike wind and solar.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Fusion is hard for one reason that sits on top of everything else: positively charged nuclei don&#39;t
+want to get close to each other, and the only way past that is to make them so hot no material
+can hold them. The rest of the story follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;D-T fusion&lt;/strong&gt; releases 17.6 MeV per reaction and about four times more energy per kilogram than
+fission.&lt;/li&gt;
+&lt;li&gt;Nuclei only fuse by &lt;strong&gt;quantum tunnelling&lt;/strong&gt; through the Coulomb barrier, even at 150 million kelvin.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lawson&#39;s triple product&lt;/strong&gt;, density × temperature × confinement time, is the scorecard every
+machine is judged by.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scientific breakeven has happened&lt;/strong&gt;, at NIF in 2022, but engineering breakeven, with real
+electricity, hasn&#39;t.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&#39;ve come away from writing this series more optimistic than I expected. The 30-year joke used to be
+funny because nobody had crossed a single real milestone. That&#39;s no longer true. There&#39;s still a
+long engineering road between &quot;it works&quot; and &quot;it&#39;s on the grid&quot;, but for the first time, it&#39;s an
+engineering road.&lt;/p&gt;
 </content>
         
     </entry>
@@ -1301,6 +1909,405 @@ efficiently.&lt;/p&gt;
         
     </entry>
     <entry xml:lang="en">
+        <title>The Double-Slit Experiment: How One Particle Interferes With Itself</title>
+        <published>2026-01-10T00:00:00+00:00</published>
+        <updated>2026-01-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Brian Obot</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/the-double-slit-experiment-how-one-particle-interferes-with-itself/"/>
+        <id>https://brianobot.tech/blog/the-double-slit-experiment-how-one-particle-interferes-with-itself/</id>
+        
+        <content type="html" xml:base="https://brianobot.tech/blog/the-double-slit-experiment-how-one-particle-interferes-with-itself/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Richard Feynman once said the double-slit experiment contains &quot;the only mystery&quot; of quantum
+mechanics. Everything else that&#39;s weird about the quantum world, he argued, is some version of what
+happens here.&lt;/p&gt;
+&lt;p&gt;2025 was the International Year of Quantum Science and Technology, marking a hundred years since
+Heisenberg&#39;s 1925 paper that founded quantum mechanics. I spent part of it going back to the basics
+I had skimmed through in university physics, and the double-slit experiment was the one that kept
+pulling me back. It&#39;s simple enough to describe in a paragraph, and nobody has fully made peace with
+it in a century.&lt;/p&gt;
+&lt;p&gt;This post walks through it in three acts: with light, with particles, and with a detector watching.
+No maths beyond a couple of ratios, plus a short Python simulation you can run yourself.&lt;/p&gt;
+&lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Light through two narrow slits makes a pattern of bright and dark &lt;strong&gt;stripes&lt;/strong&gt; (fringes). That&#39;s
+&lt;strong&gt;interference&lt;/strong&gt;, the signature of a wave.&lt;/li&gt;
+&lt;li&gt;Send &lt;strong&gt;electrons&lt;/strong&gt; through, &lt;strong&gt;one at a time&lt;/strong&gt;, and each lands as a single dot. But the dots
+gradually build up the &lt;strong&gt;same striped pattern&lt;/strong&gt;. Each electron seems to interfere with itself.&lt;/li&gt;
+&lt;li&gt;Put a detector at the slits to find out which slit each electron used, and the stripes
+&lt;strong&gt;vanish&lt;/strong&gt;. You get two plain bands, as if they were bullets.&lt;/li&gt;
+&lt;li&gt;Quantum mechanics describes this with a &lt;strong&gt;wavefunction&lt;/strong&gt; that passes through both slits, and the
+&lt;strong&gt;Born rule&lt;/strong&gt;: the wave tells you only the &lt;strong&gt;probability&lt;/strong&gt; of where a particle will be found.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;act-one-light-is-a-wave&quot;&gt;Act one: light is a wave&lt;/h2&gt;
+&lt;p&gt;In the early 1800s, Thomas Young shone light through two narrow, closely spaced slits onto a screen.
+If light were a stream of tiny particles, as Newton had argued, you&#39;d expect two bright bands, one
+behind each slit. Instead Young saw a row of bright and dark stripes.&lt;/p&gt;
+&lt;p&gt;The explanation is &lt;strong&gt;interference&lt;/strong&gt;, the same thing you see when two ripples cross on a pond. Light
+spreads out from each slit as a wave. At some points on the screen, the waves from the two slits
+arrive in step, crest on crest, and add up to a bright fringe. At others they arrive exactly out of
+step, crest on trough, and cancel to darkness.&lt;/p&gt;
+&lt;p&gt;Whether they arrive in step depends on the difference in distance from each slit. That gives a neat
+formula for the spacing between bright fringes:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;fringe spacing = wavelength × screen distance / slit separation&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Green light (500 nm) through slits 50 µm apart onto a screen 1 metre away gives fringes 1 cm apart.
+That&#39;s how 19th-century physicists measured the wavelength of light with nothing more than a ruler.&lt;/p&gt;
+&lt;p&gt;The crucial point: &lt;strong&gt;darkness appears in places that would be lit if only one slit were open.&lt;/strong&gt; Open
+a second slit, and some spots on the screen get &lt;em&gt;less&lt;/em&gt; light. Particles can&#39;t do that. Waves can.&lt;/p&gt;
+&lt;p&gt;So by about 1850 the question was settled: light is a wave. Then Einstein unsettled it in 1905 by
+showing light also arrives in discrete lumps of energy, &lt;strong&gt;photons&lt;/strong&gt;. And in 1924, Louis de Broglie
+proposed the reverse: if waves can act like particles, maybe particles act like waves, with a
+wavelength set by their momentum:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;λ = h / p&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where &lt;code&gt;h&lt;/code&gt; is Planck&#39;s constant. For anything you can see, that wavelength is absurdly small. For an
+electron, it&#39;s comparable to the spacing between atoms, which is why electron microscopes can see
+things light microscopes can&#39;t.&lt;/p&gt;
+&lt;h2 id=&quot;act-two-one-electron-at-a-time&quot;&gt;Act two: one electron at a time&lt;/h2&gt;
+&lt;p&gt;Now the strange part. Replace the light with a beam of electrons, and turn the beam down so low that
+only &lt;strong&gt;one electron&lt;/strong&gt; is in the apparatus at any moment. The screen is a detector that records
+exactly where each electron lands.&lt;/p&gt;
+&lt;p&gt;The famous version of this was done by Akira Tonomura&#39;s team at Hitachi in 1989, using an electron
+biprism (a fine charged wire that does the same job as two slits). Here&#39;s what they saw:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Each electron arrives as a &lt;strong&gt;single dot&lt;/strong&gt;, at a single point. Not smeared out. Not half here, half
+there. Particle-like.&lt;/li&gt;
+&lt;li&gt;The positions look &lt;strong&gt;random&lt;/strong&gt;. You can&#39;t predict where the next one will land.&lt;/li&gt;
+&lt;li&gt;As thousands of dots accumulate, &lt;strong&gt;stripes appear&lt;/strong&gt;. The same interference pattern as with light.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can watch this happen with a short simulation. Each particle lands randomly, but the chance of
+landing at each point follows the brightness of the two-slit pattern:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;import&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;import&lt;/span&gt;&lt;span&gt; random&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;WAVELENGTH&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 500e-9&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;   #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; metres (green light)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;SLIT_GAP&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 50e-6&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;      #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; distance between the slits, metres&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;SCREEN&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1.0&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;          #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; distance from slits to screen, metres&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;WIDTH&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0.03&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;          #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; half-width of the screen we look at, metres&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; intensity&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Relative brightness of the two-slit pattern at height y on the screen.&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    phase&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span&gt;pi&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; SLIT_GAP&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; y&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;WAVELENGTH&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; SCREEN&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;phase&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; detect_one_particle&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Pick where a single particle lands, with probability set by intensity.&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    while&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; True&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        y&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;uniform&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt;-&lt;/span&gt;&lt;span&gt;WIDTH&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; WIDTH&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;        if&lt;/span&gt;&lt;span&gt; random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; &amp;lt;&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; intensity&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;y&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;            return&lt;/span&gt;&lt;span&gt; y&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; show&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;hits&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; int&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; bins&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; int&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 60&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; None&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    counts&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; [&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; bins&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    for&lt;/span&gt;&lt;span&gt; _&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt; range&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;hits&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        y&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; detect_one_particle&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;        counts&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot; z-l-i z-d-i&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +&lt;/span&gt;&lt;span class=&quot; z-l-i z-d-i&quot;&gt; WIDTH&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot; z-l-i z-d-i&quot;&gt; WIDTH&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot; z-l-i z-d-i&quot;&gt; bins&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot; z-l-i z-d-i&quot;&gt; bins&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +=&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    peak&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt; max&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;counts&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    shades&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; .:-=+*#%@&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    row&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;shades&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot; z-l-i z-d-i&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot; z-l-i z-d-i&quot;&gt; peak&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot; z-l-i z-d-i&quot;&gt;shades&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; for&lt;/span&gt;&lt;span&gt; c&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span&gt; counts&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;    print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;hits&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:&amp;gt;6&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; particles |&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;row&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;random&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;seed&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;for&lt;/span&gt;&lt;span&gt; n&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 100&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1_000&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 10_000&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 100_000&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;    show&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;n&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    10 particles | @   =           =           =         =     =    @   =     |&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   100 particles | **   ---%* : :  :**@--:    :-@- :    =-%=:    =-*--=-  :-**|&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  1000 particles |#==.  .-%#*=-:  --*##==.  .:=*%*+.  .++*%+=.   -+#@+=:.. -#%|&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt; 10000 particles |%*=:  :=#@%#=:  :=##%*+:  :=*@%#=:  :=*@%#=:  :=*@%*=:  :=#@|&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;100000 particles |@#=:  :=#@@#+:  :=#@@#+:  :=#@@#+:  :=#@@#=:  :=#@@#+:  :+#@|&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;At ten particles it&#39;s noise. By ten thousand, the fringes are unmistakable. (To be clear, this
+script &lt;em&gt;assumes&lt;/em&gt; the interference pattern; it shows what the build-up looks like, not why it
+happens. The real experiment is the evidence.)&lt;/p&gt;
+&lt;p&gt;Now sit with what this means. There is only one electron in the apparatus at a time. There&#39;s no
+other electron for it to interfere with. Yet the dark fringes are places where electrons almost never
+land, places they &lt;em&gt;would&lt;/em&gt; land if only one slit were open. Somehow, each individual electron is
+affected by &lt;strong&gt;both&lt;/strong&gt; slits.&lt;/p&gt;
+&lt;p&gt;This isn&#39;t special to electrons. It&#39;s been done with neutrons, atoms, and in 1999 with buckyballs,
+football-shaped molecules of 60 carbon atoms. Anton Zeilinger&#39;s and Markus Arndt&#39;s groups in Vienna
+have since pushed it to molecules made of around 2,000 atoms. Everything interferes, if you can keep
+it isolated enough.&lt;/p&gt;
+&lt;h2 id=&quot;act-three-what-if-we-look&quot;&gt;Act three: what if we look?&lt;/h2&gt;
+&lt;p&gt;The natural instinct is to catch the electron in the act. Put a detector at the slits that registers
+which slit each electron passes through, and then see where it lands.&lt;/p&gt;
+&lt;p&gt;When you do this, the detector always reports &lt;strong&gt;one slit or the other&lt;/strong&gt;, never both. And the
+interference pattern on the screen &lt;strong&gt;disappears&lt;/strong&gt;. You get two overlapping bands, exactly what
+you&#39;d expect from particles that each went through one slit.&lt;/p&gt;
+&lt;p&gt;Remove the detector, and the stripes come back.&lt;/p&gt;
+&lt;p&gt;It&#39;s tempting to say &quot;the electron knows it&#39;s being watched&quot;, but that framing is misleading. There&#39;s
+nothing mystical about a conscious observer here. Any physical interaction that leaves a record of
+which slit was used, even a single stray photon bouncing off the electron that nobody ever looks
+at, destroys the interference. What matters is whether the &lt;strong&gt;information exists&lt;/strong&gt; in the
+universe, not whether a person reads it.&lt;/p&gt;
+&lt;p&gt;Physicists call this &lt;strong&gt;complementarity&lt;/strong&gt; (Niels Bohr&#39;s term): the setup can reveal wave-like
+behaviour (interference) or particle-like behaviour (which path), but not both fully at once. There&#39;s
+even a smooth trade-off. A weak detector that only &lt;em&gt;partly&lt;/em&gt; tells you the path leaves you with
+faded fringes, and the better the path information, the fainter the stripes.&lt;/p&gt;
+&lt;h2 id=&quot;how-quantum-mechanics-describes-it&quot;&gt;How quantum mechanics describes it&lt;/h2&gt;
+&lt;p&gt;Quantum mechanics doesn&#39;t say the electron is &quot;really&quot; a wave or &quot;really&quot; a particle. It says the
+electron is described by a &lt;strong&gt;wavefunction&lt;/strong&gt;, usually written &lt;code&gt;ψ&lt;/code&gt; (psi). The wavefunction behaves
+exactly like a wave: it spreads out, goes through both slits, and interferes with itself.&lt;/p&gt;
+&lt;p&gt;But you never see the wavefunction directly. When the electron hits the screen, it&#39;s detected at a
+single point. Where it appears is random, and the &lt;strong&gt;Born rule&lt;/strong&gt;, proposed by Max Born in 1926, gives
+the odds:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;probability of finding the particle at a point ∝ |ψ|²&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The wave decides the &lt;strong&gt;probabilities&lt;/strong&gt;; each detection is a single &lt;strong&gt;event&lt;/strong&gt; drawn from them. That&#39;s
+precisely what the simulation above does.&lt;/p&gt;
+&lt;p&gt;The interference lives in the wavefunction. With both slits open, &lt;code&gt;ψ&lt;/code&gt; is the sum of a piece from
+each slit, &lt;code&gt;ψ₁ + ψ₂&lt;/code&gt;, and squaring a sum gives cross terms that can be positive or negative. That&#39;s
+where the bright and dark fringes come from. When a detector records which slit was used, the two
+pieces become tied to different detector states, they can no longer interfere, and you&#39;re left with
+&lt;code&gt;|ψ₁|² + |ψ₂|²&lt;/code&gt;: two plain bands.&lt;/p&gt;
+&lt;h2 id=&quot;so-what-is-actually-going-on&quot;&gt;So what is actually going on?&lt;/h2&gt;
+&lt;p&gt;Here&#39;s where honest physicists stop agreeing. The maths is not in dispute; it predicts every result
+perfectly. What&#39;s disputed is what the maths &lt;strong&gt;means&lt;/strong&gt;. A few of the main camps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Copenhagen&lt;/strong&gt;: the wavefunction is a tool for predicting measurement results. Asking which slit
+the electron &quot;really&quot; went through, when nothing recorded it, is not a meaningful question.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pilot wave (de Broglie–Bohm)&lt;/strong&gt;: there really is a particle, always at a definite position, and it
+goes through one slit. But it&#39;s guided by a real wave that goes through both, and the wave steers
+it into the fringe pattern.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Many worlds&lt;/strong&gt;: the wavefunction is all there is, and it never collapses. When a detector
+records the path, the universe branches into one where it went left and one where it went right.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All three predict the same experimental results, which is why the debate has lasted a century. I
+don&#39;t have a favourite yet. What I&#39;ve come to appreciate is that each one makes you give up some
+piece of everyday intuition. You don&#39;t get to keep all of it.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;The double-slit experiment is short to describe and impossible to un-learn:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Waves interfere&lt;/strong&gt;, and dark fringes appear where a second open slit removes light.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Single particles build up interference patterns&lt;/strong&gt;, one random dot at a time, as if each passes
+through both slits.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Recording the path destroys the pattern&lt;/strong&gt;, whether or not anyone looks at the record.&lt;/li&gt;
+&lt;li&gt;Quantum mechanics captures it all with a &lt;strong&gt;wavefunction&lt;/strong&gt; that interferes and the &lt;strong&gt;Born rule&lt;/strong&gt;
+that turns it into probabilities. What that wavefunction &lt;em&gt;is&lt;/em&gt; remains an open question.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If the double-slit experiment shows that quantum objects don&#39;t have a definite path, the next
+natural question is whether they have definite properties at all. That&#39;s where Heisenberg&#39;s
+&lt;a href=&quot;https://brianobot.tech/blog/the-uncertainty-principle-is-not-about-clumsy-measurements/&quot;&gt;uncertainty principle&lt;/a&gt; comes in.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Nuclear Fission: How Splitting an Atom Powers a City</title>
+        <published>2025-12-20T00:00:00+00:00</published>
+        <updated>2025-12-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Brian Obot</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/nuclear-fission-how-splitting-an-atom-powers-a-city/"/>
+        <id>https://brianobot.tech/blog/nuclear-fission-how-splitting-an-atom-powers-a-city/</id>
+        
+        <content type="html" xml:base="https://brianobot.tech/blog/nuclear-fission-how-splitting-an-atom-powers-a-city/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In my &lt;a href=&quot;https://brianobot.tech/blog/binding-energy-why-iron-is-the-end-of-the-line/&quot;&gt;previous post on binding energy&lt;/a&gt;
+I described nuclear energy as climbing a hill: nuclei release energy whenever they move towards
+iron, the most tightly bound nucleus there is. Light nuclei climb by fusing. Heavy nuclei climb by
+splitting.&lt;/p&gt;
+&lt;p&gt;This post is about the second route, &lt;strong&gt;fission&lt;/strong&gt;, and it&#39;s the one humanity actually has working
+at scale. Roughly a tenth of the world&#39;s electricity comes from it today. As someone who studied
+electrical engineering, I spent years treating power stations as boxes that turn &quot;heat&quot; into
+electricity, without asking much about where the heat came from. In a nuclear plant, it comes from
+splitting atoms, and the physics of how that&#39;s done safely is more interesting than I expected.&lt;/p&gt;
+&lt;p&gt;You don&#39;t need to have read the previous post, but if terms like &quot;binding energy per nucleon&quot;
+are new to you, it&#39;s a quick detour.&lt;/p&gt;
+&lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A slow neutron hitting &lt;strong&gt;uranium-235&lt;/strong&gt; makes it wobble apart into two medium-sized nuclei, a few
+free neutrons, and about &lt;strong&gt;200 MeV&lt;/strong&gt; of energy.&lt;/li&gt;
+&lt;li&gt;Those freed neutrons can split more uranium, giving a &lt;strong&gt;chain reaction&lt;/strong&gt;. The key number is the
+&lt;strong&gt;multiplication factor &lt;code&gt;k&lt;/code&gt;&lt;/strong&gt;: on average, how many new fissions each fission causes.&lt;/li&gt;
+&lt;li&gt;Bombs need &lt;code&gt;k&lt;/code&gt; well above 1 and fast. Reactors need &lt;code&gt;k&lt;/code&gt; held at &lt;strong&gt;exactly 1&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;That&#39;s only possible because a small fraction of neutrons arrive &lt;strong&gt;seconds&lt;/strong&gt; late. These
+&lt;strong&gt;delayed neutrons&lt;/strong&gt; slow the reactor&#39;s response enough for control rods to keep up.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;a-short-history&quot;&gt;A short history&lt;/h2&gt;
+&lt;p&gt;Fission was discovered almost by accident. In December 1938, Otto Hahn and Fritz Strassmann in
+Berlin were bombarding uranium with neutrons, expecting to make slightly heavier elements. Instead,
+their careful chemistry kept turning up &lt;strong&gt;barium&lt;/strong&gt;, an element barely half uranium&#39;s mass.&lt;/p&gt;
+&lt;p&gt;Hahn wrote to his long-time collaborator Lise Meitner, who had fled Nazi Germany to Sweden. Over
+the Christmas holiday, Meitner and her nephew Otto Frisch worked out what was happening: the
+uranium nucleus wasn&#39;t being chipped, it was &lt;strong&gt;splitting in two&lt;/strong&gt;. They estimated the energy
+released at around 200 MeV per split, borrowed the word &quot;fission&quot; from biology, and published in
+early 1939.&lt;/p&gt;
+&lt;p&gt;Within four years, on 2 December 1942, Enrico Fermi&#39;s team in Chicago ran the first self-sustaining
+chain reaction in a pile of graphite and uranium under a stadium. Nature had beaten them to it,
+though: around two billion years ago, uranium deposits at &lt;strong&gt;Oklo&lt;/strong&gt; in Gabon ran as natural fission
+reactors, on and off, for hundreds of thousands of years. Groundwater acted as the moderator.&lt;/p&gt;
+&lt;h2 id=&quot;how-a-nucleus-splits&quot;&gt;How a nucleus splits&lt;/h2&gt;
+&lt;h3 id=&quot;the-liquid-drop-picture&quot;&gt;The liquid drop picture&lt;/h3&gt;
+&lt;p&gt;A heavy nucleus like uranium is held together by the short-range strong force and pushed apart by
+the repulsion between its 92 protons. It&#39;s like a drop of liquid with surface tension barely
+holding against a charge trying to blow it apart.&lt;/p&gt;
+&lt;p&gt;When uranium-235 absorbs a neutron, it becomes &lt;strong&gt;uranium-236&lt;/strong&gt; in an excited state, carrying an
+extra ~6.5 MeV of energy. That energy sets the drop &lt;strong&gt;oscillating&lt;/strong&gt;. It stretches into a peanut
+shape, and once the neck between the two lobes gets thin enough, the electric repulsion between
+the lobes wins over the strong force across the neck. The drop snaps.&lt;/p&gt;
+&lt;p&gt;The energy needed to reach that snapping point is the &lt;strong&gt;fission barrier&lt;/strong&gt;, about 6 MeV for
+uranium-236. The neutron&#39;s arrival delivers more than that, so fission happens readily.&lt;/p&gt;
+&lt;h3 id=&quot;why-u-235-and-not-u-238&quot;&gt;Why U-235 and not U-238&lt;/h3&gt;
+&lt;p&gt;Natural uranium is 99.3% uranium-238 and only 0.7% uranium-235. Why does everyone care about the
+rare one?&lt;/p&gt;
+&lt;p&gt;It comes down to &lt;strong&gt;pairing&lt;/strong&gt;. Nucleons like to be in pairs. U-235 has an &lt;strong&gt;odd&lt;/strong&gt; number of
+neutrons (143), so when it captures one, the new neutron completes a pair and the nucleus gets a
+bonus chunk of binding energy, enough to clear the fission barrier even if the incoming neutron
+was moving slowly.&lt;/p&gt;
+&lt;p&gt;U-238 already has an even number of neutrons (146). Adding one more leaves an unpaired neutron, so
+the energy bonus is smaller and falls short of the barrier. U-238 only fissions if the neutron
+brings in more than about 1 MeV of kinetic energy of its own.&lt;/p&gt;
+&lt;p&gt;Nuclei that fission with slow neutrons are called &lt;strong&gt;fissile&lt;/strong&gt;: U-235, U-233 and plutonium-239 are
+the important ones. This is why reactor fuel is &lt;strong&gt;enriched&lt;/strong&gt;: commercial reactors typically use
+uranium that&#39;s 3–5% U-235.&lt;/p&gt;
+&lt;h3 id=&quot;a-typical-split&quot;&gt;A typical split&lt;/h3&gt;
+&lt;p&gt;There&#39;s no single way for U-236 to break. It splits &lt;strong&gt;asymmetrically&lt;/strong&gt;, usually into one fragment
+around mass 95 and another around mass 140. One common example:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;²³⁵U + n  →  ²³⁶U*  →  ¹⁴¹Ba + ⁹²Kr + 3n&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Check the bookkeeping: mass numbers &lt;code&gt;235 + 1 = 141 + 92 + 3 = 236&lt;/code&gt;, and protons &lt;code&gt;92 = 56 + 36&lt;/code&gt;.
+Nothing is created or destroyed, just rearranged.&lt;/p&gt;
+&lt;h2 id=&quot;where-the-200-mev-goes&quot;&gt;Where the 200 MeV goes&lt;/h2&gt;
+&lt;p&gt;Barium and krypton both sit closer to iron on the binding energy curve than uranium does. Each
+nucleon gains just under 1 MeV of binding, and with ~236 nucleons that sums to around 200 MeV.&lt;/p&gt;
+&lt;p&gt;I can estimate it with the semi-empirical mass formula from the previous post, by comparing the
+binding energy of the products to the binding energy of the compound nucleus:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;released&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; binding_energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;56&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 141&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; binding_energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;36&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 92&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; binding_energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;92&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 236&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;U-236 -&amp;gt; Ba-141 + Kr-92 + 3n releases about &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;released&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.0f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; MeV&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; U-236 -&amp;gt; Ba-141 + Kr-92 + 3n releases about 155 MeV&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A rough formula gives 155 MeV for the split itself, a bit below the measured ~170 MeV for this
+channel, but the right ballpark. The rest comes later: the fragments are packed with too many
+neutrons and &lt;strong&gt;beta-decay&lt;/strong&gt; over the following seconds to years, releasing more energy as they go.&lt;/p&gt;
+&lt;p&gt;Averaged over all fissions, the budget for U-235 looks roughly like this:&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Where the energy goes&lt;/th&gt;&lt;th&gt;MeV&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Kinetic energy of the two fragments&lt;/td&gt;&lt;td&gt;~169&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Kinetic energy of the free neutrons&lt;/td&gt;&lt;td&gt;~5&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Prompt gamma rays&lt;/td&gt;&lt;td&gt;~7&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Beta and gamma decay of fragments&lt;/td&gt;&lt;td&gt;~13&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Antineutrinos (escape, lost)&lt;/td&gt;&lt;td&gt;~10&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;&lt;strong&gt;~200&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;The bulk of it is the two fragments flying apart, pushed by their mutual electric repulsion. They
+slam into surrounding atoms within a few micrometres and their kinetic energy becomes &lt;strong&gt;heat&lt;/strong&gt;.
+That&#39;s the heat that boils water and spins turbines.&lt;/p&gt;
+&lt;p&gt;Note the fragment decay line. That energy keeps coming even after the chain reaction stops. Right
+after shutdown, a reactor still produces about 6–7% of its full power as &lt;strong&gt;decay heat&lt;/strong&gt;, falling to
+around 1% after a few hours. This is why reactors need cooling long after they&#39;re switched off,
+and why losing that cooling at Fukushima in 2011 was a disaster even though the reactors had
+already shut down.&lt;/p&gt;
+&lt;h3 id=&quot;putting-it-in-perspective&quot;&gt;Putting it in perspective&lt;/h3&gt;
+&lt;p&gt;200 MeV per atom is about &lt;code&gt;3.2 × 10⁻¹¹&lt;/code&gt; joules, which sounds tiny. But a kilogram of U-235 has
+around &lt;code&gt;2.6 × 10²⁴&lt;/code&gt; atoms, so fissioning all of it releases about &lt;strong&gt;82 terajoules&lt;/strong&gt;. A kilogram of
+good coal gives about 25 megajoules. That&#39;s a ratio of over &lt;strong&gt;three million to one&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;the-chain-reaction&quot;&gt;The chain reaction&lt;/h2&gt;
+&lt;p&gt;Each fission releases on average about &lt;strong&gt;2.4 neutrons&lt;/strong&gt;. If at least one of those goes on to cause
+another fission, the process sustains itself. The number that matters is the &lt;strong&gt;multiplication
+factor&lt;/strong&gt;:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;k = (fissions in this generation) / (fissions in the previous generation)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k &amp;lt; 1&lt;/code&gt;, &lt;strong&gt;subcritical&lt;/strong&gt;: the reaction dies out.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k = 1&lt;/code&gt;, &lt;strong&gt;critical&lt;/strong&gt;: the reaction holds steady. This is a reactor running normally.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k &amp;gt; 1&lt;/code&gt;, &lt;strong&gt;supercritical&lt;/strong&gt;: the reaction grows exponentially.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that &quot;critical&quot; is a calm, steady state, not an emergency, despite how films use the word.&lt;/p&gt;
+&lt;p&gt;Not every neutron causes another fission. Some escape through the surface. Some get absorbed by
+U-238, structural materials, or fission products without causing a split. So &lt;code&gt;k&lt;/code&gt; depends on the
+material, its enrichment, its shape, and its size. That last one leads to the idea of &lt;strong&gt;critical
+mass&lt;/strong&gt;: a lump has to be big enough that neutrons are more likely to hit another nucleus than leak
+out. For a bare sphere of pure U-235 that&#39;s around 50 kg; for plutonium-239 it&#39;s around 10 kg.&lt;/p&gt;
+&lt;h2 id=&quot;slowing-neutrons-down-the-moderator&quot;&gt;Slowing neutrons down: the moderator&lt;/h2&gt;
+&lt;p&gt;Neutrons are born fast, at around 2 MeV. But U-235 is hundreds of times more likely to absorb a
+&lt;strong&gt;slow&lt;/strong&gt; (thermal) neutron than a fast one. So most reactors deliberately slow their neutrons
+down with a &lt;strong&gt;moderator&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The trick is to let the neutrons bounce off light nuclei. Think of snooker: a ball hitting another
+ball of the same mass can lose all its speed in one collision, but a ball hitting a bowling ball
+just bounces off at almost the same speed. Hydrogen, with nearly the same mass as a neutron, is
+the best at this. That&#39;s why ordinary water is the moderator (and coolant) in most reactors in the
+world. Graphite and heavy water are the common alternatives, both absorbing fewer neutrons, which
+is why reactors moderated with them can run on unenriched natural uranium.&lt;/p&gt;
+&lt;p&gt;Water moderation also gives a built-in safety feature: if the water overheats and turns to steam,
+it gets less dense, moderates less, and &lt;code&gt;k&lt;/code&gt; drops. The reactor turns itself down.&lt;/p&gt;
+&lt;h2 id=&quot;why-reactors-can-be-controlled-at-all&quot;&gt;Why reactors can be controlled at all&lt;/h2&gt;
+&lt;p&gt;This is the part that genuinely surprised me when I first worked through the numbers.&lt;/p&gt;
+&lt;p&gt;In a water-moderated reactor, a neutron generation lasts somewhere around &lt;strong&gt;0.1 milliseconds&lt;/strong&gt;:
+born, slowed down, absorbed, causing the next fission. That&#39;s 10,000 generations per second. If &lt;code&gt;k&lt;/code&gt;
+were even slightly above 1, say 1.001, the power would multiply by &lt;code&gt;1.001^10000&lt;/code&gt;, about &lt;strong&gt;22,000
+times&lt;/strong&gt;, in a single second. No mechanical control rod could possibly keep up.&lt;/p&gt;
+&lt;p&gt;The rescue is that not all neutrons arrive instantly. About &lt;strong&gt;0.65%&lt;/strong&gt; of the neutrons from U-235
+fission are &lt;strong&gt;delayed&lt;/strong&gt;: they&#39;re emitted by fission fragments that decay a few seconds to a minute
+later. The average delay is around 13 seconds.&lt;/p&gt;
+&lt;p&gt;0.65% sounds negligible, but it stretches the &lt;strong&gt;average&lt;/strong&gt; time between generations dramatically.
+Here&#39;s the arithmetic:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;import&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;PROMPT_LIFETIME&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1e-4&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;    #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; seconds between neutron generations, prompt only&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;BETA&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0.0065&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;             #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; fraction of U-235 fission neutrons that are delayed&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;DELAY&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 12.7&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;              #&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; mean delay of those neutrons, in seconds&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; growth_after&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;seconds&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; k&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; lifetime&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Factor the neutron population (and power) grows by after `seconds`.&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    period&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; lifetime&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;k&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;seconds&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; period&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;effective_lifetime&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; PROMPT_LIFETIME&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +&lt;/span&gt;&lt;span&gt; BETA&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; DELAY&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;for&lt;/span&gt;&lt;span&gt; k&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1.0001&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1.001&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    prompt&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; growth_after&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; k&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; PROMPT_LIFETIME&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    delayed&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; growth_after&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; k&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; effective_lifetime&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;    print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;k = &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;k&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;: prompt only x&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;prompt&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:,.1f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; per second, with delayed neutrons x&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;delayed&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:.3f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; per second&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;k = 1.0001: prompt only x2.7 per second, with delayed neutrons x1.001 per second&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;k = 1.001: prompt only x22,026.5 per second, with delayed neutrons x1.012 per second&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With delayed neutrons included, the effective generation time is closer to &lt;strong&gt;0.08 seconds&lt;/strong&gt;, and
+the same slight excess in &lt;code&gt;k&lt;/code&gt; grows the power by about 1% per second instead of 22,000-fold. That&#39;s
+slow enough for control rods, made of neutron-hungry materials like boron or cadmium, to be moved in
+and out to keep &lt;code&gt;k&lt;/code&gt; at exactly 1.&lt;/p&gt;
+&lt;p&gt;The golden rule of reactor design follows from this: the reactor must &lt;strong&gt;never be critical on prompt
+neutrons alone&lt;/strong&gt;. As long as it needs the delayed neutrons to stay critical, it changes slowly
+enough to control. Chernobyl in 1986 is the tragic counterexample: a combination of design flaws
+and operating decisions pushed reactor 4 past this line, and its power spiked by orders of
+magnitude in seconds.&lt;/p&gt;
+&lt;p&gt;A bomb is the opposite. It has no moderator, no delayed neutrons to wait for, and it&#39;s assembled to
+be strongly supercritical on fast neutrons. The whole reaction is over in about a microsecond.&lt;/p&gt;
+&lt;h2 id=&quot;inside-a-power-reactor&quot;&gt;Inside a power reactor&lt;/h2&gt;
+&lt;p&gt;Putting the pieces together, a typical &lt;strong&gt;pressurised water reactor&lt;/strong&gt; looks like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Fuel&lt;/strong&gt;: pellets of uranium dioxide enriched to 3–5% U-235, stacked in long metal rods, bundled
+into assemblies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Moderator and coolant&lt;/strong&gt;: water flows between the rods, slowing neutrons and carrying heat away.
+It&#39;s held at about 155 bar so it stays liquid at around 300 °C.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Control rods&lt;/strong&gt;: slide between fuel rods to absorb neutrons and adjust &lt;code&gt;k&lt;/code&gt;. Dissolved boron in
+the water provides fine adjustment.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Steam generator&lt;/strong&gt;: the hot, pressurised water heats a separate water loop, which boils.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Turbine and generator&lt;/strong&gt;: the steam spins a turbine connected to a generator. From here on it&#39;s
+the same as a coal or gas plant.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That last step is the humbling part for an electrical engineer: all that nuclear physics, and at
+the end of the day it&#39;s an extremely sophisticated kettle.&lt;/p&gt;
+&lt;h2 id=&quot;the-catch-waste&quot;&gt;The catch: waste&lt;/h2&gt;
+&lt;p&gt;The fission fragments that made the energy are themselves the problem. They&#39;re neutron-rich and
+intensely radioactive. Some, like caesium-137 and strontium-90, have half-lives around 30 years.
+On top of that, U-238 in the fuel absorbs neutrons and turns into plutonium and other heavy
+elements, some of which stay radioactive for tens of thousands of years.&lt;/p&gt;
+&lt;p&gt;The volume is small. All the spent fuel a large reactor produces in a year would fit in a modest
+room. But it has to be cooled for years, then isolated for millennia. Finland&#39;s Onkalo repository,
+carved into bedrock hundreds of metres down, is the first deep geological disposal site for spent
+fuel. For most countries, though, the long-term plan is still a plan.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Fission is the side of the binding energy hill we have actually conquered. The core ideas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;U-235 splits easily&lt;/strong&gt; because absorbing one neutron completes a pair and pushes it over the
+fission barrier.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;~200 MeV per fission&lt;/strong&gt;, mostly the kinetic energy of two fragments repelling each other, which
+becomes heat.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chain reactions&lt;/strong&gt; are governed by &lt;code&gt;k&lt;/code&gt;, and reactors live at &lt;code&gt;k = 1&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delayed neutrons&lt;/strong&gt; are the quiet hero: a 0.65% sliver of late neutrons is the difference between
+a power station and an uncontrollable spike.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Fission&#39;s drawbacks, long-lived waste, the risk of losing cooling, and its link to weapons, are
+exactly what make the other side of the hill so tempting. In the &lt;a href=&quot;https://brianobot.tech/blog/nuclear-fusion-why-building-a-star-on-earth-is-so-hard/&quot;&gt;next post&lt;/a&gt; I&#39;ll look at fusion:
+what it would take to build a star on Earth, and why it&#39;s taken so long.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
         <title>Setting Up Rust Analyzer to work for Non-Cargo-Based Rust Projects</title>
         <published>2025-12-16T00:00:00+00:00</published>
         <updated>2025-12-16T00:00:00+00:00</updated>
@@ -1446,6 +2453,233 @@ Take note to pass the Absolute path of the &lt;code&gt;root_module&lt;/code&gt; 
 &lt;p&gt;The good news is that this limitation is not a dead end. By explicitly describing your setup using a &lt;code&gt;rust-project.json&lt;/code&gt; file, you can restore nearly all the ergonomics you’d expect from a full Cargo-based project: autocomplete, type hints, navigation, and a clearer understanding of your code’s structure.&lt;/p&gt;
 &lt;p&gt;For lightweight experiments, coding challenges, or mixed-language repositories, this approach strikes a practical balance. You keep the simplicity of single-file Rust while reclaiming the insight and confidence that come from a well-informed editor.&lt;/p&gt;
 &lt;p&gt;Sometimes, the compiler already knows enough. You just need to teach your tools to listen.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Binding Energy: Why Iron Is the End of the Line</title>
+        <published>2025-11-28T00:00:00+00:00</published>
+        <updated>2025-11-28T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Brian Obot</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/binding-energy-why-iron-is-the-end-of-the-line/"/>
+        <id>https://brianobot.tech/blog/binding-energy-why-iron-is-the-end-of-the-line/</id>
+        
+        <content type="html" xml:base="https://brianobot.tech/blog/binding-energy-why-iron-is-the-end-of-the-line/">&lt;p&gt;&lt;img src=&quot;https://brianobot.tech/blog/binding-energy-why-iron-is-the-end-of-the-line/cover.webp&quot; alt=&quot;A glowing supernova remnant nebula rising above the curve of the Earth&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;There is a question that bothered me for a long time, and I suspect it bothers a lot of people
+who have read a little about nuclear energy: if you get energy by &lt;strong&gt;splitting&lt;/strong&gt; heavy atoms
+(fission), and you also get energy by &lt;strong&gt;joining&lt;/strong&gt; light atoms (fusion), how can both be true?
+Surely one of them has to cost energy. You can&#39;t make money by both buying and selling the same
+thing.&lt;/p&gt;
+&lt;p&gt;The answer turns out to be one of the most elegant ideas in physics, and it all hangs on a single
+graph: the &lt;strong&gt;binding energy curve&lt;/strong&gt;. Once that curve makes sense, fission, fusion, why stars die,
+and why nobody is building iron-burning power plants all fall out of it almost for free.&lt;/p&gt;
+&lt;p&gt;This post is the foundation for a small series on nuclear physics. You don&#39;t need any background
+beyond high-school physics and a willingness to accept that mass and energy are the same thing.&lt;/p&gt;
+&lt;h2 id=&quot;tl-dr&quot;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;A nucleus weighs &lt;strong&gt;less&lt;/strong&gt; than the protons and neutrons it is made from. The missing mass is the
+&lt;strong&gt;binding energy&lt;/strong&gt;, via &lt;code&gt;E = mc²&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Divide that by the number of nucleons and you get &lt;strong&gt;binding energy per nucleon&lt;/strong&gt;: a measure of
+how tightly each particle is held.&lt;/li&gt;
+&lt;li&gt;That number rises steeply for light nuclei, peaks around &lt;strong&gt;iron and nickel&lt;/strong&gt; (~8.8 MeV), and
+slowly falls for heavy nuclei.&lt;/li&gt;
+&lt;li&gt;Any reaction that moves nuclei &lt;strong&gt;towards the peak&lt;/strong&gt; releases energy. Light nuclei climb by
+fusing; heavy nuclei climb by splitting. Iron is already at the top, so it can do neither.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;the-nucleus-is-lighter-than-its-parts&quot;&gt;The nucleus is lighter than its parts&lt;/h2&gt;
+&lt;p&gt;Start with helium-4, the nucleus of an ordinary helium atom: two protons and two neutrons. Look up
+the masses (in atomic mass units, &lt;code&gt;u&lt;/code&gt;):&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Particle&lt;/th&gt;&lt;th&gt;Mass (u)&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Proton&lt;/td&gt;&lt;td&gt;1.007276&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Neutron&lt;/td&gt;&lt;td&gt;1.008665&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;2 protons + 2 neutrons&lt;/td&gt;&lt;td&gt;4.031883&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Helium-4 nucleus&lt;/td&gt;&lt;td&gt;4.001506&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;The assembled nucleus is lighter than its loose parts by &lt;code&gt;0.030377 u&lt;/code&gt;. That&#39;s not a measurement
+error; it&#39;s the whole story. This missing mass is called the &lt;strong&gt;mass defect&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Where did it go? It left as energy when the nucleus formed. Using &lt;code&gt;E = mc²&lt;/code&gt;, and the handy fact
+that &lt;code&gt;1 u&lt;/code&gt; of mass is equivalent to &lt;code&gt;931.494 MeV&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;0.030377 u × 931.494 MeV/u ≈ 28.3 MeV&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So 28.3 MeV of energy was released when those four nucleons snapped together, and to pull
+helium-4 apart again, you&#39;d have to put those 28.3 MeV &lt;strong&gt;back in&lt;/strong&gt;. That&#39;s the &lt;strong&gt;binding
+energy&lt;/strong&gt;. It&#39;s the energy debt you&#39;d have to repay to dismantle the nucleus.&lt;/p&gt;
+&lt;p&gt;To put &quot;MeV&quot; in perspective: a chemical bond, the thing that holds a molecule together and the
+thing we break when we burn coal or petrol, is worth a few &lt;strong&gt;eV&lt;/strong&gt;. Nuclear binding energies are
+in the &lt;strong&gt;millions&lt;/strong&gt; of eV. That factor of roughly a million is the whole reason nuclear power
+exists.&lt;/p&gt;
+&lt;h2 id=&quot;binding-energy-per-nucleon&quot;&gt;Binding energy per nucleon&lt;/h2&gt;
+&lt;p&gt;Total binding energy grows with the size of the nucleus, which isn&#39;t very interesting on its own;
+of course a bigger nucleus has more glue. The useful number is the binding energy &lt;strong&gt;per nucleon&lt;/strong&gt;:
+divide the total by the mass number &lt;code&gt;A&lt;/code&gt; (protons + neutrons).&lt;/p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Nucleus&lt;/th&gt;&lt;th&gt;Binding energy per nucleon&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Deuterium (²H)&lt;/td&gt;&lt;td&gt;1.11 MeV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Helium-4&lt;/td&gt;&lt;td&gt;7.07 MeV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Carbon-12&lt;/td&gt;&lt;td&gt;7.68 MeV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Oxygen-16&lt;/td&gt;&lt;td&gt;7.98 MeV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Iron-56&lt;/td&gt;&lt;td&gt;8.79 MeV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Nickel-62&lt;/td&gt;&lt;td&gt;8.79 MeV (the actual record holder, by a hair)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Uranium-235&lt;/td&gt;&lt;td&gt;7.59 MeV&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Uranium-238&lt;/td&gt;&lt;td&gt;7.57 MeV&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;p&gt;Plot that for every known nucleus and you get the famous curve. In words:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt; MeV per nucleon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  9 |              Fe  Ni&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    |          .·&amp;#39;¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯``&amp;#39;·..&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  8 |       .·&amp;#39;                       ``·.  U&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    |     .&amp;#39;                              ·&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  7 |   He&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    |   |&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    |  /&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    | /&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  1 |D&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    +------------------------------------------- mass number A&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;       4      56                          235&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;A &lt;strong&gt;steep climb&lt;/strong&gt; through the light elements (with helium-4 sitting conspicuously high for its
+size, because it is an unusually tight little package).&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;broad peak&lt;/strong&gt; around &lt;code&gt;A ≈ 56–62&lt;/code&gt;: iron and nickel.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;slow decline&lt;/strong&gt; all the way out to uranium and beyond.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Higher on the curve means more tightly bound, which means &lt;strong&gt;more stable&lt;/strong&gt; and, crucially, &lt;strong&gt;lower
+in energy&lt;/strong&gt;. Nature, like water, flows downhill in energy. In this graph &quot;downhill&quot; means
+&quot;upwards on the curve&quot;. Any nuclear reaction that ends with nucleons sitting higher on this curve
+releases the difference as energy.&lt;/p&gt;
+&lt;h2 id=&quot;why-the-curve-has-that-shape&quot;&gt;Why the curve has that shape&lt;/h2&gt;
+&lt;p&gt;The shape isn&#39;t arbitrary. It comes from a tug-of-war between two forces.&lt;/p&gt;
+&lt;h3 id=&quot;the-strong-force-short-range-glue&quot;&gt;The strong force: short-range glue&lt;/h3&gt;
+&lt;p&gt;Protons and neutrons are held together by the &lt;strong&gt;strong nuclear force&lt;/strong&gt;. It&#39;s ferociously strong,
+but it only reaches about one or two femtometres (about the width of a nucleon). Beyond that it
+falls off a cliff. So each nucleon effectively only feels its immediate neighbours.&lt;/p&gt;
+&lt;p&gt;In a tiny nucleus, most nucleons sit on the &lt;strong&gt;surface&lt;/strong&gt;, with few neighbours to bond with. They&#39;re
+under-bonded. As the nucleus grows, a larger fraction of nucleons are buried in the interior with
+a full set of neighbours, so the binding per nucleon climbs. That&#39;s the steep left side of the
+curve.&lt;/p&gt;
+&lt;h3 id=&quot;electromagnetism-long-range-repulsion&quot;&gt;Electromagnetism: long-range repulsion&lt;/h3&gt;
+&lt;p&gt;Protons are positively charged and repel each other. Unlike the strong force, the electric force
+has &lt;strong&gt;infinite range&lt;/strong&gt;: every proton pushes on every other proton in the nucleus, not just its
+neighbours.&lt;/p&gt;
+&lt;p&gt;That means the repulsion grows roughly as &lt;code&gt;Z²&lt;/code&gt; (with &lt;code&gt;Z&lt;/code&gt; protons) while the strong-force glue only
+grows roughly as &lt;code&gt;A&lt;/code&gt;. In a small nucleus, the glue wins easily. In a big nucleus, the repulsion
+catches up and starts eating into the binding. That&#39;s the slow decline on the right side.&lt;/p&gt;
+&lt;h3 id=&quot;where-they-balance&quot;&gt;Where they balance&lt;/h3&gt;
+&lt;p&gt;Somewhere around iron and nickel, the benefit of having more neighbours has mostly saturated, and
+the cost of proton repulsion hasn&#39;t yet become dominant. That&#39;s the peak. Iron sits at the sweet
+spot between &quot;too small to be well glued&quot; and &quot;too big to hold its own charge together&quot;.&lt;/p&gt;
+&lt;h2 id=&quot;a-model-you-can-run-the-semi-empirical-mass-formula&quot;&gt;A model you can run: the semi-empirical mass formula&lt;/h2&gt;
+&lt;p&gt;Physicists turned that intuition into an actual formula back in the 1930s. It treats the nucleus
+like a drop of charged liquid, which is why it&#39;s often called the &lt;strong&gt;liquid drop model&lt;/strong&gt;, and it
+adds up five effects:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Volume&lt;/strong&gt;: every nucleon gets glue from its neighbours (proportional to &lt;code&gt;A&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Surface&lt;/strong&gt;: nucleons on the surface have fewer neighbours, so subtract something proportional
+to the surface area, &lt;code&gt;A^(2/3)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Coulomb&lt;/strong&gt;: subtract the proton–proton repulsion, roughly &lt;code&gt;Z(Z−1) / A^(1/3)&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Asymmetry&lt;/strong&gt;: nuclei prefer balanced numbers of protons and neutrons (a quantum effect from
+the Pauli exclusion principle), so subtract a penalty for imbalance, &lt;code&gt;(N−Z)² / A&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pairing&lt;/strong&gt;: nucleons like to pair up, so even–even nuclei get a small bonus and odd–odd nuclei
+a small penalty.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here it is in Python:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;python&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;import&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;z-l-8 z-l-i z-d-4 z-d-i&quot;&gt; Semi-empirical mass formula coefficients, in MeV&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;A_V&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; A_S&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; A_C&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; A_A&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; A_P&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 15.8&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 18.3&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0.714&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 23.2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 12.0&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;z-l-3 z-l-i z-d-2 z-d-i&quot;&gt; binding_energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; int&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-14 z-l-i z-d-10 z-d-i&quot;&gt; A&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; int&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; -&amp;gt;&lt;/span&gt;&lt;span class=&quot;z-l-9 z-l-i z-d-9 z-d-i&quot;&gt; float&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Approximate total binding energy of a nucleus in MeV.&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    N&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; A&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt; Z&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    volume&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; A_V&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; A&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    surface&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; A_S&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; A&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 3&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    coulomb&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; A_C&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span&gt; Z&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;Z&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; A&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 3&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    asymmetry&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; A_A&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; *&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;N&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt; Z&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; **&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; A&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    if&lt;/span&gt;&lt;span&gt; Z&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; %&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; ==&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; and&lt;/span&gt;&lt;span&gt; N&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; %&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; ==&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        pairing&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span&gt; A_P&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;A&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    elif&lt;/span&gt;&lt;span&gt; Z&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; %&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; ==&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; and&lt;/span&gt;&lt;span&gt; N&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; %&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 2&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; ==&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 1&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        pairing&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt;A_P&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; math&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;A&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    else&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;        pairing&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 0.0&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;    return&lt;/span&gt;&lt;span&gt; volume&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt; surface&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt; coulomb&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; -&lt;/span&gt;&lt;span&gt; asymmetry&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; +&lt;/span&gt;&lt;span&gt; pairing&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;nuclei&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;He-4&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 4&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;C-12&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 12&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;O-16&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 16&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Fe-56&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;26&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 56&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;Ni-62&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 62&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;U-235&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;92&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 235&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;    &amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;U-238&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt;92&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-16 z-d-16&quot;&gt; 238&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;for&lt;/span&gt;&lt;span&gt; name&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt; (&lt;/span&gt;&lt;span&gt;Z&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; A&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt; in&lt;/span&gt;&lt;span&gt; nuclei&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;:&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;    B&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; =&lt;/span&gt;&lt;span class=&quot;z-l-3 z-d-2&quot;&gt; binding_energy&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span&gt;Z&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;,&lt;/span&gt;&lt;span&gt; A&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span class=&quot;z-l-16 z-l-i z-d-16 z-d-i&quot;&gt;    print&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;z-l-5 z-l-i z-d-7 z-d-i&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;name&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:&amp;gt;7&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;B&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:8.1f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; MeV total, &lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;{&lt;/span&gt;&lt;span&gt;B&lt;/span&gt;&lt;span class=&quot;z-l-2 z-d-5&quot;&gt; /&lt;/span&gt;&lt;span&gt; A&lt;/span&gt;&lt;span class=&quot;z-l-9 z-d-9&quot;&gt;:5.2f&lt;/span&gt;&lt;span class=&quot;z-l-15 z-d-13&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt; MeV per nucleon&lt;/span&gt;&lt;span class=&quot;z-l-5 z-d-7&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;z-l-8 z-d-4&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;pre class=&quot;giallo z-l-code z-d-code&quot; &gt;&lt;code data-lang=&quot;plain&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   He-4:     22.2 MeV total,  5.55 MeV per nucleon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   C-12:     87.8 MeV total,  7.32 MeV per nucleon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;   O-16:    123.7 MeV total,  7.73 MeV per nucleon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  Fe-56:    490.6 MeV total,  8.76 MeV per nucleon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  Ni-62:    544.6 MeV total,  8.78 MeV per nucleon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  U-235:   1790.7 MeV total,  7.62 MeV per nucleon&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span&gt;  U-238:   1809.5 MeV total,  7.60 MeV per nucleon&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Five terms and a handful of constants, and it lands within about half a percent of reality for
+iron and uranium. It even finds nickel-62 slightly ahead of iron-56. I find that genuinely
+remarkable.&lt;/p&gt;
+&lt;p&gt;It&#39;s also honest about its limits: helium-4 comes out at 22 MeV instead of the real 28 MeV.
+Treating four particles as a &quot;liquid drop&quot; is a stretch, and helium-4 is special. Its two protons
+and two neutrons fill the lowest quantum shell completely, a bit like a noble gas does with
+electrons. That extra stability is why helium-4 shows up everywhere in nuclear physics: as the
+product of fusion, as the alpha particle in radioactive decay, and as the ash in the cores of
+stars.&lt;/p&gt;
+&lt;h2 id=&quot;climbing-the-curve-from-both-sides&quot;&gt;Climbing the curve from both sides&lt;/h2&gt;
+&lt;p&gt;Now the paradox from the introduction dissolves.&lt;/p&gt;
+&lt;h3 id=&quot;fusion-climbing-from-the-left&quot;&gt;Fusion: climbing from the left&lt;/h3&gt;
+&lt;p&gt;Take light nuclei on the steep left slope and merge them. Hydrogen isotopes (about 1–3 MeV per
+nucleon) combining into helium-4 (7.07 MeV per nucleon) is a huge jump upwards. Every nucleon
+involved ends up more tightly bound, and the difference comes out as energy. That&#39;s what powers
+the Sun.&lt;/p&gt;
+&lt;h3 id=&quot;fission-climbing-from-the-right&quot;&gt;Fission: climbing from the right&lt;/h3&gt;
+&lt;p&gt;Take a heavy nucleus on the gently sloping right side, like uranium-235 at about 7.6 MeV per
+nucleon, and split it into two medium-sized pieces around barium and krypton, at about 8.3–8.5 MeV
+per nucleon. Each piece is closer to the peak than the original. The gain is under 1 MeV per
+nucleon, but there are about 235 nucleons involved, so it adds up to roughly &lt;strong&gt;200 MeV per
+fission&lt;/strong&gt;. That&#39;s what runs nuclear power stations.&lt;/p&gt;
+&lt;h3 id=&quot;iron-already-at-the-top&quot;&gt;Iron: already at the top&lt;/h3&gt;
+&lt;p&gt;Iron-56 and nickel-62 sit at the summit. Fuse two iron nuclei and the product is further down the
+right slope. Split iron and the pieces are further down the left slope. Either way you have to
+&lt;strong&gt;put energy in&lt;/strong&gt;. Iron is nuclear ash: there&#39;s nothing left to burn.&lt;/p&gt;
+&lt;h2 id=&quot;why-stars-die-at-iron&quot;&gt;Why stars die at iron&lt;/h2&gt;
+&lt;p&gt;This has a dramatic consequence for stars.&lt;/p&gt;
+&lt;p&gt;A star spends most of its life fusing hydrogen into helium. When the hydrogen in its core runs low,
+a sufficiently massive star contracts, heats up, and starts fusing helium into carbon and oxygen.
+Then carbon into neon and magnesium. Then oxygen into silicon. Then silicon into iron. Each stage
+climbs a little further up the curve, releases a little less energy per nucleon, and burns faster.
+In the most massive stars, the final silicon-burning stage lasts about a day.&lt;/p&gt;
+&lt;p&gt;Then the core is iron, and the climb is over. With no more energy being released to hold up the
+weight of the star, the core collapses in under a second. The result is a &lt;strong&gt;core-collapse
+supernova&lt;/strong&gt;, leaving behind a neutron star or a black hole.&lt;/p&gt;
+&lt;p&gt;Every element heavier than iron, including the gold in your jewellery and the uranium in a
+reactor, had to be made by processes that &lt;strong&gt;absorb&lt;/strong&gt; energy, such as rapid neutron capture during
+supernovae and neutron-star mergers. In a real sense, when we split uranium in a power plant, we&#39;re
+releasing energy that was stored in it by a stellar catastrophe billions of years ago.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;The binding energy curve is one of those diagrams that rewires how you see the world. A few things
+I&#39;d take away from it:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Mass is energy.&lt;/strong&gt; The nucleus is lighter than its parts, and that missing mass is real,
+measurable energy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Nuclear energy is about a million times denser than chemical energy&lt;/strong&gt;, because nuclear binding
+is measured in MeV while chemical bonds are measured in eV.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fission and fusion aren&#39;t opposites&lt;/strong&gt;. They&#39;re two routes up the same hill, approaching from
+opposite sides.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Iron is the top of the hill&lt;/strong&gt;, which is why stars that make iron are about to die.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the next two posts I&#39;ll take each side of the hill in turn: first &lt;a href=&quot;https://brianobot.tech/blog/nuclear-fission-how-splitting-an-atom-powers-a-city/&quot;&gt;fission&lt;/a&gt;, the one we&#39;ve had
+working for over 80 years, and then &lt;a href=&quot;https://brianobot.tech/blog/nuclear-fusion-why-building-a-star-on-earth-is-so-hard/&quot;&gt;fusion&lt;/a&gt;, the one we&#39;ve been chasing for nearly as long.&lt;/p&gt;
 </content>
         
     </entry>
