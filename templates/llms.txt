@@ -1,9 +1,10 @@
 {#- llms.txt (https://llmstxt.org): a Markdown index of the site for LLMs and AI search.
     Rendered as a feed (see feed_filenames in zola.toml), so `pages` holds every
-    published post, newest first. Undated pages (About, Hire, Projects) are fetched by path. -#}
+    published post, newest first. Undated pages (About, Hire, Projects, Contributions) are fetched by path. -#}
 {%- set about = get_page(path="about/index.md") -%}
 {%- set hire = get_page(path="hire/index.md") -%}
 {%- set projects = get_page(path="projects/index.md") -%}
+{%- set contributions = get_page(path="contributions/index.md") -%}
 # {{ config.title }}
 
 > {{ config.description }}
@@ -15,6 +16,7 @@ This is the personal blog of {{ config.author }}, a software engineer and Python
 - [{{ about.extra.seo_title | default(value=about.title) }}]({{ about.permalink }}): {{ about.description }}
 - [{{ hire.extra.seo_title | default(value=hire.title) }}]({{ hire.permalink }}): {{ hire.description }}
 - [Projects]({{ projects.permalink }}): {{ projects.description }}
+- [Contributions]({{ contributions.permalink }}): {{ contributions.description }}
 
 ## Posts
 {% for p in pages %}
