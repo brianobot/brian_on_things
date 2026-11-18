@@ -1,5 +1,5 @@
 +++
-title = "Entanglement and Bell's Theorem: The Experiment That Proved Einstein Wrong"
+title = "Entanglement: The Experiment That Proved Einstein Wrong"
 date = 2026-11-08
 description = "Quantum entanglement and Bell's theorem explained: the EPR paradox, local hidden variables, the CHSH inequality simulated in Python, the experiments that won the 2022 Nobel Prize, and why it can't send signals faster than light."
 draft = false
