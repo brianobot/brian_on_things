@@ -5,7 +5,7 @@ description = "Quantum entanglement and Bell's theorem explained: the EPR parado
 draft = false
 
 [extra]
-seo_title = "Quantum Entanglement and Bell's Theorem, Explained with Python"
+seo_title = "Entanglement: The Experiment That Proved Einstein Wrong"
 toc = true
 +++
 
