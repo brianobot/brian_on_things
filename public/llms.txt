@@ -13,6 +13,7 @@ This is the personal blog of Brian Obot, a software engineer and Python & Rust d
 
 ## Posts
 
+- [My Plans for Advent of Code - 2026](https://brianobot.tech/blog/advent-of-code-2026/): My plan for Advent of Code 2026: 12 days of puzzles, no AI-generated code, solutions in Python, Rust and Pylox, and a write-up for each day's puzzles
 - [Entanglement: The Experiment That Proved Einstein Wrong](https://brianobot.tech/blog/entanglement-and-bells-theorem-the-experiment-that-proved-einstein-wrong/): Quantum entanglement and Bell's theorem explained: the EPR paradox, local hidden variables, the CHSH inequality simulated in Python, the experiments that won the 2022 Nobel Prize, and why it can't send signals faster than light.
 - [Introduction to Bytes in Rust. Part 1](https://brianobot.tech/blog/working-with-bytes-in-rust/): A beginner-friendly introduction to bytes in Rust: bits, bytes and hexadecimal, why computers use binary, and how Rust represents byte collections and strings.
 - [What I Learned (and Wish I'd Done Differently) at TechCabal's Moonshot](https://brianobot.tech/blog/what-i-learned-at-techcabals-moonshot-2026/): Lessons from my first TechCabal Moonshot after moving to Lagos: the sessions, the exhibition floor, the people, and three things I'd do differently next time.

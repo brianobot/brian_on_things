@@ -5,8 +5,37 @@
     <link rel="self" type="application/atom+xml" href="https://brianobot.tech/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://brianobot.tech"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2026-11-08T00:00:00+00:00</updated>
+    <updated>2026-11-23T00:00:00+00:00</updated>
     <id>https://brianobot.tech/atom.xml</id>
+    <entry xml:lang="en">
+        <title>My Plans for Advent of Code - 2026</title>
+        <published>2026-11-23T00:00:00+00:00</published>
+        <updated>2026-11-23T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Brian Obot</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://brianobot.tech/blog/advent-of-code-2026/"/>
+        <id>https://brianobot.tech/blog/advent-of-code-2026/</id>
+        
+        <content type="html" xml:base="https://brianobot.tech/blog/advent-of-code-2026/">&lt;h2 id=&quot;what-is-it&quot;&gt;What is it?&lt;/h2&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://adventofcode.com/&quot;&gt;Advent of Code&lt;/a&gt; is an annual set of Christmas-themed computer programming challenges that follow the story of the North Pole elves making necessary preparations for smooth festivity operations, unraveled day by day akin to how an Advent calendar is opened. It has been running since 2015. It was created by &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://was.tl/&quot;&gt;Eric Wastl&lt;/a&gt; (via Wikipedia).&lt;/p&gt;
+&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;/h2&gt;
+&lt;p&gt;For each day from the first day of December up until the 12th day, two puzzles are dropped, the goal being to solve those puzzles with any programming language of your choice in order to obtain the stars linked to that day&#39;s puzzles. The second puzzle for each day does not unlock until the first is solved.&lt;/p&gt;
+&lt;p&gt;There is no actual code upload for the solutions. You&#39;re only required to upload the actual answers you get from solving the puzzle.&lt;/p&gt;
+&lt;p&gt;The puzzles cover a wild variety of skill levels and are a fun way to put your problem-solving skills and programming experience to the test. I first came across Advent of Code in December 2024. I haven&#39;t completed the puzzle set for any year so far, but regardless I look forward to doing so this year.&lt;/p&gt;
+&lt;h2 id=&quot;2026&quot;&gt;2026&lt;/h2&gt;
+&lt;p&gt;The puzzles begin on December 1st. I plan to write about my experience solving the puzzles and document the many exciting things I will learn along the way here on my blog. The website does have a leaderboard feature, where you can create a private leaderboard and invite your friends to join. At the same time, it discourages overly publicizing your leaderboard. These events are meant to be fun and cheerful, and a large leaderboard creates a competitive tension that strains that.&lt;/p&gt;
+&lt;p&gt;As with most things recently in the programming space, human efforts are slowly taking a back seat to AI-assisted or generated coding. I personally think it robs you of the ability to genuinely enjoy and learn from the puzzles, so I will not be using AI-generated code for my solutions.&lt;/p&gt;
+&lt;p&gt;I have a public GitHub repository where I keep my solutions for all the years, and you&#39;re welcome to go through it and learn how I approach the problems &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/brianobot/advent-of-code-solutions&quot;&gt;here&lt;/a&gt;. I implement my solutions in Python, Rust and Pylox, an experimental interpreted language I built while following the book &lt;em&gt;Crafting Interpreters&lt;/em&gt; by Robert Nystrom.&lt;/p&gt;
+&lt;h2 id=&quot;where-to-go-from-here&quot;&gt;Where to go from here&lt;/h2&gt;
+&lt;p&gt;There is an incredibly active community on &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.reddit.com/r/adventofcode/&quot;&gt;Reddit&lt;/a&gt; where users post guides, explainers and, most impressive to me, animated forms of their solutions to the puzzles. I will write about each day and its solution here on my blog. I really look forward to having fun and completing my first year of Advent of Code. If you would like to join my private leaderboard, you can send me a message on any of my socials.&lt;/p&gt;
+&lt;p&gt;Create an account and be ready - &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://adventofcode.com/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Merry Christmas ✨ in advance.&lt;/p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Entanglement: The Experiment That Proved Einstein Wrong</title>
         <published>2026-11-08T00:00:00+00:00</published>
