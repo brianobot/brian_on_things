@@ -25,7 +25,7 @@ The puzzles begin on December 1st. I plan to write about my experience solving t
 
 As with most things recently in the programming space, human efforts are slowly taking a back seat to AI-assisted or generated coding. I personally think it robs you of the ability to genuinely enjoy and learn from the puzzles, so I will not be using AI-generated code for my solutions.
 
-I have a public GitHub repository where I keep my solutions for all the years, and you're welcome to go through it and learn how I approach the problems [here](https://github.com/brianobot/advent-of-code-solutions). I implement my solutions in Python, Rust and Pylox, an experimental interpreted language I built while following the book *Crafting Interpreters* by Robert Nystrom.
+I have a public GitHub repository where I keep my solutions for all the years, and you're welcome to go through it and learn how I approach the problems [here](https://github.com/brianobot/advent-of-code-solutions). I implement my solutions in Python, Rust and [Pylox](https://github.com/brianobot/py-lox), an experimental interpreted language I built while following the book *Crafting Interpreters* by Robert Nystrom.
 
 ## Where to go from here
 There is an incredibly active community on [Reddit](https://www.reddit.com/r/adventofcode/) where users post guides, explainers and, most impressive to me, animated forms of their solutions to the puzzles. I will write about each day and its solution here on my blog. I really look forward to having fun and completing my first year of Advent of Code. If you would like to join my private leaderboard, you can send me a message on any of my socials.
