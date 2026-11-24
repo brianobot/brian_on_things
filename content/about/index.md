@@ -49,7 +49,6 @@ to maintain a certain writing style I perceived to be perform better, ensuring t
 reached a certain amount of words even when the idea and message behind them were truly shared, 
 and doing all manners of shenanigans with SEO to ensure that my articles even got seen by readers.
 
-
 This was not the idea I had for writing, I want to write and sound the way I feel when I am writing.
 It could be a single paragraph rant on some very niche topic, or an ungodly devotion-style deep dive into a
 topic. I want to do all of these and have full control of my structure, content and not worrying about
@@ -66,3 +65,5 @@ framework anywhere near it.
 
 If something here helped, or if I got something wrong, I'd genuinely like to hear
 about it.
+
+Don't want to miss any updates? You can follow this [RSS Feed](https://brianobot.tech/atom.xml)
