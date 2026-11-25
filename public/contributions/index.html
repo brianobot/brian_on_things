@@ -161,6 +161,12 @@ body {
 	width: 100%;
 	max-width: 70rem;
 	padding-inline: 1rem;
+
+	/* sticky footer: on short pages (empty search, 404) main grows so the footer sits at the bottom of the screen */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100dvh;
 }
 
 a { color: inherit; }
@@ -209,6 +215,20 @@ html.dark .header.not-top { background-color: hsl(var(--muted)); }
 }
 
 .header.not-top .brand { margin-inline-start: 0.5rem; }
+
+/* Seasonal Santa hat on the brand's first letter ([extra].festive) */
+.brand.festive { position: relative; }
+
+.santa-hat {
+	position: absolute;
+	left: -0.24em;
+	top: -0.3em;
+	width: 1.1em;
+	height: auto;
+	transform: rotate(-14deg);
+	pointer-events: none;
+	filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.15));
+}
 
 .header-end {
 	display: flex;
@@ -322,7 +342,7 @@ svg { width: 1.25rem; height: 1.25rem; display: block; }
    Footer
    --------------------------------------------------------------------------- */
 .footer {
-	margin-inline: auto;
+	width: 100%;
 	margin-top: 4rem;
 	margin-bottom: 1.25rem;
 }
@@ -354,7 +374,7 @@ svg { width: 1.25rem; height: 1.25rem; display: block; }
 /* ---------------------------------------------------------------------------
    Homepage
    --------------------------------------------------------------------------- */
-main { width: 100%; }
+main { width: 100%; flex: 1 0 auto; }
 
 .home-header {
 	display: flex;
@@ -1075,6 +1095,14 @@ main { width: 100%; }
 
 .archive-summary { margin-bottom: 2rem; }
 .archive-summary p { margin: 0; }
+.archive-nb {
+	margin-top: 1.25rem !important;
+	padding-inline-start: 0.75rem;
+	border-inline-start: 2px solid hsl(var(--border));
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+}
+.archive-nb strong { color: hsl(var(--foreground)); }
 .archive-stats {
 	display: flex;
 	flex-wrap: wrap;

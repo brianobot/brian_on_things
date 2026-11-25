@@ -6,7 +6,7 @@ This is the personal blog of Brian Obot, a software engineer and Python & Rust d
 
 ## About
 
-- [About Brian Obot: Software Engineer, Python & Rust Developer](https://brianobot.tech/about/): I'm Brian Obot, a software engineer and freelance Python & Rust developer building backend systems, contributing to open source and writing about software.
+- [About Brian Obot: Software Engineer, Python & Rust Developer](https://brianobot.tech/about/): 
 - [Hire a Freelance Python & Rust Developer – Brian Obot](https://brianobot.tech/hire/): Freelance Python and Rust developer for backend APIs, FastAPI and Django services, Rust web services and performance work. Open to contracts and open source.
 - [Projects](https://brianobot.tech/projects/): Open source work by Brian Obot: FastAPI and Django project templates, Rust CLI tools for load testing and API security, plus learning repos from Rust to C.
 - [Contributions](https://brianobot.tech/contributions/): Merged pull requests by Brian Obot to other people's projects: a Rust UI component registry, a typed Rust SDK for Polymarket, Bevy games, and more.

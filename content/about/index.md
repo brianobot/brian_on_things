@@ -1,6 +1,6 @@
 +++
 title = "About"
-description = "I'm Brian Obot, a software engineer and freelance Python & Rust developer building backend systems, contributing to open source and writing about software."
+description = ""
 template = "page.html"
 updated = 2026-11-09
 
@@ -12,15 +12,13 @@ seo_title = "About Brian Obot: Software Engineer, Python & Rust Developer"
 profile_page = true
 +++
 
-## About me
+## Brian Obot
 
-I'm Brian Obot — an Electrical & Electronic Engineer turned software engineer, currently working as a freelance Python and Rust developer. I build for the web, mostly the parts users never see: the
-APIs, the data models, the background jobs, and the quiet infrastructure that keeps everything upright.
+I'm an Electrical Electronic Engineer turned Software engineer based in Lagos. I build for the web, mostly the parts users never see: the APIs, the data models, the background jobs, and the quiet infrastructure that keeps everything upright.
 
 Lately I've been drawn further down the stack. I've become quite fond of bytes and the internals of software, how things actually work underneath the abstractions we reach for every day. Most of my work lives in [Python](https://python.org) 🐍 and [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language)) 🦀, usually somewhere near a PostgreSQL database.
 
-I'm a strong believer in open source and in learning in public, which is a large
-part of why this blog exists at all.
+I'm a strong believer in open source and learning in public (most of my personal learning has been from freely available public learning materials), which is a large part of why this blog exists at all.
 
 Looking for a Python or Rust developer? Here's [how we can work together](@/hire/index.md).
 
@@ -62,6 +60,9 @@ So one day, I wrote down the idea I wanted for my blog.
 The site itself is built with [Zola](https://www.getzola.org), a
 static site generator that compiles Markdown into plain HTML, with no JavaScript
 framework anywhere near it.
+
+## Let's Connect
+I'm always up for conversations about software, writing, physics, or movies. Reach out via [email](mailto:brianobot9@gmail.com), find me on [X](https://x.com/i_am_brian_obot), or connect on [LinkedIn](https://www.linkedin.com/in/brian-obot).
 
 If something here helped, or if I got something wrong, I'd genuinely like to hear
 about it.
