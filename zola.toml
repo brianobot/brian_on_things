@@ -47,6 +47,9 @@ dark_theme = "catppuccin-mocha"
 # Keep it under ~60 chars so Google doesn't truncate it.
 home_title = "Brian Obot – Software Engineer, Python & Rust Developer"
 
+# Seasonal: puts a Santa hat on the "B" of the nav brand. Set false after the holidays.
+festive = false
+
 # ---- Social preview ----------------------------------------------------
 og_locale = "en_US"
 # Social/Google image for any page without its own [extra].og_image (lives in static/)

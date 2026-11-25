@@ -157,6 +157,12 @@ body {
 	width: 100%;
 	max-width: 70rem;
 	padding-inline: 1rem;
+
+	/* sticky footer: on short pages (empty search, 404) main grows so the footer sits at the bottom of the screen */
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100dvh;
 }
 
 a { color: inherit; }
@@ -205,6 +211,20 @@ html.dark .header.not-top { background-color: hsl(var(--muted)); }
 }
 
 .header.not-top .brand { margin-inline-start: 0.5rem; }
+
+/* Seasonal Santa hat on the brand's first letter ([extra].festive) */
+.brand.festive { position: relative; }
+
+.santa-hat {
+	position: absolute;
+	left: -0.24em;
+	top: -0.3em;
+	width: 1.1em;
+	height: auto;
+	transform: rotate(-14deg);
+	pointer-events: none;
+	filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.15));
+}
 
 .header-end {
 	display: flex;
@@ -318,7 +338,7 @@ svg { width: 1.25rem; height: 1.25rem; display: block; }
    Footer
    --------------------------------------------------------------------------- */
 .footer {
-	margin-inline: auto;
+	width: 100%;
 	margin-top: 4rem;
 	margin-bottom: 1.25rem;
 }
@@ -350,7 +370,7 @@ svg { width: 1.25rem; height: 1.25rem; display: block; }
 /* ---------------------------------------------------------------------------
    Homepage
    --------------------------------------------------------------------------- */
-main { width: 100%; }
+main { width: 100%; flex: 1 0 auto; }
 
 .home-header {
 	display: flex;
@@ -1071,6 +1091,14 @@ main { width: 100%; }
 
 .archive-summary { margin-bottom: 2rem; }
 .archive-summary p { margin: 0; }
+.archive-nb {
+	margin-top: 1.25rem !important;
+	padding-inline-start: 0.75rem;
+	border-inline-start: 2px solid hsl(var(--border));
+	font-size: 0.875rem;
+	color: hsl(var(--muted-foreground));
+}
+.archive-nb strong { color: hsl(var(--foreground)); }
 .archive-stats {
 	display: flex;
 	flex-wrap: wrap;
@@ -1741,7 +1769,7 @@ html.dark .z-d-us { text-decoration: underline line-through; }
 			
 			
 			<div class="archive-summary">
-				<p class="muted">Guides and deep dives on Python, Rust and low-level systems.</p>
+				<p class="muted">Guides and deep dives on Python, Rust and low-level systems, from first steps to the internals underneath. Expect backend engineering, notes from my maths and physics studies, and the occasional detour into movies, books and whatever else has my attention: some posts are polished guides, some are short rants.</p>
 				<p class="archive-stats">
 					<span>23 posts</span>
 					<span aria-hidden="true">·</span>
@@ -1749,6 +1777,7 @@ html.dark .z-d-us { text-decoration: underline line-through; }
 					<span aria-hidden="true">·</span>
 					<span>135 min of reading</span>
 				</p>
+				<p class="archive-nb"><strong>NB:</strong> Everything here represents my own very personal opinions and does not reflect the views of my employer, clients, or anyone else unfortunate enough to share a surname with me. If you disagree with something — great, <a href="mailto:brianobot9@gmail.com">email me</a> or find me on <a rel="noopener external" target="_blank" href="https://x.com/i_am_brian_obot">X</a> and @ me.</p>
 			</div>
 		
 	</div>

@@ -22,6 +22,7 @@
 					<span aria-hidden="true">·</span>
 					<span>{{ total_minutes }} min of reading</span>
 				</p>
+				{% if section.extra.nb %}<p class="archive-nb"><strong>NB:</strong> {{ section.extra.nb | markdown(inline=true) | safe }}</p>{% endif %}
 			</div>
 		{% endif %}
 	</div>

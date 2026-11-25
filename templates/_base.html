@@ -242,7 +242,7 @@
 	<div class="container">
 
 		<header id="siteHeader" class="header">
-			<a class="brand" href="{{ get_url(path="/", trailing_slash=true) }}" aria-label="Home">{{ config.title }}</a>
+			<a class="brand{% if config.extra.festive %} festive{% endif %}" href="{{ get_url(path="/", trailing_slash=true) }}" aria-label="Home">{% if config.extra.festive %}<svg class="santa-hat" viewBox="0 0 40 32" aria-hidden="true" focusable="false"><path d="M6 25 C10 12 18 4 30 6 C35 7 37 12 36 17 C33 13 29 12 26 13 C28 17 29 21 30 25 Z" fill="#d42e2e"/><rect x="3" y="23" width="30" height="7" rx="3.5" fill="#fff"/><circle cx="36" cy="18" r="3.6" fill="#fff"/></svg>{% endif %}{{ config.title }}</a>
 
 			<div class="header-end">
 				<div id="headerExpandContent" class="nav-wrap">
