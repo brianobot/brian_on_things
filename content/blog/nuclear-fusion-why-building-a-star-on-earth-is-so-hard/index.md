@@ -7,6 +7,7 @@ draft = false
 [extra]
 seo_title = "Nuclear Fusion Explained: Why a Star on Earth Is So Hard"
 toc = true
+og_image = "cover.webp"
 +++
 
 ## Introduction

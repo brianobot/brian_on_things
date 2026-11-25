@@ -7,6 +7,7 @@ draft = false
 [extra]
 seo_title = "How Nuclear Fission Works: From Uranium to Power Plants"
 toc = true
+og_image = "cover.webp"
 +++
 
 ## Introduction
