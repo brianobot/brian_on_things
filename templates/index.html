@@ -4,7 +4,15 @@
 {% set author = config.extra.author %}
 
 <section class="home-header">
-	{% if config.extra.avatar %}
+	{% if config.extra.avatar and config.extra.stories %}
+		{# Stories: the avatar becomes a button that opens the story viewer below #}
+		<button id="storyRing" class="avatar-story" type="button"
+		        aria-haspopup="dialog" aria-controls="storyViewer"
+		        aria-label="View {{ author }}'s stories">
+			<img class="avatar" src="{{ get_url(path=config.extra.avatar) }}" alt="{{ author }}"
+			     width="480" height="720" decoding="async">
+		</button>
+	{% elif config.extra.avatar %}
 		<img class="avatar" src="{{ get_url(path=config.extra.avatar) }}" alt="{{ author }}"
 		     width="480" height="720" loading="lazy" decoding="async">
 	{% else %}
@@ -113,5 +121,242 @@
 	{% endif %}
 
 </div>
+{% if config.extra.avatar and config.extra.stories %}
+{# ---- Story viewer. Stories come from [[extra.stories]] in zola.toml. Media is
+   only fetched when the viewer opens, so stories cost the homepage nothing. ---- #}
+<dialog id="storyViewer" class="story-viewer" tabindex="-1" aria-label="{{ author }}'s stories">
+	<div class="story-bg" aria-hidden="true"></div>
+	<div class="story-frame">
+		<div class="story-bars" aria-hidden="true"></div>
+		<div class="story-head">
+			<img class="story-head-avatar" src="{{ get_url(path=config.extra.avatar) }}" alt="" width="32" height="32">
+			<span class="story-head-name">{{ author }}</span>
+			<time class="story-head-time"></time>
+			<button class="story-btn story-pause" type="button" aria-label="Pause">
+				<svg class="i-pause" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>
+				<svg class="i-play" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5"/></svg>
+			</button>
+			<button class="story-btn story-close" type="button" aria-label="Close stories">
+				<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M6.7 5.3a1 1 0 0 0-1.4 1.4L10.6 12l-5.3 5.3a1 1 0 1 0 1.4 1.4l5.3-5.3l5.3 5.3a1 1 0 0 0 1.4-1.4L13.4 12l5.3-5.3a1 1 0 0 0-1.4-1.4L12 10.6z"/></svg>
+			</button>
+		</div>
+		<div class="story-stage">
+			<div class="story-media"></div>
+			<button class="story-nav story-prev" type="button" aria-label="Previous story" tabindex="-1"></button>
+			<button class="story-nav story-next" type="button" aria-label="Next story" tabindex="-1"></button>
+		</div>
+		<div class="story-text" aria-live="polite">
+			<p class="story-title"></p>
+			<p class="story-caption"></p>
+			<a class="story-link" hidden></a>
+		</div>
+	</div>
+</dialog>
+
+<script type="application/json" id="storyData">[
+{% for s in config.extra.stories %}	{
+		"src": {{ get_url(path=s.image) | json_encode | safe }},
+		"title": {{ s.title | default(value="") | json_encode | safe }},
+		"caption": {{ s.caption | default(value="") | json_encode | safe }},
+		"alt": {{ s.alt | default(value=s.title | default(value="")) | json_encode | safe }},
+		"date": {{ s.date | default(value="") | json_encode | safe }},
+		"link": {{ s.link | default(value="") | json_encode | safe }},
+		"link_text": {{ s.link_text | default(value="") | json_encode | safe }},
+		"duration": {{ s.duration | default(value=0) }}
+	}{% if not loop.last %},{% endif %}
+{% endfor %}]</script>
+{% endif %}
 {% endblock main %}
 
+{% block scripts %}
+{% if config.extra.avatar and config.extra.stories %}
+<script>
+	(function () {
+		const ring = document.getElementById('storyRing')
+		const dlg = document.getElementById('storyViewer')
+		const stories = JSON.parse(document.getElementById('storyData').textContent)
+		if (!ring || !dlg || !stories.length || !dlg.showModal) return
+
+		const $ = (sel) => dlg.querySelector(sel)
+		const bars = $('.story-bars'), media = $('.story-media'), bg = $('.story-bg')
+		const stage = $('.story-stage'), timeEl = $('.story-head-time')
+		const titleEl = $('.story-title'), captionEl = $('.story-caption'), linkEl = $('.story-link')
+		const pauseBtn = $('.story-pause')
+
+		const IMAGE_MS = 6000
+		const isVideo = (src) => /\.(mp4|webm|mov|m4v)(\?|$)/i.test(src)
+
+		// The ring lights up again whenever the set of stories changes
+		const SEEN_KEY = 'stories-seen'
+		const signature = stories.map((s) => s.src).join('|')
+		const storage = {
+			get () { try { return localStorage.getItem(SEEN_KEY) } catch (e) { return null } },
+			set (v) { try { localStorage.setItem(SEEN_KEY, v) } catch (e) {} }
+		}
+		ring.classList.toggle('seen', storage.get() === signature)
+
+		bars.innerHTML = stories.map(() => '<span class="story-bar"><i></i></span>').join('')
+		const barEls = Array.from(bars.children)
+
+		let index = 0
+		let paused = false
+		let video = null
+
+		const ago = (d) => {
+			if (!d) return ''
+			const then = new Date(d + (d.length === 10 ? 'T00:00:00' : ''))
+			if (isNaN(then)) return ''
+			const days = Math.floor((Date.now() - then) / 86400000)
+			if (days < 1) return 'today'
+			if (days < 7) return days + 'd'
+			if (days < 56) return Math.floor(days / 7) + 'w'
+			return then.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })
+		}
+
+		const startBar = (ms) => {
+			const fill = barEls[index].firstElementChild
+			fill.style.animationDuration = ms + 'ms'
+			barEls[index].classList.remove('active')
+			void fill.offsetWidth // restart the animation even on the same bar
+			barEls[index].classList.add('active')
+		}
+
+		const setPaused = (p) => {
+			paused = p
+			dlg.classList.toggle('paused', p)
+			pauseBtn.setAttribute('aria-label', p ? 'Play' : 'Pause')
+			if (video) p ? video.pause() : video.play().catch(() => {})
+		}
+
+		const show = (i) => {
+			index = i
+			const s = stories[i]
+			barEls.forEach((b, n) => {
+				b.classList.toggle('done', n < i)
+				b.classList.remove('active')
+			})
+			if (video) { video.pause(); video = null }
+			media.textContent = ''
+
+			if (isVideo(s.src)) {
+				video = document.createElement('video')
+				video.src = s.src
+				video.playsInline = true
+				video.setAttribute('playsinline', '')
+				video.preload = 'auto'
+				if (s.alt) video.setAttribute('aria-label', s.alt)
+				video.addEventListener('loadedmetadata', () => {
+					if (video && stories[index] === s) {
+						startBar((s.duration * 1000) || (video.duration * 1000) || IMAGE_MS)
+						if (!paused) video.play().catch(() => { video.muted = true; video.play().catch(() => {}) })
+					}
+				}, { once: true })
+				media.appendChild(video)
+				bg.style.backgroundImage = ''
+			} else {
+				const img = new Image()
+				img.src = s.src
+				img.alt = s.alt
+				img.decoding = 'async'
+				media.appendChild(img)
+				bg.style.backgroundImage = 'url("' + s.src.replace(/"/g, '%22') + '")'
+				startBar((s.duration * 1000) || IMAGE_MS)
+			}
+
+			// warm the next image so tapping forward feels instant
+			const upcoming = stories[i + 1]
+			if (upcoming && !isVideo(upcoming.src)) new Image().src = upcoming.src
+
+			const when = ago(s.date)
+			timeEl.textContent = when
+			if (s.date) timeEl.setAttribute('datetime', s.date); else timeEl.removeAttribute('datetime')
+			titleEl.textContent = s.title
+			captionEl.textContent = s.caption
+			titleEl.hidden = !s.title
+			captionEl.hidden = !s.caption
+			if (s.link) {
+				linkEl.href = s.link
+				// other sites open in a new tab so the viewer isn't lost
+				const external = /^https?:/i.test(s.link) && new URL(s.link).origin !== location.origin
+				if (external) { linkEl.target = '_blank'; linkEl.rel = 'noopener' }
+				else { linkEl.removeAttribute('target'); linkEl.removeAttribute('rel') }
+				linkEl.textContent = s.link_text || 'Read more'
+				linkEl.hidden = false
+			} else {
+				linkEl.hidden = true
+			}
+
+			if (i === stories.length - 1) {
+				storage.set(signature)
+				ring.classList.add('seen')
+			}
+		}
+
+		const next = () => { index < stories.length - 1 ? show(index + 1) : dlg.close() }
+		const prev = () => { show(Math.max(0, index - 1)) }
+
+		ring.addEventListener('click', () => {
+			setPaused(false)
+			dlg.showModal()
+			dlg.focus() // keep the focus ring off the first button; arrows/space/Esc still work
+			show(0)
+		})
+
+		dlg.addEventListener('close', () => {
+			if (video) { video.pause(); video = null }
+			media.textContent = ''
+			barEls.forEach((b) => b.classList.remove('active'))
+			ring.focus()
+		})
+
+		bars.addEventListener('animationend', (e) => {
+			if (e.target.parentElement === barEls[index]) next()
+		})
+
+		$('.story-close').addEventListener('click', () => dlg.close())
+		pauseBtn.addEventListener('click', () => setPaused(!paused))
+
+		// clicks on the blurred backdrop (outside the frame) close the viewer
+		dlg.addEventListener('click', (e) => {
+			if (e.target === dlg || e.target === bg) dlg.close()
+		})
+
+		dlg.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowRight') { e.preventDefault(); next() }
+			else if (e.key === 'ArrowLeft') { e.preventDefault(); prev() }
+			else if (e.key === ' ' && !e.target.closest('button, a')) { e.preventDefault(); setPaused(!paused) }
+		})
+
+		// Tap left third = back, the rest = forward. Press and hold pauses,
+		// swiping down closes (as in every phone story viewer).
+		let holdTimer = 0, held = false, startX = 0, startY = 0, wasPaused = false
+		stage.addEventListener('pointerdown', (e) => {
+			if (e.button !== 0) return
+			startX = e.clientX; startY = e.clientY; held = false; wasPaused = paused
+			holdTimer = setTimeout(() => { held = true; setPaused(true) }, 220)
+		})
+		stage.addEventListener('pointercancel', () => {
+			clearTimeout(holdTimer)
+			if (held) setPaused(wasPaused)
+		})
+		stage.addEventListener('pointerup', (e) => {
+			clearTimeout(holdTimer)
+			const dy = e.clientY - startY, dx = e.clientX - startX
+			if (dy > 80 && Math.abs(dy) > Math.abs(dx)) { dlg.close(); return }
+			if (held) { setPaused(wasPaused); return }
+			if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); return }
+			const r = stage.getBoundingClientRect()
+			e.clientX - r.left < r.width / 3 ? prev() : next()
+		})
+		stage.addEventListener('contextmenu', (e) => e.preventDefault())
+		// the nav buttons exist for screen readers; pointer taps go through the stage
+		$('.story-prev').addEventListener('click', (e) => { if (e.detail === 0) prev() })
+		$('.story-next').addEventListener('click', (e) => { if (e.detail === 0) next() })
+
+		document.addEventListener('visibilitychange', () => {
+			if (document.hidden && dlg.open) setPaused(true)
+		})
+	})()
+</script>
+{% endif %}
+{% endblock scripts %}

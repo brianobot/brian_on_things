@@ -149,3 +149,44 @@ items = ["PostgreSQL", "Redis", "Docker", "AWS", "Kafka", "RabbitMQ", "+9"]
 [extra.feedback]
 form_action = "https://formspree.io/f/mbggnkgz"
 email = "brianobot9@gmail.com"
+
+# ---- Stories (homepage avatar) -----------------------------------------
+# Add at least one story and the avatar gets an Instagram-style ring; clicking it
+# opens a full-screen viewer. Put media in static/stories/. Images show for 6s,
+# videos (.mp4/.webm/.mov) for their own length. Only `image` is required.
+# The ring goes grey once a visitor has seen them all, and lights up again
+# whenever you add, remove or swap a story.
+# Keep this block LAST in the file: everything below a [[extra.stories]] line
+# belongs to that story, not to [extra].
+#
+# [[extra.stories]]
+# image = "stories/server-setup.webp"
+# title = "Late night quick server setup."
+# caption = "I was very tired and had a trip to catch, but I still needed to set up a server."
+# date = "2026-11-25"           # optional, shown as "3d", "2w", ...
+# alt = "Laptop and cables on the floor"  # optional, defaults to the title
+# duration = 8                  # optional, seconds
+# link = "/blog/some-post/"     # optional button under the caption
+# link_text = "Read the post"
+
+[[extra.stories]]
+image = "stories/particles-when-no-one-is-looking.mp4"
+title = "The observer effect, explained."
+alt = "A scientist in a lab coat walks into a lab, captioned: particles for no reason when no one is looking"
+date = "2026-11-28"
+link = "https://www.instagram.com/reel/DgQEqapo1fO/"
+link_text = "Via @sciencebasednerding"
+
+[[extra.stories]]
+image = "stories/night-flight-city-lights.mp4"
+alt = "City lights at night seen from an aeroplane window, the wing at the top of the frame"
+
+[[extra.stories]]
+image = "stories/sunset-over-the-rooftops.webp"
+caption = "The sky put on a show over the rooftops in Lagos."
+alt = "Pink and orange clouds at sunset over rows of rooftops in Lagos, with trees and a garden in the foreground"
+
+[[extra.stories]]
+image = "stories/street-from-the-car-window.webp"
+caption = "Clear skies, solar streetlights and blue-and-white buses, seen on a drive through Lagos."
+alt = "A sunny street in Lagos seen from a car window: a solar streetlight, minibuses and the Guinness building behind the trees"

@@ -608,6 +608,253 @@ main { width: 100%; flex: 1 0 auto; }
 	object-fit: cover;
 }
 
+/* ---------------------------------------------------------------------------
+   Stories: gradient ring on the avatar + full-screen viewer
+   --------------------------------------------------------------------------- */
+.avatar-story {
+	position: relative;
+	display: block;
+	padding: 0.3rem;
+	border: 0;
+	border-radius: 9999px;
+	cursor: pointer;
+	background: conic-gradient(from 210deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #d62976, #feda75);
+	transition: transform 0.2s ease;
+}
+
+.avatar-story .avatar {
+	display: block;
+	border: 0;
+	padding: 0.25rem;
+	background-color: hsl(var(--background));
+}
+
+.avatar-story:hover { transform: scale(1.02); }
+.avatar-story:active { transform: scale(0.97); }
+.avatar-story:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 4px; }
+
+/* every story viewed: quiet grey ring until a new one is added */
+.avatar-story.seen { background: hsl(var(--border)); }
+
+@media (prefers-reduced-motion: no-preference) {
+	.avatar-story:not(.seen)::after {
+		content: "";
+		position: absolute;
+		inset: -0.25rem;
+		border-radius: inherit;
+		border: 2px solid #d62976;
+		opacity: 0;
+		animation: story-pulse 2.6s ease-out 1s 3;
+		pointer-events: none;
+	}
+}
+
+@keyframes story-pulse {
+	0% { opacity: 0.6; transform: scale(1); }
+	100% { opacity: 0; transform: scale(1.12); }
+}
+
+html:has(.story-viewer[open]) { overflow: hidden; }
+
+.story-viewer {
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	max-height: none;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: #000;
+	color: #fff;
+	overflow: hidden;
+	outline: none;
+}
+
+.story-viewer[open] {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	animation: story-in 0.22s ease-out;
+}
+
+.story-viewer::backdrop { background: #000; }
+
+@keyframes story-in {
+	from { opacity: 0; transform: scale(0.96); }
+	to { opacity: 1; transform: none; }
+}
+
+/* the current image, blurred, fills the space around the frame */
+.story-bg {
+	position: absolute;
+	inset: -10%;
+	background-size: cover;
+	background-position: center;
+	filter: blur(48px) brightness(0.35);
+	transition: background-image 0.3s ease;
+}
+
+.story-frame {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	max-width: 28rem;
+	background: #0a0a0a;
+}
+
+@media (min-width: 640px) {
+	.story-frame {
+		height: min(100%, 52rem);
+		border-radius: 0.75rem;
+		overflow: hidden;
+		box-shadow: 0 20px 60px rgb(0 0 0 / 0.6);
+	}
+}
+
+.story-bars {
+	display: flex;
+	gap: 4px;
+	padding: 0.75rem 0.75rem 0;
+}
+
+.story-bar {
+	flex: 1;
+	height: 2.5px;
+	border-radius: 2px;
+	background: rgb(255 255 255 / 0.3);
+	overflow: hidden;
+}
+
+.story-bar i {
+	display: block;
+	height: 100%;
+	background: #fff;
+	transform: scaleX(0);
+	transform-origin: left;
+}
+
+.story-bar.done i { transform: scaleX(1); }
+.story-bar.active i { animation: story-fill linear forwards; }
+.story-viewer.paused .story-bar.active i { animation-play-state: paused; }
+
+@keyframes story-fill {
+	from { transform: scaleX(0); }
+	to { transform: scaleX(1); }
+}
+
+.story-head {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.75rem 0.5rem 0.75rem 0.75rem;
+}
+
+.story-head-avatar {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 9999px;
+	object-fit: cover;
+}
+
+.story-head-name { font-size: 0.9rem; font-weight: 600; }
+.story-head-time { font-size: 0.85rem; color: rgb(255 255 255 / 0.6); }
+
+.story-btn {
+	display: grid;
+	place-items: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0;
+	border: 0;
+	border-radius: 9999px;
+	background: transparent;
+	color: #fff;
+	cursor: pointer;
+}
+
+.story-btn svg { width: 1.4rem; height: 1.4rem; }
+.story-btn:hover { background: rgb(255 255 255 / 0.12); }
+.story-btn:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+.story-pause { margin-left: auto; }
+.story-pause .i-play,
+.story-viewer.paused .story-pause .i-pause { display: none; }
+.story-viewer.paused .story-pause .i-play { display: block; }
+
+.story-stage {
+	position: relative;
+	flex: 1;
+	min-height: 0;
+	touch-action: none;
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+}
+
+.story-media,
+.story-media img,
+.story-media video {
+	width: 100%;
+	height: 100%;
+}
+
+.story-media img,
+.story-media video {
+	display: block;
+	object-fit: contain;
+	pointer-events: none;
+}
+
+/* invisible, keyboard/screen-reader-only targets; pointer taps go to the stage */
+.story-nav {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 1px;
+	padding: 0;
+	border: 0;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.story-prev { left: 0; }
+.story-next { right: 0; }
+
+.story-text {
+	padding: 1rem 1.25rem 1.5rem;
+}
+
+.story-title {
+	margin: 0 0 0.35rem;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.story-caption {
+	margin: 0;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	color: rgb(255 255 255 / 0.75);
+}
+
+.story-link {
+	display: inline-block;
+	margin-top: 0.75rem;
+	padding: 0.4rem 0.9rem;
+	border-radius: 9999px;
+	background: #fff;
+	color: #000;
+	font-size: 0.85rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.story-link[hidden] { display: none; }
+.story-link:hover { background: rgb(255 255 255 / 0.85); }
+
 .avatar-initials {
 	display: flex;
 	align-items: center;
@@ -1984,8 +2231,13 @@ html.dark .z-d-us { text-decoration: underline line-through; }
 
 <section class="home-header">
 	
-		<img class="avatar" src="https://brianobot.tech/batman.webp" alt="Brian Obot"
-		     width="480" height="720" loading="lazy" decoding="async">
+		
+		<button id="storyRing" class="avatar-story" type="button"
+		        aria-haspopup="dialog" aria-controls="storyViewer"
+		        aria-label="View Brian Obot's stories">
+			<img class="avatar" src="https://brianobot.tech/batman.webp" alt="Brian Obot"
+			     width="480" height="720" decoding="async">
+		</button>
 	
 
 	<div class="identity">
@@ -2413,6 +2665,80 @@ I plan to also occasionally write on movies, books, arts and random stuff.</p>
 
 </div>
 
+
+<dialog id="storyViewer" class="story-viewer" tabindex="-1" aria-label="Brian Obot's stories">
+	<div class="story-bg" aria-hidden="true"></div>
+	<div class="story-frame">
+		<div class="story-bars" aria-hidden="true"></div>
+		<div class="story-head">
+			<img class="story-head-avatar" src="https://brianobot.tech/batman.webp" alt="" width="32" height="32">
+			<span class="story-head-name">Brian Obot</span>
+			<time class="story-head-time"></time>
+			<button class="story-btn story-pause" type="button" aria-label="Pause">
+				<svg class="i-pause" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg>
+				<svg class="i-play" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5"/></svg>
+			</button>
+			<button class="story-btn story-close" type="button" aria-label="Close stories">
+				<svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M6.7 5.3a1 1 0 0 0-1.4 1.4L10.6 12l-5.3 5.3a1 1 0 1 0 1.4 1.4l5.3-5.3l5.3 5.3a1 1 0 0 0 1.4-1.4L13.4 12l5.3-5.3a1 1 0 0 0-1.4-1.4L12 10.6z"/></svg>
+			</button>
+		</div>
+		<div class="story-stage">
+			<div class="story-media"></div>
+			<button class="story-nav story-prev" type="button" aria-label="Previous story" tabindex="-1"></button>
+			<button class="story-nav story-next" type="button" aria-label="Next story" tabindex="-1"></button>
+		</div>
+		<div class="story-text" aria-live="polite">
+			<p class="story-title"></p>
+			<p class="story-caption"></p>
+			<a class="story-link" hidden></a>
+		</div>
+	</div>
+</dialog>
+
+<script type="application/json" id="storyData">[
+	{
+		"src": "https://brianobot.tech/stories/particles-when-no-one-is-looking.mp4",
+		"title": "The observer effect, explained.",
+		"caption": "",
+		"alt": "A scientist in a lab coat walks into a lab, captioned: particles for no reason when no one is looking",
+		"date": "2026-11-28",
+		"link": "https://www.instagram.com/reel/DgQEqapo1fO/",
+		"link_text": "Via @sciencebasednerding",
+		"duration": 0
+	},
+	{
+		"src": "https://brianobot.tech/stories/night-flight-city-lights.mp4",
+		"title": "",
+		"caption": "",
+		"alt": "City lights at night seen from an aeroplane window, the wing at the top of the frame",
+		"date": "",
+		"link": "",
+		"link_text": "",
+		"duration": 0
+	},
+	{
+		"src": "https://brianobot.tech/stories/sunset-over-the-rooftops.webp",
+		"title": "",
+		"caption": "The sky put on a show over the rooftops in Lagos.",
+		"alt": "Pink and orange clouds at sunset over rows of rooftops in Lagos, with trees and a garden in the foreground",
+		"date": "",
+		"link": "",
+		"link_text": "",
+		"duration": 0
+	},
+	{
+		"src": "https://brianobot.tech/stories/street-from-the-car-window.webp",
+		"title": "",
+		"caption": "Clear skies, solar streetlights and blue-and-white buses, seen on a drive through Lagos.",
+		"alt": "A sunny street in Lagos seen from a car window: a solar streetlight, minibuses and the Guinness building behind the trees",
+		"date": "",
+		"link": "",
+		"link_text": "",
+		"duration": 0
+	}
+]</script>
+
+
 		</main>
 
 		<footer class="footer">
@@ -2511,5 +2837,196 @@ I plan to also occasionally write on movies, books, arts and random stuff.</p>
 	</script>
 
 	
+
+<script>
+	(function () {
+		const ring = document.getElementById('storyRing')
+		const dlg = document.getElementById('storyViewer')
+		const stories = JSON.parse(document.getElementById('storyData').textContent)
+		if (!ring || !dlg || !stories.length || !dlg.showModal) return
+
+		const $ = (sel) => dlg.querySelector(sel)
+		const bars = $('.story-bars'), media = $('.story-media'), bg = $('.story-bg')
+		const stage = $('.story-stage'), timeEl = $('.story-head-time')
+		const titleEl = $('.story-title'), captionEl = $('.story-caption'), linkEl = $('.story-link')
+		const pauseBtn = $('.story-pause')
+
+		const IMAGE_MS = 6000
+		const isVideo = (src) => /\.(mp4|webm|mov|m4v)(\?|$)/i.test(src)
+
+		// The ring lights up again whenever the set of stories changes
+		const SEEN_KEY = 'stories-seen'
+		const signature = stories.map((s) => s.src).join('|')
+		const storage = {
+			get () { try { return localStorage.getItem(SEEN_KEY) } catch (e) { return null } },
+			set (v) { try { localStorage.setItem(SEEN_KEY, v) } catch (e) {} }
+		}
+		ring.classList.toggle('seen', storage.get() === signature)
+
+		bars.innerHTML = stories.map(() => '<span class="story-bar"><i></i></span>').join('')
+		const barEls = Array.from(bars.children)
+
+		let index = 0
+		let paused = false
+		let video = null
+
+		const ago = (d) => {
+			if (!d) return ''
+			const then = new Date(d + (d.length === 10 ? 'T00:00:00' : ''))
+			if (isNaN(then)) return ''
+			const days = Math.floor((Date.now() - then) / 86400000)
+			if (days < 1) return 'today'
+			if (days < 7) return days + 'd'
+			if (days < 56) return Math.floor(days / 7) + 'w'
+			return then.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })
+		}
+
+		const startBar = (ms) => {
+			const fill = barEls[index].firstElementChild
+			fill.style.animationDuration = ms + 'ms'
+			barEls[index].classList.remove('active')
+			void fill.offsetWidth // restart the animation even on the same bar
+			barEls[index].classList.add('active')
+		}
+
+		const setPaused = (p) => {
+			paused = p
+			dlg.classList.toggle('paused', p)
+			pauseBtn.setAttribute('aria-label', p ? 'Play' : 'Pause')
+			if (video) p ? video.pause() : video.play().catch(() => {})
+		}
+
+		const show = (i) => {
+			index = i
+			const s = stories[i]
+			barEls.forEach((b, n) => {
+				b.classList.toggle('done', n < i)
+				b.classList.remove('active')
+			})
+			if (video) { video.pause(); video = null }
+			media.textContent = ''
+
+			if (isVideo(s.src)) {
+				video = document.createElement('video')
+				video.src = s.src
+				video.playsInline = true
+				video.setAttribute('playsinline', '')
+				video.preload = 'auto'
+				if (s.alt) video.setAttribute('aria-label', s.alt)
+				video.addEventListener('loadedmetadata', () => {
+					if (video && stories[index] === s) {
+						startBar((s.duration * 1000) || (video.duration * 1000) || IMAGE_MS)
+						if (!paused) video.play().catch(() => { video.muted = true; video.play().catch(() => {}) })
+					}
+				}, { once: true })
+				media.appendChild(video)
+				bg.style.backgroundImage = ''
+			} else {
+				const img = new Image()
+				img.src = s.src
+				img.alt = s.alt
+				img.decoding = 'async'
+				media.appendChild(img)
+				bg.style.backgroundImage = 'url("' + s.src.replace(/"/g, '%22') + '")'
+				startBar((s.duration * 1000) || IMAGE_MS)
+			}
+
+			// warm the next image so tapping forward feels instant
+			const upcoming = stories[i + 1]
+			if (upcoming && !isVideo(upcoming.src)) new Image().src = upcoming.src
+
+			const when = ago(s.date)
+			timeEl.textContent = when
+			if (s.date) timeEl.setAttribute('datetime', s.date); else timeEl.removeAttribute('datetime')
+			titleEl.textContent = s.title
+			captionEl.textContent = s.caption
+			titleEl.hidden = !s.title
+			captionEl.hidden = !s.caption
+			if (s.link) {
+				linkEl.href = s.link
+				// other sites open in a new tab so the viewer isn't lost
+				const external = /^https?:/i.test(s.link) && new URL(s.link).origin !== location.origin
+				if (external) { linkEl.target = '_blank'; linkEl.rel = 'noopener' }
+				else { linkEl.removeAttribute('target'); linkEl.removeAttribute('rel') }
+				linkEl.textContent = s.link_text || 'Read more'
+				linkEl.hidden = false
+			} else {
+				linkEl.hidden = true
+			}
+
+			if (i === stories.length - 1) {
+				storage.set(signature)
+				ring.classList.add('seen')
+			}
+		}
+
+		const next = () => { index < stories.length - 1 ? show(index + 1) : dlg.close() }
+		const prev = () => { show(Math.max(0, index - 1)) }
+
+		ring.addEventListener('click', () => {
+			setPaused(false)
+			dlg.showModal()
+			dlg.focus() // keep the focus ring off the first button; arrows/space/Esc still work
+			show(0)
+		})
+
+		dlg.addEventListener('close', () => {
+			if (video) { video.pause(); video = null }
+			media.textContent = ''
+			barEls.forEach((b) => b.classList.remove('active'))
+			ring.focus()
+		})
+
+		bars.addEventListener('animationend', (e) => {
+			if (e.target.parentElement === barEls[index]) next()
+		})
+
+		$('.story-close').addEventListener('click', () => dlg.close())
+		pauseBtn.addEventListener('click', () => setPaused(!paused))
+
+		// clicks on the blurred backdrop (outside the frame) close the viewer
+		dlg.addEventListener('click', (e) => {
+			if (e.target === dlg || e.target === bg) dlg.close()
+		})
+
+		dlg.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowRight') { e.preventDefault(); next() }
+			else if (e.key === 'ArrowLeft') { e.preventDefault(); prev() }
+			else if (e.key === ' ' && !e.target.closest('button, a')) { e.preventDefault(); setPaused(!paused) }
+		})
+
+		// Tap left third = back, the rest = forward. Press and hold pauses,
+		// swiping down closes (as in every phone story viewer).
+		let holdTimer = 0, held = false, startX = 0, startY = 0, wasPaused = false
+		stage.addEventListener('pointerdown', (e) => {
+			if (e.button !== 0) return
+			startX = e.clientX; startY = e.clientY; held = false; wasPaused = paused
+			holdTimer = setTimeout(() => { held = true; setPaused(true) }, 220)
+		})
+		stage.addEventListener('pointercancel', () => {
+			clearTimeout(holdTimer)
+			if (held) setPaused(wasPaused)
+		})
+		stage.addEventListener('pointerup', (e) => {
+			clearTimeout(holdTimer)
+			const dy = e.clientY - startY, dx = e.clientX - startX
+			if (dy > 80 && Math.abs(dy) > Math.abs(dx)) { dlg.close(); return }
+			if (held) { setPaused(wasPaused); return }
+			if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); return }
+			const r = stage.getBoundingClientRect()
+			e.clientX - r.left < r.width / 3 ? prev() : next()
+		})
+		stage.addEventListener('contextmenu', (e) => e.preventDefault())
+		// the nav buttons exist for screen readers; pointer taps go through the stage
+		$('.story-prev').addEventListener('click', (e) => { if (e.detail === 0) prev() })
+		$('.story-next').addEventListener('click', (e) => { if (e.detail === 0) next() })
+
+		document.addEventListener('visibilitychange', () => {
+			if (document.hidden && dlg.open) setPaused(true)
+		})
+	})()
+</script>
+
+
 </body>
 </html>
