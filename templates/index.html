@@ -221,6 +221,12 @@
 			barEls[index].classList.add('active')
 		}
 
+		let loadToken = 0
+		const setLoading = (on) => {
+			dlg.classList.toggle('loading', on)
+			media.setAttribute('aria-busy', String(on))
+		}
+
 		const setPaused = (p) => {
 			paused = p
 			dlg.classList.toggle('paused', p)
@@ -237,30 +243,74 @@
 			})
 			if (video) { video.pause(); video = null }
 			media.textContent = ''
+			media.classList.remove('ready')
+			bg.style.backgroundImage = ''
+			setLoading(true)
+
+			// Handlers check `token` so a slow file that finishes after the
+			// visitor has moved on can't start the wrong story's progress bar.
+			const token = ++loadToken
+			const current = () => token === loadToken && dlg.open
+			const ms = s.duration * 1000
+
+			const ready = (fallbackMs) => {
+				if (!current()) return
+				setLoading(false)
+				media.classList.add('ready')
+				startBar(ms || fallbackMs)
+			}
+
+			const failed = () => {
+				if (!current()) return
+				setLoading(false)
+				media.textContent = ''
+				const msg = document.createElement('p')
+				msg.className = 'story-error'
+				msg.textContent = "This story couldn't be loaded."
+				media.appendChild(msg)
+				media.classList.add('ready')
+				startBar(3000)
+			}
 
 			if (isVideo(s.src)) {
-				video = document.createElement('video')
-				video.src = s.src
-				video.playsInline = true
-				video.setAttribute('playsinline', '')
-				video.preload = 'auto'
-				if (s.alt) video.setAttribute('aria-label', s.alt)
-				video.addEventListener('loadedmetadata', () => {
-					if (video && stories[index] === s) {
-						startBar((s.duration * 1000) || (video.duration * 1000) || IMAGE_MS)
-						if (!paused) video.play().catch(() => { video.muted = true; video.play().catch(() => {}) })
-					}
+				const v = video = document.createElement('video')
+				v.playsInline = true
+				v.setAttribute('playsinline', '')
+				v.preload = 'auto'
+				if (s.alt) v.setAttribute('aria-label', s.alt)
+				// Call play() right away instead of waiting for `canplay`: phones (iOS
+				// Safari especially) download nothing until play() is called, so
+				// `canplay` would never fire there. The bar starts on the first frame.
+				v.addEventListener('playing', () => {
+					if (current()) ready((v.duration * 1000) || IMAGE_MS)
 				}, { once: true })
-				media.appendChild(video)
-				bg.style.backgroundImage = ''
+				// mid-play buffering: spinner on and the bar holds still until frames arrive
+				v.addEventListener('waiting', () => { if (current()) setLoading(true) })
+				v.addEventListener('playing', () => { if (current()) setLoading(false) })
+				v.addEventListener('error', failed, { once: true })
+				v.src = s.src
+				media.appendChild(v)
+				if (!paused) {
+					// sound needs a tap; when the browser refuses (auto-advance on
+					// iPhone), play muted rather than not at all
+					v.play().catch(() => {
+						if (!current()) return
+						v.muted = true
+						v.play().catch(() => {})
+					})
+				}
 			} else {
 				const img = new Image()
-				img.src = s.src
 				img.alt = s.alt
 				img.decoding = 'async'
+				img.addEventListener('load', () => {
+					if (!current()) return
+					bg.style.backgroundImage = 'url("' + s.src.replace(/"/g, '%22') + '")'
+					ready(IMAGE_MS)
+				}, { once: true })
+				img.addEventListener('error', failed, { once: true })
+				img.src = s.src
 				media.appendChild(img)
-				bg.style.backgroundImage = 'url("' + s.src.replace(/"/g, '%22') + '")'
-				startBar((s.duration * 1000) || IMAGE_MS)
 			}
 
 			// warm the next image so tapping forward feels instant
@@ -303,6 +353,8 @@
 		})
 
 		dlg.addEventListener('close', () => {
+			loadToken++
+			setLoading(false)
 			if (video) { video.pause(); video = null }
 			media.textContent = ''
 			barEls.forEach((b) => b.classList.remove('active'))

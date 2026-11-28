@@ -20,6 +20,8 @@
 !*.js
 !*.xml
 !*.woff2
+# story videos only; keep other .mp4s out of the repo
+!static/stories/*.mp4
 
 !*Brian_Obot_Resume.pdf
 !*og-default.jpg
