@@ -499,11 +499,60 @@ html:has(.story-viewer[open]) { overflow: hidden; }
 	height: 100%;
 }
 
+.story-media { position: relative; }
+
 .story-media img,
 .story-media video {
 	display: block;
 	object-fit: contain;
 	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.25s ease;
+}
+
+.story-media.ready img,
+.story-media.ready video { opacity: 1; }
+
+/* Loading: a spinner over the frame, and the progress bar holds still. The
+   spinner waits 150ms before showing so cached media doesn't flash it. */
+.story-viewer.loading .story-bar.active i { animation-play-state: paused; }
+
+.story-viewer.loading .story-media::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 2.25rem;
+	height: 2.25rem;
+	margin: -1.125rem 0 0 -1.125rem;
+	border-radius: 9999px;
+	border: 3px solid rgb(255 255 255 / 0.2);
+	border-top-color: #fff;
+	opacity: 0;
+	animation: story-spinner-in 0.2s ease 0.15s forwards, story-spin 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.story-viewer.loading .story-media::after {
+		border-color: rgb(255 255 255 / 0.6);
+		animation: story-spinner-in 0.2s ease 0.15s forwards, story-breathe 1.4s ease-in-out 0.35s infinite;
+	}
+}
+
+@keyframes story-spinner-in { to { opacity: 1; } }
+@keyframes story-spin { to { transform: rotate(360deg); } }
+@keyframes story-breathe { 50% { opacity: 0.35; } }
+
+.story-error {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	margin: 0;
+	padding: 1rem;
+	text-align: center;
+	font-size: 0.9rem;
+	color: rgb(255 255 255 / 0.7);
 }
 
 /* invisible, keyboard/screen-reader-only targets; pointer taps go to the stage */
