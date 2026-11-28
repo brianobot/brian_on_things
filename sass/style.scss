@@ -312,11 +312,12 @@ main { width: 100%; flex: 1 0 auto; }
 .avatar-story {
 	position: relative;
 	display: block;
-	padding: 0.3rem;
+	padding: 0.2rem;
 	border: 0;
 	border-radius: 9999px;
 	cursor: pointer;
-	background: conic-gradient(from 210deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5, #d62976, #feda75);
+	/* muted take on the Instagram gradient: an accent, not a neon halo */
+	background: conic-gradient(from 210deg, #f2d48a, #ee9a62, #cf6390, #9a66bd, #6f7bcf, #cf6390, #f2d48a);
 	transition: transform 0.2s ease;
 }
 
@@ -340,16 +341,16 @@ main { width: 100%; flex: 1 0 auto; }
 		position: absolute;
 		inset: -0.25rem;
 		border-radius: inherit;
-		border: 2px solid #d62976;
+		border: 1px solid #cf6390;
 		opacity: 0;
-		animation: story-pulse 2.6s ease-out 1s 3;
+		animation: story-pulse 2.6s ease-out 1s 2;
 		pointer-events: none;
 	}
 }
 
 @keyframes story-pulse {
-	0% { opacity: 0.6; transform: scale(1); }
-	100% { opacity: 0; transform: scale(1.12); }
+	0% { opacity: 0.35; transform: scale(1); }
+	100% { opacity: 0; transform: scale(1.06); }
 }
 
 html:has(.story-viewer[open]) { overflow: hidden; }
